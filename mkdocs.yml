@@ -1,0 +1,6 @@
+site_name: DEQAR Database
+pages:
+    - Home: index.md
+    - Data Submission: data_submission.md
+    - Submission Object Fields: 'submission_object_fields.md'
+theme: readthedocs

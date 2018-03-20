@@ -1,0 +1,29 @@
+![Screenshot](img/eqar-logo.png)
+
+# Welcome to DEQAR
+
+DEQAR is the Database of External Quality Assurance Results.
+
+## About the project
+
+The Database of External Quality Assurance Reports (DEQAR) project was selected for EU co-funding under Erasmus+ Key Action 3 - European Forward-Looking Cooperation Projects.
+
+The main aim of the DEQAR project is the development of a database that will enhance access to reports and decisions on higher education institutions/programmes externally reviewed against the ESG, by an EQAR-registered agency.
+
+The database is expected to enable a broad range of users, including but not limited to:
+
+* Recognition information centres (ENIC-NARICs)
+* Recognition officers in higher education institutions
+* Students
+* Quality assurance agencies
+* Ministry representatives and other national authorities
+
+to satisfy their information needs and support different types of decisions (e.g. recognition of degrees, mobility of students, portability of grants/loans). A first public preview version of the database will be available in May 2018.
+
+Through this database EQAR will contribute to the transparency of external quality assurance in the European Higher Education Area.
+
+## DEQAR EcoSystem
+
+* DEQAR backend - A [DRF](http://www.django-rest-framework.org/) applicaiton responsible for managing the data-model, providing API endpoints for submission, file uploads and the admin user interface. - [DEQAR backend on GitHub](https://www.github.com/eqar/eqar_backend)
+* DEQAR administrative interface - <http://admin.deqar.eu> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://www.github.com/eqar/eqar_frontend)
+* Public website
