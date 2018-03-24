@@ -1,3 +1,9 @@
+> ## Preview
+>
+> - Available based on `draft` branch at: <https://docs.deqar.eu/>
+> - Edit file(s) in `draft`
+> - When committed, webhook triggers update of the website
+
 # Welcome to DEQAR
 
 DEQAR is the Database of External Quality Assurance Results.
