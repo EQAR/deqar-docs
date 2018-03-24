@@ -1,5 +1,3 @@
-![Screenshot](img/eqar-logo.png)
-
 # Welcome to DEQAR
 
 DEQAR is the Database of External Quality Assurance Results.
