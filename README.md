@@ -1,6 +1,12 @@
 # deqar-docs
 MkDocs documentation of DEQAR
 
+## Preview
+
+- Available based on `draft` branch at: <https://docs.deqar.eu/>
+- Edit file(s) in `draft` branch
+- When committed, webhook triggers update of the website
+
 ## Installation
 
 1. Instal mkdocs to your computer: http://www.mkdocs.org/#installation
