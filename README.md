@@ -3,8 +3,8 @@ MkDocs documentation of DEQAR
 
 ## Preview
 
-- Available based on `draft` branch at: <https://docs.deqar.eu/>
-- Edit file(s) in `draft` branch
+- Available at: <https://docs.deqar.eu/>
+- Edit files (in `master` branch)
 - When committed, webhook triggers update of the website
 
 ## Installation
