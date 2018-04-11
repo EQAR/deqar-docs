@@ -1,4 +1,8 @@
-![Screenshot](img/eqar-logo.png)
+> ## Preview
+>
+> - Available based on `draft` branch at: <https://docs.deqar.eu/>
+> - Edit file(s) in `draft`
+> - When committed, webhook triggers update of the website
 
 # Welcome to DEQAR
 
@@ -22,8 +26,11 @@ to satisfy their information needs and support different types of decisions (e.g
 
 Through this database EQAR will contribute to the transparency of external quality assurance in the European Higher Education Area.
 
+Read more about the DEQAR project and partners involved at: <http://www.deqar.eu/>
+
 ## DEQAR EcoSystem
 
 * DEQAR backend - A [DRF](http://www.django-rest-framework.org/) applicaiton responsible for managing the data-model, providing API endpoints for submission, file uploads and the admin user interface. - [DEQAR backend on GitHub](https://www.github.com/eqar/eqar_backend)
-* DEQAR administrative interface - <http://admin.deqar.eu> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://www.github.com/eqar/eqar_frontend)
+* DEQAR administrative interface - <https://admin.deqar.eu/> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://www.github.com/eqar/eqar_frontend)
 * Public website
+
