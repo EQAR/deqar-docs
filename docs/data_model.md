@@ -20,7 +20,6 @@ Entities are identifed in the following ways:
 
 ## Agency
 
-
 Due to authentication at every point of the ingest/update procedure the source
 agency is identifed transparently by the system. However if an agency submits
 data from other agencies as well (as in case of umbrella organizations), the
