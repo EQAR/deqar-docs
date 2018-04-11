@@ -6,4 +6,4 @@ pages:
     - Submission Object Fields: 'submission_object_fields.md'
     - CSV Upload: csv_upload.md
     - Submission API: submission_api.md
-theme: readthedocs
+theme: mkdocs
