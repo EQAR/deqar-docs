@@ -1,9 +1,19 @@
 site_name: DEQAR Documentation
+### document structure ###
 pages:
     - Home: index.md
     - Data Model: data_model.md
     - Data Submission Workflow: data_submission.md
     - Submission Object Fields: 'submission_object_fields.md'
-    - CSV Upload: csv_upload.md
-    - Submission API: submission_api.md
-theme: readthedocs
+    - Submitting data:
+        - CSV Upload: csv_upload.md
+        - REST API: submission_api.md
+### theme configuration ###
+theme:
+    name: readthedocs
+    custom_dir: theme/
+extra_css: [ "css/deqar.css" ]
+markdown_extensions:
+    - toc:
+        permalink: True
+

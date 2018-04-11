@@ -1,0 +1,100 @@
+/* CSS custom for DEQAR MkDocs */
+
+.wy-menu li.current ul.subnav ul {
+    padding-left: 1em;
+}
+
+.wy-menu li.current ul.subnav > li a {
+    font-weight: bold;
+}
+
+.wy-menu-vertical .subnav li.current > ul li a {
+    padding-left: 2.427em;
+}
+
+
+/* quotes from documents */
+
+/*
+blockquote {
+   background-color: #D2E5F2;
+   margin-right: 24px;
+   padding: .5em;
+}
+blockquote p:last-child {
+   margin-bottom: 0;
+}
+*/
+
+pre {
+   border: none;
+   font-family: inherit;
+   background-color: #E4E9F1;
+   padding: .5em;
+   margin: 1em;
+}
+
+.rst-content .section ul li p:last-child {
+    margin-bottom: 12px;
+}
+/* ordered lists */
+.rst-content .section ol {
+   counter-reset: orderedlist;
+}
+.rst-content .section ol > li {
+    list-style-type: none;
+    counter-increment: orderedlist;
+    position: relative;
+}
+.rst-content .section ol > li:before {
+    content: counter(orderedlist) ".";
+    position:absolute;
+    left: -2.6em;
+    width: 2em;
+    text-align: right;
+}
+.rst-content .section ol > li > ol {
+    margin-bottom: 0;
+}
+.rst-content .section ol > li > ol > li:before {
+    content: "(" counter(orderedlist, lower-roman) ")";
+}
+
+
+/* CSS for print output */
+
+@media print {
+
+	h1, h2, h3, h4, h5 {
+	  page-break-after: avoid;
+	}
+
+}
+
+@page {
+  size: A4;
+  margin: 2cm;
+}
+
+@page { 
+  @top-center {
+    margin: 10pt 0 30pt 0;
+    border-bottom: .25pt solid #0e447d;
+    content: "DEQAR Documentation";
+    font-size: 9pt;
+    color: #0e447d;
+  }
+}
+
+@page:right{
+  @bottom-right {
+    content: counter(page);
+  }
+}
+
+@page:left{
+  @bottom-left {
+    content: counter(page);
+  }
+}
+
