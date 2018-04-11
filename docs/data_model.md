@@ -31,16 +31,14 @@ in ISO 639-1 or ISO 639-2/B format.
 
 Entities are identifed in the following ways:
 
-Agency
-------
+## Agency
 
 Due to authentication at every point of the ingest/update procedure the source
 agency is identifed transparently by the system. However if an agency submits
 data from other agencies as well (as in case of umbrella organizations), the
 agency’s unique acronym will likely be the source of identifcation.
 
-Institution
------------
+### Institution
 
 DEQAR will be in sync with the ETER register, so the frst line of identifcation
 will be the ETER ID. If an ETER ID is available, no further data on the
