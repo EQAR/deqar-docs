@@ -10,7 +10,7 @@ The graph linked below shows the relationship between these entities:
 
 DEQAR has also included a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country--a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
 
-[DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
+[DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_countries.jpg)
 
 Functional Overview
 -------------------
