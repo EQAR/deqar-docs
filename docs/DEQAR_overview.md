@@ -4,9 +4,9 @@ EQAR’s data model has been designed around four main entities: registered qual
 
 [DEQAR High Level Data Model](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
 
-While institutional information will largely be managed by EQAR based on data from ETER/OrgReg, registered agency users are invited to submit information on external quality assurance reports with information about the study programme concerned where applicable. Further information on the type of information to be collected and stored in DEQAR can be found in the [Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
+While institutional information will largely be managed by EQAR based on data from ETER/OrgReg, registered agency users are invited to submit information on external quality assurance reports including information about the study programme concerned, if applicable. Further information on the type of information to be collected and stored in DEQAR can be found in the [Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
 
-DEQAR has also included a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country--a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
+DEQAR has also included a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country---a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
 
 [DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_countryplain.jpg)
 
@@ -14,26 +14,26 @@ Functional Overview
 -------------------
 DEQAR supports three core activities:
 
--**Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods (individual records via webform; batch CSV file via webform; or as JSON via API).  
--**Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term.
--**Search and discovery of information:** records are published on an public web interface for search, retrieval and export or download by end users.
+- **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods (individual records via webform; batch CSV file via webform; or as JSON via API).  
+- **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term.
+- **Search and discovery of information:** records are published on an public web interface for search, retrieval and export or download by end users.
 
 Role of Standards and Identifers 
 --------------------------------
 
 When aggregating large amounts of data from different sources, the biggest challenges are:
 
-1. to keep the same data from different sources in sync (ex., the same institution may be described slightly differently by different agencies),
-2. to try to avoid duplication, and
-3. to identify already existing records for update if necessary.
+1. To keep the same data from different sources in sync (ex., the same institution may be described slightly differently by different agencies),
+2. To try to avoid duplication, and
+3. To identify already existing records for update if necessary.
 
-To achieve this, DEQAR data model uses standard values on various levels. Countries are identifed via the ISO 3166-1 standard; language data is accepted in ISO 639-1 or ISO 639-2/B format.
+To achieve this, the DEQAR data model uses standard values on various levels. Countries are identifed via the ISO 3166-1 standard; language data is accepted in ISO 639-1 or ISO 639-2/B format.
 
 Entities are identifed in the following ways:
 
--**Agency:** Due to authentication during the ingest/update procedure, the source agency is identifed transparently by the system. However, an agency may serve as a proxy for another agency, submitting and managing data on its behalf (as in case of umbrella organizations). In this case, the agency’s unique acronym will likely be the source of identifcation.
+- **Agency:** As authentication is required before ingest and update of data and files, the agency is identifed automatically by the system. Nevertheless, an agency may serve as a "proxy agency" for a "creating agency", submitting and managing data on its behalf (as in case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID must be provided as the source of identification.
 
--**Institution:** DEQAR will be in sync with the ETER register, so the frst line of identifcation will be the ETER ID. If an ETER ID is available, no further data on the institution is required.
+- **Institution:** DEQAR is annually synced with the ETER/OrgReg register, so the frst line of identifcation will be the ETER ID. If an ETER ID is available, no further data on the institution is required.
 
 For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can be used.
 
@@ -47,9 +47,9 @@ the EQAR secretariat. (If a record lacks an ETER ID, but a match is found among
 the ETER registered institutions, then the ETER ID can be included in the
 response.)
 
--**Programme:** DEQAR will not sync data on programmes; however if a local or national identifer is provided, this will be saved and can serve as a primary identifer if further reports are submitted for the same programme later.
+- **Programme:** DEQAR will not sync data on programmes; however if a local or national identifer is provided, this will be saved and can serve as a primary identifer if further reports are submitted for the same programme later.
 
--**Report:** Each report will receive an identifer generated by the DEQAR system. If an agency uses a local identifer for its reports, then this will be saved and can serve as the primary identifer for the purpose of resubmission.
+- **Report:** Each report will receive an identifer generated by the DEQAR system. If an agency uses a local identifer for its reports, then this will be saved and can serve as the primary identifer for the purpose of resubmission.
 
 DEQAR highly recommends the submission of local identifers for each submitted entity. These may come in handy when data must be updated via any of the batch
 interfaces.
