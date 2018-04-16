@@ -33,19 +33,8 @@ Entities are identifed in the following ways:
 
 - **Agency:** As authentication is required before ingest and update of data and files, the agency is identifed automatically by the system. Nevertheless, an agency may serve as a "proxy agency" for a "creating agency", submitting and managing data on its behalf (as in case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID must be provided as the source of identification.
 
-- **Institution:** DEQAR is annually synced with the ETER/OrgReg register, so the frst line of identifcation will be the ETER ID. If an ETER ID is available, no further data on the institution is required.
-
-For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can be used.
-
-If there is no ETER ID, DEQAR ID or the identifer does not produce a match, the
-website address of the institution will be used as a second line of
-identifcation and will be matched against the ETER list and data on already
-submitted institutions. This failing, the name of the institution in English or
-original language will be used. If the process produces no match with the ETER
-list or with existing HEI data, then the record will be fagged for checking by
-the EQAR secretariat. (If a record lacks an ETER ID, but a match is found among
-the ETER registered institutions, then the ETER ID can be included in the
-response.)
+- **Institution:** DEQAR is annually synced with the ETER/OrgReg register, so the first line of identification will be the ETER ID. If an ETER ID is available, no further data on the institution is required.For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can be used.
+If there is no ETER ID, DEQAR ID or the identifer does not produce a match, the website address of the institution will be used as a second line of identifcation and will be matched against the ETER list and data on already submitted institutions. This failing, the name of the institution in English or original language will be used. If the process produces no match with the ETER list or with existing HEI data, then the record will be fagged for checking by the EQAR secretariat. (If a record lacks an ETER ID, but a match is found among the ETER registered institutions, then the ETER ID can be included in the response.)
 
 - **Programme:** DEQAR will not sync data on programmes; however if a local or national identifer is provided, this will be saved and can serve as a primary identifer if further reports are submitted for the same programme later.
 
