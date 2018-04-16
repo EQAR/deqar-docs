@@ -6,7 +6,7 @@ While institutional information will largely be managed by EQAR based on data fr
 
 The following graph shows the relationship between these entities:
 
-[DEQAR High Level Data Model](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
+(img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
 
 
 DEQAR has also included a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country--a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
