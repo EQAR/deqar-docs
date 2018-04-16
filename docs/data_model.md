@@ -29,8 +29,8 @@ DEQAR will be in sync with the ETER register, so the frst line of identifcation
 will be the ETER ID. If an ETER ID is available, no further data on the
 institution is required.
 
-For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can
-be used.
+>For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can
+>be used.
 
 If there is no ETER ID, DEQAR ID or the identifer does not produce a match, the
 website address of the institution will be used as a second line of
