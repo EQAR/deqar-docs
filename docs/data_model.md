@@ -6,7 +6,7 @@ While institutional information will largely be managed by EQAR based on data fr
 
 The following graph shows the relationship between these entities:
 
-[DEQAR High Level Data Model](deqar-docs/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg  "DEQAR High Level Data Model)
+[DEQAR High Level Data Model]( https://github.com/EQAR/deqar-docs/blob/master/docs/img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg "DEQAR High Level Data Model)
 
 ...
 
