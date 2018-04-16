@@ -1,27 +1,28 @@
 Data Model Entities
 -------------------
+EQAR’s data model has been designed around four main entities: registered quality assurance **Agencies**, higher education **Institutions**, educational **Programmes** associated with institutions, and external quality assurance **Reports**. 
 
-DEQAR’s data model has been designed around four main entities: registered quality assurance Agencies, higher education Institutions, educational Programmes associated with institutions, and external quality assurance Reports.
-
-While institutional information will largely be managed by EQAR (using data from
-ETER/OrgReg), agencies are invited to submit information on external quality assurance
-reports and the associated results/decisions, with information about the study
-programme concerned where applicable. Further information on the type of
-information to be collected and stored in DEQAR can be found in the
-[Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
+While institutional information will largely be managed by EQAR based on data from ETER/OrgReg, agencies are invited to submit information on external quality assurance reports and the associated results or decisions, with information about the study programme concerned where applicable. Further information on the type of information to be collected and stored in DEQAR can be found in the [Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
 
 The following graph shows the relationship between these entities:
 
 (to add)
 
+
+...
+
+DEQAR has also included a **Country entity**, which contains information on the official external quality assurance regime in each DEQAR-related country--a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
+
+
+Creation vs Update - the role of local identifers and standards
+---------------------------------------------------------------
+
 Entities are identifed in the following ways:
 
 ### Agency
 
-Due to authentication at every point of the ingest/update procedure the source
-agency is identifed transparently by the system. However if an agency submits
-data from other agencies as well (as in case of umbrella organizations), the
-agency’s unique acronym will likely be the source of identifcation.
+Due to authentication during the ingest/update procedure, the source
+agency is identifed transparently by the system. However, an agency may serve as a proxy for another agency, submitting and managing data on its behalf (as in case of umbrella organizations). In this case, the agency’s unique acronym will likely be the source of identifcation.
 
 ### Institution
 
@@ -58,8 +59,6 @@ DEQAR highly recommends the submission of local identifers for each submitted
 entity. These may come in handy when data must be updated via any of the batch
 interfaces.
 
-Creation vs Update - the role of local identifers and standards
----------------------------------------------------------------
 
 When aggregating large amounts of data from different sources, the biggest challenges are
 
