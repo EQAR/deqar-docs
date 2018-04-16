@@ -6,12 +6,11 @@ While institutional information will largely be managed by EQAR based on data fr
 
 The following graph shows the relationship between these entities:
 
-(to add)
-
+[DEQAR High Level Data Model](https://cloud.eqar.eu/s/BLgfkMRZ8JCC8F2 "DEQAR High Level Data Model)
 
 ...
 
-DEQAR has also included a **Country entity**, which contains information on the official external quality assurance regime in each DEQAR-related country--a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
+DEQAR has also included a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country--a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
 
 
 Creation vs Update - the role of local identifers and standards
