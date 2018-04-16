@@ -2,7 +2,7 @@ site_name: DEQAR Documentation
 ### document structure ###
 pages:
     - Home: index.md
-    - Data Model: data_model.md
+    - DEQAR Overview: DEQAR_overview.md
     - Data Submission Workflow: data_submission.md
     - Submission Object Fields: 'submission_object_fields.md'
     - Submitting data:
