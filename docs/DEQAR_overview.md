@@ -36,7 +36,6 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 - **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for aeach report can be identifed automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID must be provided as the source of identification.
 
 - **Institution:** 
-
   * *DEQARINST IDs:* DEQAR createds so-called *DEQARINST IDs* for each institution record that is created in the system. Ideally, each registered agency will store the DEQARINST IDs for the institutions treated in their reports.
   - *ETER IDs:* DEQAR is annually synced with the ETER/OrgReg register, so the first line of identification will be the ETER ID. If an ETER ID is available, no further data on the institution is required.
   * *Local identfiers:* For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can be used.
