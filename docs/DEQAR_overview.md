@@ -37,9 +37,9 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 
 - **Institution:** 
 
-  - *DEQARINST IDs:* DEQAR createds so-called *DEQARINST IDs* for each institution record that is created in the system. Ideally, each registered agency will store the DEQARINST IDs for the institutions treated in their reports.
+  * *DEQARINST IDs:* DEQAR createds so-called *DEQARINST IDs* for each institution record that is created in the system. Ideally, each registered agency will store the DEQARINST IDs for the institutions treated in their reports.
   - *ETER IDs:* DEQAR is annually synced with the ETER/OrgReg register, so the first line of identification will be the ETER ID. If an ETER ID is available, no further data on the institution is required.
-  - *Local identfiers:* For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can be used.
+  * *Local identfiers:* For institutions not in ETER but already in the DEQAR, an internal DEQAR ID can be used.
   - *Other identification methods:* If there is no ETER ID, DEQAR ID or the identifer does not produce a match, the website address of the institution will be used as an alternative means of identifcation and will be matched against the ETER list and data on already submitted institutions. This failing, the name of the institution in English or original language will be used. If the process produces no match with the ETER list or with existing HEI data, then the record will be fagged for checking by the EQAR secretariat. (If a record lacks an ETER ID, but a match is found among the ETER registered institutions, then the ETER ID can be included in the response.)
   
 - **Programme:** DEQAR will not sync data on programmes; however if a local or national identifer is provided, this will be saved and can serve as a primary identifer if further reports are submitted for the same programme later.
