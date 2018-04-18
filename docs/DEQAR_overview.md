@@ -61,7 +61,7 @@ In more detail, the identification of each entity works as follows:
     
     - Other identification methods: If an agency cannot locate an existing institution record in DEQAR (and therefore cannot provide either the DEQARINST ID, ETER ID or local identifer), then they will need to provide institution data as the source of an entirely new record.  Before creating a new record, the system checks to confirm that the record does not already exist. It checks the website URL provided as well as the official and English names against all instituion records in the system.  If these do not produce a match, then a new record is created. For this reason, it is recommended that all agencies provide the root domain name (in its shortest form) of the institution website. 
     
-  Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.  
+   Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.  
     
 - **Programme:** DEQAR will not synchronise data on programmes; however if a local or national identifer is provided at the time of submission, this will be stored in the system. The agency can use the programme identifier if it would like to simply re-use the existing programme data for subsequent reports.
 
