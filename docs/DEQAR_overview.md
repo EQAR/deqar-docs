@@ -71,7 +71,12 @@ In more detail, the identification of each entity works as follows:
 
 DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers, which can be supplied through the administrative interface and then used for submission.  Only one identifier should be provided for each assigned activity.    
 
-Finally, DEQAR provides DEQAR IDs for a few standard values. These may be found in the administrative interface.  An agency may provide these standard identifiers instead of string values for **Report Status** and **Report Decision** in each CSV or JSON object.
+Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status** and **Report Decision**. 
+
+- Report status: 1 = part of obligatory EQA system, 2 = voluntary
+- Report decision: 1 = positive, 2 = positive with conditions or restrictions, 3 = negative, 4 = not applicable
+
+These can be provided instead of the equivalent string values in each CSV or JSON object.
 
 Use of Data from ETER/OrgReg
 ----------------------------
