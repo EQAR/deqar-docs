@@ -69,7 +69,7 @@ In more detail, the identification of each entity works as follows:
 - **Report:** We strongly recommend that agencies provide a local identifier with each report submitted. This will allow for subsequent updates to the record and will ease synchronisation with each agency's local system.  
     Report local identifiers will be stored and can serve to identify record for updates/resubmission. DEQAR will also automatically generate a DEQAR ID for each newly submitted report; this will be returned to agencies as part of the response object. The DEQAR ID can be used for updates/resubmission as an alternative to local identifiers.
 
-DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers, which can be supplied through the administrative interface and then used for submission.  Only one identifier should be provided for each assigned activity.    
+DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers, which the agency can supply through the administrative interface and then used for submission.  Only one identifier should be provided for each assigned activity.    
 
 Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status** and **Report Decision**. 
 
