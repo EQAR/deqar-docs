@@ -29,9 +29,9 @@ As DEQAR aggregates data from different sources, we face several challenges:
 2. To try to avoid duplication, and
 3. To identify already existing records for update if necessary.
 
-To meet these challenges, the DEQAR data model uses standard values on various levels. **Countries** are identifed via the *ISO 3166-1 standard*; **Language** data is accepted in *ISO 639-1* or *ISO 639-2/B* format.
+To meet these challenges, the DEQAR data model uses standard values at various levels. **Countries** are identifed via the *ISO 3166-1 standard*; **Language** data is accepted in *ISO 639-1* or *ISO 639-2/B* format.
 
-DEQAR uses a set of standard identifiers which are provided by the system for each entity.  In several cases, we also allow agencies to provide their local or national identifiers for entities in order to ease their internal workflow.  Entities are identifed in the following ways:
+DEQAR uses a set of standard identifiers which are provided by the system for each entity.  In several cases, we also allow agencies to provide their local or national identifiers for entities in order to ease their internal workflows.  Entities are identifed in the following ways:
 
 | Entity      | Recommended Identification | Alternative Identification |
 | ----------- | -------------------------- | -------------------------- |
@@ -40,16 +40,18 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 | Programme   | local programme identifier | DEQAR Programme ID         |
 | Reports     | local report identifier    | DEQAR Report ID            |
 
-The agency responsible for the report must be identified with any submission. An identifier should be provided for each institution *in the case that a record for the institution already exists in DEQAR.* This allows the system to establish a direct link with the existing record. If the institution record does not exist, data must be provided instead. In the case of programmes and reports, we strongly encourage agencies to provide their local identifiers with each new submission of data:
+The agency responsible for the report must be identified with any submission. An identifier should also be provided for each institution *in the case that a record for the institution already exists in DEQAR.* This allows the system to establish a direct link with the existing record. If the institution record does not exist, data must be provided instead. 
+
+In the case of programmes and reports, agencies are encouraged to provide local identifer. We strongly urge agencies to provide their local report identifiers with each new submission of data:
 
 - For programmes, the first time an agency provides information on a programme to DEQAR, a local (or national) idenfier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.
 - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
 
-In more detail, each the identification of each entity works as follows:
+In more detail, the identification of each entity works as follows:
 
 - **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identifed automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in DEQAR's administrative interface) must be provided as the source of identification. For this reason, identification of the creating agency is required for each object when using CSV and JSON. 
 
-- **Institution:** Institutions already described in DEQAR should be identified in report submissions using one of several identfiers. This allows the system to automatically link report data to existing institution records. Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.
+- **Institution:** Institutions already described in DEQAR should be identified in report submissions using one of several identfiers. This allows the system to automatically link report data to existing institution records. 
 
     - DEQARINST IDs: DEQAR automatically generates a so-called "DEQARINST IDs" for each institution record that is created in the system. These can be found through the administrative interface. (They are also be returned to the agency as part of the response object after each successful submission.) Ideally, each registered agency will store the DEQARINST IDs for institutions treated in their reports. These are recommended for use in each submission.
     
@@ -58,6 +60,8 @@ In more detail, each the identification of each entity works as follows:
     - Local/national identfiers: Agencies may also create and store local or national identifiers on institutions. If the agency provides a list of local or national idenfiers *in advance* to the EQAR secretariat, these can be used for each submission as an alternative to the DEQARINST IDs.
     
     - Other identification methods: If an agency cannot locate an existing institution record in DEQAR (and therefore cannot provide either the DEQARINST ID, ETER ID or local identifer), then they will need to provide institution data as the source of an entirely new record.  Before creating a new record, the system checks to confirm that the record does not already exist. It checks the website URL provided as well as the official and English names against all instituion records in the system.  If these do not produce a match, then a new record is created. For this reason, it is recommended that all agencies provide the root domain name (in its shortest form) of the institution website. 
+    
+  Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.  
     
 - **Programme:** DEQAR will not synchronise data on programmes; however if a local or national identifer is provided at the time of submission, this will be stored in the system. The agency can use the programme identifier if it would like to simply re-use the existing programme data for subsequent reports.
 
