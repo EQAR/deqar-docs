@@ -40,12 +40,12 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 | Programme   | local programme identifier | DEQAR Programme ID         |
 | Reports     | local report identifier    | DEQAR Report ID            |
 
-The agency responsible for the report must always be identified with any submission. The institution(s) should be identified when submitting a report if there is already a record for the institution in DEQAR. In the case of programmes and reports, we strongly encourage agencies to provide their locally stored identifiers with each new submission:
+The agency responsible for the report must be identified with any submission. An identifier should be provided for each institution(s) **in the case that** a record for the institution already exists in DEQAR. In the case of programmes and reports, we strongly encourage agencies to provide their local identifiers with each new submission:
 
-- For programmes, the first time an agency provides information on a programme to DEQAR, a local idenfier can be submitted along with information on the programme; the identifier can later be used by the agency for any report on the same programme.
+- For programmes, the first time an agency provides information on a programme to DEQAR, a local idenfier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.
 - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using JSON/API or CSV and may also help each agency to synchronise its local system with DEQAR.
 
-In more details, each entity works as follows:
+In more detail, each entity works as follows:
 
 - **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identifed automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in DEQAR's administrative interface) must be provided as the source of identification. Identification of the creating agency is required for each object when using CSV and JSON. 
 - **Institution:** Institutions already in DEQAR should be identified in new report submissions using one of the following identfiers.  
