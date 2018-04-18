@@ -18,7 +18,7 @@ DEQAR supports three core activities:
 - **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term.
 - **Search and discovery of information:** records are published on an public web interface for search, retrieval and export or download by end users.
 
-more???
+more...
 
 Role of Standards and Identifers 
 --------------------------------
@@ -38,14 +38,20 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 | Agency      | agency acronym             | DEQAR Agency ID            |
 | Institution | DEQARINST ID               | ETER ID, local identifier  |
 | Programme   | local programme identifier | DEQAR Programme ID         |
-| Reports     | local report identifier    | DEQAR Report ID
+| Reports     | local report identifier    | DEQAR Report ID            |
 
-- **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identifed automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID must be provided as the source of identification.     
-- **Institution:** 
-    - *DEQARINST IDs:*  DEQAR createds so-called "DEQARINST IDs" for each institution record that is created in the system. Ideally, each registered agency will store the DEQARINST IDs for the institutions treated in their reports.
-    - *ETER IDs:*  DEQAR will harvest records from the ETER/OrgReg database once a year.  These will be the basis of , so the first line of identification will be the ETER ID. If an ETER ID is available, no further data on the institution is required.
+The agency responsible for the report must always be identified with any submission. The institution(s) should be identified when submitting a report if there is already a record for the institution in DEQAR. In the case of programmes and reports, we strongly encourage agencies to provide their locally stored identifiers with each new submission:
+-For programmes, the first time an agency provides information on a programme to DEQAR, a local idenfier can be submitted along with information on the programme; the identifier can later be used by the agency for any report on the same programme.
+-For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using JSON/API or CSV and may also help each agency to synchronise its local system with DEQAR.
+
+In more details, each entity works as follows:
+- **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identifed automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in DEQAR's administrative interface) must be provided as the source of identification. Identification of the creating agency is required for each object when using CSV and JSON. 
+- **Institution:** Institutions already in DEQAR should be identified in new report submissions using one of the following identfiers.  
+    - *DEQARINST IDs:*  DEQAR automatically generates a so-called "DEQARINST IDs" for each institution record that is created in the system. Ideally, each registered agency will store the DEQARINST IDs for institutions treated in their reports.
+    - *ETER IDs:*  DEQAR harvests records from the ETER/OrgReg database once a year.  These are the source many of DEQAR's institution records. The ETER ID If an ETER ID is available, no further data on the institution is required.
     - *Local identfiers:*  For institutions not in ETER but already in the DEQAR, a local Identif can be used.
-    - *Other identification methods:*  If there is no ETER ID, DEQAR ID or the identifer does not produce a match, the website address of the institution will be used as an alternative means of identifcation and will be matched against the ETER list and data on already submitted institutions. This failing, the name of the institution in English or original language will be used. If the process produces no match with the ETER list or with existing HEI data, then the record will be fagged for checking by the EQAR secretariat. (If a record lacks an ETER ID, but a match is found among the ETER registered institutions, then the ETER ID can be included in the response.)  
+    - *Other identification methods:*  If there is no ETER ID, DEQAR ID or the identifer does not produce a match, the website address of the institution will be used as an alternative means of identifcation and will be matched against the ETER list and data on already submitted institutions. This failing, the name of the institution in English or original language will be used. If the process produces no match with the ETER list or with existing HEI data, then the record will be fagged for checking by the EQAR secretariat. (If a record lacks an ETER ID, but a match is found among the ETER registered institutions, then the ETER ID can be included in the response.)
+ All instituions  
 
 - **Programme:** DEQAR will not sync data on programmes; however if a local or national identifer is provided, this will be saved and can serve as a primary identifer if further reports are submitted for the same programme later.
 
