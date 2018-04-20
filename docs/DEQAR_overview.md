@@ -47,6 +47,8 @@ In the case of programmes and reports, agencies are encouraged to provide local 
 - For programmes, the first time an agency provides information on a programme to DEQAR, a local (or national) idenfier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.
 - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
 
+**Identifying Entities** 
+
 In more detail, the identification of each entity works as follows:
 
 - **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identifed automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organizations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in DEQAR's administrative interface) must be provided as the source of identification. For this reason, identification of the creating agency is required for each object when using CSV and JSON. 
