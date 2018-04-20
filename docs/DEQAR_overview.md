@@ -2,8 +2,7 @@ Structural Overview
 -------------------
 EQAR’s data model has been designed around four main entities: registered quality assurance **Agencies**, higher education **Institutions**, educational **Programmes** associated with institutions, and external quality assurance **Reports**. 
 
-![DEQAR High Level Data Model with Countries|100x100, 20%](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
-
+![DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
 
 Registered agency users are invited to submit information on external quality assurance reports including information about the study programme concerned, if applicable. On the other hand, institutional information will largely be managed by EQAR based on data from ETER/OrgReg. Further information on the type of information to be collected and stored in DEQAR can be found in the [Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
 
@@ -15,7 +14,12 @@ Functional Overview
 -------------------
 DEQAR supports three core activities:
 
-- **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods (individual records via webform; batch CSV file via webform; or as JSON via API).  
+- **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods
+
+    -as individual records via webform
+    -as batch CSV file via webform
+    -as JSON usign an API  
+    
 - **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term.
 - **Search and discovery of information:** records are published on an public web interface for search, retrieval and export or download by end users.
 
@@ -81,7 +85,7 @@ Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status**
 Use of Data from ETER/OrgReg
 ----------------------------
 
-DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as DEQAR's base set of records on European institutions. DEQAR stores the following ETER data on institutions: official name, English name, country, city, latitude/longitude. As a rule, DEQAR keeps ETER data stable and unchanged between harvests; alternative names and agencies' local identifiers [(see above)](https://docs.deqar.eu/DEQAR_overview/#identifying-entities) can be added by agencies through the administative interface. The EQAR secretariat also reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. Added information and updates are carried through to records from subsequent harvests.
+DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as DEQAR's base set of records on European institutions. DEQAR stores the following ETER data on institutions: official name, English name, country, city, latitude/longitude. As a rule, DEQAR keeps ETER data stable and unchanged between harvests; alternative names and agencies' local identifiers [(see "Identifying Entities")](https://docs.deqar.eu/DEQAR_overview/#identifying-entities) can be added by agencies through the administative interface. The EQAR secretariat also reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. Added information and updates are carried through to records from subsequent harvests.
 
 Historical Data
 ---------------
