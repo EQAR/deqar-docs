@@ -2,7 +2,7 @@ Structural Overview
 -------------------
 EQAR’s data model has been designed around four main entities: registered quality assurance **Agencies**, higher education **Institutions**, educational **Programmes** associated with institutions, and external quality assurance **Reports**. 
 
-![DEQAR High Level Data Model](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
+![DEQAR High Level Data Model](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg width="240" height="180" border="10")
 
 Registered agency users are invited to submit information on external quality assurance reports including information about the study programme concerned, if applicable. On the other hand, institutional information will largely be managed by EQAR based on data from ETER/OrgReg. Further information on the type of information to be collected and stored in DEQAR can be found in the [Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
 
@@ -40,7 +40,7 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 | Programme   | local programme identifier | DEQAR Programme ID         |
 | Reports     | local report identifier    | DEQAR Report ID            |
 
-## Identifying Entities
+### Identifying Entities
 
 The agency responsible for the report must be identified with any submission. An identifier should also be provided for each institution *in the case that a record for the institution already exists in DEQAR.* This allows the system to establish a direct link with the existing record. If the institution record does not exist, data must be provided instead. 
 
@@ -71,7 +71,7 @@ In more detail, the identification of each entity works as follows:
 - **Report:** We strongly recommend that agencies provide a local identifier with each report submitted. This will allow for subsequent updates to the record and will ease synchronisation with each agency's local system.  
     Report local identifiers will be stored and can serve to identify record for updates/resubmission. DEQAR will also automatically generate a DEQAR ID for each newly submitted report; this will be returned to agencies as part of the response object. The DEQAR ID can be used for updates/resubmission as an alternative to local identifiers.
 
-## Other Identifiers
+### Other Identifiers
 
 DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers, which the agency can supply through the administrative interface and then used for submission.  Only one identifier should be provided for each assigned activity.    
 
