@@ -4,8 +4,7 @@ EQAR’s data model has been designed around four main entities: registered qual
 
 ![DEQAR High Level Data Model](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
 
-<img src="https://cloud.githubusercontent.com/img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg" width="400" height="790">
-
+![DEQAR High Level Data Model](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg){:height="50%" width="50%"}
 
 
 Registered agency users are invited to submit information on external quality assurance reports including information about the study programme concerned, if applicable. On the other hand, institutional information will largely be managed by EQAR based on data from ETER/OrgReg. Further information on the type of information to be collected and stored in DEQAR can be found in the [Operational Model](https://eqar.eu/fileadmin/eqar_internal/MD/MD6/Database_of_External_QA_Results_Report_Model_v3.pdf), section 5.3, page 36.
