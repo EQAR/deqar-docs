@@ -40,6 +40,8 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 | Programme   | local programme identifier | DEQAR Programme ID         |
 | Reports     | local report identifier    | DEQAR Report ID            |
 
+## Identifying Entities
+
 The agency responsible for the report must be identified with any submission. An identifier should also be provided for each institution *in the case that a record for the institution already exists in DEQAR.* This allows the system to establish a direct link with the existing record. If the institution record does not exist, data must be provided instead. 
 
 In the case of programmes and reports, agencies are encouraged to provide local identifer. We strongly urge agencies to provide their local report identifiers with each new submission of data:
@@ -47,7 +49,7 @@ In the case of programmes and reports, agencies are encouraged to provide local 
 - For programmes, the first time an agency provides information on a programme to DEQAR, a local (or national) idenfier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.
 - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
 
-## Identifying Entities
+
 
 In more detail, the identification of each entity works as follows:
 
