@@ -85,9 +85,9 @@ Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status**
 Building Institution Records
 -------------------------------
 
-asdfdasfadsfaf
+DEQAR has two basic workflows for creating institution records.  Either, records are harvested from the ETER/OrgReg databases (available through RISIS); or, if there is no record existing in ETER/OrgReg on a particular institution, a record is created from scratched based on data submitted by an agency.
 
-## Use of Data from ETER/OrgReg
+### Use of Data from ETER/OrgReg
 
 DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as DEQAR's base set of records on European higher education institutions. DEQAR stores the following ETER data on institutions: 
 
@@ -101,12 +101,16 @@ DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve 
 
 ETER data is managed according to the following principles:
 
-1. In general, DEQAR keeps ETER data stable and unchanged between harvests. 
-2. Data submitted by an agency which is already found in an existing ETER record will not be used to replace or update ETER data.
-3. Data submitted by an agency which is not yet in an existing ETER record
-4. Nevertheless, the EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. Alternative names and local identifiers (see [**Identifying Entities**])(https://docs.deqar.eu/DEQAR_overview/#identifying-entities) may also be added by agencies using the administative interface.  Added information and updates are carried through to records from subsequent harvests.
+1. As a general policy, DEQAR keeps ETER data stable and unchanged between harvests. 
+2. Data submitted by an agency which is already found in an ETER record *will not be used to replace or update ETER data*.
+3. Data submitted by an agency which is not yet found in an ETER record *will be used to supplement the ETER record*.
+4. Alternative names and local identifiers (see [**Identifying Entities**])(https://docs.deqar.eu/DEQAR_overview/#identifying-entities) may be added to ETER records by agencies through the administative interface.  
+5. The EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. 
+6. Added information and updates are carried through to records from subsequent harvests.
 
-## Data Not Found in Non-ETER/OrgReg
+### Data Not Found in Non-ETER/OrgReg
+
+
 
 Historical Data
 ---------------
