@@ -85,7 +85,17 @@ Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status**
 Use of Data from ETER/OrgReg
 ----------------------------
 
-DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as DEQAR's base set of records on European institutions. DEQAR stores the following ETER data on institutions: official name, English name, country, city, latitude/longitude. As a rule, DEQAR keeps ETER data stable and unchanged between harvests; alternative names and agencies' local identifiers [(see "Identifying Entities")](https://docs.deqar.eu/DEQAR_overview/#identifying-entities) can be added by agencies through the administative interface. The EQAR secretariat also reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. Added information and updates are carried through to records from subsequent harvests.
+DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as DEQAR's base set of records on European institutions. DEQAR stores the following ETER data on institutions: 
+
+-official name
+-English name
+-country
+-city (when available)
+-latitude/longitude (when available)
+-QF-EHEA levels
+-institution website
+
+As a rule, DEQAR keeps ETER data stable and unchanged between harvests. This means that institution data submitted by an agency which already exists in ETER will not be used to replace or update ETER data; instead it will be ignored.  . Nevertheless, the EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. Alternative names and local identifiers (see [**Identifying Entities**])(https://docs.deqar.eu/DEQAR_overview/#identifying-entities) may also be added by agencies using the administative interface.  Added information and updates are carried through to records from subsequent harvests.
 
 Historical Data
 ---------------
