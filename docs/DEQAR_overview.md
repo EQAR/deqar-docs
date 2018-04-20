@@ -85,7 +85,7 @@ Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status**
 Building Institution Records
 -------------------------------
 
-DEQAR has two basic workflows for creating institution records.  Either, records are harvested from the ETER/OrgReg databases (available through RISIS [1]:http://datasets.risis.eu/); or, if there is no record existing in ETER/OrgReg on a particular institution, a record is created from scratched based on data submitted by an agency.
+DEQAR has two basic workflows for creating institution records.  Either, records are harvested from the ETER/OrgReg databases (available through RISIS [1]: http://datasets.risis.eu/); or, if there is no record existing in ETER/OrgReg on a particular institution, a record is created from scratched based on data submitted by an agency.
 
 ### Use of Data from ETER/OrgReg
 
