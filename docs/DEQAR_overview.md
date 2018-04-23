@@ -47,14 +47,16 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 
 ### Identifying Entities
 
-As a rule, the *agency responsible for the report must be identified with any submission*. An identifier should also be provided for each institution *in the case that a record for the institution already exists in DEQAR.* This allows the system to establish a direct link with the existing record. If the institution record does not exist, data must be provided instead. 
+As a rule, entities already in the system should be identified to facilitate linking up. In other words: 
 
-In the case of programmes and reports, agencies are encouraged to provide local identifier. We strongly urge agencies to provide their local report identifiers with each new submission of data:
+1. The **agency responsible** for the report *must be identified with any submission*. 
+2. An identifier should also be provided for each **institution** *in the case that a record for the institution already exists in DEQAR.* This allows the system to establish a direct link with the existing record. If the institution record does not exist, data must be provided instead. 
+3. In the case of **programmes** and **reports**, agencies are encouraged to provide local identifiers with each new submission of data in order to facilitate subsequent linking:
 
-- For programmes, the first time an agency provides information on a programme to DEQAR, a local (or national) identifier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.
-- For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
+    - For programmes, the first time an agency provides information on a programme to DEQAR, a local (or national) identifier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.
+    - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be provided for later updates using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
 
-In more detail, the identification of each entity works as follows:
+In more detail, the identification of each entity type works as follows:
 
 - **Agency:** Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identified automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organisations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in DEQAR's administrative interface) must be provided as the source of identification. For this reason, identification of the creating agency is required for each object when using CSV and JSON. 
 
@@ -86,19 +88,23 @@ Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status**
 Building Institution Records
 -------------------------------
 
-DEQAR has two basic workflows for creating institution records.  Either records are harvested from the ETER/OrgReg databases (available through [RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/); or, if no record exists in ETER/OrgReg, a new institution record is created from scratch based on data submitted by an agency.
+DEQAR has two basic workflows for creating institution records.  Either records are harvested from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/); or, if no record exists in ETER/OrgReg, a new institution record is created from scratch based on data submitted by an agency.
 
 ### Use of Data from ETER/OrgReg
 
 DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as DEQAR's base set of records on European higher education institutions. DEQAR stores the following ETER data on institutions: 
 
+- ETER ID
 - official name
 - English name
+- acronym
 - country
 - city (when available)
 - latitude/longitude (when available)
 - QF-EHEA levels
 - institution website
+
+![DEQAR High Level Data Model with ETER/Institution Records](img/DEQARPhysicalERDiagram_Design31_20-01-18_ETER.jpg)
 
 ETER/OrgReg data is managed according to the following principles:
 
@@ -110,21 +116,20 @@ ETER/OrgReg data is managed according to the following principles:
 6. The EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. 
 7. Added information and updates are carried through to records from subsequent harvests.
 
-![DEQAR High Level Data Model with ETER/Institution Records](img/DEQARPhysicalERDiagram_Design31_20-01-18_ETER.jpg)
-
 ### Data Not Found in Non-ETER/OrgReg
 
 For data not existing in ETER/OrgReg, a new record must be created. New records are created based on data submitted by an agency. The following data may be submitted: 
 
 - official name
 - English name
+- acronym
 - country
 - city
 - latitude/longitude
 - QF-EHEA levels
 - institution website
 
-The **minimum data is: name official, country of institution and website (the URL of domain)**. 
+*The minimum data needed to create a record is: name official, country of institution and website (the URL of domain).* 
 
 Institution data created by agencies is managed according to similar principles as data harvested from ETER/OrgReg:
 
