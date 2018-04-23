@@ -16,9 +16,9 @@ DEQAR supports three core activities:
 
 - **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods
 
-    -as individual records via webform
-    -as batch CSV file via webform
-    -as JSON using an API  
+    - as individual records via webform
+    - as batch CSV file via webform
+    - as JSON using an API  
     
 - **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term. Agencies may update and even delete report records already in the system and track their own activity.
 - **Search and discovery of information:** records are published on an public web interface for search, retrieval and export or download by end users. There is also a public API available to all registered users; this allows users to embed DEQAR search interface in their local site.
