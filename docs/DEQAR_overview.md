@@ -4,7 +4,9 @@ EQAR’s data model has been designed around four main entities: registered qual
 
 ![DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
 
-Registered agency users are invited to submit information on external quality assurance reports including information about the study programme concerned, if applicable. On the other hand, institutional information will largely be managed by EQAR based on data from ETER/OrgReg. EQAR will also continue to collect and manage agency data through their registry.  This data will be directly linked to the records in DEQAR. Related to this, DEQAR also includes a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country---a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
+Registered agency users are invited to submit information on external quality assurance reports including information about the study programme concerned, if applicable. On the other hand, institutional information will largely be managed by EQAR based on data from ETER/OrgReg. EQAR will also continue to collect and manage agency data through their registry.  This data will be directly linked to the records in DEQAR. 
+
+Related to this, DEQAR also includes a **Country** entity, which contains information on the official external quality assurance regime in each DEQAR-related country---a country which either hosts an EQAR-registered agency or hosts an institution evaluated by a EQAR-registered agency.
 
 ![DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_countryplain.jpg)
 
@@ -74,6 +76,7 @@ In more detail, the identification of each entity works as follows:
 - **Report:** We strongly recommend that agencies provide a local identifier with each report submitted. This will allow for subsequent updates to the record and will ease synchronisation with each agency's local system.  
     Report local identifiers will be stored and can serve to identify records for update/resubmission. DEQAR will also automatically generate a DEQAR ID for each newly submitted report; this will be returned to agencies as part of the response object. The DEQAR ID can be used for updates/resubmission as an alternative to local identifiers.
 
+
 ### Other Identifiers
 
 DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (pre-defined string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers; in this case, the agency should supply through their local identifiers through administrative interface before using them for submission.  Only one identifier should be provided for each assigned activity.    
@@ -107,6 +110,8 @@ ETER/OrgReg data is managed according to the following principles:
 6. The EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. 
 7. Added information and updates are carried through to records from subsequent harvests.
 
+![DEQAR High Level Data Model with ETER/Institution Records](img/DEQARPhysicalERDiagram_Design31_20-01-18_ETER.jpg)
+
 ### Data Not Found in Non-ETER/OrgReg
 
 For data not existing in ETER/OrgReg, a new record must be created. New records are created based on data submitted by an agency. The following data may be submitted: 
@@ -121,7 +126,7 @@ For data not existing in ETER/OrgReg, a new record must be created. New records 
 
 The **minimum data is: name official, country of institution and website (the URL of domain)**. 
 
-Records created by agencies are managed according to similar principles:
+Institution data created by agencies is managed according to similar principles as data harvested from ETER/OrgReg:
 
 1. As a general policy, DEQAR keeps institution data, including that submitted directly by an agency, stable and unchanged.
 2. If an agency submits data which is already found in the existing record, the data *will not be used to replace or update existing data*. 
@@ -140,9 +145,14 @@ DEQAR will also store information on **historical changes in the structure of in
 Presenting Historical Data
 --------------------------
 
-In the case of Agencies and Institutions, the system should record important changes in the status of these entities (ex. name changes, changed activity or status, physical relocation, etc.). Thus it is necessary to differentiate between updates in data due to typographical or syntax errors, and “substantial” updates, which will become might be considered as part of
+DEQAR aims not only to collect and present current information on quality assurance procedures, but also to record an historical "trail" of quality assurance activities, allowing users to see developments over time related to a specific institution and 
+
+In the case of Agencies and Institutions, the system should record important changes in the status of these entities (ex. name changes, changed activity or status, physical relocation, etc.). Thus it is necessary to differentiate between updates in data due to typographical or syntax errors, and “substantial” updates, which will become might be 
+considered as part of
 an historic data trail. On web forms and on the submission API endpoints there
 will be a possibility to indicate a change request. In this case, the
 overwritten data will be stored as historical data (and can be queried). It
 remains unclear whether the bulk ingest and CSV upload can support this feature;
 it is under discussion.
+
+![DEQAR High Level Data Model with historical records](img/DEQARPhysicalERDiagram_Design31_20-01-18_historical.jpg)
