@@ -3,11 +3,17 @@ site_name: DEQAR Documentation
 pages:
     - Home: index.md
     - DEQAR Overview: DEQAR_overview.md
-    - Data Submission Workflow: data_submission.md
-    - Submission Object Fields: 'submission_object_fields.md'
-    - Submitting data:
-        - CSV Upload: csv_upload.md
-        - REST API: submission_api.md
+    - Data Submission:
+        - Data preparation: 'submission_object_fields.md'
+        - Pipeline: data_submission.md
+        - Methods:
+            - Webform: webform.md
+            - CSV Upload: csv_upload.md
+            - REST API: submission_api.md
+#    - Data administration:
+    - Search and discovery:
+        - Web interface: public_web.md
+        - WebAPI: web_api.md
 ### theme configuration ###
 theme:
     name: readthedocs
