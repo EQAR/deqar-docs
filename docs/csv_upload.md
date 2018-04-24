@@ -68,7 +68,7 @@ Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice
  
 **Google Sheets**
 
-Is there anything specific we need to mention?
+In Google Sheets, choose *Comma-separated values* from the *File* > *Download as...* menu.
 
 Uploading CSV file
 ------------------
