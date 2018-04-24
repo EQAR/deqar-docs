@@ -1,11 +1,26 @@
 File format
-===========
+-----------
 
-> I'm making some random changes here for testing.
->> and I am responding to your random changes...
+[Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) is a common platform-independent, software-independent data-exchange format.
 
-**some more changes - for testing purposes**
+The first row of your file should include column names as defined in [...link to add...](http://www.deqar.eu).
 
+The following lines contain one report per row. Where one report may include/relate to several items (e.g. institutions, programmes, files), these can be provided/identified in separate columns using the `field_name[n]` syntax.
+
+For Example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
+
+```csv
+...,file[1].original_location,file[1].display_name,file[1].report_language[1],file[2].original_location,file[2].display_name,file[2].report_language[1],file[2].report_language[1],...
+...,"http://some.url/to/report","Expert report","de","http://some.url/to/report","Summary","en","de",...
+```
+
+You can use our sample CSV file as a starting point and adjust it to your needs. Please bear in mind the following:
+
+ - The sample file is provided in Microsoft Excel and Open Document Formats. It needs to be saved in CSV format for upload to DEQAR (see notes below).
+ - The first line contains the relevant requirement/validation notes for the column as a comment. These comments will disappear as you save the file in CSV format.
+ - You need to include all columns you might need in at least one of your reports.
+ - omit columns you don't need
+ 
 Exporting beautiful CSV
 =======================
 
