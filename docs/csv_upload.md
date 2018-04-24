@@ -28,8 +28,8 @@ CSV sample files:
  - [Institutional reports, CSV](http://link.to/somewhere/) **not sure if we'll have those**
  - [Programme reports, CSV](http://link.to/somewhere/) **not sure if we'll have those**
  
-Prepaing CSV files
-------------------
+Preparing CSV files
+-------------------
 
 Despite being software-independent, there are some known issues when creating/exporting CSV files from some major office applications. Given that it has the most clean and straight-forward CSV export, we recommend the [LibreOffice package](https://www.libreoffice.org/), an open-source desktop application supported on all major operating systems.
 
@@ -80,7 +80,7 @@ Uploading CSV file
 
 The CSV upload module is part of the DEQAR admin interface:
 
-[https://admin.deqar.eu/upload-csv]
+<https://admin.deqar.eu/upload-csv>
 
 The username is the agency’s acronym (in lower case, see reference list). For the testing period, the password is the username followed by `#2018`.
 
