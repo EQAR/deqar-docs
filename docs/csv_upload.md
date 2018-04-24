@@ -40,15 +40,12 @@ For all software packages, please note that CSV format does not support differen
 Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft Excel does not create correct CSV files when certain character sets are used (e.g. Greek or Cyrillic alphabets, or certain Roman characters with diacritics). You can use the following work-around:
 
  - Select *Save as* from the *File* menu, select your desired folder and choose *Unicode Text (\*.txt)* as type.
- 
    ![Excel save as dialogue](img/csv-excel-fix-0.png)
  
  - Simply press *OK* in response to the following error message:
- 
    ![The selected file type does not support workbooks that contain multiple sheets](img/csv-excel-fix-1.png)
 
  - Furthermore, confirm with *Yes* also the following warning message:
-
    ![Some features in your workbook might be lost if you save it as Unicode Text](img/csv-excel-fix-2.png)
 
  - Close Microsoft Excel and navigate to the folder containing your file in the file manager. Right-click on your file and choose *Rename*.
@@ -62,11 +59,9 @@ Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft 
 Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice:
 
  - Choose *Text CSV (\*.csv)* as file type in the *Save As ...* or *Save a Copy ...* dialogue:
- 
    ![LibreOffice save file dialogue](img/csv-libreoffice-0.png)
 
  - Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:
- 
    ![CSV export settings](img/csv-libreoffice-0.png)
 
  - The CSV file is now suitable for upload.
