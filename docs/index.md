@@ -28,3 +28,10 @@ Read more about the DEQAR project and partners involved at: <http://www.deqar.eu
 * DEQAR administrative interface - <https://admin.deqar.eu/> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://www.github.com/eqar/eqar_frontend)
 * Public website
 
+## Terminology
+
+In the present documentation, we use key words according to the definitions in [RFC 2119](https://tools.ietf.org/html/rfc2119), which is widely-used in internet standards. That is:
+
+ - **Must** signals that the element (or cluster of elements) has to be provided; otherwise the record in question will be rejected.
+ - **Should** signals that we highly recommend that the element (or cluster of elements) be provided, unless providing it would be impossible in the particular case or cause prohibitively large effort.
+ - **May** signasl that the element (or cluster of elements) is truly optional, and can be provided if applicable or if the agency feels it might be useful.
