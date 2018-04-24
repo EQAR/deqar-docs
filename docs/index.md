@@ -2,6 +2,8 @@ DEQAR is the Database of External Quality Assurance Results.
 
 ## About the project
 
+![Co-founded by the Erasmus+ programme of the European Union](img/LogosBeneficairesErasmus+RIGHT_EN_web.png)
+
 The Database of External Quality Assurance Reports (DEQAR) project was selected for EU co-funding under Erasmus+ Key Action 3 - European Forward-Looking Cooperation Projects.
 
 The main aim of the DEQAR project is the development of a database that will enhance access to reports and decisions on higher education institutions/programmes externally reviewed against the ESG, by an EQAR-registered agency.
