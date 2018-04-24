@@ -41,15 +41,15 @@ Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft 
 
  - Select *Save as* from the *File* menu, select your desired folder and choose *Unicode Text (\*.txt)* as type.
  
-   ![text](img/csv-excel-fix-0.png)
+   ![Excel save as dialogue](img/csv-excel-fix-0.png)
  
  - Simply press *OK* in response to the following error message:
  
-   ![text](img/csv-excel-fix-1.png)
+   ![The selected file type does not support workbooks that contain multiple sheets](img/csv-excel-fix-1.png)
 
  - Furthermore, confirm with *Yes* also the following warning message:
 
-   ![text](img/csv-excel-fix-2.png)
+   ![Some features in your workbook might be lost if you save it as Unicode Text](img/csv-excel-fix-2.png)
 
  - Close Microsoft Excel and navigate to the folder containing your file in the file manager. Right-click on your file and choose *Rename*.
  
@@ -63,11 +63,11 @@ Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice
 
  - Choose *Text CSV (\*.csv)* as file type in the *Save As ...* or *Save a Copy ...* dialogue:
  
-   ![text](img/csv-libreoffice-0.png)
+   ![LibreOffice save file dialogue](img/csv-libreoffice-0.png)
 
  - Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:
  
-   ![text](img/csv-libreoffice-0.png)
+   ![CSV export settings](img/csv-libreoffice-0.png)
 
  - The CSV file is now suitable for upload.
  
@@ -85,9 +85,15 @@ The CSV upload module is part of the DEQAR admin interface:
 The username is the agency’s acronym (in lower case, see reference list). For the testing period, the password is the username followed by `#2018`.
 
  - Select *Submit Report* > *Upload CSV* from the menu.
+ 
  - Choose your file under *Select CSV file* and click *Upload*.
+ 
  - You can now review your data one more time under *Uploaded CSV Data*, and make changes if necessary.
+
  - Afterwards, click on *Ingest* under the table. The uploaded CSV file now passes the same validation and flagging pipeline as information submitted through any other method.
+
  - After ingest, you will see all rows highlighted in green if they were succesfully injected, or in red if they could not be ingested due to validation errors. Click on one row to see details about errors or flags in the top-right corner.
+ 
  - If you experienced errors, you can correct the respective lines and click on *Ingest* again.
+ 
  - Please note that the green rows will be re-ingested, but overwrite the existing report based on the DEQAR Report ID. Any changes you make to green rows will therefore be recorded on further ingest.
