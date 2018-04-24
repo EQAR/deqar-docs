@@ -35,7 +35,7 @@ Despite being software-independent, there are some known issues when creating/ex
 
 For all software packages, please note that CSV format does not support different sheets, but it will always be only the current work sheet that is saved in CSV format.
 
-**Microsoft Excel**
+### Microsoft Excel
 
 Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft Excel does not create correct CSV files when certain character sets are used (e.g. Greek or Cyrillic alphabets, or certain Roman characters with diacritics). You can use the following work-around:
 
@@ -54,7 +54,7 @@ Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft 
  
  - This CSV file is now suitable for upload.
  
-**LibreOffice/OpenOffice/NeoOffice**
+### LibreOffice/OpenOffice/NeoOffice
 
 Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice:
 
@@ -66,7 +66,7 @@ Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice
 
  - The CSV file is now suitable for upload.
  
-**Google Sheets**
+### Google Sheets
 
 In Google Sheets, choose *Comma-separated values* from the *File* > *Download as...* menu.
 
