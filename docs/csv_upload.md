@@ -3,7 +3,7 @@ File format
 
 [Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) is a common platform-independent, software-independent data-exchange format.
 
-The first row of your file should include column names as defined in [...link to add...](http://www.deqar.eu).
+The first row of your file should include column names as defined under [Data Preparation](submission_object_fields.md) below.
 
 The following lines contain one report per row. Where one report may include/relate to several items (e.g. institutions, programmes, files), these can be provided/identified in separate columns using the `field_name[n]` syntax.
 
@@ -17,17 +17,18 @@ For Example, two files (e.g. full report in local language, and summary in both 
 You can use our sample CSV file as a starting point and adjust it to your needs. Please bear in mind the following:
 
  - The sample file is provided in Microsoft Excel and Open Document Formats. It needs to be saved in CSV format for upload to DEQAR (see notes below).
- - The first line contains the relevant requirement/validation notes for the column as a comment. These comments will disappear as you save the file in CSV format.
+ - The first worksheet includes *all* possible column names you could use in a CSV file, with the respective requirement/validation notes as comments. These comments will disappear as you save the file in CSV format.
+ - The subsequent worksheets include more condensed examples with sample data, including those columns that will typically be used in reports concerning institutions, programmes or joint programmes.
  - You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.
  - You may omit columns from the sample CSV file that are not used in any of the reports.
  
-CSV sample files:
+CSV template and sample:
 
- - [Integrate sample, Excel](http://link.to/somewhere/)
- - [Integrate sample, OpenOffice/LibreOffice/NeoOffice](http://link.to/somewhere/)
- - [Institutional reports, CSV](http://link.to/somewhere/) **not sure if we'll have those**
- - [Programme reports, CSV](http://link.to/somewhere/) **not sure if we'll have those**
- 
+ - [Microsoft Excel format](http://link.to/somewhere/)
+ - [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](http://link.to/somewhere/)
+ - [Google Docs](http://link.to/somewhere/)
+ - CSV format (only examples, without comments): [Institutional reports](http://link.to/somewhere/), [Programme reports](http://link.to/somewhere/), [Joint programme reports](http://link.to/somewhere/)
+
 Preparing CSV files
 -------------------
 
