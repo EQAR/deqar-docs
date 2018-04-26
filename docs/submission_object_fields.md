@@ -31,10 +31,10 @@ The report identifier used in the agency's local system should be provided for e
 
 **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
-Each activity is classified as one of four activity types: 
+Each activity is classified as one of four activity types:  
 
-|:------------|:----------------------|:--------|:--------------|
-|institutional|institutional/programme|programme|joint programme|   
+|institutional|institutional/programme|programme|joint programme|  
+|:------------|:----------------------|:--------|:--------------|   
 
 These classifications determine the structure of the report record.
 
@@ -96,7 +96,7 @@ A date format  must be provided for each report. Dates may be submitted in any s
 
 - Link (<code>link</code>, not required, string)  
 One or more URL links may be provided for each report to the same report presented on other sites in order to provide more context to the report.  
-*e.g. <code>http://srv.aneca.es/ListadoTitulos/node/1182321350<\code>*
+*e.g. http://srv.aneca.es/ListadoTitulos/node/1182321350*
 		
 - Link Display Name (<code>link_display_name</code>, not required, string)  
 A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.  
