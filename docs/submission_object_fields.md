@@ -15,7 +15,7 @@ Below we provide a full list of the data elements that can make up a submission 
 
 **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
-- **\*Agency** (<code>agency</code> or <code>agency_id</code>; required; string)  
+- **Agency\*** (<code>agency</code> or <code>agency_id</code>; required; string)  
 The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.   
 *e.g. AAQ, 33*
 
@@ -38,17 +38,17 @@ Each activity is classified as one of four activity types:
 
 These classifications determine the structure of the report record.
 
-- **(\*)Activity** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
+- **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
 *e.g. institutional audit, programme evaluation, 2, 8*				
 	
-- **(\*)Activity Local Identifier** (<code>activity_local_identifier</code>; conditionally required; string)  
+- **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
 A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
 *e.g. inst_aud*
     	
 **Report Details:** Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
-- **\*Status** (<code>status</code> or <code>status_id</code>; required; string)  
+- **Status\*** (<code>status</code> or <code>status_id</code>; required; string)  
 The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies > > whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.  
 
    |ID |value                         |
@@ -56,7 +56,7 @@ The status must be provided as either a DEQAR status name or a DEQAR status id f
    |1  |part of obligatory EQA system | 
    |2  |voluntary                     |  
    		
-- **\*Decision** (<code>decision</code> or <code>decision_id</code>; required; string)  
+- **Decision\*** (<code>decision</code> or <code>decision_id</code>; required; string)  
 The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision records the final result of the QA procedure/report.  
 
    |ID |value                                   |
@@ -69,7 +69,7 @@ The decision must be provided as either a DEQAR decision name or a DEQAR decisio
 **Report Validity:** Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived.  
 DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
-- **\*Valid from** (<code>valid_from</code>; required; date)  
+- **Valid from\*** (<code>valid_from</code>; required; date)  
 A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.  
 *e.g. 2015-01-15*
 		
@@ -77,7 +77,7 @@ A valid from date marking the starting date of the report's validity must be pro
 A valid to date marking the ending date of the report's validity should be provided for each report. This date determines when report data will be archived in DEQAR. If no valid to date is assigned, then the report will be treated as valid for six years after the valid from date.  
 *e.g. 2020-01-15*
 		
-- **\*Date Format** (<code>date_format</code>; required; string)  
+- **Date Format\*** (<code>date_format</code>; required; string)  
 A date format  must be provided for each report. Dates may be submitted in any standard format; the format should be represented as a combination of the following characters:  
 
    |symbol(s)| value                                 |example                      |      
