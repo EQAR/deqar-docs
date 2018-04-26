@@ -9,11 +9,11 @@ pages:
         - Methods:
             - Webform: webform.md
             - CSV Upload: csv_upload.md
-            - REST API: submission_api.md
+            - Submission API: submission_api.md
 #    - Data administration:
     - Search and discovery:
         - Web interface: public_web.md
-        - WebAPI: web_api.md
+        - Web API: web_api.md
 ### theme configuration ###
 theme:
     name: readthedocs
