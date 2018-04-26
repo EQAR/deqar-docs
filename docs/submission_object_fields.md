@@ -13,37 +13,33 @@ Below we provide a full list of the data elements that can make up a submission 
 
 ### Report Data Elements
 
-- **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
+**Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
->  - **Agency** (required; string)  
->    The agency which created the report must be provided for each report in order to assign ownership to the data and to validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of a DEQAR agency id or an agency acronym.*  
->    *e.g. AAQ, 33*
+>- **Agency** (required; string)  
+>  The agency which created the report must be provided for each report in order to assign ownership to the data and to validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of a DEQAR agency id or an agency acronym.*  
+>  *e.g. AAQ, 33*
 
-- **Report Identification:** A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.
+**Report Identification:** A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.
 
->  - DEQAR Report ID (not required; string)  
->    Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
->    *e.g. 000786* 
+>- DEQAR Report ID (not required; string)  
+>  Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
+>  *e.g. 000786* 
 
->  - Local Identifier (not required; string)  
->    The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
->    *e.g. QAA1153-March15*
+>- Local Identifier (not required; string)  
+>  The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
+>  *e.g. QAA1153-March15*
 
-- **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system. 
+**Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system. 
 
-  Each activity is classified as one of the following activity types: institutional, institutional/programme, programme or joint programme. These classifications determine the structure of the report record.
+Each activity is classified as one of the following activity types: institutional, institutional/programme, programme or joint programme. These classifications determine the structure of the report record.
 
->  - ***Activity*** (<activity> or <activity_id>; conditionally required; string)		
->
->    A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.
->
->    *e.g. institutional audit, programme evaluation, 2, 8*				
+>- ***Activity*** (<activity> or <activity_id>; conditionally required; string)  
+>  A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
+>  *e.g. institutional audit, programme evaluation, 2, 8*				
 	
->  - ***Activity Local Identifier*** (<activity_local_identifier>; conditionally required; string)
->
->    A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.
->
->    *e.g. inst_aud*
+>- ***Activity Local Identifier*** (<activity_local_identifier>; conditionally required; string)  
+>  A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
+>  *e.g. inst_aud*
     	
 - **Report Details:** Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
