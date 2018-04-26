@@ -15,20 +15,18 @@ Below we provide a full list of the data elements that can make up a submission 
 
 - **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
->  - **Agency** (required; string)
->    The agency which created the report must be provided for each report in order to assign ownership to the data and to validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of a DEQAR agency id or an agency acronym.*	
+>  - **Agency** (required; string)  
+>    The agency which created the report must be provided for each report in order to assign ownership to the data and to validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of a DEQAR agency id or an agency acronym.*  
 >    *e.g. AAQ, 33*
 
 - **Report Identification:** A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.
 
->  - DEQAR Report ID (not required; string)
->    Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.
+>  - DEQAR Report ID (not required; string)  
+>    Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
 >    *e.g. 000786* 
 
->  - Local Identifier (<local_identifier>; not required; string)
->
->    The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.
->
+>  - Local Identifier (not required; string)  
+>    The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
 >    *e.g. QAA1153-March15*
 
 - **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system. 
