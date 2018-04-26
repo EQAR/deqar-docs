@@ -33,8 +33,9 @@ The report identifier used in the agency's local system should be provided for e
 
 Each activity is classified as one of four activity types:  
 
-|institutional|institutional/programme|programme|joint programme|  
-|:------------|:----------------------|:--------|:--------------|   
+|             |                       |         |               |
+|:------------|:----------------------|:--------|:--------------| 
+|institutional|institutional/programme|programme|joint programme|    
 
 These classifications determine the structure of the report record.
 
