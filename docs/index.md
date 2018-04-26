@@ -28,6 +28,14 @@ Read more about the DEQAR project and partners involved at: <http://www.deqar.eu
 * DEQAR administrative interface - <https://admin.deqar.eu/> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://www.github.com/eqar/eqar_frontend)
 * Public website
 
+## Questions and bug reports
+
+No matter how thorough our internal testing, bugs and errors may still occur. If you encounter any problem submitting data and/or files, please share these with us through the [DEQAR Trello board](https://trello.com/b/cogOpUeh/deqar-board) under Questions and Answer list, where you can add your questions/issue as a new card, or comment on an existing card if somebody else already raised the same question.
+
+Please use one of the predefined labels for new cards: technical CSV, technical API, or technical web interface. Please also add to your card the CSV file/JSON data that caused the problem, so that the EQAR secretariat and developers can reproduce the error.
+
+In case you are interested contributing to the codebase or you would like to share your thoughts and ideas, we welcome you to do so through the project's [GitHub page](https://github.com/EQAR/eqar_backend)
+
 ## Terminology
 
 In the present documentation, we use key words according to the definitions in [RFC 2119](https://tools.ietf.org/html/rfc2119), which is widely-used in internet standards. That is:
