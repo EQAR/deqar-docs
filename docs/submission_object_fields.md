@@ -15,10 +15,8 @@ Below we provide a full list of the data elements that can make up a Submission 
 
 - **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
->  - **Agency** (<agency> or <agency_id>; required; string)
->	
->    The agency which created the report must be provided for each report in order to assign ownership to the data and to >validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of >a DEQAR agency id or an agency acronym.*
->	
+>  - **Agency** (<agency> or <agency_id>; required; string)	
+>    The agency which created the report must be provided for each report in order to assign ownership to the data and to >validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of >a DEQAR agency id or an agency acronym.*	
 >    *e.g. AAQ, 33*
 
 - **Report Identification:** A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.
@@ -36,6 +34,7 @@ Below we provide a full list of the data elements that can make up a Submission 
 >    *e.g. QAA1153-March15*
 
 - **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system. 
+
 Each activity is classified as one of the following activity types: institutional, institutional/programme, programme or joint programme. These classifications determine the structure of the report record.
 
 >  - ***Activity*** (<activity> or <activity_id>; conditionally required; string)		
@@ -56,13 +55,12 @@ Each activity is classified as one of the following activity types: institutiona
 >	
 >    The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies > > >whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has >undertaken it voluntarily.
 >   
->  |ID |value                         |
->  |:--|:-----------------------------|
->  |1  |part of obligatory EQA system | 
->  |2  |voluntary                     |
+>    |ID |value                         |
+>    |:--|:-----------------------------|
+>    |1  |part of obligatory EQA system | 
+>    |2  |voluntary                     |
    		
 >  - **Decision** (<decision> or <decision_id>; required; string)		
->
 >    The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision >records the final result of the QA procedure/report.
 >    
 >  |ID |value                                   |
@@ -73,6 +71,7 @@ Each activity is classified as one of the following activity types: institutiona
 >  |4  |not applicable                          |
  
 - **Report Validity:** Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived.
+
 DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
 >  - **Valid from** (<valid_from>; required; date)
