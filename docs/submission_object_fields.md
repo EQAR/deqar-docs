@@ -17,7 +17,7 @@ Below we provide a full list of the data elements that can make up a submission 
 
 >  - **Agency** (<agency> or <agency_id>; required; string)
 >
->    The agency which created the report must be provided for each report in order to assign ownership to the data and to >validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of >a DEQAR agency id or an agency acronym.*	
+>    The agency which created the report must be provided for each report in order to assign ownership to the data and to validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of a DEQAR agency id or an agency acronym.*	
 >
 >    *e.g. AAQ, 33*
 
@@ -25,13 +25,13 @@ Below we provide a full list of the data elements that can make up a submission 
 
 >  - DEQAR Report ID (<deqar_report_id>; not required; string)
 >
->    Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to >promote synchronisation with an agency's local system.
+>    Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.
 >
 >    *e.g. 000786* 
 
 >  - Local Identifier (<local_identifier>; not required; string)
 >
->    The report identifier used in the agency's local system should be provided for each report. This may be used to submit >updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is >particularly useful in the identification of invalid submission objects.
+>    The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.
 >
 >    *e.g. QAA1153-March15*
 
@@ -41,56 +41,60 @@ Below we provide a full list of the data elements that can make up a submission 
 
 >  - ***Activity*** (<activity> or <activity_id>; conditionally required; string)		
 >
->    A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to >validate the structure of submitted report data.
+>    A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.
 >
 >    *e.g. institutional audit, programme evaluation, 2, 8*				
 	
 >  - ***Activity Local Identifier*** (<activity_local_identifier>; conditionally required; string)
 >
->  A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local >activity identifier may be used to validate the structure of submitted report data.
+>    A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.
 >
->  *e.g. inst_aud*
+>    *e.g. inst_aud*
     	
 - **Report Details:** Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
 >  - **Status** (<status> or <status_id>; required; string)
 >	
->    The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies > > >whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has >undertaken it voluntarily.
->   
+>    The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies > > whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.
+> 
+>
 >    |ID |value                         |
 >    |:--|:-----------------------------|
 >    |1  |part of obligatory EQA system | 
 >    |2  |voluntary                     |
    		
 >  - **Decision** (<decision> or <decision_id>; required; string)		
->    The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision >records the final result of the QA procedure/report.
->    
+>    The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision records the final result of the QA procedure/report.
+> 
+>
 >    |ID |value                                   |
 >    |:--|:---------------------------------------|
 >    |1  |positive                                | 
 >    |2  |positive with conditions or restrictions|
 >    |3  |negative                                |
 >    |4  |not applicable                          |
- 
+
+
 - **Report Validity:** Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived.
 
   DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
 >  - **Valid from** (<valid_from>; required; date)
 >
->    A valid from date marking the starting date of the report's validity must be provided for each report. This date is used >to generate an archiving date when no valid to date is provided.
+>    A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.
 >
 >    *e.g. 2015-01-15*
 		
 >  - Valid to (<valid_to>; not required; date)	
 >
->    A valid to date marking the ending date of the report's validity should be provided for each report. This date determines >when report data will be archived in DEQAR. If no valid to date is assigned, then the report will be treated as valid for six >years after the valid from date.
+>    A valid to date marking the ending date of the report's validity should be provided for each report. This date determines when report data will be archived in DEQAR. If no valid to date is assigned, then the report will be treated as valid for six years after the valid from date.
 >
 >    *e.g. 2020-01-15*
 		
 >  - **Date Format** (<date_format>; required; string)
 >
->    A date format  must be provided for each report. Dates may be submitted in any standard format; the format should be >represented as a combination of the following characters:
+>    A date format  must be provided for each report. Dates may be submitted in any standard format; the format should be represented as a combination of the following characters:
+>
 >
 >    |symbol(s)| value                                 |example                      |
 >    |:--------|:--------------------------------------|:----------------------------|
@@ -109,12 +113,12 @@ Below we provide a full list of the data elements that can make up a submission 
 
 >  - Link (<link>, not required, string)
 >
->    One or more URL links may be provided for each report to the same report presented on other sites in order to provide >more context to the report.
+>    One or more URL links may be provided for each report to the same report presented on other sites in order to provide more context to the report.
 >
 >    *e.g. http://srv.aneca.es/ListadoTitulos/node/1182321350*
 		
 >  - Link Display Name (<link_display_name>, not required, string)
 >
->    A display name may optionally be provided for each link to the report on other sites. If no display name is provided, >then EQAR will supply generic text.	
+>    A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.	
 >
 >    *e.g. General information on this programme.*
