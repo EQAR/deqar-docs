@@ -18,9 +18,9 @@ DEQAR supports three core activities:
 
 - **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods
 
-    - as individual records via webform
-    - as batch CSV file via webform
-    - as JSON using an API  
+    - as [individual records via webform](webform.md)
+    - as [batch CSV file via webform](csv_upload.md)
+    - as [JSON using an API](submission_api.md)
     
 - **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term. Agencies may update and even delete report records already in the system and track their own activity.
 - **Search and discovery of information:** records are published on an public web interface for search, retrieval and export or download by end users. There is also a public API available to all registered users; this allows users to embed DEQAR search interface in their local site.
@@ -35,7 +35,7 @@ As DEQAR aggregates data from different sources, we face several challenges:
 2. To try to avoid duplication, and
 3. To identify already existing records for update if necessary.
 
-To meet these challenges, the DEQAR data model uses standard values at various levels. **Countries** are identified via the *ISO 3166-1 standard*; **Language** data is accepted in *ISO 639-1* or *ISO 639-2/B* format.
+To meet these challenges, the DEQAR data model uses standard values at various levels. **Countries** are identified via the [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1); **Language** data is accepted in [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
 DEQAR uses a set of standard identifiers which are provided by the system for each entity.  In several cases, we also allow agencies to provide their local or national identifiers for entities in order to ease their internal workflows.  Entities are identified in the following ways:
 
@@ -86,7 +86,7 @@ DEQAR will not synchronise data on **programmes**; however if a local or nationa
 
 ### Other Identifiers
 
-DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (pre-defined string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers; in this case, the agency should supply through their local identifiers through administrative interface before using them for submission.  Only one identifier should be provided for each assigned activity.    
+DEQAR also assigns DEQAR IDs to each agency's **Activities**. These identifiers, which can be found through the administrative interface, may be used instead of the activity name (pre-defined string values) to identify the report activity in each CSV or JSON object. Alternatively, an agency may wish to use its own local activity identifiers; in this case, the agency should supply through their local identifiers through administrative interface before using them for submission. Only one identifier should be provided for each assigned activity. (Please note that any changes to the agency's activities, other than purely editorial or technical changes, must be made through [Substantive Change Reports](https://eqar.eu/register/reporting-and-renewal.html#c1585).)
 
 Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status** and **Report Decision**. [link??] These can be provided instead of the equivalent string values in CSV or JSON objects.
 
