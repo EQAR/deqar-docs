@@ -4,7 +4,7 @@ pages:
     - Home: index.md
     - Architecture and Data Model: DEQAR_overview.md
     - Data Submission:
-        - Data preparation: 'submission_object_fields.md'
+        - Data preparation: submission_object_fields.md
         - Pipeline: data_submission.md
         - Methods:
             - Webform: webform.md
