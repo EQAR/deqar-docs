@@ -33,29 +33,27 @@ Below we provide a full list of the data elements that can make up a submission 
 
 Each activity is classified as one of the following activity types: institutional, institutional/programme, programme or joint programme. These classifications determine the structure of the report record.
 
->- ***Activity*** (<activity> or <activity_id>; conditionally required; string)  
+>- ***Activity*** (conditionally required; string)  
 >  A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
 >  *e.g. institutional audit, programme evaluation, 2, 8*				
 	
->- ***Activity Local Identifier*** (<activity_local_identifier>; conditionally required; string)  
+>- ***Activity Local Identifier*** (conditionally required; string)  
 >  A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
 >  *e.g. inst_aud*
     	
 - **Report Details:** Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
->  - **Status** (<status> or <status_id>; required; string)
+>  - **Status** (required; string)
 >	
 >    The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies > > whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.
 > 
->
 >    |ID |value                         |
 >    |:--|:-----------------------------|
 >    |1  |part of obligatory EQA system | 
 >    |2  |voluntary                     |
    		
->  - **Decision** (<decision> or <decision_id>; required; string)		
+>  - **Decision** (required; string)		
 >    The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision records the final result of the QA procedure/report.
-> 
 >
 >    |ID |value                                   |
 >    |:--|:---------------------------------------|
@@ -64,24 +62,23 @@ Each activity is classified as one of the following activity types: institutiona
 >    |3  |negative                                |
 >    |4  |not applicable                          |
 
-
 - **Report Validity:** Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived.
 
   DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
->  - **Valid from** (<valid_from>; required; date)
+>  - **Valid from** (required; date)
 >
 >    A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.
 >
 >    *e.g. 2015-01-15*
 		
->  - Valid to (<valid_to>; not required; date)	
+>  - Valid to (not required; date)	
 >
 >    A valid to date marking the ending date of the report's validity should be provided for each report. This date determines when report data will be archived in DEQAR. If no valid to date is assigned, then the report will be treated as valid for six years after the valid from date.
 >
 >    *e.g. 2020-01-15*
 		
->  - **Date Format** (<date_format>; required; string)
+>  - **Date Format** (<code>date_format</code>; required; string)
 >
 >    A date format  must be provided for each report. Dates may be submitted in any standard format; the format should be represented as a combination of the following characters:
 >
