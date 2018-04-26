@@ -3,9 +3,9 @@ Preparing QA Report Data
 
 Agencies are asked to prepare data on quality assurance reports for submission to DEQAR.  Each agency has the choice to manually submit records one by one through the DEQAR administrative interface or to submit larger batches of data in CSV or JSON format. In the latter cases, the agency must prepare Submission Objects before uploading to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system. (Note: a submission object cannot be considered as a report record per se because it may include data stored in other entities as well.) 
 
-Submission objects can be packaged together for batch submission. Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to update information on existing records. Deletion of existing records can only be performed through the administrative interface. 
+Submission objects can be packaged together for batch submission. Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to update information on existing records through batch submission. Deletion of existing records can only be performed through the administrative interface. 
 
-Below we provide a full list of the data elements that can make up a Submission Object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold**, conditionally required data elements in ***bolded italics***.  We use the terminology:
+Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold**, conditionally required data elements in ***bolded italics***.  We use the terminology:
 
  - "must" to denote that an element is required or required in certain situations
  - "should" to denote that an element is highly recommended
@@ -15,8 +15,10 @@ Below we provide a full list of the data elements that can make up a Submission 
 
 - **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
->  - **Agency** (<agency> or <agency_id>; required; string)	
+>  - **Agency** (<agency> or <agency_id>; required; string)
+>
 >    The agency which created the report must be provided for each report in order to assign ownership to the data and to >validate and transform the submitted data in accordance with the agency's profile. *The agency can be provided in the form of >a DEQAR agency id or an agency acronym.*	
+>
 >    *e.g. AAQ, 33*
 
 - **Report Identification:** A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.
@@ -35,7 +37,7 @@ Below we provide a full list of the data elements that can make up a Submission 
 
 - **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system. 
 
-Each activity is classified as one of the following activity types: institutional, institutional/programme, programme or joint programme. These classifications determine the structure of the report record.
+  Each activity is classified as one of the following activity types: institutional, institutional/programme, programme or joint programme. These classifications determine the structure of the report record.
 
 >  - ***Activity*** (<activity> or <activity_id>; conditionally required; string)		
 >
@@ -63,16 +65,16 @@ Each activity is classified as one of the following activity types: institutiona
 >  - **Decision** (<decision> or <decision_id>; required; string)		
 >    The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision >records the final result of the QA procedure/report.
 >    
->  |ID |value                                   |
->  |:--|:---------------------------------------|
->  |1  |positive                                | 
->  |2  |positive with conditions or restrictions|
->  |3  |negative                                |
->  |4  |not applicable                          |
+>    |ID |value                                   |
+>    |:--|:---------------------------------------|
+>    |1  |positive                                | 
+>    |2  |positive with conditions or restrictions|
+>    |3  |negative                                |
+>    |4  |not applicable                          |
  
 - **Report Validity:** Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived.
 
-DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
+  DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
 >  - **Valid from** (<valid_from>; required; date)
 >
@@ -90,17 +92,17 @@ DEQAR uses a special notation to denote the date format. This allows each agency
 >
 >    A date format  must be provided for each report. Dates may be submitted in any standard format; the format should be >represented as a combination of the following characters:
 >
->  |symbol(s)| value                                 |example                      |
->  |:--------|:--------------------------------------|:----------------------------|
->  |%d       |day as expressed in two digits         |02                           | 
->  |%-d      |day as expressed in one or two digits  |2                            |
->  |%m       |month as expressed in two digits       |05 for May                   |
->  |%-m      |month as expressed in one or two digits|5 for May and 12 for December|
->  |%Y       |year as expressed in four digits       |2014                         |
->  |%y       |year as expressed in two digits        |14                           |
->  |d-%m-%Y  |                                       |04-01-2014                   |
->  |%d/%m/%y |                                       |04/01/14                     |
->  |%Y-%m-%d |                                       |2015-01-15                   |
+>    |symbol(s)| value                                 |example                      |
+>    |:--------|:--------------------------------------|:----------------------------|
+>    |%d       |day as expressed in two digits         |02                           | 
+>    |%-d      |day as expressed in one or two digits  |2                            |
+>    |%m       |month as expressed in two digits       |05 for May                   |
+>    |%-m      |month as expressed in one or two digits|5 for May and 12 for December|
+>    |%Y       |year as expressed in four digits       |2014                         |
+>    |%y       |year as expressed in two digits        |14                           |
+>    |d-%m-%Y  |                                       |04-01-2014                   |
+>    |%d/%m/%y |                                       |04/01/14                     |
+>    |%Y-%m-%d |                                       |2015-01-15                   |
 
 
 - **Report Link:** One or more URL links may be provided to alternative views of the report data on the agency's website or other webpage(s) in order to provide more context. A display name may be provided for each URL link. The linked text will display on DEQAR under the display name label provided or, if no name is provided, under generic text provided by DEQAR. 
