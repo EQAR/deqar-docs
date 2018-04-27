@@ -13,23 +13,23 @@ Required fields are marked with a <span style="color: #f00;">\*</span> in the fo
 
 In several instances (Institutions, Programmes, Report Files) you are able to select/add one or more items. In those cases you will find form fields for one item on the left, followed by an *Add* button. On the right, you will see the item(s) selected/added, with buttons to remove or edit.
 
-### Core Data
+#### Core Data
 
 Please note that the *Activity* chosen might influence which information is required.
 
 We strongly recommend that you provide a *Local Report Identifier* which identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary.
 
-### Institutions
+#### Institutions
 
 A report needs to relate to one or more (e.g. in case of joint programmes) institution(s). You can add institutions using the search box or browse the full list by country.
 
-### Programmes
+#### Programmes
 
 The programme tab will only be active if your report belongs to an activity that is not a purely institutional type.
 
 Fill the form with the required information and then click the *Add Programme* button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned.
 
-### Report Files
+#### Report Files
 
 Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files).
 
@@ -38,29 +38,36 @@ Files can be provided by link or directly uploaded. For each file, please specif
 CSV Upload
 ----------
 
-[Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) is a common platform-independent, software-independent data-exchange format.
+[Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) is a common platform-independent, software-independent data-exchange format. Files can be exported from all usual [spreadsheet software](#preparingexporting-csv-files) and numerous other applications.
 
-The first row of your file should include column names as defined under [Data Preparation](submission_object_fields.md) below.
-
-The following lines contain one report per row. Where one report may include/relate to several items (e.g. institutions, programmes, files), these can be provided/identified in separate columns using the `field_name[n]` syntax.
-
-For Example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
+The first row of your file should include column names as defined under [Data Preparation](submission_object_fields.md) above. A simple example for institution-level reports could look as follows:
 
 ```csv
-...,file[1].original_location,file[1].display_name,file[1].report_language[1],file[2].original_location,file[2].display_name,file[2].report_language[1],file[2].report_language[1],...
-...,"http://some.url/to/report","Expert report","de","http://some.url/to/report","Summary","en","de",...
+agency,activity,status,decision,valid_from,valid_to,date_format,file[1].original_location,file[1].report_language[1],institution[1].eter_id
 ```
 
-You can use our sample CSV file as a starting point and adjust it to your needs. Please bear in mind the following:
+The following lines contain one report per row.
 
- - The sample file is provided in Microsoft Excel and Open Document Formats. It needs to be saved in CSV format for upload to DEQAR (see notes below).
+While CSV is a one-dimensional format, one report may often include/relate to several items: one or more institution(s), programmes or files (which each might contain several languages). These can be provided/identified in separate columns named `field_name[n]` with `n` = 1, 2, ...
+
+For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
+
+```csv
+..., file[1].original_location,   file[1].display_name, file[1].report_language[1], file[2].original_location,   file[2].display_name, file[2].report_language[1], file[2].report_language[1], ...
+..., "http://some.url/to/report", "Expert report",      "de",                       "http://some.url/to/report", "Summary",            "en",                       "de", ...
+```
+(Spaces added for readability, these should not appear in an actual file.)
+
+### Template and samples
+
+You can use one of the sample CSV files below as a starting point and adjust it to your needs. Please bear in mind the following:
+
+ - The sample file is provided on Google Docs as well as in Microsoft Excel and Open Document Formats. It needs to be saved in CSV format for upload to DEQAR (see notes below).
  - The first worksheet includes *all* possible column names you could use in a CSV file, with the respective requirement/validation notes as comments. These comments will disappear as you save the file in CSV format.
  - The subsequent worksheets include more condensed examples with sample data, including those columns that will typically be used in reports concerning institutions, programmes or joint programmes.
  - You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.
  - You may omit columns from the sample CSV file that are not used in any of the reports.
  
-CSV template and sample:
-
  - [Microsoft Excel format](http://link.to/somewhere/)
  - [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](http://link.to/somewhere/)
  - [Google Docs](http://link.to/somewhere/)
