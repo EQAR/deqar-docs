@@ -6,10 +6,7 @@ pages:
     - Data Submission:
         - Data preparation: submission_object_fields.md
         - Pipeline: data_submission.md
-        - Methods:
-            - Webform: webform.md
-            - CSV Upload: csv_upload.md
-            - Submission API: submission_api.md
+        - Submission methods: submission_methods.md
 #    - Data administration:
     - Search and discovery:
         - Web interface: public_web.md
