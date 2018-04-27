@@ -8,8 +8,7 @@ Below we provide a full list of the data elements that can make up a submission 
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
 
-Report Data Elements
---------------------
+## Report Data Elements
 
 **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
@@ -29,16 +28,14 @@ The report identifier used in the agency's local system should be provided for e
 
 **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
-Each activity is classified as one of four activity types:  
+Each activity is classified as one of four activity types. These classifications determine the structure of the report record.  
 
-|No |Type                   |Report record structure        |               
-|:--|:----------------------|:------------------------------| 
-|1  |institutional          |at least one institution<br>no programme|
-|2  |institutional/programme|one and only one institution<br>at least one programme|
-|3  |programme              |one and only one institution<br>at least one programme|
-|4  |joint programme        |at least two institutions<br>at least one programme|  
-
-These classifications determine the structure of the report record.
+|Type                   |Report record structure        |               
+|:----------------------|:------------------------------| 
+|institutional          |at least one institution<br>no programme|
+|institutional/programme|one and only one institution<br>at least one programme|
+|programme              |one and only one institution<br>at least one programme|
+|joint programme        |at least two institutions<br>at least one programme|  
 
 - **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
