@@ -1,6 +1,3 @@
-Preparing QA Report Data
-------------------------
-
 Agencies are asked to prepare data on quality assurance reports for submission to DEQAR.  Each agency has the choice to manually submit records one by one through the DEQAR administrative interface or to submit larger batches of data in CSV or JSON format. In the latter cases, the agency must prepare Submission Objects before uploading to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system. (Note: a submission object cannot be considered as a report record per se because it may include data stored in other entities as well.) 
 
 Submission objects can be packaged together for batch submission. Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to update information on existing records through batch submission. Deletion of existing records can only be performed through the administrative interface. 
@@ -11,7 +8,8 @@ Below we provide a full list of the data elements that can make up a submission 
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
 
-### Report Data Elements
+Report Data Elements
+--------------------
 
 **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
