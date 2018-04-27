@@ -4,17 +4,21 @@ REST API is a convenient way for software developers to communicate with web ser
 
 The DEQAR Web API allows to search and discover QA reports, and to embed such functionality in own websites or applications.
 
-## Availability
+The [public DEQAR web interface](public_web.md) uses the same API.
 
-The DEQAR Web API is freely available to all interested parties, in line with the DEQAR Terms and Conditions.
+## Access
 
-However, in order to ensure that the information is not used in a way that jeopardises the objectives of DEQAR and to avoid excessive resource consumption, use of the API is subject to prior registration.
+The DEQAR Web API is available to all interested parties, in line with the DEQAR Terms and Conditions.
 
-Access may be requested by simple email to [deqar@eqar.eu](mailto:deqar@eqar.eu). We will grant access to any individual or organisation unless we have reasons to believe that the information might be abused, misrepresented or used in violation of the DEQAR Terms and Conditions. We will publish a list of registered users with access to the Web API.
+EQAR-registered agencies have access to the Web API automatically, using their credentials for the DEQAR administrative interface and the Submission API.
+
+For all others, use of the API is free, but subject to prior registration in order to avoid excessive resource consumption and to ensure that the information is not used in a way that jeopardises the objectives of DEQAR.
+
+Access may be requested by simple email to [deqar@eqar.eu](mailto:deqar@eqar.eu). We will grant access to any individual or organisation unless we have reasons to believe that the information might be abused, misrepresented or used in violation of the DEQAR Terms and Conditions.
+
+After registration you will obtain a username and password combination for the Web API. We will publish a list of registered users with access to the Web API.
 
 ## Authentication
-
-After registration you will obtain a username and password combination for the Web API. Registered quality assurance agencies can use their DEQAR administrative interface credentials also for the Web API.
 
 DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header will authenticate the user in place of a regular username and password. To get your authentication token you
 can send a POST request to the following URL:
