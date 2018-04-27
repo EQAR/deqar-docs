@@ -28,7 +28,7 @@ The report identifier used in the agency's local system should be provided for e
 
 **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
-Each activity is classified as one of four activity types. These classifications determine the structure of the report record.  
+Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.  
 
 |Type                   |Report record structure        |               
 |:----------------------|:------------------------------| 
