@@ -14,7 +14,8 @@ Below we provide a full list of the data elements that can make up a submission 
 
 - **Agency\*** (<code>agency</code> or <code>agency_id</code>; required; string)  
 The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.   
-*e.g. AAQ or 33*
+*e.g. AAQ*
+*e.g. 33*
 
 **Report Identification:** A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.
 
@@ -30,7 +31,8 @@ The report identifier used in the agency's local system should be provided for e
 
 - **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
-*e.g. institutional audit, programme evaluation or 2, 8*				
+*e.g. institutional audit, programme evaluation*
+*e.g. 2, 8*				
 	
 - **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
 A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
