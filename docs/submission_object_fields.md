@@ -28,6 +28,14 @@ The report identifier used in the agency's local system should be provided for e
 
 **Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
+- **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
+A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
+*e.g. institutional audit, programme evaluation or 2, 8*				
+	
+- **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
+A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
+*e.g. inst_aud*  
+
 Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.  
 
 |Type                   |Report record structure        |               
@@ -37,13 +45,6 @@ Each activity is classified as one of four activity types (<code>activity_type</
 |programme              |one and only one institution<br>at least one programme|
 |joint programme        |at least two institutions<br>at least one programme|  
 
-- **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
-A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
-*e.g. institutional audit, programme evaluation or 2, 8*				
-	
-- **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
-A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
-*e.g. inst_aud*
     	
 **Report Details:** Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
