@@ -119,6 +119,25 @@ Each institution described in the European Tertiary Education Register (ETER) is
 		
 - **Local Identifier(\*)** (<code>institution[n].identifier</code>; conditionally required; string)  
 A local identifier is any identifier used by the agency to identify an institution. A local identifier may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission.)  
-*e.g. HCERES21, AT0004*
+*e.g. HCERES21, AT0004*  
 
+**Institution Name:** One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An acronym may also be provided. (Note: alternative or other language institutions names can be provided through the administrative interface.)  
 
+- **Official Institution Name(\*)** (<code>institution[n].name_official</code>; conditionally required; string)  
+The official name of each institution in the original alphabet must be provided for every new record. The official name will be indexed for search and may be used as the primary institution name in the search interface if no English institution name is assigned.  
+*e.g. Graz University of Technology*  
+*e.g. Югозападен университет "Неофит Рилски"*  
+*e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*  
+
+- Official Institution Name, transliterated (<code>institution[n].name_official_transliterated</code>; not required; string)  
+A Romanised transliteration should be provided if the official institution name is in non-Latin script. If no Romanised form is stored locally, then [ISO Romanisation standards] (https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created Romanised forms.  If transliteration is not provided, access to the institution record through the search interface will be more limited.  
+*e.g. Yugo-zapaden universitet "Neofit Rilski”*  
+*e.g. Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata*  
+
+- English Institution Name (<code>institution[n].name_english<\code>; not required; string)  
+A single English institution name may be provided for each institution.	If provided, the English institution name will be used as the primary institution name in the search interface.  
+*e.g. South-West University "Neofit Rilski", Blagoevgrad*  
+
+- Institution Acronym (<code>institution[n].acronym</code>; not required; string)  
+The official acronym for each institution may be provided. This will be indexed for search.  
+*e.g. SWU*  
