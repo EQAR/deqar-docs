@@ -27,7 +27,7 @@ Each uploaded report is assigned a unique DEQAR report ID. This may be used to s
 The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
 *e.g. QAA1153-March15*
 
-**Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; these should be assigned through the agency record in the administrative interface before they can be used for submission. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
+**Report Activity:** A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
 - **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
@@ -35,8 +35,8 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 *e.g. 2, 8*				
 	
 - **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
-A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data.  
-*e.g. inst_aud*  
+A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)  
+*e.g. inst_aud* 
 
 Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.  
 
@@ -102,4 +102,23 @@ One or more URL links may be provided for each report to the same report present
 		
 - Link Display Name (<code>link_display_name</code>, not required, string)  
 A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.  
-*e.g. General information on this programme.*
+*e.g. General information on this programme.*  
+
+### Institution Identification (linking to existing record) 
+Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for each institution to establish a link; before these can be used for submission, local identifiers should be assigned through the administrative interface or provided in bulk to the EQAR secretariat.  
+Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID.  
+If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
+ 
+- **DEQARINST ID(\*)** (<code>institution[n].deqar_id<\code>; conditionally required; string) 
+Each institution already described in DEQAR is assigned a DEQARINST ID. The DEQARINST ID may be used to establish a link between submitted report data and an existing institution record.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+*e.g. DEQARINST 0034*  
+
+- **ETER ID(\*)** (<code>institution[n].eter_id</code>; conditionally required; string)  
+Each institution described in the European Tertiary Education Register (ETER) is assigned an ETER ID (see [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/)). The ETER ID may be used in place of the DEQARINST ID to establish a link between submitted report data and  an ETER record in DEQAR.  
+*e.g. BG0001*  
+		
+- **Local Identifier(\*)** (<code>institution[n].identifier</code>; conditionally required; string)  
+A local identifier is any identifier used by the agency to identify an institution. A local identifier may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission.)  
+*e.g. HCERES21, AT0004*
+
+
