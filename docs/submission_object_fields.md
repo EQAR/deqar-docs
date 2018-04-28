@@ -119,7 +119,7 @@ Each institution described in OrgReg or ETER is assigned an ETER ID (see [Resear
 A local identifier is any identifier used by the Agency to identify an institution. A local identifier may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission.)  
 *e.g. HCERES21, AT0004*  
 
-**Institution Name:** One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An acronym may also be provided. (Note: alternative or other language institutions names can be provided through the administrative interface.)  
+**Institution Name:** One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   
 
 - **Official Institution Name(\*)** (<code>institution[n].name_official</code>; conditionally required; string)  
 The official name of each institution in the original alphabet must be provided for every new record. The official name will be indexed for search and may be used as the primary institution name in the search interface if no English institution name is assigned.  
@@ -151,7 +151,27 @@ The country/ies where each institution is located must be provided for every new
 The city name, preferably in English, where the institution is located in each country may be provided for each institution record. If an institution is located in more than one city, then a separate country/city pairing should be entered for each city. Institution cities will be indexed for search.  
 *e.g. Sofia*  
 
-- Institution Latitude (<code>institution[n].latitude[n]</code>; not required; float)  
-- Institution Longitude (<code>institution[n].longitude[n]</code>; not required; float)  
+- Institution Latitude (<code>institution[n].latitude[n]</code>; not required; float)
+    Institution Longitude (<code>institution[n].longitude[n]</code>; not required; float)  
 The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
 *e.g. 48,208,356; 1,636,776*  
+
+**Level:** The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
+
+- Institution QF-EHEA Level (<code>institution[n].qf_ehea_level[n]</code>; not required; string)  
+One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area). These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)  
+
+The values may be:  
+
+   |ID |value       |  
+   |:--|:-----------|  
+   |0  |short cycle |  
+   |1  |first cyclec|  
+   |2  |second cycle|  
+   |3  |third cycle |  
+
+**Website:** One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  
+
+- **Institutional Website(\*)** (<code>institution[n].website_link</code>; conditionally required; string)  
+The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.  
+*e.g. http://www.swu.bg*  
