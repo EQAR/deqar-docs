@@ -152,6 +152,6 @@ The city name, preferably in English, where the institution is located in each c
 *e.g. Sofia*  
 
 - Institution Latitude (<code>institution[n].latitude[n]</code>; not required; float)  
-- Institution Longitude (<code>institution[n].longitude[n]; not required; float)  
+- Institution Longitude (<code>institution[n].longitude[n]</code>; not required; float)  
 The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
 *e.g. 48,208,356; 1,636,776*  
