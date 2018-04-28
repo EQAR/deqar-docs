@@ -38,16 +38,15 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)  
 *e.g. inst_aud* 
 
-Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.  
+   Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.  
 
-|Type                   |Report record structure        |               
-|:----------------------|:------------------------------| 
-|institutional          |at least one institution<br>no programme|
-|institutional/programme|one and only one institution<br>at least one programme|
-|programme              |one and only one institution<br>at least one programme|
-|joint programme        |at least two institutions<br>at least one programme|  
-
-    	
+   |Type                   |Report record structure        |               
+   |:----------------------|:------------------------------| 
+   |institutional          |at least one institution<br>no programme|
+   |institutional/programme|one and only one institution<br>at least one programme|
+   |programme              |one and only one institution<br>at least one programme|
+   |joint programme        |at least two institutions<br>at least one programme|  
+  	
 **Report Details:** Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
 - **Status\*** (<code>status</code> or <code>status_id</code>; required; string)  
@@ -118,6 +117,9 @@ Each institution described in OrgReg or ETER is assigned an ETER ID (see [Resear
 - **Local Identifier(\*)** (<code>institution[n].identifier</code>; conditionally required; string)  
 A local identifier is any identifier used by the Agency to identify an institution. A local identifier may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission.)  
 *e.g. HCERES21, AT0004*  
+
+### Institution Data Elements (new institution record)  
+Each report must be associated with at least one institution. If a record for an institution does not already exist in DEQAR, the institution must be described with the elements below. (Note, **as a minimum the institution name, country and website must be provided** for a new record to be created.) Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.  
 
 **Institution Name:** One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   
 
