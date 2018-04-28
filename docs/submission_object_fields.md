@@ -128,7 +128,7 @@ The official name of each institution in the original alphabet must be provided 
 *e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*  
 
 - Official Institution Name, transliterated (<code>institution[n].name_official_transliterated</code>; not required; string)  
-A Romanised transliteration should be provided if the official institution name is in non-Latin script. If no Romanised form is stored locally, then [ISO Romanisation standards](https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created Romanised forms.  If transliteration is not provided, access to the institution record through the search interface will be more limited.  
+A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then [ISO romanisation standards](https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created romanised forms.  If transliteration is not provided, access to the institution record through the search interface will be more limited.  
 *e.g. Yugo-zapaden universitet "Neofit Rilski”*  
 *e.g. Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata*  
 
@@ -139,3 +139,19 @@ A single English institution name may be provided for each institution.	If provi
 - Institution Acronym (<code>institution[n].acronym</code>; not required; string)  
 The official acronym for each institution may be provided. This will be indexed for search.  
 *e.g. SWU*  
+
+**Location:** One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  
+
+- **Institution Country(\*)** (<code>institution[n].country[n]</code>; conditionally required; string)  
+The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)). Institution countries will be indexed for search.  
+*e.g. BG*  
+*e.g. BGR*  
+
+- Institution City (<code>institution[n].city[n]</code>; not required; string)  
+The city name, preferably in English, where the institution is located in each country may be provided for each institution record. If an institution is located in more than one city, then a separate country/city pairing should be entered for each city. Institution cities will be indexed for search.  
+*e.g. Sofia*  
+
+- Institution Latitude (<code>institution[n].latitude[n]</code>; not required; float)  
+- Institution Longitude (<code>institution[n].longitude[n]; not required; float)  
+The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
+*e.g. 48,208,356; 1,636,776*  
