@@ -185,7 +185,7 @@ The exact latitude and longitude of the institution site or the general latitude
 
 The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
 
-- Institution QF-EHEA Level (<code>institution.qf_ehea_level</code>; not required; string)  
+- Institution QF-EHEA Level (<code>institution.qf_ehea_level</code> or <code>institution.qf_ehea_level_id</code>; not required; string)  
 One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area). These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)   
 
    |ID |name        |  
