@@ -3,14 +3,14 @@ site_name: DEQAR Documentation
 pages:
     - Home: index.md
     - Architecture and Data Model: DEQAR_overview.md
-    - Data Submission:
-        - Data preparation: submission_object_fields.md
-        - Pipeline: data_submission.md
-        - Submission methods: submission_methods.md
-#    - Data administration:
-    - Search and discovery:
-        - Web interface: public_web.md
-        - Web API: web_api.md
+    - Data Submission: data_submission.md
+ #       - Data preparation: submission_object_fields.md
+ #       - Pipeline: data_submission.md
+ #       - Submission methods: submission_methods.md
+ #    - Data administration:
+ #   - Search and discovery:
+ #       - Web interface: public_web.md
+ #       - Web API: web_api.md
 ### theme configuration ###
 theme:
     name: readthedocs
