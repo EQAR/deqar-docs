@@ -3,7 +3,7 @@ site_name: DEQAR Documentation
 pages:
     - Home: index.md
     - Architecture and Data Model: DEQAR_overview.md
-    - Data Submission: data_submission.md
+    - Data Submission: data_submission__overview.md
  #       - Data preparation: submission_object_fields.md
  #       - Pipeline: data_submission.md
  #       - Submission methods: submission_methods.md
