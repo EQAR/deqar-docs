@@ -288,8 +288,6 @@ One or more languages must be provided for each file in the form of an ISO 639 1
 
 ## Data Pipeline
 
-As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.  
-
 In general, irrespective of the submission method, all data submitted to DEQAR is handled following these steps:
 
  1. The Submission Request Object goes through the first level of validation;
@@ -359,6 +357,8 @@ Sanity checks may result in **high-level flags** for the following reasons:
 Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.
 
 ## Submission Methods
+
+As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.  
 
 ### Web Form
 
