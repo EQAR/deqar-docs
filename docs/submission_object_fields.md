@@ -163,8 +163,6 @@ The exact latitude and longitude of the institution site or the general latitude
 - Institution QF-EHEA Level (<code>institution[n].qf_ehea_level[n]</code> or <code>institution[n].qf_ehea_level_id</code>; not required; string)  
 One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area). These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)  
 
-   The values may be:  
-
    |ID |value       |  
    |:--|:-----------|  
    |0  |short cycle |  
@@ -222,8 +220,6 @@ A single national qualification framework (NQF) level may be provided for each p
 
 - Programme QF-EHEA Level (<code>programme[n].qf_ehea_level</code> or <code>programme[n].qf_ehea_level_id</code>; not required; string)  
 A single QF-EHEA level should be provided for each programme in the form of either a QF-EHEA level name or QF-EHEA level id (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area).  
-
-The values may be:  
 
   |ID |name        |  
   |:--|:-----------|  
