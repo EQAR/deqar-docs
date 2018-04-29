@@ -119,7 +119,9 @@ One or more URL links may be provided for each report to the same report present
 A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.  
 *e.g. General information on this programme.*
 
-### Institution Identification (linking to existing record)  
+### Institution Data Elements
+
+#### Linking to an Existing Record  
 
 Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
  
@@ -136,11 +138,11 @@ A local identifier is any identifier used by the Agency to identify an instituti
 *e.g. HCERES21*  
 *e.g. AT0004*  
 
-### Institution Data Elements (new institution record) 
+#### New Institution Record 
  
 Each report must be associated with at least one institution. If a record for an institution does not already exist in DEQAR, the institution must be described with the elements below. (Note, **as a minimum the institution name, country and website must be provided** for a new record to be created.) Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.  
 
-#### Institution Name
+##### Institution Name
 
 One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   
 
@@ -163,7 +165,7 @@ A single English institution name may be provided for each institution.	If provi
 The official acronym for each institution may be provided. This will be indexed for search.  
 *e.g. SWU*  
 	
-#### Institution Location
+##### Institution Location
 
 One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  
 
@@ -181,7 +183,7 @@ The city name, preferably in English, where the institution is located in each c
 The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
 *e.g. 48,208,356; 1,636,776*  
 
-#### Institution Qualification Level
+##### Institution Qualification Level
 
 The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
 
@@ -195,7 +197,7 @@ One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA
    |2  |second cycle|  
    |3  |third cycle |  
 
-#### Institution Website
+##### Institution Website
 
 One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  
 
