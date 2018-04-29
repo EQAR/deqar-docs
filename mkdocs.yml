@@ -9,8 +9,8 @@ pages:
  #       - Submission methods: submission_methods.md
  #    - Data administration:
  #   - Search and discovery:
- #       - Web interface: public_web.md
- #       - Web API: web_api.md
+        - Web interface: public_web.md
+        - Web API: web_api.md
 ### theme configuration ###
 theme:
     name: readthedocs
