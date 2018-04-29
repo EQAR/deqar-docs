@@ -228,3 +228,26 @@ A single QF-EHEA level should be provided for each programme in the form of eith
   |2  |second cycle|  
   |3  |third cycle |  
 
+### Preparing QA Report Files
+
+DEQAR requires PDF versions of quality assurance reports for every submission object. Agencies can choose either to make files available for harvest or to upload files. In order to make files available for harvest, agencies must provide the URL for files already available on a public server. Alternatively, files may be submitted using the API or uploaded through the administrative interface. All reports must be submitted with data on the language(s) used in the report. 
+
+**Report Files:** At least one PDF report file should be submitted in the form of a URL with each report. Alternatively, the agency may choose to upload the file to the system. The report must be submitted with information on the language used in the report. Optionally, a file display name can be provided as well.
+
+One or more <file.report_language> must be provided for each submitted PDF report file."		"The report file location on the Agency's website or file itself must be submitted with at least one language for each file, optionally a proposed name to be used for the file link in DEQAR may be provided.  
+		
+- **File Original Location(\*)** (<code>file[n].original_location</code>; conditionally required; string)  
+At least one PDF file should be provided with each submitted report in the form of a URL. Optionally, PDF files can be uploaded through the API or user interface.  
+*e.g. http://estudis.aqu.cat/MAD2014_UPC_es.pdf*  
+
+- File Display Name (<code>file[n].display_name</code>; not required; string)  
+A single file display name may be provided for each PDF report file. This will be used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.    
+*e.g. Report*  
+*e.g. Evaluation*  
+*e.g. MAD2014_UPC_es.pdf*  
+
+- **Report Language\*** (<code>file[n].report_language[n]</code>; required; string)  
+One or more languages must be provided for each file in the form of an ISO 639 1 (two-digit) or ISO 639 2 (three digit) language code (see [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).  
+*e.g. es*  
+*e.g. spa*  
+
