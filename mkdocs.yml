@@ -2,12 +2,10 @@ site_name: DEQAR Documentation
 ### document structure ###
 pages:
     - Home: index.md
-    - Architecture and Data Model: DEQAR_overview.md
-    - Data Submission: data_submission_overview.md
-#    - Data administration:
-    - Search and discovery:
-        - Web interface: public_web.md
-        - Web API: web_api.md
+    - Architecture and Data Model: architecture_data_model.md
+    - Data Submission: data_submission.md
+#    - Data administration: data_administration.md
+    - Search and Discovery: web_api.md
 ### theme configuration ###
 theme:
     name: readthedocs

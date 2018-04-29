@@ -1,4 +1,12 @@
-## Introduction
+## Public web interface
+
+The DEQAR public web interface is freely accessible at:
+
+<http://eqar.demo.slik.eu/qa-results/>
+
+**This is a provisional preview**, it will be replaced by <https://www.deqar.eu/> when launched to the public.
+
+## Web API
 
 REST API is a convenient way for software developers to communicate with web services via HTTP, the protocol used by the internet. Together with JSON it provides an easy, straightforward and flexible means of exchanging data between systems.
 
@@ -6,7 +14,7 @@ The DEQAR Web API allows to search and discover QA reports, and to embed such fu
 
 The [public DEQAR web interface](public_web.md) uses the same API.
 
-## Access
+### Access
 
 The DEQAR Web API is available to all interested parties, in line with the DEQAR Terms and Conditions.
 
@@ -18,7 +26,7 @@ Access may be requested by simple email to [deqar@eqar.eu](mailto:deqar@eqar.eu)
 
 After registration you will obtain a username and password combination for the Web API. We will publish a list of registered users with access to the Web API.
 
-## Authentication
+### Authentication
 
 DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header will authenticate the user in place of a regular username and password. To get your authentication token you
 can send a POST request to the following URL:
@@ -37,7 +45,7 @@ Or for those who prefer to use the more user friendly httpie3 client:
 http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
 ```
 
-## API Endpoints
+### API Endpoints
 
 The base URL for the following endpoints is:
 
@@ -47,7 +55,7 @@ The full definitions of the following endpoints and the response objects is avai
 
 <https://app.swaggerhub.com/apis/EQAR/WebAPI/1.0.0#/>
 
-### Countries
+#### Countries
 
 These endpoints provide information on countries connected to agencies or institutions. For all countries part of the EHEA, country information includes a short profile of the national external quality assurance system for higher education.
 
@@ -58,7 +66,7 @@ These endpoints provide information on countries connected to agencies or instit
 | GET    | `/browse/countries/by-agency-focus/{agencyID}/` | List of countries in which the specified agency has been operating                       |
 | GET    | `/browse/countries/by-reports/`                 | List those countries with institutions for which QA reports have been submitted to DEQAR |
 
-### Agencies
+#### Agencies
 
 These endpoints provide information on EQAR-registered agencies. Please note that they cover both agencies that submit reports to DEQAR as well as those that do not.
 
@@ -69,7 +77,7 @@ These endpoints provide information on EQAR-registered agencies. Please note tha
 | GET    | `/browse/agencies/focusing-to/{countryID}/` | List agencies operating in the specified country |
 | GET    | `/browse/agencies/based-in/{countryID}/`    | List agencies based in the specified country     |
 
-### Institutions
+#### Institutions
 
 These endpoints provide information on higher education institutions covered by QA results. Institutional information is managed by EQAR based on data harvested from ETER/OrgReg as well as participating agencies.
 
@@ -78,7 +86,7 @@ These endpoints provide information on higher education institutions covered by 
 | GET    | `/browse/institutions/`                | List or search institutions appearing in reports |
 | GET    | `/browse/institutions/{institutionID}` | Returns a specific institution record            |
 
-### Reports
+#### Reports
 
 These endpoints provide information on QA results concerning a particular institution.
 
@@ -86,3 +94,4 @@ These endpoints provide information on QA results concerning a particular instit
 | ------ | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | GET    | `/browse/reports/programme/by-institution/{institutionID}`     | List programme-level reports about the specified institution                             |
 | GET    | `/browse/reports/institutional/by-institution/{institutionID}` | List institutional-level reports about the specified institution                         |
+
