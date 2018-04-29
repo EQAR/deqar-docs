@@ -9,10 +9,12 @@ Below we provide a full list of the data elements that can make up a submission 
  - "may" to denote that an element is optional
 
 ### Overview of Report Data Elements
+### Overview of Data Elements
 
-   |element name                                 | required    |one/many  | system field(s)                                                 | example                |      
+Elements for each report:  
+
+   |element name                                 |required?    |one/many  | system field(s)                                                 | example                |      
    |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
-   |**REPORT**                                   |yes          |one       |                                                                 |                        | 
    |**Agency\***                                 |yes          |one       |<code>agency</code><br><code>agency_id</code>                    |*AAQ*<br>*33*           |  
    |DEQAR Report ID                              |no           |one       |<code>deqar_id</code>                                            |*000786*                |
    |Local Identifier                             |no           |one       |<code>local_identifier</code>                                    |*QAA1153-March15*       |
@@ -25,11 +27,19 @@ Below we provide a full list of the data elements that can make up a submission 
    |**Date Format\***                            |yes          |one       |<code>date_format</code>                                         |*%d/%m/%y*              |
    |Link                                         |no           |many      |<code>link</code>                                                |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
    |Link Display Name                            |no           |many      |<code>link_display_name</code>                                   |*General information on this programme.*|
-   |**INSTITUTION RECORD EXISTS**                |conditionally|many      |                                                                 |                        |
+ 
+Elements for an institution record already present in DEQAR:  
+
+   |element name                                 |required?    |one/many  | system field(s)                                                 | example                |      
+   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
    |**DEQARINST ID(\*)**                         |conditionally|one (per) |<code>institution[n].deqar_id</code>                             |*DEQARINST0034*         |
    |**ETER ID(\*)**                              |conditionally|one (per) |<code>institution[n].eter_id</code>                              |*BG0001*                |
    |**Local Institutional Identifier(\*)**       |conditionally|many (per)|<code>institution[n].identifier</code>                           |*HCERES21*<br>*AT0004*  |
-   |**INSTITUTION RECORD NEW**                   |conditionally|many      |                                                                 |                        |
+
+Elements for a new institution record:  
+
+   |element name                                 |required?    |one/many  | system field(s)                                                 | example                |      
+   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
    |**Official Institution Name(\*)**            |conditionally|one (per) |<code>institution[n].name_official</code>                        |*Graz University of Technology*<br>*Югозападен университет "Неофит Рилски"*<br>*Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*|
    |Official Institution Name, transliterated    |no           |one (per) |<code>institution[n].name_official_transliterated</code>         |*Yugo-zapaden universitet "Neofit Rilski”*<br>*Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata*|
    |English Institution Name                     |no           |one (per) |<code>institution[n].name_english</code>                         |*South-West University "Neofit Rilski", Blagoevgrad*|
@@ -39,7 +49,11 @@ Below we provide a full list of the data elements that can make up a submission 
    |Institution Latitude<br>Institution Longitude|no           |many (per)|<code>institution[n].latitude[n]</code><br><code>institution[n].longitude[n]</code>|*48,208,356; 1,636,776*|
    |Institution QF-EHEA Level                    |no           |many (per)|<code>institution[n].qf_ehea_level[n]</code>                     |*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
    |**Institutional Website(\*)**                |conditionally|one (per) |<code>institution[n].website_link</code>                         |*http://www.swu.bg*     |  
-   |**PROGRAMME**                                |conditionally|many      |                                                                 |                        |
+
+Elements to describe programmes:  
+
+   |element name                                 | required    |one/many  | system field(s)                                                 | example                |      
+   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
    |Local Programme Identifier                   |no           |many (per)|<code>programme[n].identifier[n]</code>                          |*61*<br>*60800*         |
    |**Primary Programme Name(\*)**               |conditionally|one (per) |<code>programme[n].name_primary</code>                           |*Arts-specialist in opleiding*|
    |Programme Qualification                      |no           |one (per) |<code>programme[n].qualification_primary</code>                  |Master in de specialistische geneeskunde*|
@@ -48,11 +62,14 @@ Below we provide a full list of the data elements that can make up a submission 
    |Programme Country                            |no           |many (per)|<code>programme[n].country[n]</code>                             |*BE*<br>*BEL*           |
    |Programme NQF Level                          |no           |one (per) |<code>programme[n].nqf_level</code>                              |*level 6*<br>*level 7*  |
    |Programme QF-EHEA Level                      |no           |one (per) |<code>programme[n].qf_ehea_level</code><br><code>programme[n].qf_ehea_level_id</code>|*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
-   |**REPORT FILES**                             |yes          |many      |                                                                 |                        |
+
+Report Files:  
+
+   |element name                                 | required    |one/many  | system field(s)                                                 | example                |      
+   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
    |**File Original Location(\*)**               |conditionally|many      |<code>file[n].original_location</code>                           |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
    |File Display Name                            |no           |one (per) |<code>file[n].display_name</code>                                |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
    |**Report Language\***                        |yes          |many (per)|<code>file[n].report_language[n]</code>                          |*es*<br>*spa*           | 
-
 
 ### Report Data Elements in Detail
 
