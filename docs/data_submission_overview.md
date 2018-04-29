@@ -205,11 +205,12 @@ The URL to the primary institution website or home page should be provided for e
 
 ### Programme Data Elements 
  
-Information on one or more programmes is required for all reports with the assigned activity type: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports. A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then **as a minimum the programme name must be provided** for programme data to be valid.)  
+Information on one or more programmes is required for all reports with the assigned activity types: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports.  
+A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then **as a minimum the programme name must be provided** for programme data to be valid.)  
 
 #### Programme Identification
 
-Certain types of reports must include data on at least one associated programme. An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. In the case that an existing identifier is later submitted with different programme information, the previous data will be used in place of the new.  
+An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)  
 
 - Local Programme Identifier (<code>programme.identifier</code>; not required; string)  
 One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.  
