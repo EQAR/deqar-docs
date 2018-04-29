@@ -121,7 +121,7 @@ A display name may optionally be provided for each link to the report on other s
 
 ### Institution Identification (linking to existing record)  
 
-Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat. Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
+Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
  
 - **DEQARINST ID(\*)** (<code>institution.deqar_id</code>; conditionally required; string)  
 Each institution already described in DEQAR is assigned a DEQARINST ID.  The DEQARINST ID may be used to establish a link between submitted report data and an existing institution record.  
@@ -160,7 +160,7 @@ A single English institution name may be provided for each institution.	If provi
 *e.g. South-West University "Neofit Rilski", Blagoevgrad*  
 
 - Institution Acronym (<code>institution.acronym</code>; not required; string)  
-The official acronym for each institution may be provided. This will be indexed for search. 
+The official acronym for each institution may be provided. This will be indexed for search.  
 *e.g. SWU*  
 	
 #### Institution Location
