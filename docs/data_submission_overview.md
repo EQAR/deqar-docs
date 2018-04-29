@@ -163,7 +163,7 @@ A single English institution name may be provided for each institution.	If provi
 The official acronym for each institution may be provided. This will be indexed for search. 
 *e.g. SWU*  
 	
-### Location
+### Institution Location
 
 One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  
 
@@ -181,7 +181,7 @@ The city name, preferably in English, where the institution is located in each c
 The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
 *e.g. 48,208,356; 1,636,776*  
 
-### Level
+### Institution Qualification Level
 
 The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
 
@@ -195,7 +195,7 @@ One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA
    |2  |second cycle|  
    |3  |third cycle |  
 
-### Website
+### Institution Website
 
 One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  
 
@@ -245,7 +245,7 @@ The one or more countries where the programme is located should be provided if d
 *e.g. BE*  
 *e.g. BEL*  
 
-### Programme Level
+### Programme Qualification Level
 
 Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.
 
