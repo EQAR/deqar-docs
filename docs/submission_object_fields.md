@@ -251,7 +251,7 @@ One or more languages must be provided for each file in the form of an ISO 639 1
 
 ### Summary of Data Elements
 
-Elements for each report:  
+Elements for each Report:  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -260,15 +260,15 @@ Elements for each report:
    |Local Identifier                             |no           |one       |*QAA1153-March15*       |
    |**Activity(\*)**                             |conditionally|one       |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|   
    |**Activity Local Identifier(\*)**            |conditionally|one       |*inst_aud*              |
-   |**Status\***                                 |yes          |one       |*part of obligatory EQA system OR 1*<br>*voluntary OR 2*|
-   |**Decision\***                               |yes	       |one       |*positive OR 1*<br>*positive with conditions or restrictions OR 2*<br>*negative OR 3*<br>*not applicable OR 4*|
+   |**Status\***                                 |yes          |one       |*part of obligatory EQA system = 1*<br>*voluntary = 2*|
+   |**Decision\***                               |yes	       |one       |*positive = 1*<br>*positive with conditions or restrictions = 2*<br>*negative = 3*<br>*not applicable = 4*|
    |**Valid from\***                             |yes          |one       |*2015-01-15*            |
    |Valid to                                     |no           |one       |*2020-01-15*            |
    |**Date Format\***                            |yes          |one       |*%d/%m/%y*              |
    |Link                                         |no           |many      |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
    |Link Display Name                            |no           |many      |*General information on this programme.*|
  
-Elements to identify an institution record already present in DEQAR:  
+Elements to identify an Institution record already present in DEQAR:  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -276,7 +276,7 @@ Elements to identify an institution record already present in DEQAR:
    |**ETER ID(\*)**                              |conditionally|one (per) |*BG0001*                |
    |**Local Institutional Identifier(\*)**       |conditionally|many (per)|*HCERES21*<br>*AT0004*  |
 
-Elements for a new institution record:  
+Elements for a new Institution record:  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |        
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -287,10 +287,10 @@ Elements for a new institution record:
    |**Institution Country(\*)**                  |conditionally|many (per)|*BG*<br>*BGR*           |
    |Institution City                             |no           |many (per)|*Sofia*                 |
    |Institution Latitude<br>Institution Longitude|no           |many (per)|*48,208,356; 1,636,776* |
-   |Institution QF-EHEA Level                    |no           |many (per)|*short cycle OR 0*<br>*first cycle OR 1*<br>*second cycle OR 2*<br>*third cycle OR 3*|
+   |Institution QF-EHEA Level                    |no           |many (per)|*short cycle = 0*<br>*first cycle = 1*<br>*second cycle = 2*<br>*third cycle = 3*|
    |**Institutional Website(\*)**                |conditionally|one (per) |*http://www.swu.bg*     |  
 
-Elements to describe programmes:  
+Elements to describe Programmes:  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -301,9 +301,9 @@ Elements to describe programmes:
    |Programme Qualification Alternative          |no           |many (per)|*Master of Medicine*    |
    |Programme Country                            |no           |many (per)|*BE*<br>*BEL*           |
    |Programme NQF Level                          |no           |one (per) |*level 6*<br>*level 7*  |
-   |Programme QF-EHEA Level                      |no           |one (per) |*short cycle OR 0*<br>*first cycle OR 1*<br>*second cycle OR 2*<br>*third cycle OR 3*|
+   |Programme QF-EHEA Level                      |no           |one (per) |*short cycle = 0*<br>*first cycle = 1*<br>*second cycle = 2*<br>*third cycle = 3*|
 
-Elements for report files:  
+Elements for Report Files:  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
