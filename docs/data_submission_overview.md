@@ -8,7 +8,7 @@ Below we provide a full list of the data elements that can make up a submission 
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
 
-## Report Data Elements  
+## Submission Object Data Elements  
 
 For a tabular overview of all data elements, you may go to [**Data Elements Summary**](https://docs.deqar.eu/data_elements_summary.md).
 
