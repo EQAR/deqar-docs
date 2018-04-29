@@ -249,7 +249,7 @@ One or more languages must be provided for each file in the form of an ISO 639 1
 *e.g. es*  
 *e.g. spa*  
 
-### Overview of Data Elements
+### Summary of Data Elements
 
 Elements for each report:  
 
@@ -260,8 +260,8 @@ Elements for each report:
    |Local Identifier                             |no           |one       |*QAA1153-March15*       |
    |**Activity(\*)**                             |conditionally|one       |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|   
    |**Activity Local Identifier(\*)**            |conditionally|one       |*inst_aud*              |
-   |**Status\***                                 |yes          |one       |*part of obligatory EQA system*<br>*voluntary*<br>*1*<br>*2*<br>|
-   |**Decision\***                               |yes	       |one       |*positive*<br>*positive with conditions or restrictions*<br>*negative*<br>*not applicable*<br>*1*<br>*2*<br>*3*<br>*4*|
+   |**Status\***                                 |yes          |one       |*part of obligatory EQA system OR 1*<br>*voluntary OR 2*|
+   |**Decision\***                               |yes	       |one       |*positive OR 1*<br>*positive with conditions or restrictions OR 2*<br>*negative OR 3*<br>*not applicable OR 4*|
    |**Valid from\***                             |yes          |one       |*2015-01-15*            |
    |Valid to                                     |no           |one       |*2020-01-15*            |
    |**Date Format\***                            |yes          |one       |*%d/%m/%y*              |
@@ -287,7 +287,7 @@ Elements for a new institution record:
    |**Institution Country(\*)**                  |conditionally|many (per)|*BG*<br>*BGR*           |
    |Institution City                             |no           |many (per)|*Sofia*                 |
    |Institution Latitude<br>Institution Longitude|no           |many (per)|*48,208,356; 1,636,776* |
-   |Institution QF-EHEA Level                    |no           |many (per)|*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
+   |Institution QF-EHEA Level                    |no           |many (per)|*short cycle OR 0*<br>*first cycle OR 1*<br>*second cycle OR 2*<br>*third cycle OR 3*|
    |**Institutional Website(\*)**                |conditionally|one (per) |*http://www.swu.bg*     |  
 
 Elements to describe programmes:  
@@ -301,7 +301,7 @@ Elements to describe programmes:
    |Programme Qualification Alternative          |no           |many (per)|*Master of Medicine*    |
    |Programme Country                            |no           |many (per)|*BE*<br>*BEL*           |
    |Programme NQF Level                          |no           |one (per) |*level 6*<br>*level 7*  |
-   |Programme QF-EHEA Level                      |no           |one (per) |*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
+   |Programme QF-EHEA Level                      |no           |one (per) |*short cycle OR 0*<br>*first cycle OR 1*<br>*second cycle OR 2*<br>*third cycle OR 3*|
 
 Elements for report files:  
 
@@ -310,4 +310,3 @@ Elements for report files:
    |**File Original Location(\*)**               |conditionally|many      |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
    |File Display Name                            |no           |one (per) |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
    |**Report Language\***                        |yes          |many (per)|*es*<br>*spa*           | 
-
