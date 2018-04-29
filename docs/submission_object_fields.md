@@ -177,3 +177,58 @@ One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA
 - **Institutional Website(\*)** (<code>institution[n].website_link</code>; conditionally required; string)  
 The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.  
 *e.g. http://www.swu.bg*  
+
+### Programme Data Elements  
+Information on one or more programmes is required for all reports with the assigned activity type: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports. A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then **as a minimum the programme name must be provided** for programme data to be valid.)  
+
+**Programme Identification:** Certain types of reports must include data on at least one associated programme. An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. In the case that an existing identifier is later submitted with different programme information, the previous data will be used in place of the new.  
+
+- Local Programme Identifier (<code>programme[n].identifier[n]</code>; not required; string)  
+One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.  
+*e.g. 61*  
+*e.g. 60800*  
+
+**Programme Name and Qualification:** One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.  
+
+- **Primary Programme Name(\*)** (<code>programme[n].name_primary</code>; conditionally required; string)  
+One and only one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English or in the original language.  
+*e.g. Arts-specialist in opleiding*  
+
+- Programme Qualification (<code>programme[n].qualification_primary</code>; not required; string)  
+The qualification offered by each programme should be recorded in the same language that is used for primary name.  
+*e.g. Master in de specialistische geneeskunde*  
+		
+- Programme Name Alternative (<code>programme[n].name_alternative[n]</code>; not required; string)  
+One or more alternative or other language names may be provided for each programme associated with the submitted report.  
+*e.g. Medical Natural Sciences*  
+
+- Programme Qualification Alternative (<code>programme[n].qualification_alternative[n]</code>; not required; string)  
+The qualification offered by each programme may be recorded in the same language that is used for the alternative name version.  
+*e.g. Master of Medicine*  
+
+**Programme Location:** Information on the country/ies where each programme is located should be provided if different from the host institution country. 
+
+- Programme Country (<code>programme[n].country[n]</code>; not required; string)  
+The one or more countries where the programme is located should be provided if different from the institution country. The country/ies should be provided in the form of an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)).  
+*e.g. BE*  
+*e.g. BEL*  
+
+**Programme Level:** Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.
+
+- Programme NQF Level (<code>programme[n].nqf_level</code>; not required, string)  
+A single national qualification framework (NQF) level may be provided for each programme.  
+*e.g. level 6*  
+*e.g. level 7*  
+
+- Programme QF-EHEA Level (<code>programme[n].qf_ehea_level</code> or <code>programme[n].qf_ehea_level_id</code>; not required; string)  
+A single QF-EHEA level should be provided for each programme in the form of either a QF-EHEA level name or QF-EHEA level id (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area).  
+
+The values may be:  
+
+  |ID |name        |  
+  |:--|:-----------|  
+  |0  |short cycle |  
+  |1  |first cycle |  
+  |2  |second cycle|  
+  |3  |third cycle |  
+
