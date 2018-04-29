@@ -260,8 +260,8 @@ Elements for each Report:
    |Local Identifier                             |no           |one       |*QAA1153-March15*       |
    |**Activity(\*)**                             |conditionally|one       |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|   
    |**Activity Local Identifier(\*)**            |conditionally|one       |*inst_aud*              |
-   |**Status\***                                 |yes          |one       |*part of obligatory EQA system = 1*<br>*voluntary = 2*|
-   |**Decision\***                               |yes	       |one       |*positive = 1*<br>*positive with conditions or restrictions = 2*<br>*negative = 3*<br>*not applicable = 4*|
+   |**Status\***                                 |yes          |one       |*1 - part of obligatory EQA system*<br>*2 - voluntary*|
+   |**Decision\***                               |yes	       |one       |*1 - positive*<br>*2 - positive with conditions or restrictions*<br>*3 - negative*<br>*4 - not applicable*|
    |**Valid from\***                             |yes          |one       |*2015-01-15*            |
    |Valid to                                     |no           |one       |*2020-01-15*            |
    |**Date Format\***                            |yes          |one       |*%d/%m/%y*              |
@@ -287,7 +287,7 @@ Elements for a new Institution record:
    |**Institution Country(\*)**                  |conditionally|many (per)|*BG*<br>*BGR*           |
    |Institution City                             |no           |many (per)|*Sofia*                 |
    |Institution Latitude<br>Institution Longitude|no           |many (per)|*48,208,356; 1,636,776* |
-   |Institution QF-EHEA Level                    |no           |many (per)|*short cycle = 0*<br>*first cycle = 1*<br>*second cycle = 2*<br>*third cycle = 3*|
+   |Institution QF-EHEA Level                    |no           |many (per)|*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
    |**Institutional Website(\*)**                |conditionally|one (per) |*http://www.swu.bg*     |  
 
 Elements to describe Programmes:  
@@ -301,7 +301,7 @@ Elements to describe Programmes:
    |Programme Qualification Alternative          |no           |many (per)|*Master of Medicine*    |
    |Programme Country                            |no           |many (per)|*BE*<br>*BEL*           |
    |Programme NQF Level                          |no           |one (per) |*level 6*<br>*level 7*  |
-   |Programme QF-EHEA Level                      |no           |one (per) |*short cycle = 0*<br>*first cycle = 1*<br>*second cycle = 2*<br>*third cycle = 3*|
+   |Programme QF-EHEA Level                      |no           |one (per) |*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
 
 Elements for Report Files:  
 
