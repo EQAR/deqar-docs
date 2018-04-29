@@ -267,7 +267,7 @@ A single QF-EHEA level should be provided for each programme in the form of eith
   |2  |second cycle|  
   |3  |third cycle |  
 
-### Preparing QA Report Files
+### QA Report Files
 
 DEQAR requires PDF versions of quality assurance reports for every submission object. Agencies can choose either to make files available for harvest or to upload files. In order to make files available for harvest, agencies must provide the URL for files already available on a public server. Alternatively, files may be submitted using the API or uploaded through the administrative interface. All reports must be submitted with data on the language(s) used in the report. A file display name can be provided as well.
 		
