@@ -1,4 +1,4 @@
-## Report  
+### Report  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -15,7 +15,7 @@
    |Link                                         |no           |many      |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
    |Link Display Name                            |no           |many      |*General information on this programme.*|
  
-## Identify an Institution Record already present in DEQAR  
+### Existing Institution Record  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -23,7 +23,7 @@
    |**ETER ID(\*)**                              |conditionally|one (per) |*BG0001*                |
    |**Local Institutional Identifier(\*)**       |conditionally|many (per)|*HCERES21*<br>*AT0004*  |
 
-## New Institution Record 
+### New Institution Record 
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |        
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -37,7 +37,7 @@
    |Institution QF-EHEA Level                    |no           |many (per)|*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
    |**Institutional Website(\*)**                |conditionally|one (per) |*http://www.swu.bg*     |  
 
-## Programme
+### Programme
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -50,7 +50,7 @@
    |Programme NQF Level                          |no           |one (per) |*level 6*<br>*level 7*  |
    |Programme QF-EHEA Level                      |no           |one (per) |*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
 
-## Report Files  
+### Report Files  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
