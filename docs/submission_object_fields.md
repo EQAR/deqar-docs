@@ -8,68 +8,67 @@ Below we provide a full list of the data elements that can make up a submission 
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
 
-### Overview of Report Data Elements
 ### Overview of Data Elements
 
 Elements for each report:  
 
-   |element name                                 |required?    |one/many  | system field(s)                                                 | example                |      
-   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
-   |**Agency\***                                 |yes          |one       |<code>agency</code><br><code>agency_id</code>                    |*AAQ*<br>*33*           |  
-   |DEQAR Report ID                              |no           |one       |<code>deqar_id</code>                                            |*000786*                |
-   |Local Identifier                             |no           |one       |<code>local_identifier</code>                                    |*QAA1153-March15*       |
-   |**Activity(\*)**                             |conditionally|one       |<code>activity</code><br><code>activity_id</code>                |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|   
-   |**Activity Local Identifier(\*)**            |conditionally|one       |<code>activity_local_identifier</code>                           |*inst_aud*              |
-   |**Status\***                                 |yes          |one       |<code>status</code><br><code>status_id</code>                    |*part of obligatory EQA system*<br>*voluntary*<br>*1*<br>*2*<br>|
-   |**Decision\***                               |yes	      |one       |<code>decision</code><br><code>decision_id</code>                |*positive*<br>*positive with conditions or restrictions*<br>*negative*<br>*not applicable*<br>*1*<br>*2*<br>*3*<br>*4*|
-   |**Valid from\***                             |yes          |one       |<code>valid_from</code>                                          |*2015-01-15*            |
-   |Valid to                                     |no           |one       |<code>valid_to</code>                                            |*2020-01-15*            |
-   |**Date Format\***                            |yes          |one       |<code>date_format</code>                                         |*%d/%m/%y*              |
-   |Link                                         |no           |many      |<code>link</code>                                                |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
-   |Link Display Name                            |no           |many      |<code>link_display_name</code>                                   |*General information on this programme.*|
+   |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
+   |:--------------------------------------------|:------------|:---------|:-----------------------|
+   |**Agency\***                                 |yes          |one       |*AAQ*<br>*33*           |  
+   |DEQAR Report ID                              |no           |one       |*000786*                |
+   |Local Identifier                             |no           |one       |*QAA1153-March15*       |
+   |**Activity(\*)**                             |conditionally|one       |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|   
+   |**Activity Local Identifier(\*)**            |conditionally|one       |*inst_aud*              |
+   |**Status\***                                 |yes          |one       |*part of obligatory EQA system*<br>*voluntary*<br>*1*<br>*2*<br>|
+   |**Decision\***                               |yes	       |one       |*positive*<br>*positive with conditions or restrictions*<br>*negative*<br>*not applicable*<br>*1*<br>*2*<br>*3*<br>*4*|
+   |**Valid from\***                             |yes          |one       |*2015-01-15*            |
+   |Valid to                                     |no           |one       |*2020-01-15*            |
+   |**Date Format\***                            |yes          |one       |*%d/%m/%y*              |
+   |Link                                         |no           |many      |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
+   |Link Display Name                            |no           |many      |*General information on this programme.*|
  
-Elements for an institution record already present in DEQAR:  
+Elements to identify an institution record already present in DEQAR:  
 
-   |element name                                 |required?    |one/many  | system field(s)                                                 | example                |      
-   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
-   |**DEQARINST ID(\*)**                         |conditionally|one (per) |<code>institution[n].deqar_id</code>                             |*DEQARINST0034*         |
-   |**ETER ID(\*)**                              |conditionally|one (per) |<code>institution[n].eter_id</code>                              |*BG0001*                |
-   |**Local Institutional Identifier(\*)**       |conditionally|many (per)|<code>institution[n].identifier</code>                           |*HCERES21*<br>*AT0004*  |
+   |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
+   |:--------------------------------------------|:------------|:---------|:-----------------------|
+   |**DEQARINST ID(\*)**                         |conditionally|one (per) |*DEQARINST0034*         |
+   |**ETER ID(\*)**                              |conditionally|one (per) |*BG0001*                |
+   |**Local Institutional Identifier(\*)**       |conditionally|many (per)|*HCERES21*<br>*AT0004*  |
 
 Elements for a new institution record:  
 
-   |element name                                 |required?    |one/many  | system field(s)                                                 | example                |      
-   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
-   |**Official Institution Name(\*)**            |conditionally|one (per) |<code>institution[n].name_official</code>                        |*Graz University of Technology*<br>*Югозападен университет "Неофит Рилски"*<br>*Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*|
-   |Official Institution Name, transliterated    |no           |one (per) |<code>institution[n].name_official_transliterated</code>         |*Yugo-zapaden universitet "Neofit Rilski”*<br>*Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata*|
-   |English Institution Name                     |no           |one (per) |<code>institution[n].name_english</code>                         |*South-West University "Neofit Rilski", Blagoevgrad*|
-   |Institution Acronym                          |no           |one (per) |<code>institution[n].acronym</code>                              |*SWU*                   |
-   |**Institution Country(\*)**                  |conditionally|many (per)|<code>institution[n].country[n]</code>                           |*BG*<br>*BGR*           |
-   |Institution City                             |no           |many (per)|<code>institution[n].city[n]</code>                              |*Sofia*                 |
-   |Institution Latitude<br>Institution Longitude|no           |many (per)|<code>institution[n].latitude[n]</code><br><code>institution[n].longitude[n]</code>|*48,208,356; 1,636,776*|
-   |Institution QF-EHEA Level                    |no           |many (per)|<code>institution[n].qf_ehea_level[n]</code>                     |*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
-   |**Institutional Website(\*)**                |conditionally|one (per) |<code>institution[n].website_link</code>                         |*http://www.swu.bg*     |  
+   |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |        
+   |:--------------------------------------------|:------------|:---------|:-----------------------|
+   |**Official Institution Name(\*)**            |conditionally|one (per) |*Graz University of Technology*<br>*Югозападен университет "Неофит Рилски"*<br>*Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*|
+   |Official Institution Name, transliterated    |no           |one (per) |*Yugo-zapaden universitet "Neofit Rilski”*<br>*Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata*|
+   |English Institution Name                     |no           |one (per) |*South-West University "Neofit Rilski", Blagoevgrad*|
+   |Institution Acronym                          |no           |one (per) |*SWU*                   |
+   |**Institution Country(\*)**                  |conditionally|many (per)|*BG*<br>*BGR*           |
+   |Institution City                             |no           |many (per)|*Sofia*                 |
+   |Institution Latitude<br>Institution Longitude|no           |many (per)|*48,208,356; 1,636,776* |
+   |Institution QF-EHEA Level                    |no           |many (per)|*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
+   |**Institutional Website(\*)**                |conditionally|one (per) |*http://www.swu.bg*     |  
 
 Elements to describe programmes:  
 
-   |element name                                 | required    |one/many  | system field(s)                                                 | example                |      
-   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
-   |Local Programme Identifier                   |no           |many (per)|<code>programme[n].identifier[n]</code>                          |*61*<br>*60800*         |
-   |**Primary Programme Name(\*)**               |conditionally|one (per) |<code>programme[n].name_primary</code>                           |*Arts-specialist in opleiding*|
-   |Programme Qualification                      |no           |one (per) |<code>programme[n].qualification_primary</code>                  |Master in de specialistische geneeskunde*|
-   |Programme Name Alternative                   |no           |many (per)|<code>programme[n].name_alternative[n]</code>                    |*Medical Natural Sciences*|
-   |Programme Qualification Alternative          |no           |many (per)|<code>programme[n].qualification_alternative[n]</code>           |*Master of Medicine*    |
-   |Programme Country                            |no           |many (per)|<code>programme[n].country[n]</code>                             |*BE*<br>*BEL*           |
-   |Programme NQF Level                          |no           |one (per) |<code>programme[n].nqf_level</code>                              |*level 6*<br>*level 7*  |
-   |Programme QF-EHEA Level                      |no           |one (per) |<code>programme[n].qf_ehea_level</code><br><code>programme[n].qf_ehea_level_id</code>|*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
+   |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
+   |:--------------------------------------------|:------------|:---------|:-----------------------|
+   |Local Programme Identifier                   |no           |many (per)|*61*<br>*60800*         |
+   |**Primary Programme Name(\*)**               |conditionally|one (per) |*Arts-specialist in opleiding*|
+   |Programme Qualification                      |no           |one (per) |*Master in de specialistische geneeskunde*|
+   |Programme Name Alternative                   |no           |many (per)|*Medical Natural Sciences*|
+   |Programme Qualification Alternative          |no           |many (per)|*Master of Medicine*    |
+   |Programme Country                            |no           |many (per)|*BE*<br>*BEL*           |
+   |Programme NQF Level                          |no           |one (per) |*level 6*<br>*level 7*  |
+   |Programme QF-EHEA Level                      |no           |one (per) |*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
 
-Report Files:  
+Elements for report files:  
 
-   |element name                                 | required    |one/many  | system field(s)                                                 | example                |      
-   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
-   |**File Original Location(\*)**               |conditionally|many      |<code>file[n].original_location</code>                           |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
-   |File Display Name                            |no           |one (per) |<code>file[n].display_name</code>                                |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
-   |**Report Language\***                        |yes          |many (per)|<code>file[n].report_language[n]</code>                          |*es*<br>*spa*           | 
+   |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
+   |:--------------------------------------------|:------------|:---------|:-----------------------|
+   |**File Original Location(\*)**               |conditionally|many      |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
+   |File Display Name                            |no           |one (per) |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
+   |**Report Language\***                        |yes          |many (per)|*es*<br>*spa*           | 
 
 ### Report Data Elements in Detail
 
