@@ -8,7 +8,53 @@ Below we provide a full list of the data elements that can make up a submission 
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
 
-### Report Data Elements
+### Overview of Report Data Elements
+
+   |element name                                 | required    |one/many  | system field(s)                                                 | example                |      
+   |:--------------------------------------------|:------------|:---------|:----------------------------------------------------------------|:-----------------------|
+   |**REPORT**                                   |yes          |one       |                                                                 |                        | 
+   |**Agency\***                                 |yes          |one       |<code>agency</code><br><code>agency_id</code>                    |*AAQ*<br>*33*           |  
+   |DEQAR Report ID                              |no           |one       |<code>deqar_id</code>                                            |*000786*                |
+   |Local Identifier                             |no           |one       |<code>local_identifier</code>                                    |*QAA1153-March15*       |
+   |**Activity(\*)**                             |conditionally|one       |<code>activity</code><br><code>activity_id</code>                |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|   
+   |**Activity Local Identifier(\*)**            |conditionally|one       |<code>activity_local_identifier</code>                           |*inst_aud*              |
+   |**Status\***                                 |yes          |one       |<code>status</code><br><code>status_id</code>                    |*part of obligatory EQA system*<br>*voluntary*<br>*1*<br>*2*<br>|
+   |**Decision\***                               |yes	      |one       |<code>decision</code><br><code>decision_id</code>                |*positive*<br>*positive with conditions or restrictions*<br>*negative*<br>*not applicable*<br>*1*<br>*2*<br>*3*<br>*4*|
+   |**Valid from\***                             |yes          |one       |<code>valid_from</code>                                          |*2015-01-15*            |
+   |Valid to                                     |no           |one       |<code>valid_to</code>                                            |*2020-01-15*            |
+   |**Date Format\***                            |yes          |one       |<code>date_format</code>                                         |*%d/%m/%y*              |
+   |Link                                         |no           |many      |<code>link</code>                                                |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
+   |Link Display Name                            |no           |many      |<code>link_display_name</code>                                   |*General information on this programme.*|
+   |**INSTITUTION RECORD EXISTS**                |conditionally|many      |                                                                 |                        |
+   |**DEQARINST ID(\*)**                         |conditionally|one (per) |<code>institution[n].deqar_id</code>                             |*DEQARINST0034*         |
+   |**ETER ID(\*)**                              |conditionally|one (per) |<code>institution[n].eter_id</code>                              |*BG0001*                |
+   |**Local Institutional Identifier(\*)**       |conditionally|many (per)|<code>institution[n].identifier</code>                           |*HCERES21*<br>*AT0004*  |
+   |**INSTITUTION RECORD NEW**                   |conditionally|many      |                                                                 |                        |
+   |**Official Institution Name(\*)**            |conditionally|one (per) |<code>institution[n].name_official</code>                        |*Graz University of Technology*<br>*Югозападен университет "Неофит Рилски"*<br>*Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*|
+   |Official Institution Name, transliterated    |no           |one (per) |<code>institution[n].name_official_transliterated</code>         |*Yugo-zapaden universitet "Neofit Rilski”*<br>*Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata*|
+   |English Institution Name                     |no           |one (per) |<code>institution[n].name_english</code>                         |*South-West University "Neofit Rilski", Blagoevgrad*|
+   |Institution Acronym                          |no           |one (per) |<code>institution[n].acronym</code>                              |*SWU*                   |
+   |**Institution Country(\*)**                  |conditionally|many (per)|<code>institution[n].country[n]</code>                           |*BG*<br>*BGR*           |
+   |Institution City                             |no           |many (per)|<code>institution[n].city[n]</code>                              |*Sofia*                 |
+   |Institution Latitude<br>Institution Longitude|no           |many (per)|<code>institution[n].latitude[n]</code><br><code>institution[n].longitude[n]</code>|*48,208,356; 1,636,776*|
+   |Institution QF-EHEA Level                    |no           |many (per)|<code>institution[n].qf_ehea_level[n]</code>                     |*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
+   |**Institutional Website(\*)**                |conditionally|one (per) |<code>institution[n].website_link</code>                         |*http://www.swu.bg*     |  
+   |**PROGRAMME**                                |conditionally|many      |                                                                 |                        |
+   |Local Programme Identifier                   |no           |many (per)|<code>programme[n].identifier[n]</code>                          |*61*<br>*60800*         |
+   |**Primary Programme Name(\*)**               |conditionally|one (per) |<code>programme[n].name_primary</code>                           |*Arts-specialist in opleiding*|
+   |Programme Qualification                      |no           |one (per) |<code>programme[n].qualification_primary</code>                  |Master in de specialistische geneeskunde*|
+   |Programme Name Alternative                   |no           |many (per)|<code>programme[n].name_alternative[n]</code>                    |*Medical Natural Sciences*|
+   |Programme Qualification Alternative          |no           |many (per)|<code>programme[n].qualification_alternative[n]</code>           |*Master of Medicine*    |
+   |Programme Country                            |no           |many (per)|<code>programme[n].country[n]</code>                             |*BE*<br>*BEL*           |
+   |Programme NQF Level                          |no           |one (per) |<code>programme[n].nqf_level</code>                              |*level 6*<br>*level 7*  |
+   |Programme QF-EHEA Level                      |no           |one (per) |<code>programme[n].qf_ehea_level</code><br><code>programme[n].qf_ehea_level_id</code>|*short cycle*<br>*first cycle*<br>*second cycle*<br>*third cycle*<br>*0*<br>*1*<br>*2*<br>*3*|
+   |**REPORT FILES**                             |yes          |many      |                                                                 |                        |
+   |**File Original Location(\*)**               |conditionally|many      |<code>file[n].original_location</code>                           |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
+   |File Display Name                            |no           |one (per) |<code>file[n].display_name</code>                                |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
+   |**Report Language\***                        |yes          |many (per)|<code>file[n].report_language[n]</code>                          |*es*<br>*spa*           | 
+
+
+### Report Data Elements in Detail
 
 **Report Creation:** A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.
 
