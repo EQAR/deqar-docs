@@ -13,14 +13,18 @@ Below we provide a full list of the data elements that can make up a submission 
 
 ## Report Data Elements  
 
-### Report Creation:  A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.  
+### Report Creation  
+
+A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.  
 
 - **Agency\*** (<code>agency</code> or <code>agency_id</code>; required; string)  
 The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.  
 *e.g. AAQ*  
 *e.g. 33*  
 
-### Report Identification: A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.  
+### Report Identification
+
+A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.  
 
 - DEQAR Report ID (<code>deqar_id</code>; not required; string)  
 Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
@@ -30,7 +34,9 @@ Each uploaded report is assigned a unique DEQAR report ID. This may be used to s
 The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
 *e.g. QAA1153-March15*
 
-### Report Activity: A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
+### Report Activity
+
+A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
 - **Activity(\*)** (<code>activity</code> or <code>activity_id</code>; conditionally required; string)  
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
@@ -53,7 +59,9 @@ Each activity is classified as one of four activity types (<code>activity_type</
 |joint programme        |at least two institutions<br>at least one programme|  
 
     	
-### Report Details: Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
+### Report Details
+
+Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
 - **Status\*** (<code>status</code> or <code>status_id</code>; required; string)  
 The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.  
@@ -73,7 +81,9 @@ The decision must be provided as either a DEQAR decision name or a DEQAR decisio
    |3  |negative                                |
    |4  |not applicable                          |  
 
-### Report Validity: Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
+### Report Validity
+
+Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
 - **Valid from\*** (<code>valid_from</code>; required; date)  
 A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.  
@@ -98,7 +108,9 @@ A date format  must be provided for each report. Dates may be submitted in any s
    |%d/%m/%y |                                       |04/01/14                     |
    |%Y-%m-%d |                                       |2015-01-15                   |  
 
-### Report Link: One or more URL links may be provided to alternative views of the report data on the agency's website or other webpage(s) in order to provide more context. A display name may be provided for each URL link. The linked text will display on DEQAR under the display name label provided or, if no name is provided, under generic text provided by DEQAR. 
+### Report Link
+
+One or more URL links may be provided to alternative views of the report data on the agency's website or other webpage(s) in order to provide more context. A display name may be provided for each URL link. The linked text will display on DEQAR under the display name label provided or, if no name is provided, under generic text provided by DEQAR. 
 
 - Link (<code>link</code>, not required, string)  
 One or more URL links may be provided for each report to the same report presented on other sites in order to provide more context to the report.  
@@ -108,7 +120,8 @@ One or more URL links may be provided for each report to the same report present
 A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.  
 *e.g. General information on this programme.*
 
-## Institution Identification (linking to existing record)  
+## Institution Identification (linking to existing record)
+
 Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat. Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
  
 - **DEQARINST ID(\*)** (<code>institution.deqar_id</code>; conditionally required; string)  
@@ -124,10 +137,13 @@ A local identifier is any identifier used by the Agency to identify an instituti
 *e.g. HCERES21*  
 *e.g. AT0004*  
 
-## Institution Data Elements (new institution record)  
+## Institution Data Elements (new institution record)
+
 Each report must be associated with at least one institution. If a record for an institution does not already exist in DEQAR, the institution must be described with the elements below. (Note, **as a minimum the institution name, country and website must be provided** for a new record to be created.) Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.  
 
-### Institution Name: One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   
+### Institution Name
+
+One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   
 
 - **Official Institution Name(\*)** (<code>institution.name_official</code>; conditionally required; string)  
 The official name of each institution in the original alphabet must be provided for every new institution record. The official name will be indexed for search and may be used as the primary institution name in the search interface if no English institution name is assigned.  
@@ -148,7 +164,9 @@ A single English institution name may be provided for each institution.	If provi
 The official acronym for each institution may be provided. This will be indexed for search. 
 *e.g. SWU*  
 	
-### Location: One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  
+### Location
+
+One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  
 
 - **Institution Country(\*)** (<code>institution.country</code>; conditionally required; string)  
 The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)). Institution countries will be indexed for search. 
@@ -164,7 +182,9 @@ The city name, preferably in English, where the institution is located in each c
 The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
 *e.g. 48,208,356; 1,636,776*  
 
-### Level: The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
+### Level
+
+The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
 
 - Institution QF-EHEA Level (<code>institution.qf_ehea_level</code>; not required; string)  
 One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area). These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)   
@@ -176,23 +196,30 @@ One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA
    |2  |second cycle|  
    |3  |third cycle |  
 
-### Website: One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  
+### Website
+
+One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  
 
 - **Institutional Website(\*)** (<code>institution.website_link</code>; conditionally required; string)  
 The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.  
 *e.g. http://www.swu.bg*  
 
-## Programme Data Elements  
+## Programme Data Elements 
+
 Information on one or more programmes is required for all reports with the assigned activity type: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports. A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then **as a minimum the programme name must be provided** for programme data to be valid.)  
 
-### Programme Identification: Certain types of reports must include data on at least one associated programme. An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. In the case that an existing identifier is later submitted with different programme information, the previous data will be used in place of the new.  
+### Programme Identification
+
+Certain types of reports must include data on at least one associated programme. An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. In the case that an existing identifier is later submitted with different programme information, the previous data will be used in place of the new.  
 
 - Local Programme Identifier (<code>programme.identifier</code>; not required; string)  
 One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.  
 *e.g. 61*  
 *e.g. 60800*  
 
-### Programme Name and Qualification: One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.  
+### Programme Name and Qualification
+
+One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.  
 
 - **Primary Programme Name(\*)** (<code>programme.name_primary</code>; conditionally required; string)  
 One and only one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English or in the original language.  
@@ -210,14 +237,18 @@ One or more alternative or other language names may be provided for each program
 The qualification offered by each programme may be recorded in the same language that is used for the alternative name version.  
 *e.g. Master of Medicine*  
 
-### Programme Location: Information on the country/ies where each programme is located should be provided if different from the host institution country. 
+### Programme Location
+
+Information on the country/ies where each programme is located should be provided if different from the host institution country. 
 
 - Programme Country (<code>programme.country</code>; not required; string)  
 The one or more countries where the programme is located should be provided if different from the institution country. The country/ies should be provided in the form of an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)).  
 *e.g. BE*  
 *e.g. BEL*  
 
-### Programme Level: Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.
+### Programme Level
+
+Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.
 
 - Programme NQF Level (<code>programme.nqf_level</code>; not required, string)  
 A single national qualification framework (NQF) level may be provided for each programme.  
