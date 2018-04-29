@@ -1,5 +1,4 @@
-Data Preparation
-----------------
+## Data Preparation
 
 Agencies are asked to prepare data on quality assurance reports for submission to DEQAR.  Each agency has the choice to manually submit records one by one through the DEQAR administrative interface or to submit larger batches of data in CSV or JSON format. In the latter cases, the agency must prepare Submission Objects before uploading to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system. (Note: a submission object cannot be considered as a report record per se because it may include data stored in other entities as well.) 
 
@@ -11,9 +10,9 @@ Below we provide a full list of the data elements that can make up a submission 
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
 
-## Report Data Elements  
+### Report Data Elements  
 
-### Report Creation
+#### Report Creation
 
 A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.  
 
@@ -22,7 +21,7 @@ The agency which created the report must be provided for each report as an agenc
 *e.g. AAQ*  
 *e.g. 33*  
 
-### Report Identification 
+#### Report Identification 
 
 A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.  
 
@@ -34,7 +33,7 @@ Each uploaded report is assigned a unique DEQAR report ID. This may be used to s
 The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
 *e.g. QAA1153-March15*
 
-### Report Activity
+#### Report Activity
 
 A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
@@ -59,7 +58,7 @@ Each activity is classified as one of four activity types (<code>activity_type</
 |joint programme        |at least two institutions<br>at least one programme|  
 
     	
-### Report Details
+#### Report Details
 
 Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  
 
@@ -81,7 +80,7 @@ The decision must be provided as either a DEQAR decision name or a DEQAR decisio
    |3  |negative                                |
    |4  |not applicable                          |  
 
-### Report Validity
+#### Report Validity
 
 Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 		
@@ -108,7 +107,7 @@ A date format  must be provided for each report. Dates may be submitted in any s
    |%d/%m/%y |                                       |04/01/14                     |
    |%Y-%m-%d |                                       |2015-01-15                   |  
 
-### Report Link
+#### Report Link
 
 One or more URL links may be provided to alternative views of the report data on the agency's website or other webpage(s) in order to provide more context. A display name may be provided for each URL link. The linked text will display on DEQAR under the display name label provided or, if no name is provided, under generic text provided by DEQAR. 
 
@@ -120,7 +119,7 @@ One or more URL links may be provided for each report to the same report present
 A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.  
 *e.g. General information on this programme.*
 
-## Institution Identification (linking to existing record)  
+### Institution Identification (linking to existing record)  
 
 Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat. Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
  
@@ -137,11 +136,11 @@ A local identifier is any identifier used by the Agency to identify an instituti
 *e.g. HCERES21*  
 *e.g. AT0004*  
 
-## Institution Data Elements (new institution record) 
+### Institution Data Elements (new institution record) 
  
 Each report must be associated with at least one institution. If a record for an institution does not already exist in DEQAR, the institution must be described with the elements below. (Note, **as a minimum the institution name, country and website must be provided** for a new record to be created.) Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.  
 
-### Institution Name
+#### Institution Name
 
 One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   
 
@@ -164,7 +163,7 @@ A single English institution name may be provided for each institution.	If provi
 The official acronym for each institution may be provided. This will be indexed for search. 
 *e.g. SWU*  
 	
-### Location
+#### Location
 
 One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  
 
@@ -182,7 +181,7 @@ The city name, preferably in English, where the institution is located in each c
 The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
 *e.g. 48,208,356; 1,636,776*  
 
-### Level
+#### Level
 
 The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  
 
@@ -196,7 +195,7 @@ One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA
    |2  |second cycle|  
    |3  |third cycle |  
 
-### Website
+#### Website
 
 One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  
 
@@ -204,11 +203,11 @@ One and only one website link must be provided for each new institution record. 
 The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.  
 *e.g. http://www.swu.bg*  
 
-## Programme Data Elements 
+### Programme Data Elements 
  
 Information on one or more programmes is required for all reports with the assigned activity type: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports. A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then **as a minimum the programme name must be provided** for programme data to be valid.)  
 
-### Programme Identification
+#### Programme Identification
 
 Certain types of reports must include data on at least one associated programme. An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. In the case that an existing identifier is later submitted with different programme information, the previous data will be used in place of the new.  
 
@@ -217,7 +216,7 @@ One local programme identifier may be provided for each programme associated wit
 *e.g. 61*  
 *e.g. 60800*  
 
-### Programme Name and Qualification
+#### Programme Name and Qualification
 
 One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.  
 
@@ -237,7 +236,7 @@ One or more alternative or other language names may be provided for each program
 The qualification offered by each programme may be recorded in the same language that is used for the alternative name version.  
 *e.g. Master of Medicine*  
 
-### Programme Location
+#### Programme Location
 
 Information on the country/ies where each programme is located should be provided if different from the host institution country. 
 
@@ -246,7 +245,7 @@ The one or more countries where the programme is located should be provided if d
 *e.g. BE*  
 *e.g. BEL*  
 
-### Programme Level
+#### Programme Level
 
 Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.
 
@@ -265,7 +264,7 @@ A single QF-EHEA level should be provided for each programme in the form of eith
   |2  |second cycle|  
   |3  |third cycle |  
 
-## Preparing QA Report Files
+### Preparing QA Report Files
 
 DEQAR requires PDF versions of quality assurance reports for every submission object. Agencies can choose either to make files available for harvest or to upload files. In order to make files available for harvest, agencies must provide the URL for files already available on a public server. Alternatively, files may be submitted using the API or uploaded through the administrative interface. All reports must be submitted with data on the language(s) used in the report. A file display name can be provided as well.
 		
@@ -284,10 +283,9 @@ One or more languages must be provided for each file in the form of an ISO 639 1
 *e.g. es*  
 *e.g. spa*  
 
-Data Pipeline
--------------
+## Data Pipeline
 
-## Data flow
+### Data flow
 
 All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
 
@@ -303,7 +301,7 @@ In general, irrespective of the submission method, all data inserted into DEQAR 
 	- identifiers of newly created records (Reports, Report Files);
 	- information on records where sanity checks found errors. 
 
-## Validation criteria
+### Validation criteria
 
 In order for records making up a Submission Request Object to clear the first level of validation, they must meet the following criteria:
 
@@ -339,7 +337,7 @@ In order for records making up a Submission Request Object to clear the first le
 
 Records not meeting all of the above criteria will be rejected. The system will return a Response Object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more records does not imply the failure of the whole Submission Request Object.
 
-## Flagging criteria
+### Flagging criteria
 
 Once the records making up the Submission Request Object clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records. (Please note, if an institution record already exists in DEQAR, this data takes precedence over any newly submitted data on the institution. Updates to existing institution records may be made through the EQAR secretariat.)
 
@@ -349,8 +347,8 @@ Sanity checks may result in **high-level flags** for the following reasons:
 
  - **Report Status** is listed as *part of obligatory EQA system* in a country where the Agency does not have official status.
  - Defined **QF-EHEA levels** of an institution and one or more of its programmes do not match.
-
-Sanity checks may result in **low-level flags** for the following reasons:
+ 
+ Sanity checks may result in **low-level flags** for the following reasons:
 
  - Report is on an institution in a country in which the agency has not previously been active.
  - Validity From date of a report is more than one year before the submission date. (NB: this check is suspended during the uploading of legacy data from each agency.)
@@ -359,9 +357,7 @@ Sanity checks may result in **low-level flags** for the following reasons:
 
 Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.
 
-
-
-### Summary of Data Elements
+## Summary of Data Elements
 
 Elements for each Report:  
 
