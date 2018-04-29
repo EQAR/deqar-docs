@@ -288,16 +288,14 @@ One or more languages must be provided for each file in the form of an ISO 639 1
 
 ## Data Pipeline
 
-### Data flow
+As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.  
 
-All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
-
-In general, irrespective of the submission method, all data inserted into DEQAR is handled following these steps:
+In general, irrespective of the submission method, all data submitted to DEQAR is handled following these steps:
 
  1. The Submission Request Object goes through the first level of validation;
  2. If the data format is invalid or the submitted identifiers cannot be resolved (see detailed [Validation Criteria](#validation-criteria) below), the record is rejected;
  3. Valid report data is populated in the appropriate tables;
- 4. Sanity checks are run against pre-defined flagging criteria (see detailed [Flagging Criteria](#flagging-criteria) below), reports which contain conflicts are flagged;
+ 4. Sanity checks are run against pre-defined flagging criteria (see detailed [Flagging Criteria](#flagging-criteria) below); reports which contain conflicts are flagged;
  5. A Response Object (or array of objects) is sent back to the agency, containing:
 	- detailed error descriptions for reports that were rejected;
 	- identifiers of records that were created or identified (in the case of Institutions);
