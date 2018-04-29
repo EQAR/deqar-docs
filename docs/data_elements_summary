@@ -1,6 +1,4 @@
-## Summary of Data Elements
-
-Elements for each Report:  
+## Report  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -17,7 +15,7 @@ Elements for each Report:
    |Link                                         |no           |many      |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
    |Link Display Name                            |no           |many      |*General information on this programme.*|
  
-Elements to identify an Institution record already present in DEQAR:  
+## Identify an Institution Record already present in DEQAR  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -25,7 +23,7 @@ Elements to identify an Institution record already present in DEQAR:
    |**ETER ID(\*)**                              |conditionally|one (per) |*BG0001*                |
    |**Local Institutional Identifier(\*)**       |conditionally|many (per)|*HCERES21*<br>*AT0004*  |
 
-Elements for a new Institution record:  
+## New Institution Record 
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |        
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -39,7 +37,7 @@ Elements for a new Institution record:
    |Institution QF-EHEA Level                    |no           |many (per)|*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
    |**Institutional Website(\*)**                |conditionally|one (per) |*http://www.swu.bg*     |  
 
-Elements to describe Programmes:  
+## Programme
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -52,7 +50,7 @@ Elements to describe Programmes:
    |Programme NQF Level                          |no           |one (per) |*level 6*<br>*level 7*  |
    |Programme QF-EHEA Level                      |no           |one (per) |*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
 
-Elements for Report Files:  
+## Report Files  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
