@@ -12,6 +12,8 @@ Below we provide a full list of the data elements that can make up a submission 
 
 ### Report Data Elements  
 
+For a tabular overview of all data elements, you may go to [**Data Elements Summary**](https://docs.deqar.eu/data_elements_summary.md).
+
 #### Report Creation
 
 A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.  
