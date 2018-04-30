@@ -462,10 +462,9 @@ As noted, agencies may submit objects and PDF files meeting defined criteria abo
 
 The DEQAR administrative interface includes an interactive web form, allowing you to submit single reports. The administrative interface is available at:
 
-```location: <https://admin.deqar.eu/>  
+location: <https://admin.deqar.eu/>  
 username: \[agency's acronym (in lower case)]  
 password: \[acronym followed by `#2018`]  
-```
 
 The web form can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
 
