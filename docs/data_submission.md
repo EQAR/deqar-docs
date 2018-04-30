@@ -195,7 +195,7 @@ A display name may optionally be provided for each link to the report on other s
 
 #### Linking to an Existing Record  
 
-Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record (see [Institution Identifiers](architecture_data_model#institution-identifiers). Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object (see [Institution Identifiers](architecture_data_model#institution-identifiers). If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [New Institution Record](#new-institution-record)below). 
+Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object (see [Institution Identifiers](architecture_data_model#institution-identifiers)). If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [New Institution Record](#new-institution-record) below). 
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -562,9 +562,9 @@ In Google Sheets, choose *Comma-separated values* from the *File* > *Download as
 
 The CSV upload module is part of the DEQAR admin interface:
 
-<https://admin.deqar.eu/upload-csv>
-
-The username is the agency’s acronym (in lower case, see reference list). For the testing period, the password is the username followed by `#2018`.
+location: <https://admin.deqar.eu/upload-csv>  
+username: \[agency's acronym (in lower case)]  
+password: \[acronym followed by `#2018`]  
 
  - Select *Submit Report* > *Upload CSV* from the menu.
  
