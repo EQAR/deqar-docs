@@ -2,13 +2,64 @@ Agencies are asked to prepare data on quality assurance reports for submission t
 
 Submission objects can be packaged together for batch submission. Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to update information on existing records through batch submission. Deletion of existing records can only be performed through the administrative interface. 
 
+Each agency should follow four discrete steps to prepare their data submission:
+
+1. Choose a particular submission method:
+    - Manual Entry through Webform
+    - Batch Submission in CSV through Webform
+    - Batch or Event Driven Submission in JSON through the API
+2. Prepare your data with guidance from the Submission Object Data Elements section below.
+3. Submit data using your chosen submission method.
+4. Await data ingest and receive response object with possible further instructions.
+
+## Choosing a Submission Method
+
+Considering the various needs of the agencies, DEQAR supports three different submission methods. Their use is highly dependent on the technical resources available to a particular agency. Importantly, all three methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
+
+### Data Submission via Webform  
+
+Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or
+modify existing ones. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.
+
+We recommend this method for agencies:
+
+- without IT developers.
+- with a closed system architecture from which data export is not straightforward.
+- who would like to submit small amounts of data occasionally.
+- who would like to interact with their DEQAR data directly.
+
+### Data Submission in CSV via Webform  
+
+In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below.
+
+Using CSV, transformation of data must be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and statistics on the status of the uploaded batch are shown on the import interface. Agency staff can then decide to submit the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import. 
+
+We recommend this method for agencies:
+
+- without IT developers.
+- with a local system from which they can export data in tables.
+- who would like to submit bigger amounts of data in a batch.
+- who would like to work manually on their data before submitting to DEQAR.
+
+### Data Submission in JSON via API  
+
+Rest API is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the JSON format it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
+
+We recommend this method for agencies:
+
+- with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint.
+- who would like to submit large amounts of data at once with a single call.
+- who would like to individual reports upon their creation.
+- who would like to keep DEQAR and their local system in sync.
+- who plan to submit data periodically and at longer intervals (e.g. weekly or monthly).
+
+## Submission Object Data Elements 
+
 Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold** with a \* , conditionally required data elements in **bold** with a (\*).  We use the terminology:
 
  - "must" to denote that an element is required or required in certain situations
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
-
-## Submission Object Data Elements  
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
