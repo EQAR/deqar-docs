@@ -414,13 +414,13 @@ In order for submission objects to clear the first level of validation, they mus
 1. The **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified. The agency may be identified using an agreed upon acronym or a DEQAR agency ID which has been provided by the EQAR secretariat.  
 
 2. All **required data** must be present for each report. Required data for all records includes:
-    1. [ESG activity performed](#report-activity): provided as activity name, ID given by EQAR or as a local identifier.
-    2. [Status of report](#report-details), provided as text or as an ID
-    3. [Decision](#report-details), provided as text or as an ID.
-    4. [Report valid from date, including date format](#report-validity) used by the agency
-    5. Language(s) of the report: At least one language for each report should be provided as a two- or three-digit [ISO 639-1 or 2/B code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Ideally language information is provided along with the link to the location of the PDF file. 
-    6. Institution: a report must relate to at least one institution, either an [existing DEQAR institution record identified by DEQARINST ID, ETER ID or Agency Local Identifier](#linking-to-an-existing-record), or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
-    7. For reports on programmes, the [Programme Name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).  
+    - [ESG activity performed](#report-activity): provided as activity name, ID given by EQAR or as a local identifier.
+    - [Status of report](#report-details), provided as text or as an ID
+    - [Decision](#report-details), provided as text or as an ID.
+    - [Report valid from date, including date format](#report-validity) used by the agency
+    - Language(s) of the report: At least one language for each report should be provided as a two- or three-digit [ISO 639-1 or 2/B code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Ideally language information is provided along with the link to the location of the PDF file. 
+    - Institution: a report must relate to at least one institution, either an [existing DEQAR institution record identified by DEQARINST ID, ETER ID or Agency Local Identifier](#linking-to-an-existing-record), or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
+    - For reports on programmes, the [Programme Name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).  
     
 3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element.  
 
