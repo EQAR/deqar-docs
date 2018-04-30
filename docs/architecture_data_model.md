@@ -62,7 +62,7 @@ The identification of each entity type is explained in detail below.
 
 Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identified automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organisations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in the administrative interface) must be provided as the source of identification. For this reason, identification of the creating agency is required for each object when using CSV and JSON. 
 
-(See [Report Creation](data_submission.md#report-creation).)
+(See [Submission Object Data Elements: Report Creation](data_submission.md#report-creation).)
 
 ### Institution Identifiers 
 
@@ -122,7 +122,7 @@ ETER/OrgReg data is managed according to the following principles:
 1. As a general policy, DEQAR keeps ETER data stable and unchanged between harvests. 
 2. If an agency submits data which is already found in an ETER record, the data *will **not** be used to replace or update ETER data*.
 3. If an agency submits data which is not yet found in an ETER record, the data *will be used to supplement the ETER data*.
-4. Alternative names and local identifiers may be added to ETER records and managed by agencies through the administrative interface (see [Identifying Entities](#identifying-entities)).  
+4. Alternative names and local identifiers may be added to ETER records and managed by agencies through the administrative interface (see [Institution Identifiers](#institution-identifiers) above).  
 5. If an agency would like to propose a correction or change of ETER data, the EQAR secretariat should be contacted.
 6. The EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources. 
 7. Added information and updates are carried through to records from subsequent harvests.
@@ -147,7 +147,7 @@ Institution data created by agencies is managed according to similar principles 
 1. As a general policy, DEQAR keeps institution data, including that submitted directly by an agency, stable and unchanged.
 2. If an agency submits data which is already found in the existing record, the data *will **not** be used to replace or update existing data*. 
 3. If an agency submits data which is not yet found in an existing institution record, the data *will be used to supplement the existing data*.
-4. Alternative names and local identifiers may be added to any institution record and managed by agencies through the administrative interface (see [Identifying Entities](#identifying-entities)).
+4. Alternative names and local identifiers may be added to any institution record and managed by agencies through the administrative interface (see [Institution Identifiers](#institution-identifiers) above).
 5. If an agency would like to propose a correction or change of existing institution data, the EQAR secretariat should be contacted.
 6. The EQAR secretariat reserves the right to adapt records based on the information that we receive through agencies and other sources.   
 
