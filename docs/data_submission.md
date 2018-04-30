@@ -38,7 +38,7 @@ The agency which created the report must be provided for each report as an agenc
 
 A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.  
 
-- DEQAR Report ID (<code>deqar_id</code>; not required; string)  
+- DEQAR Report ID (<code>report_id</code>; not required; string)  
 Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
 *e.g. 000786* 
 
