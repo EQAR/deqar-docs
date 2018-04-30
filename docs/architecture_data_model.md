@@ -60,7 +60,7 @@ The identification of each entity type is explained in detail below.
 
 ### Agency Identifiers
 
-Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identified automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organisations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in the administrative interface) must be provided as the source of identification. For this reason, identification of the [creating agency](data.submission.md#report-creation) is required for each object when using CSV and JSON. 
+Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identified automatically by the system. In some cases, an agency may serve as a *proxy agency* for a *creating agency*, submitting and managing data on its behalf (as in the case of umbrella organisations). In this case, the creating agency’s unique acronym or DEQAR agency ID (which can be found in the administrative interface) must be provided as the source of identification. For this reason, identification of the [Creating Agency](data_submission.md#report-creation) is required for each object when using CSV and JSON. 
 
 ### Institution Identifiers 
 
