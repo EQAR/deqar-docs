@@ -610,7 +610,10 @@ An example of obtaining a token using curl in command line:
 curl -s -H "Content-Type: application/json" -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{"username":"testuser","password":"testpassword"}'
 ```
 
-The username is the agency’s acronym (in lower case). For the testing period, the password is the username followed by #2018.
+The username is the agency’s acronym (in lower case). For the testing period, the password is the username followed by #2018:
+
+username: \[agency's acronym (in lower case)]  
+password: \[acronym followed by `#2018`]  
 
 Or for those who prefer to use the more user friendly httpie3 client:
 
