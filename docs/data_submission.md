@@ -32,7 +32,7 @@ We recommend this method for agencies:
 
 ### Data Submission in CSV via Webform  
 
-In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below (see [Submission Object Data Elements](data_submission.md#submission_object_data_elements)).
+In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below (see [Submission Object Data Elements](data_submission.md#submission-object-data-elements)).
 
 Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and statistics on the status of the uploaded batch are shown on the import interface. Agency staff can then decide to submit the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import. 
 
@@ -313,7 +313,7 @@ A local identifier may be submitted along with the report data in CSV or JSON; a
 
 #### Programme Identification
 
-An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record (see [Report and Programme Identifiers](architecture_data_model.md#report_and_programme_identifiers)). (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)  
+An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record (see [Report and Programme Identifiers](architecture_data_model.md#report-and-programme-identifiers)). (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)  
 
 - Local Programme Identifier (<code>programme[n].identifier[1]</code>; not required; string)  
 One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.  
