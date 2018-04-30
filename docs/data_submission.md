@@ -5,7 +5,7 @@ Submission objects can be packaged together for batch submission. Though they ar
 Each agency should follow four discrete steps to prepare their data submission:
 
 1. Choose a particular submission method:
-    - [Manual Entry through Webform](data_submission.md#web-form)
+    - [Manual Entry through Webform](data_submission.md#webform)
     - [Batch Submission in CSV through Webform](data_submission.md#csv-upload)
     - [Batch or Event Driven Submission in JSON through the API](data_submission.md#submission-api)
 2. Prepare your data with guidance from the [Submission Object Data Elements](data_submission.md#submission_object_data_elements) section below.
@@ -28,7 +28,7 @@ We recommend this method for agencies:
 - who would like to submit small amounts of data occasionally
 - who would like to interact with their DEQAR data directly
 
-(See [Webform](data_submission.md#web-form) below.)  
+(See [Webform](data_submission.md#webform) below.)  
 
 ### Data Submission in CSV via Webform  
 
@@ -458,15 +458,15 @@ Sanity checks may result in **high-level flags** for the following reasons:
 
 As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV file via webform; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
 
-### Web Form
+### Webform
 
-The DEQAR administrative interface includes an interactive web form, allowing you to submit single reports. The administrative interface is available at:
+The DEQAR administrative interface includes an interactive webform, allowing you to submit single reports. The administrative interface is available at:
 
 location: <https://admin.deqar.eu/>  
 username: \[agency's acronym (in lower case)]  
 password: \[acronym followed by `#2018`]  
 
-The web form can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
+The webform can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
 
 **First Webform Tab: Core Data:** We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary. Note: the [Activity](#report-activity) chosen might influence which information is required. (See [Submission Object Data Elements](#submission-object-data-elements) above.) 
 

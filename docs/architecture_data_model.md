@@ -18,7 +18,7 @@ DEQAR supports three core activities:
 
 - **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods
 
-    - as [individual records via webform](data_submission.md#web-form)
+    - as [individual records via webform](data_submission.md#webform)
     - as [batch CSV file via webform](data_submission.md#csv-upload)
     - as [JSON using an API](data_submission.md#submission-api)
     
