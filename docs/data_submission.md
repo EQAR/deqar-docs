@@ -417,10 +417,10 @@ In order for submission objects to clear the first level of validation, they mus
     - [ESG activity performed](#report-activity): provided as activity name, ID given by EQAR or as a local identifier.
     - [Status of report](#report-details), provided as text or as an ID
     - [Decision](#report-details), provided as text or as an ID.
-    - [Report valid from date, including date format](#report-validity) used by the agency
+    - Report [valid from date, including date format](#report-validity) used by the agency
     - Language(s) of the report: At least one language for each report should be provided as a two- or three-digit [ISO 639-1 or 2/B code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Ideally language information is provided along with the link to the location of the PDF file. 
     - Institution: a report must relate to at least one institution, either an [existing DEQAR institution record](#linking-to-an-existing-record) identified by DEQARINST ID, ETER ID or Agency Local Identifier, or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
-    - For reports on programmes, the [Programme Name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).  
+    - For reports on programmes, the [programme name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).  
     
 3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element.  
 
@@ -442,8 +442,8 @@ DEQAR records failing sanity checks may receive either a “low-level flag” or
 
 Sanity checks may result in **high-level flags** for the following reasons:
 
- - **Report Status** is listed as *part of obligatory EQA system* in a country where the Agency does not have official status.
- - Defined **QF-EHEA levels** of an institution and one or more of its programmes do not match.
+ - Report Status is listed as *part of obligatory EQA system* in a country where the Agency does not have official status.
+ - Defined QF-EHEA levels of an institution and one or more of its programmes do not match.
  
  Sanity checks may result in **low-level flags** for the following reasons:
 
@@ -452,7 +452,7 @@ Sanity checks may result in **high-level flags** for the following reasons:
  - Country of the Institution does not match the country of one or more of its programmes. 
  - Report on an Institution in the EHEA is submitted without the QF-EHEA levels provided.
 
-Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.
+*Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.*
 
 ## Submission Methods
 
@@ -462,13 +462,14 @@ As noted, agencies may submit objects and PDF files meeting defined criteria abo
 
 The DEQAR administrative interface includes an interactive web form, allowing you to submit single reports. The administrative interface is available at:
 
-location: <https://admin.deqar.eu/>  
+```location: <https://admin.deqar.eu/>  
 username: \[agency's acronym (in lower case)]  
 password: \[acronym followed by `#2018`]  
-    
+```
+
 The web form can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
 
-**First Webform Tab: Core Data:** We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary. Note: the [*Activity*](#report-activity) chosen might influence which information is required. (See [Submission Object Data Elements](#submission-object-data-elements) above.) 
+**First Webform Tab: Core Data:** We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary. Note: the [Activity](#report-activity) chosen might influence which information is required. (See [Submission Object Data Elements](#submission-object-data-elements) above.) 
 
 **Second Webform Tab: Institutions:** A report needs to relate to one or more (e.g. in case of joint programmes) institution(s). You can add institutions using the search box or browse the full list by country. (See [Institution Data Elements](#institution-data-elements) above.)
 
@@ -478,17 +479,16 @@ The web form can be found in the menu under *Submit Report* > *[Report Form](htt
 
 ### CSV Upload
 
-[Comma-separated values](https://en.wikipedia.org/wiki/Comma-separated_values) (CSV) is a common and interoperable data-exchange format. Files can be exported from all usual [spreadsheet software](#preparingexporting-csv-files) (e.g. Excel, LibreOffice, ...) and numerous other applications.
+[Comma-separated values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a common and interoperable data-exchange format. Files can be imported and exported from all usual [spreadsheet software](#preparingexporting-csv-files) (e.g. Excel, LibreOffice, ...) and numerous other applications.
 
-The first row of your file should include column names as defined under [Submission Object Data Elements](#submission-object-data-elements) above. A simple example for institution-level reports could look as follows:
+The first row of your file is a header which should include column names as defined under [Submission Object Data Elements](#submission-object-data-elements) above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:
 
 ```csv
-agency,activity,status,decision,valid_from,valid_to,date_format,file[1].original_location,file[1].report_language[1],institution[1].eter_id
+agency, activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
 ```
+(Spaces added for readability, these should not appear in an actual file.)
 
-The following lines contain one report per row.
-
-One report may often include/relate to several items, such as one or more institution(s), programmes or files (which each might contain several languages). In those cases you will find field names of the type `field_name[n]` [above](#submission-object-data-elements). You should create as many columns as you need and replace `n` by 1, 2, ...
+One report may often include/relate to several items, such as one or more institution(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type `field_name[n]` (See [Submission Object Data Elements](#submission-object-data-elements) above). You should create as many columns as you need and replace `n` by 1, 2, ...
 
 For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
 
