@@ -499,7 +499,7 @@ For example, two files (e.g. full report in local language, and summary in both 
 
 You can use one of the sample CSV files below as a starting point and adjust it to your needs. Please bear in mind the following:
 
- - The template file is provided on Google Docs as well as in Microsoft Excel and Open Document Formats. **It needs to be saved in CSV format for upload to DEQAR** (see notes below).
+ - The template file is provided in Microsoft Excel and Open Document Formats, as well as viewable on-line. **It needs to be saved in CSV format for upload to DEQAR** (see notes below).
  - The first worksheet includes *all* possible column names you could use in a CSV file, with the respective requirement/validation notes as comments. These comments will disappear as you save the file in CSV format.
  - The subsequent worksheets include more condensed examples with sample data, including those columns that will typically be used in reports concerning institutions, programmes or joint programmes.
  - You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.
@@ -507,10 +507,15 @@ You can use one of the sample CSV files below as a starting point and adjust it 
  
 #### Template and samples
 
- - [Microsoft Excel format](http://link.to/somewhere/)
- - [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](http://link.to/somewhere/)
- - [Google Docs](http://link.to/somewhere/)
- - CSV format (only examples, without comments): [Institutional reports](http://link.to/somewhere/), [Programme reports](http://link.to/somewhere/), [Joint programme reports](http://link.to/somewhere/)
+ - [Microsoft Excel format](files/SubmissionTemplate_version2.xlsx)
+ - [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](files/SubmissionTemplate_version2.ods)
+ - [View on-line](https://cloud.eqar.eu/s/sarDLSrJgQjkTie)
+ - CSV format (only examples, without comments):
+     - [Institutional reports](files/SubmissionSample_institutional.csv)
+     - [Programme reports](files/SubmissionSample_programme.csv)
+     - [Joint programme reports](files/SubmissionSample_joint-programme.csv)
+     - [Combined institution/programme reports](files/SubmissionSample_institutional-programme.csv)
+     - [Mixed types of reports](files/SubmissionSample_mixed.csv)
 
 #### Preparing/exporting CSV files
 
