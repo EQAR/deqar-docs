@@ -5,12 +5,12 @@ Submission objects can be packaged together for batch submission. Though they ar
 Each agency should follow four discrete steps to prepare their data submission:
 
 1. Choose a particular submission method:
-    - Manual Entry through Webform
-    - Batch Submission in CSV through Webform
-    - Batch or Event Driven Submission in JSON through the API
-2. Prepare your data with guidance from the Submission Object Data Elements section below.
+    - [Manual Entry through Webform](data_submission.md#web-form)
+    - [Batch Submission in CSV through Webform](data_submission.md#csv-upload)
+    - [Batch or Event Driven Submission in JSON through the API](data_submission.md#submission-api)
+2. Prepare your data with guidance from the [Submission Object Data Elements](data_submission.md#submission_object_data_elements) section below.
 3. Submit data using your chosen submission method.
-4. Await data ingest and receive response object with possible further instructions.
+4. Await data ingest via the [Data Pipeline](data_submission.md#data-pipeline) and receive response object with possible further instructions.
 
 ## Choosing a Submission Method
 
@@ -78,7 +78,7 @@ Below we provide a full list of the data elements that can make up a submission 
  
 ### Report Creation
 
-A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency.  
+A single creating agency must be clearly identified for each report (see [Agency Identifiers](architecture_data_model.md#agency_identifiers). The creating agency is often, though not always, the same as the submitting agency.  
 
 - **Agency\*** (<code>agency</code>; required; string)  
 The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.  
@@ -87,7 +87,7 @@ The agency which created the report must be provided for each report as an agenc
 
 ### Report Identification 
 
-A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object.  
+A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object (see [Report and Programme Identifiers](architecture_data_model.md#report-and-programme-identifiers)).  
 
 - DEQAR Report ID (<code>report_id</code>; not required; string)  
 Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
@@ -99,7 +99,7 @@ The report identifier used in the agency's local system should be provided for e
 
 ### Report Activity
 
-A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
+A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.  
 
 - **Activity(\*)** (<code>activity</code>; conditionally required; string)  
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
@@ -187,7 +187,7 @@ A display name may optionally be provided for each link to the report on other s
 
 #### Linking to an Existing Record  
 
-Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [below](#new-institution-record)). 
+Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record (see [Institution Identifiers](architecture_data_model#institution-identifiers). Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [below](#new-institution-record)). 
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -305,7 +305,7 @@ A local identifier may be submitted along with the report data in CSV or JSON; a
 
 #### Programme Identification
 
-An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record. (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)  
+An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record (see [Report and Programme Identifiers](architecture_data_model.md#report_and_programme_identifiers)). (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)  
 
 - Local Programme Identifier (<code>programme[n].identifier[1]</code>; not required; string)  
 One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.  
