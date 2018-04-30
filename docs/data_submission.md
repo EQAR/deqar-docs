@@ -19,39 +19,45 @@ Considering the various needs of the agencies, DEQAR supports three different su
 ### Data Submission via Webform  
 
 Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or
-modify existing ones. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.
+modify existing ones. Flags and validation errors will be returned immediately upon submission. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.
 
 We recommend this method for agencies:
 
-- without IT developers.
-- with a closed system architecture from which data export is not straightforward.
-- who would like to submit small amounts of data occasionally.
-- who would like to interact with their DEQAR data directly.
+- without IT developers
+- with a closed system architecture from which data export is not straightforward
+- who would like to submit small amounts of data occasionally
+- who would like to interact with their DEQAR data directly
+
+(See [Webform](data_submission.md#web-form) below.)  
 
 ### Data Submission in CSV via Webform  
 
-In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below.
+In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below (see [Submission Object Data Elements](data_submission.md#submission_object_data_elements)).
 
-Using CSV, transformation of data must be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and statistics on the status of the uploaded batch are shown on the import interface. Agency staff can then decide to submit the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import. 
+Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and statistics on the status of the uploaded batch are shown on the import interface. Agency staff can then decide to submit the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import. 
 
 We recommend this method for agencies:
 
-- without IT developers.
-- with a local system from which they can export data in tables.
-- who would like to submit bigger amounts of data in a batch.
-- who would like to work manually on their data before submitting to DEQAR.
+- without IT developers
+- with a local system from which they can export data in tables
+- who would like to submit bigger amounts of data in a batch
+- who would like to work manually on their data before submitting to DEQAR
+
+(See [CSV Upload](data_submission.md#csv-upload) below.) 
 
 ### Data Submission in JSON via API  
 
-Rest API is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the JSON format it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
+[Rest API](https://en.wikipedia.org/wiki/Representational_state_transfer) is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the [JSON format](https://www.json.org/) it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
 
 We recommend this method for agencies:
 
-- with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint.
-- who would like to submit large amounts of data at once with a single call.
-- who would like to individual reports upon their creation.
-- who would like to keep DEQAR and their local system in sync.
+- with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint
+- who would like to submit large amounts of data at once with a single call
+- who would like to individual reports upon their creation
+- who would like to keep DEQAR and their local system in sync
 - who plan to submit data periodically and at longer intervals (e.g. weekly or monthly).
+
+(See [Submission API](data_submission.md#submission-api) below.)
 
 ## Submission Object Data Elements 
 
@@ -60,6 +66,8 @@ Below we provide a full list of the data elements that can make up a submission 
  - "must" to denote that an element is required or required in certain situations
  - "should" to denote that an element is highly recommended
  - "may" to denote that an element is optional
+ 
+ (See [RFC 2119 Best Current Practice](https://tools.ietf.org/html/rfc2119).)
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |      
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -78,7 +86,7 @@ Below we provide a full list of the data elements that can make up a submission 
  
 ### Report Creation
 
-A single creating agency must be clearly identified for each report (see [Agency Identifiers](architecture_data_model.md#agency_identifiers). The creating agency is often, though not always, the same as the submitting agency.  
+A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency (see [Agency Identifiers](architecture_data_model.md#agency-identifiers)).  
 
 - **Agency\*** (<code>agency</code>; required; string)  
 The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.  
@@ -187,7 +195,7 @@ A display name may optionally be provided for each link to the report on other s
 
 #### Linking to an Existing Record  
 
-Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record (see [Institution Identifiers](architecture_data_model#institution-identifiers). Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [below](#new-institution-record)). 
+Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record (see [Institution Identifiers](architecture_data_model#institution-identifiers). Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object (see [Institution Identifiers](architecture_data_model#institution-identifiers). If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [New Institution Record](#new-institution-record)below). 
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -387,44 +395,48 @@ One or more languages must be provided for each file in the form of an ISO 639 1
 
 ## Data Pipeline
 
-All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
-
 In general, irrespective of the submission method, all data submitted to DEQAR is handled following these steps:
 
- 1. The Submission Request Object goes through the first level of validation;
- 2. If the data format is invalid or the submitted identifiers cannot be resolved (see detailed [Validation Criteria](#validation-criteria) below), the record is rejected;
- 3. Valid report data is populated in the appropriate tables;
- 4. Sanity checks are run against pre-defined flagging criteria (see detailed [Flagging Criteria](#flagging-criteria) below); reports which contain conflicts are flagged;
+ 1. The submission object goes through the first level of validation.
+ 2. If the data format is invalid or the submitted identifiers cannot be resolved, the record is rejected (see [Validation Criteria](#validation-criteria) below).
+ 3. Valid report data is populated in the appropriate tables.
+ 4. Sanity checks are run against pre-defined flagging criteria; reports which contain conflicts are flagged (see [Flagging Criteria](#flagging-criteria) below).
  5. A Response Object (or array of objects) is sent back to the agency, containing:
-	- detailed error descriptions for reports that were rejected;
-	- identifiers of records that were created or identified (in the case of Institutions);
-	- identifiers of newly created records (Reports, Report Files);
+	- detailed error descriptions for objects that were rejected
+	- identifiers of records that were created or identified (in the case of Institutions)
+	- identifiers for newly created records (Reports, Report Files)
 	- information on records where sanity checks found errors. 
 
 ### Validation criteria
 
-In order for records making up a Submission Request Object to clear the first level of validation, they must meet the following criteria:
+In order for submission objects to clear the first level of validation, they must meet the following criteria:
 
-1. The **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified. The agency may be identified using an agreed upon acronym or a DEQAR agency ID which has been provided by the EQAR secretariat.
+1. The **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified. The agency may be identified using an agreed upon acronym or a DEQAR agency ID which has been provided by the EQAR secretariat.  
+
 2. All **required data** must be present for each report. Required data for all records includes:
     1. [ESG activity performed](#report-activity): provided as activity name, ID given by EQAR or as a local identifier.
     2. [Status of report](#report-details), provided as text or as an ID
     3. [Decision](#report-details), provided as text or as an ID.
-    4. [Report valid from date, incl. date format](#report-validity) used by the agency
+    4. [Report valid from date, including date format](#report-validity) used by the agency
     5. Language(s) of the report: At least one language for each report should be provided as a two- or three-digit [ISO 639-1 or 2/B code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Ideally language information is provided along with the link to the location of the PDF file. 
-    6. Institution: a report must relate to at least one institution, either [existing and identified by DEQARINST ID, ETER ID or Agency Local Identifier](#linking-to-an-existing-record), or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
-    7. For reports on programmes, the Programme Name (in whatever language it is stored by the Agency).
-3. At this point, **dependencies** between elements will be checked as well as any **limits on the cardinality** of each element.
-4. Submitted data must be of the **correct type, form and value range/options** as described above.
-5. Submitted data must **align with Agency Profile** information, specifically report validation date should fall after Agency EQAR registration dates and activities should match defined ESG activities for the Agency.
-6. Submitted data must **meet basic data integrity rules** for the system, i.e. there should be one and only one creating agency and at least one institution covered by each report.
+    6. Institution: a report must relate to at least one institution, either an [existing DEQAR institution record identified by DEQARINST ID, ETER ID or Agency Local Identifier](#linking-to-an-existing-record), or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
+    7. For reports on programmes, the [Programme Name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).  
+    
+3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element.  
+
+4. Submitted data must be of the **correct type, form and value range/options** as described above.  
+
+5. Submitted data must **align with the Agency Profile** information, specifically report validation date should fall after Agency EQAR registration dates and activities should match defined ESG activities for the Agency.  
+
+6. Submitted data must **meet basic data integrity rules** for the system, i.e. there should be one and only one creating agency and at least one institution covered by each report.  
+
 7. Submitted report data must meet the [structural requirements determined by the ESG activity](#report-activity).
 
-Records not meeting all of the above criteria will be rejected. The system will return a Response Object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more records does not imply the failure of the whole Submission Request Object.
+Records not meeting all of the above criteria will be rejected. The system will return a response object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more submission objects does not imply the failure of the whole submission batch.
 
 ### Flagging criteria
 
-Once the records making up the Submission Request Object clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records. (Please note, if an institution record already exists in DEQAR, this data takes precedence over any newly submitted data on the institution. Updates to existing institution records may be made through the EQAR secretariat.)
+Once the submission objects clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records. (Please note, if an institution record already exists in DEQAR, this data takes precedence over any newly submitted data on the institution. Updates to existing institution records may be made through the administrative interface or the EQAR secretariat. See [Institution Data Elements](#institution-data-elements).)
 
 DEQAR records failing sanity checks may receive either a “low-level flag” or a “high-level flag”. In the first case, records will appear online with submitted data while they await checks and confirmation by the EQAR secretariat. In the second case, records will not be published until they have been checked and confirmed by the EQAR secretariat.
 
@@ -444,43 +456,25 @@ Note: any record awaiting harvest or upload of the PDF version of the related re
 
 ## Submission Methods
 
-As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
+As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV file via webform; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
 
 ### Web Form
 
 The DEQAR administrative interface includes an interactive web form, allowing you to submit single reports. The administrative interface is available at:
 
-<https://admin.deqar.eu/>
+location: <https://admin.deqar.eu/>
+username: \[agency's acronym (in lower case)]
+password: \[acronym followed by `#2018`]
     
-Your username is your agency's acronym (in lower case), your default password is the acronym followed by `#2018`.
+The web form can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
 
-The web form can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. The *Save Record* button becomes active once all required information has been provided.
+**First Webform Tab: Core Data:** We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary. Note: the [*Activity*](#report-activity) chosen might influence which information is required. (See [Submission Object Data Elements](#submission-object-data-elements) above.) 
 
-Required fields are marked with a <span style="color: #f00;">\*</span> in the form.
+**Second Webform Tab: Institutions:** A report needs to relate to one or more (e.g. in case of joint programmes) institution(s). You can add institutions using the search box or browse the full list by country. (See [Institution Data Elements](#institution-data-elements) above.)
 
-Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required: for example, you need to enter either an URL or select a file for upload when adding a report file. 
+**Third Webform Tab: Programmes:** The programme tab will only be needed if your report results from a programme-related activity. Fill the form with the required information and then click the *Add Programme* button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned. (See [Programme Data Elements](#programme-data-elements) above.)
 
-#### Core Data
-
-Please note that the *Activity* chosen might influence which information is required.
-
-We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary.
-
-#### Institutions
-
-A report needs to relate to one or more (e.g. in case of joint programmes) institution(s). You can add institutions using the search box or browse the full list by country.
-
-#### Programmes
-
-The programme tab will only be active if your report belongs to an activity that is not a purely institutional type.
-
-Fill the form with the required information and then click the *Add Programme* button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned.
-
-#### Report Files
-
-Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files).
-
-Files can be provided by link or directly uploaded. For each file, please specify the language(s) of the contents. The display name is optional; the text "Report" will be used as a default otherwise.
+**Fourth Webform Tab: Report Files:** Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files). The report file fields are conditionally required. At least one must be present but agencies can either provide a URL or selected as a file for upload. For each file, please specify the language(s) of the contents. The display name is optional; the text "Report" will be used as a default otherwise. (See [QA Report Files](#qa-report-files) above.)
 
 ### CSV Upload
 
