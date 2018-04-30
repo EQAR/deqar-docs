@@ -12,7 +12,7 @@ REST API is a convenient way for software developers to communicate with web ser
 
 The DEQAR Web API allows to search and discover QA reports, and to embed such functionality in own websites or applications.
 
-The [public DEQAR web interface](public_web.md) uses the same API.
+The [public DEQAR web interface](#public-web-interface) uses the same API.
 
 ### Access
 

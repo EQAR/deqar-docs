@@ -136,7 +136,7 @@ A display name may optionally be provided for each link to the report on other s
 
 #### Linking to an Existing Record  
 
-Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [**Institution Data Elements**](https://docs.deqar.eu/submission_object_fields/#institution-data-elements) below). 
+Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object. If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see [below](#new-institution-record)). 
 
    |ELEMENT NAME                                 |REQUIRED     |ONE/MANY  |EXAMPLE                 |       
    |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -184,7 +184,7 @@ The official name of each institution in the original alphabet must be provided 
 *e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*  
 
 - Official Institution Name, transliterated (<code>institution[n].name_official_transliterated</code>; not required; string)  
-A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then [ISO romanisation standards] (https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created romanised forms.  If transliteration is not provided, access to the institution record through the search interface will be more limited.  
+A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then [ISO romanisation standards](https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created romanised forms.  If transliteration is not provided, access to the institution record through the search interface will be more limited.  
 *e.g. Yugo-zapaden universitet "Neofit Rilski”*  
 *e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*  
 
@@ -581,9 +581,8 @@ request body.
 
 The **Submission Request Object** is the JSON object (or array of objects) which is
 the manifestation of a report or set of reports an agency wants to submit.
-Fields names and accepted types are as described in [Data Preparation](submission_object_fields.md).
 
-The full definition of request and response objects can be find in OpenAPI format under:
+Fields and accepted types are as described in [Submission Object Data Elements](#submission-object-data-elements) above. The full definition of request and response objects can be find in OpenAPI format under:
 
 [https://app.swaggerhub.com/apis/EQAR/SubmissionAPI/1.0.0](https://app.swaggerhub.com/apis/EQAR/SubmissionAPI/1.0.0)
 
