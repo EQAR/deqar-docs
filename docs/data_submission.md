@@ -419,7 +419,7 @@ In order for submission objects to clear the first level of validation, they mus
     - [Decision](#report-details), provided as text or as an ID.
     - [Report valid from date, including date format](#report-validity) used by the agency
     - Language(s) of the report: At least one language for each report should be provided as a two- or three-digit [ISO 639-1 or 2/B code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Ideally language information is provided along with the link to the location of the PDF file. 
-    - Institution: a report must relate to at least one institution, either an [existing DEQAR institution record identified by DEQARINST ID, ETER ID or Agency Local Identifier](#linking-to-an-existing-record), or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
+    - Institution: a report must relate to at least one institution, either an [existing DEQAR institution record](#linking-to-an-existing-record) identified by DEQARINST ID, ETER ID or Agency Local Identifier, or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
     - For reports on programmes, the [Programme Name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).  
     
 3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element.  
@@ -430,7 +430,7 @@ In order for submission objects to clear the first level of validation, they mus
 
 6. Submitted data must **meet basic data integrity rules** for the system, i.e. there should be one and only one creating agency and at least one institution covered by each report.  
 
-7. Submitted report data must meet the [structural requirements determined by the ESG activity](#report-activity).
+7. Submitted report data must meet the structural requirements determined by the [ESG activity](#report-activity).
 
 Records not meeting all of the above criteria will be rejected. The system will return a response object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more submission objects does not imply the failure of the whole submission batch.
 
@@ -462,9 +462,9 @@ As noted, agencies may submit objects and PDF files meeting defined criteria abo
 
 The DEQAR administrative interface includes an interactive web form, allowing you to submit single reports. The administrative interface is available at:
 
-location: <https://admin.deqar.eu/>
-username: \[agency's acronym (in lower case)]
-password: \[acronym followed by `#2018`]
+location: <https://admin.deqar.eu/>  
+username: \[agency's acronym (in lower case)]  
+password: \[acronym followed by `#2018`]  
     
 The web form can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
 
