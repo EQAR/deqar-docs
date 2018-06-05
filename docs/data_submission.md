@@ -248,7 +248,7 @@ A romanised transliteration should be provided if the official institution name 
 *e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*  
 
 - English Institution Name (<code>institution[n].name_english</code>; not required; string)  
-A single English institution name may be provided for each institution.	If provided, the English institution name will be used as the primary institution name in the search interface.  
+A single English institution name may be provided *for any institution without an English official name \[added on 05.06.2018\]*. If provided, the English institution name will be used as the primary institution name in the search interface.  
 *e.g. South-West University "Neofit Rilski", Blagoevgrad*  
 
 - Institution Acronym (<code>institution[n].acronym</code>; not required; string)  
