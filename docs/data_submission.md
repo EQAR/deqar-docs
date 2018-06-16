@@ -464,7 +464,11 @@ The DEQAR administrative interface includes an interactive webform, allowing you
 
 location: <https://admin.deqar.eu/>  
 username: \[agency's acronym (in lower case)]  
-password: \[acronym followed by `#2018`]  
+password: \[your personal password]  
+
+If you do not remember your password or did not change the default password, please go to <https://admin.deqar.eu/forgot-password> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.
+
+The email address linked to your login is the same email address to which submission report emails are sent. If you do not remember which email address is linked to your agency's login, please contact the EQAR Secretariat.
 
 The webform can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
 
@@ -564,7 +568,7 @@ The CSV upload module is part of the DEQAR admin interface:
 
 location: <https://admin.deqar.eu/upload-csv>  
 username: \[agency's acronym (in lower case)]  
-password: \[acronym followed by `#2018`]  
+password: \[your personal password] (see [above](#webform) how to reset your password)
 
  - Select *Submit Report* > *Upload CSV* from the menu.
  
@@ -610,10 +614,7 @@ An example of obtaining a token using curl in command line:
 curl -s -H "Content-Type: application/json" -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{"username":"testuser","password":"testpassword"}'
 ```
 
-The username is the agency’s acronym (in lower case). For the testing period, the password is the username followed by #2018:
-
-username: \[agency's acronym (in lower case)]  
-password: \[acronym followed by `#2018`]  
+The username is the agency’s acronym (in lower case). Please see [above](#webform) how to reset your password.
 
 Or for those who prefer to use the more user friendly httpie3 client:
 
