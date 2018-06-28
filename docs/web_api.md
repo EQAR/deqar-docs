@@ -2,9 +2,9 @@
 
 The DEQAR public web interface is freely accessible at:
 
-<http://eqar.demo.slik.eu/qa-results/>
+<https://www.deqar.eu/>
 
-**This is a provisional preview**, it will be replaced by <https://www.deqar.eu/> when launched to the public.
+DEQAR is currently made available as a public preview and thus still in the stage of active testing/development. Please also take the [user survey](https://www.eqar.eu/qa-results/users-survey/) to help us improve DEQAR.
 
 ## Web API
 
