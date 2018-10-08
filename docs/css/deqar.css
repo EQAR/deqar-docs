@@ -1,5 +1,9 @@
 /* CSS custom for DEQAR MkDocs */
 
+.wy-side-nav-search {
+    background-color: #98ACCA;
+}
+
 .wy-menu li.current ul.subnav ul {
     padding-left: 1em;
 }
@@ -12,6 +16,14 @@
     padding-left: 2.427em;
 }
 
+/* adjust colours to EQAR theme */
+
+code, .rst-content tt {
+    font-size: 90%;
+    padding: 2px 0px;
+    color: #18498F;
+    border: none;
+}
 
 /* quotes from documents */
 
@@ -29,9 +41,19 @@ blockquote p:last-child {
 pre {
    border: none;
    font-family: inherit;
-   background-color: #E4E9F1;
+   background-color: #98ACCA;
    padding: .5em;
-   margin: 1em;
+   margin: 1em 0;
+}
+
+.rst-content .section a {
+    color: #18498F;
+}
+.rst-content .section a:hover {
+    text-decoration: underline;
+}
+.rst-content .section a:visited {
+    color: #18498F;
 }
 
 .rst-content .section ul li p:last-child {
