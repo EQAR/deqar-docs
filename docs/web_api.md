@@ -16,9 +16,9 @@ The [public DEQAR web interface](#public-web-interface) uses the same API.
 
 ### Access
 
-The DEQAR Web API is available to all interested parties, in line with the DEQAR Terms and Conditions.
+The DEQAR Web API is available to all interested parties, in line with the [DEQAR Terms and Conditions](https://www.eqar.eu/legal-notice/deqar/).
 
-EQAR-registered agencies have access to the Web API automatically, using their credentials for the DEQAR administrative interface and the Submission API.
+EQAR-registered agencies have access to the Web API automatically, using their [credentials for the DEQAR administrative interface](data_submission.md#webform) and the Submission API.
 
 For all others, use of the API is free, but subject to prior registration in order to avoid excessive resource consumption and to ensure that the information is not used in a way that jeopardises the objectives of DEQAR.
 
@@ -53,7 +53,7 @@ The base URL for the following endpoints is:
 
 The full definitions of the following endpoints and the response objects is available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
 
-<https://app.swaggerhub.com/apis/EQAR/WebAPI/1.0.0#/>
+<https://backend.deqar.eu/webapi/v1/swagger/>
 
 #### Countries
 

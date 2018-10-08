@@ -637,7 +637,7 @@ the manifestation of a report or set of reports an agency wants to submit.
 
 Fields and accepted types are as described in [Submission Object Data Elements](#submission-object-data-elements) above. The full definition of request and response objects can be find in OpenAPI format under:
 
-[https://app.swaggerhub.com/apis/EQAR/SubmissionAPI/1.0.0](https://app.swaggerhub.com/apis/EQAR/SubmissionAPI/1.0.0)
+<https://backend.deqar.eu/submissionapi/v1/swagger/>
 
 #### Report File Submission Endpoint
 
