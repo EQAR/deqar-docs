@@ -175,7 +175,7 @@ A date format  must be provided for each report. Dates may be submitted in any s
    |%-m      |month as expressed in one or two digits|5 for May and 12 for December|
    |%Y       |year as expressed in four digits       |2014                         |
    |%y       |year as expressed in two digits        |14                           |
-   |d-%m-%Y  |                                       |04-01-2014                   |
+   |%d-%m-%Y  |                                       |04-01-2014                   |
    |%d/%m/%y |                                       |04/01/14                     |
    |%Y-%m-%d |                                       |2015-01-15                   |  
 
