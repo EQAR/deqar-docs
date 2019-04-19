@@ -30,9 +30,9 @@ code, .rst-content tt {
 .rst-content blockquote {
     background-color: #C6D2E3;
     margin: 10px 0 20px 0;
-    border: none;
+    border-left: 6px solid #98ACCA;
     padding: 15px;
-    border-radius: 7px;
+    border-radius: 5px;
 }
 .rst-content blockquote p:last-child {
    margin-bottom: 0;
@@ -46,14 +46,17 @@ pre {
    margin: 1em 0;
 }
 
-.rst-content .section a {
+.rst-content .section a, .rst-content .section a:visited {
     color: #18498F;
+}
+.rst-content .section a[href$=".pdf"], .rst-content .section a[href$=".pdf"]:visited {
+    color: #FF8A00;
+    padding: 9px 12px 9px 40px;
+    display: block;
+    background: #FFF3D9 url(../img/pdf.svg) no-repeat 13px center;
 }
 .rst-content .section a:hover {
     text-decoration: underline;
-}
-.rst-content .section a:visited {
-    color: #18498F;
 }
 
 .rst-content .section ul li p:last-child {

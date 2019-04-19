@@ -6,6 +6,8 @@ The purpose of DEQAR is to give wide public access to the reports and decisions 
 - the provision of a basic set of standardised data on a range of agency activities;
 - linked contextual data on national QA requirements and QA agencies, allowing users to understand the status and nature of QA reports.
 
+[Download Quick Start Guide](files/DEQARStartUpPackage_v2.pdf)
+
 # Getting Started
 
 To get started with DEQAR, it is a good idea to first take measure of your agency’s needs to determine:
@@ -14,18 +16,23 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 
 > **Take stock of the activities you undertake and the past and current reports which are eligible for DEQAR.**
 >
-> - Only upload those **reports on activities that were confirmed to be within the scope of the ESG** when the reports were created.<br />
->   _Note: the list of eligible activities can be found on the register record for the agency ([https://www.eqar.eu/register/agencies/](https://www.eqar.eu/register/agencies/)) and also in the DEQAR administrative interface  accessible after the agency activates its account (see below: [Activate your Account](quick_start_guide.md#activate_your_account))._ <br />_If a new activity is introduced, then a formal change report should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: melinda.szabo@eqar.eu or info@eqar.eu_
+> - Only upload those **reports on activities that were confirmed to be within the scope of the ESG** when the reports were created.
+>
+>     _Note: the list of eligible activities can be found on the register record for the agency ([https://www.eqar.eu/register/agencies/](https://www.eqar.eu/register/agencies/)) and also in the DEQAR administrative interface  accessible after the agency activates its account (see below: [Activate your Account](quick_start_guide.md#activate_your_account))._
+>
+>     _If a new activity is introduced, then a formal change report should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: melinda.szabo@eqar.eu or info@eqar.eu_
 >
 > - Only upload **reports created since the date of the agency’s registration** on EQAR (i.e. the date of the first external review of your agency against the ESG).
 >
->     - Upload **legacy data**, i.e. the backlog of reports published since registration with EQAR.<br />
->    _Note: if your agency is newly registered, then you should have little if any legacy data._
+>     - Upload **legacy data**, i.e. the backlog of reports published since registration with EQAR.
+>
+>         _Note: if your agency is newly registered, then you should have little if any legacy data._
 >
 >     - Upload **current data**, i.e. reports you have recently completed (or will complete in the future).
 >
-> - It is necessary to meet certain **data requirements** in order for reports to be ingested into the system. Data requirements for reports vary depending on the type of activity described.  Ensure that you have this data available or can generate it as needed.<br />
->   _Note: there are a few “soft requirements” for DEQAR which are not necessary for ingest but which do trigger a red or yellow alert flag in the system._
+> - It is necessary to meet certain **data requirements** in order for reports to be ingested into the system. Data requirements for reports vary depending on the type of activity described.  Ensure that you have this data available or can generate it as needed.
+>
+>     _Note: there are a few “soft requirements” for DEQAR which are not necessary for ingest but which do trigger a red or yellow alert flag in the system._
 >
 > For details, please see:<br />
 > [Submission Object Data Elements](data_submission.md#submission_object_data_elements)<br />
@@ -41,7 +48,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 > - CSV file upload for larger batches of reports; and
 > - an API which automatically uploads reports from your local database as they are created, individually or in batches.
 >
->_Note: these three methods are interoperable and can be used in different situations by the same agency. You should determine which option or options best suits your agency._
+> _Note: these three methods are interoperable and can be used in different situations by the same agency. You should determine which option or options best suits your agency._
 >
 > For details, please see:<br />
 > [Choosing a Submission Method](data_submission.md#choosing-a-submission-method)<br />
@@ -55,15 +62,17 @@ Once you have figured out what you will submit and how, then it is time to enter
 
 > **Access the DEQAR account for your agency and confirm existing information.**
 >
-> - To activate your agency’s account, contact the EQAR secretariat at: kathryn.mathe@eqar.eu or info@eqar.eu<br />
->_Note: unless you wish otherwise, the account information (contact name and email) will be based on the information on the agency already in our system._
+> - To activate your agency’s account, contact the EQAR secretariat at: kathryn.mathe@eqar.eu or info@eqar.eu
+>
+>     _Note: unless you wish otherwise, the account information (contact name and email) will be based on the information on the agency already in our system._
 >
 > - Enter DEQAR’s Administrative User Interface using the following link: [https://admin.deqar.eu](https://admin.deqar.eu)
 >
 > - Visit your agency’s Profile under My Data:
 >
->     - to freely update the DEQAR contact information and password as suits your needs.<br />
->  _Note: if you change your email address, you will need to use the new address to reset your password in the future._
+>     - to freely update the DEQAR contact information and password as suits your needs.
+>
+>         _Note: if you change your email address, you will need to use the new address to reset your password in the future._
 >
 >     - _(coming soon)_ to update publicly available contact data on your agency, such as agency website, contact person, phone number, address and email.
 >
@@ -72,10 +81,12 @@ Once you have figured out what you will submit and how, then it is time to enter
 >     _Note: if you would like to change the general “Information on the agency’s work”, listed agency activities or the list of countries where the agency’s activities are officially recognised, you should contact the EQAR secretariat: melinda.szabo@eqar.eu or info@eqar.eu_
 >
 > - You should also analyse DEQAR’s institutional list to ensure that institutions evaluated/accredited by your agency are already present in the system.  The institution list can be found on the EQAR Admin Interface at: [https://admin.deqar.eu/institutions](https://admin.deqar.eu/institutions)
->_Note: the base institution list has been taken from the European Tertiary Education Register (ETER/OrgReg; [https://risis-eter.orgreg.joanneum.at/about/intro](https://risis-eter.orgreg.joanneum.at/about/intro)).<br />
-> If institutions are missing from the list, please contact the EQAR secretariat: kathryn.mathe@eqar.eu or info@eqar.eu  to arrange for the data to be imported._
+>
+>     _Note: the base institution list has been taken from the European Tertiary Education Register (ETER/OrgReg; [https://risis-eter.orgreg.joanneum.at/about/intro](https://risis-eter.orgreg.joanneum.at/about/intro))._
+>
+>     _If institutions are missing from the list, please contact the EQAR secretariat: kathryn.mathe@eqar.eu or info@eqar.eu  to arrange for the data to be imported._
 
-##Get to Know the System
+## Get to Know the System
 
 > **Familiarise yourself with the administrative interface and the Sandbox.**
 >
@@ -99,7 +110,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _Note: the entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day._
 
-##Perform your First Submission
+## Perform your First Submission
 
 > - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the Sandbox.
 >
@@ -137,3 +148,5 @@ Once you have figured out what you will submit and how, then it is time to enter
 > **Find out more about the Commission-funded DEQAR Project, scheduled to run until end of October 2019.**
 >
 > We invite you to visit our DEQAR Project pages on the EQAR website at: [https://www.eqar.eu/qa-results/deqar-project/](https://www.eqar.eu/qa-results/deqar-project/)
+
+[Download Quick Start Guide](files/DEQARStartUpPackage_v2.pdf)
