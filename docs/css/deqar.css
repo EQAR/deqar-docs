@@ -27,16 +27,16 @@ code, .rst-content tt {
 
 /* quotes from documents */
 
-/*
-blockquote {
-   background-color: #D2E5F2;
-   margin-right: 24px;
-   padding: .5em;
+.rst-content blockquote {
+    background-color: #C6D2E3;
+    margin: 10px 0 20px 0;
+    border: none;
+    padding: 15px;
+    border-radius: 7px;
 }
-blockquote p:last-child {
+.rst-content blockquote p:last-child {
    margin-bottom: 0;
 }
-*/
 
 pre {
    border: none;
@@ -59,6 +59,17 @@ pre {
 .rst-content .section ul li p:last-child {
     margin-bottom: 12px;
 }
+
+/* we want you for DEQAR */
+.rst-content img[src="../img/DEQARWantsYou.png"] {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4, .rst-content h5 {
+    clear: both;
+}
+
 /* ordered lists */
 .rst-content .section ol {
    counter-reset: orderedlist;

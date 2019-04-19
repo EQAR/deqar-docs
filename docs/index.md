@@ -25,7 +25,7 @@ Read more about the DEQAR project and partners involved at: <http://www.deqar.eu
 ## DEQAR EcoSystem
 
 * DEQAR backend - A [DRF](http://www.django-rest-framework.org/) applicaiton responsible for managing the data-model, providing API endpoints for submission, file uploads and the admin user interface. - [DEQAR backend on GitHub](https://www.github.com/eqar/eqar_backend)
-* DEQAR administrative interface - <https://admin.deqar.eu/> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://www.github.com/eqar/eqar_frontend)
+* DEQAR administrative interface - <https://admin.deqar.eu/> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://github.com/EQAR/deqar_frontend)
 * Public website
 
 ## Questions and bug reports
