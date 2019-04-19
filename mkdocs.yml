@@ -3,6 +3,7 @@ site_name: DEQAR Documentation
 pages:
     - Home: index.md
     - Architecture and Data Model: architecture_data_model.md
+    - Quick Start Guide: quick_start_guide.md
     - Data Submission: data_submission.md
 #    - Data administration: data_administration.md
     - Search and Discovery: web_api.md
