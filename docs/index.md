@@ -1,4 +1,5 @@
-DEQAR is the Database of External Quality Assurance Results.
+Database of External Quality Assurance Results (DEQAR)
+======================================================
 
 ## About the project
 

@@ -1,3 +1,6 @@
+Search and Discovery
+====================
+
 ## Public web interface
 
 The DEQAR public web interface is freely accessible at:
