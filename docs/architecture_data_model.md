@@ -1,3 +1,6 @@
+Architecture and Data Model
+===========================
+
 Structural Overview
 -------------------
 The DEQAR data model has been designed around four main entities: registered quality assurance **Agencies**, higher education **Institutions**, educational **Programmes** associated with institutions, and external quality assurance **Reports**.
@@ -27,7 +30,7 @@ DEQAR supports three core activities:
 
 
 Role of Standards and Identifiers 
---------------------------------
+---------------------------------
 
 As DEQAR aggregates data from different sources, we face several challenges:
 

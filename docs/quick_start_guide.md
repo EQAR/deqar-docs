@@ -1,3 +1,5 @@
+# Quick Start Guide
+
 ![We want you to join DEQAR!](img/DEQARWantsYou.png)
 
 The purpose of DEQAR is to give wide public access to the reports and decisions on higher education institutions/programmes externally reviewed by EQAR-registered agencies.  We accomplish this through:
@@ -8,11 +10,11 @@ The purpose of DEQAR is to give wide public access to the reports and decisions 
 
 [Download Quick Start Guide](files/DEQARStartUpPackage_v2.pdf)
 
-# Getting Started
+## Getting Started
 
 To get started with DEQAR, it is a good idea to first take measure of your agency’s needs to determine:
 
-## What to Upload?
+### What to Upload?
 
 > **Take stock of the activities you undertake and the past and current reports which are eligible for DEQAR.**
 >
@@ -38,7 +40,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 > [Submission Object Data Elements](data_submission.md#submission_object_data_elements)<br />
 > [Data Pipeline](data_submission.md##data-pipeline)
 
-## How to Upload?
+### How to Upload?
 
 > **Take stock of the size of your organisation, available staff and technical expertise as well as the volume of activities you undertake.**
 >
@@ -54,11 +56,11 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 > [Choosing a Submission Method](data_submission.md#choosing-a-submission-method)<br />
 > [Submission Methods](data_submission.md#submission-methods)
 
-# Finding your Legs in DEQAR
+## Finding your Legs in DEQAR
 
 Once you have figured out what you will submit and how, then it is time to enter the system.
 
-## Activate your Account
+### Activate your Account
 
 > **Access the DEQAR account for your agency and confirm existing information.**
 >
@@ -86,7 +88,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _If institutions are missing from the list, please contact the EQAR secretariat: kathryn.mathe@eqar.eu or info@eqar.eu  to arrange for the data to be imported._
 
-## Get to Know the System
+### Get to Know the System
 
 > **Familiarise yourself with the administrative interface and the Sandbox.**
 >
@@ -110,15 +112,15 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _Note: the entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day._
 
-## Perform your First Submission
+### Perform your First Submission
 
 > - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the Sandbox.
 >
 > - When you are ready to submit to the live site, please contact the EQAR secretariat at: kathryn.mathe@eqar.eu or info@eqar.eu. This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
 
-# DEQAR in the Longer Term
+## DEQAR in the Longer Term
 
-## Make a Road Map
+### Make a Road Map
 
 > **Determine internal priorities and work methods.**
 >
@@ -131,7 +133,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >   _Note: methods for submitting legacy data — which is generally done in a few large batches — may be quite distinct from methods for continuous submission._
 
-## Stay Connected
+### Stay Connected
 
 > **Stick with your road map and adapt your methods as needed.**
 >
@@ -143,7 +145,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 > _Note: the DEQAR front end user interface is built using an API. This means that any agency may embed a version of DEQAR (included full search functionality) in its own website to alleviate some of the burden on the local IT team._
 
-## Follow the DEQAR Project
+### Follow the DEQAR Project
 
 > **Find out more about the Commission-funded DEQAR Project, scheduled to run until end of October 2019.**
 >

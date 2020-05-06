@@ -18,7 +18,7 @@
 
 /* adjust colours to EQAR theme */
 
-code, .rst-content tt {
+.rst-content code, .rst-content tt {
     font-size: 90%;
     padding: 2px 0px;
     color: #18498F;
@@ -71,6 +71,16 @@ pre {
 
 .rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4, .rst-content h5 {
     clear: both;
+}
+
+.rst-content table {
+    margin-left: 24px;
+    margin-bottom: 24px;
+}
+
+.rst-content table td,
+.rst-content table th {
+    padding: 5px 10px;
 }
 
 /* ordered lists */
