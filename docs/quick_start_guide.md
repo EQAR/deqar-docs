@@ -64,7 +64,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 
 > **Access the DEQAR account for your agency and confirm existing information.**
 >
-> - To activate your agency’s account, contact the EQAR secretariat at: kathryn.mathe@eqar.eu or info@eqar.eu
+> - To activate your agency’s account, contact the EQAR secretariat at: [deqar@eqar.eu](mailto:deqar@eqar.eu)
 >
 >     _Note: unless you wish otherwise, the account information (contact name and email) will be based on the information on the agency already in our system._
 >
@@ -86,7 +86,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _Note: the base institution list has been taken from the European Tertiary Education Register (ETER/OrgReg; [https://risis-eter.orgreg.joanneum.at/about/intro](https://risis-eter.orgreg.joanneum.at/about/intro))._
 >
->     _If institutions are missing from the list, please contact the EQAR secretariat: kathryn.mathe@eqar.eu or info@eqar.eu  to arrange for the data to be imported._
+>     _If institutions are missing from the list, please contact the EQAR secretariat: [deqar@eqar.eu](mailto:deqar@eqar.eu) to arrange for the data to be imported._
 
 ### Get to Know the System
 
@@ -116,7 +116,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 
 > - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the Sandbox.
 >
-> - When you are ready to submit to the live site, please contact the EQAR secretariat at: kathryn.mathe@eqar.eu or info@eqar.eu. This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
+> - When you are ready to submit to the live site, please contact the EQAR secretariat at: [deqar@eqar.eu](mailto:deqar@eqar.eu). This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
 
 ## DEQAR in the Longer Term
 
