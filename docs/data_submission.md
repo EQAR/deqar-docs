@@ -690,5 +690,5 @@ Please supply the institution data using the template available in two formats:
 * [Open Document Format](files/Template_HEI_lists.ods) (OpenOffice, LibreOffice)
 * [Microsoft Excel Format](files/Template_HEI_lists.xlsx)
 
-You may save the spreadsheet in either format or as a CSV file. Send the filled spreadsheet to [info@eqar.eu](mailto:info@eqar.eu); we will check the list shortly and return your original file with the newly generated DEQARINST IDs added.
+You may save the spreadsheet in either format or as a CSV file. Send the filled spreadsheet to [deqar@eqar.eu](mailto:deqar@eqar.eu); we will check the list shortly and return your original file with the newly generated DEQARINST IDs added.
 
