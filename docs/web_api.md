@@ -54,7 +54,7 @@ The base URL for the following endpoints is:
 
 The full definitions of the following endpoints and the response objects is available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
 
-[https://backend.deqar.eu/webapi/v2/swagger/](https://backend.deqar.eu/webapi/v1/swagger/)
+<https://backend.deqar.eu/webapi/v2/swagger/>
 
 #### Countries
 
