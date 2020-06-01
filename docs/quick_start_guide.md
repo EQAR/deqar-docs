@@ -22,7 +22,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >
 >     _Note: the list of eligible activities can be found on the register record for the agency ([https://www.eqar.eu/register/agencies/](https://www.eqar.eu/register/agencies/)) and also in the DEQAR administrative interface  accessible after the agency activates its account (see below: [Activate your Account](quick_start_guide.md#activate_your_account))._
 >
->     _If a new activity is introduced, then a formal change report should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: melinda.szabo@eqar.eu or info@eqar.eu_
+>     _If a new activity is introduced, then a formal change report should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
 >
 > - Only upload **reports created since the date of the agency’s registration** on EQAR (i.e. the date of the first external review of your agency against the ESG).
 >
@@ -76,11 +76,11 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >         _Note: if you change your email address, you will need to use the new address to reset your password in the future._
 >
->     - _(coming soon)_ to update publicly available contact data on your agency, such as agency website, contact person, phone number, address and email.
+>     - to update publicly available contact data on your agency, such as agency website, contact person, phone number, address and email.
 >
 >     - _(coming soon)_ to assign local IDs to agency activities.
 >
->     _Note: if you would like to change the general “Information on the agency’s work”, listed agency activities or the list of countries where the agency’s activities are officially recognised, you should contact the EQAR secretariat: melinda.szabo@eqar.eu or info@eqar.eu_
+>     _Note: if you would like to change the general “Information on the agency’s work”, listed agency activities or the list of countries where the agency’s activities are officially recognised, you should contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
 >
 > - You should also analyse DEQAR’s institutional list to ensure that institutions evaluated/accredited by your agency are already present in the system.  The institution list can be found on the EQAR Admin Interface at: [https://admin.deqar.eu/institutions](https://admin.deqar.eu/institutions)
 >
@@ -144,11 +144,5 @@ Once you have figured out what you will submit and how, then it is time to enter
 > On our side, we have tried to design DEQAR to be as effortless as possible. We hope that the system will prove a boost rather than a burden to your QA work.
 >
 > _Note: the DEQAR front end user interface is built using an API. This means that any agency may embed a version of DEQAR (included full search functionality) in its own website to alleviate some of the burden on the local IT team._
-
-### Follow the DEQAR Project
-
-> **Find out more about the Commission-funded DEQAR Project, scheduled to run until end of October 2019.**
->
-> We invite you to visit our DEQAR Project pages on the EQAR website at: [https://www.eqar.eu/qa-results/deqar-project/](https://www.eqar.eu/qa-results/deqar-project/)
 
 [Download Quick Start Guide](files/DEQARStartUpPackage_v2.pdf)

@@ -309,6 +309,10 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
   At least one PDF file should be provided with each submitted report in the form of a URL. Optionally, PDF files can be uploaded through the API or user interface.  
   *e.g. http://estudis.aqu.cat/MAD2014_UPC_es.pdf*
 
+    > The URL *SHOULD* return the [HTTP content-type header](https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Content-Type) `application/pdf` upon a *HEAD* request. The URL *MUST* return `application/pdf` upon a *GET* request. If another content-type is reported, the file will not be downloaded and saved.
+    >
+    >  The maximum filesize is 10MB.
+
 * File Display Name (<code>file[n].display_name</code>; not required; string)  
   A single file display name may be provided for each PDF report file. This will be used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.  
   *e.g. Report*  

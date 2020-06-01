@@ -1,13 +1,9 @@
-Database of External Quality Assurance Results (DEQAR)
-======================================================
+DEQAR Documentation
+===================
 
-## About the project
+## About DEQAR
 
-![Co-founded by the Erasmus+ programme of the European Union](img/LogosBeneficairesErasmus+RIGHT_EN_web.png)
-
-The Database of External Quality Assurance Reports (DEQAR) project was selected for EU co-funding under Erasmus+ Key Action 3 - European Forward-Looking Cooperation Projects.
-
-The main aim of the DEQAR project is the development of a database that will enhance access to reports and decisions on higher education institutions/programmes externally reviewed against the ESG, by an EQAR-registered agency.
+The Database of External Quality Assurance Reports (DEQAR) is maintained by the [European Quality Assurance Register for Higher Education (EQAR)](https://www.eqar.eu/). DEQAR enhances access to quality assurance reports and decisions on higher education institutions/programmes externally reviewed against the ESG, by an EQAR-registered agency.
 
 The database is expected to enable a broad range of users, including but not limited to:
 
@@ -17,23 +13,29 @@ The database is expected to enable a broad range of users, including but not lim
 * Quality assurance agencies
 * Ministry representatives and other national authorities
 
-to satisfy their information needs and support different types of decisions (e.g. recognition of degrees, mobility of students, portability of grants/loans). A first public preview version of the database will be available in May 2018.
+to satisfy their information needs and support different types of decisions (e.g. recognition of degrees, mobility of students, portability of grants/loans). Through this database EQAR thus contributes to the transparency of external quality assurance in the European Higher Education Area.
 
-Through this database EQAR will contribute to the transparency of external quality assurance in the European Higher Education Area.
+### EU funding
 
-Read more about the DEQAR project and partners involved at: <http://www.deqar.eu/>
+The development and maintenance of DEQAR was/is financially supported by the Erasmus+ programme of the European Union.
 
-## DEQAR EcoSystem
+The initial DEQAR project was selected for EU co-funding under Erasmus+ Key Action 3 - European Forward-Looking Cooperation Projects. It ran from November 2017 to October 2019. [More about the project and partners involved](https://www.eqar.eu/kb/projects/deqar-project/)
 
-* DEQAR backend - A [DRF](http://www.django-rest-framework.org/) applicaiton responsible for managing the data-model, providing API endpoints for submission, file uploads and the admin user interface. - [DEQAR backend on GitHub](https://www.github.com/eqar/eqar_backend)
-* DEQAR administrative interface - <https://admin.deqar.eu/> - A ReactJS frontend for end-users and EQAR staff to manage data in DEQAR. - [DEQAR frontend on GitHub](https://github.com/EQAR/deqar_frontend)
-* Public website
+The DEQAR CONNECT project was selected for EU co-funding in 2020 and will run until February 2022. [More about DEQAR CONNECT and the partners involved](https://www.eqar.eu/kb/projects/deqar-connect/)
+
+![Co-founded by the Erasmus+ programme of the European Union](img/LogosBeneficairesErasmus+RIGHT_EN_web.png)
+
+## Ecosystem
+
+All software components of DEQAR are open source and available on GitHub:
+
+* [DEQAR backend](https://www.github.com/eqar/eqar_backend) - A [DRF](http://www.django-rest-framework.org/) applicaiton responsible for managing the data-model, providing API endpoints for submission, file uploads and the admin user interface.
+* [DEQAR administrative interface](https://github.com/EQAR/deqar_frontend) - <https://admin.deqar.eu/> - A ReactJS frontend for registered agency users and EQAR staff to manage data in DEQAR.
+* [DEQAR public user interface](https://github.com/EQAR/deqar_public_ui) - <https://www.deqar.eu/> - A section of the EQAR website, powered by WordPress and a custom theme, linking to the Web API of the DEQAR backend.
 
 ## Questions and bug reports
 
-No matter how thorough our internal testing, bugs and errors may still occur. If you encounter any problem submitting data and/or files, please share these with us through the [DEQAR Trello board](https://trello.com/b/cogOpUeh/deqar-board) under Questions and Answer list, where you can add your questions/issue as a new card, or comment on an existing card if somebody else already raised the same question.
-
-Please use one of the predefined labels for new cards: technical CSV, technical API, or technical web interface. Please also add to your card the CSV file/JSON data that caused the problem, so that the EQAR secretariat and developers can reproduce the error.
+No matter how thorough our internal testing, bugs and errors may still occur. If you encounter any problem submitting data and/or files, please share these with us by email to <mailto:deqar@eqar.eu>, by opening an issue on GitHub or through the [DEQAR CONNECT Trello board](https://trello.com/b/ADhRNeK3/deqar-connect). Please also include the CSV file/JSON data that caused the problem, so that the EQAR secretariat and developers can reproduce the error.
 
 In case you are interested contributing to the codebase or you would like to share your thoughts and ideas, we welcome you to do so through the project's [GitHub page](https://github.com/EQAR/eqar_backend)
 
@@ -43,4 +45,4 @@ In the present documentation, we use key words according to the definitions in [
 
  - **Must** signals that the element (or cluster of elements) has to be provided; otherwise the record in question will be rejected.
  - **Should** signals that we highly recommend that the element (or cluster of elements) be provided, unless providing it would be impossible in the particular case or cause prohibitively large effort.
- - **May** signasl that the element (or cluster of elements) is truly optional, and can be provided if applicable or if the agency feels it might be useful.
+ - **May** signals that the element (or cluster of elements) is truly optional, and can be provided if applicable or if the agency feels it might be useful.
