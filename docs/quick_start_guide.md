@@ -37,8 +37,8 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >     _Note: there are a few “soft requirements” for DEQAR which are not necessary for ingest but which do trigger a red or yellow alert flag in the system._
 >
 > For details, please see:<br />
-> [Submission Object Data Elements](data_submission.md#submission_object_data_elements)<br />
-> [Data Pipeline](data_submission.md##data-pipeline)
+> [Submission Object Data Elements](data_submission.md#submission-object-data-elements)<br />
+> [Data Pipeline](data_submission.md#data-pipeline)
 
 ### How to Upload?
 
@@ -86,7 +86,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _Note: the base institution list has been taken from the European Tertiary Education Register (ETER/OrgReg; [https://risis-eter.orgreg.joanneum.at/about/intro](https://risis-eter.orgreg.joanneum.at/about/intro))._
 >
->     _If institutions are missing from the list, please contact the EQAR secretariat: [deqar@eqar.eu](mailto:deqar@eqar.eu) to arrange for the data to be imported._
+>     _If institutions are missing from the list, please contact the EQAR secretariat: [deqar@eqar.eu](mailto:deqar@eqar.eu) to arrange for the data to be imported. For details, see [Institution Data](institution_data.md)._
 
 ### Get to Know the System
 

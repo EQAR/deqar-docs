@@ -1,4 +1,4 @@
-# Data Submission
+# Report Data Submission
 
 Agencies are asked to prepare data on quality assurance reports for submission to DEQAR. Each agency has the choice to manually submit records one by one through the DEQAR administrative interface or to submit larger batches of data in CSV or JSON format. In the latter cases, the agency must prepare Submission Objects before uploading to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system.
 
@@ -157,6 +157,11 @@ Each report must be assigned a single status and a single decision value. Togeth
 |3 |negative |
 |4 |not applicable |
 
+* Comment (<code>other_comment</code>; not required; string)  
+  The optional comment can contain important information on the report that cannot be represented in the structured data, e.g. involvement of other partner agencies or any specific notes about the QA procedure.  
+  *e.g. Evaluation undertaken in cooperation with MusiQuE.*  
+  *e.g. Programme group reports are created for programmes with a similar profile across the entire sector on a 7-year rotating basis.*
+
 ### Report Validity
 
 Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
@@ -186,13 +191,22 @@ Each report must have an associated date defining the start of its validity. A d
 
 ### Report Link
 
-One or more URL links may be provided to alternative views of the report data on the agency's website or other webpage(s) in order to provide more context. A display name may be provided for each URL link. The linked text will display on DEQAR under the display name label provided or, if no name is provided, under generic text provided by DEQAR.
+One or more links may be provided to alternative views of the report data on the agency's own website or other webpage(s) in order to provide more context.
+
+If one link is provided, it will be displayed with the text "View record on agency's website".
+
+If several links are provided, display names must be provided for each link. These texts will be displayed on DEQAR in order to distinguish the different links.
 
 * Link (<code>link[n]</code>, not required, string)  
   One or more URL links may be provided for each report to the same report presented on other sites in order to provide more context to the report.  
   *e.g. http://srv.aneca.es/ListadoTitulos/node/1182321350*
 
-### Institution(s)
+* Link Display Name (<code>link_display_name[n]</code>, conditionally required, string)  
+  A short text describing where the link points to; required and used only when several links are provided.  
+  *e.g. report in national qualifications database*  
+  *e.g. decision on ministry's website*
+
+### Institution Identification
 
 Each report must be associated with at least one institution. The record(s) for the institution(s) need(s) to already exists in DEQAR, see [the information below on adding missing insitutions to DEQAR](#creating-institution-records).
 
@@ -314,10 +328,12 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
     >  The maximum filesize is 10MB.
 
 * File Display Name (<code>file[n].display_name</code>; not required; string)  
-  A single file display name may be provided for each PDF report file. This will be used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.  
+  A single file display name may be provided for each PDF report file, used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.  
   *e.g. Report*  
   *e.g. Evaluation*  
   *e.g. MAD2014_UPC_es.pdf*
+
+    > This should be a short and generic term (such as “Report and Decision”, “Evaluation Report”, “Accreditation Decision”, “Summary report”, ...). The display name should *not* repeat the name of the institution or programme addressed in the report.
 
 * **Report Language\*** (<code>file[n].report_language[n]</code>; required; string)  
   One or more languages must be provided for each file in the form of an ISO 639 1 (two-digit) or ISO 639 2 (three digit) language code (see [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).  
@@ -361,7 +377,7 @@ Records not meeting all of the above criteria will be rejected. The system will 
 
 ### Flagging criteria
 
-Once the submission objects clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records. (Please note, if an institution record already exists in DEQAR, this data takes precedence over any newly submitted data on the institution. Updates to existing institution records may be made through the administrative interface or the EQAR secretariat. See [Institution Data Elements](#institution-data-elements).)
+Once the submission objects clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records.
 
 DEQAR records failing sanity checks may receive either a “low-level flag” or a “high-level flag”. In the first case, records will appear online with submitted data while they await checks and confirmation by the EQAR secretariat. In the second case, records will not be published until they have been checked and confirmed by the EQAR secretariat.
 
@@ -395,15 +411,17 @@ If you do not remember your password or did not change the default password, ple
 
 The email address linked to your login is the same email address to which submission report emails are sent. If you do not remember which email address is linked to your agency's login, please contact the EQAR Secretariat.
 
-The webform can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/report-form)*. Required fields are marked with a <span style="color: #f00;">\*</span> in the form. Fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. The *Save Record* button becomes active once all required information has been provided.
+The webform can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/submit-report)*.
 
-**First Webform Tab: Core Data:** We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary. Note: the [Activity](#report-activity) chosen might influence which information is required. (See [Submission Object Data Elements](#submission-object-data-elements) above.)
+Required fields are marked with a <span style="color: #f00;">\*</span> in the form; fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. Please note that the [Activity](#report-activity) chosen might influence which information is required (see [Submission Object Data Elements](#submission-object-data-elements) above). The *Save Record* button becomes active once all required information has been provided.
 
-**Second Webform Tab: Institutions:** A report needs to relate to one or more (e.g. in case of joint programmes) institution(s). You can add institutions using the search box or browse the full list by country. (See [Institution Data Elements](#institution-data-elements) above.)
+We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow, even when you use the webform. This will facilitate later updates should they be necessary, and can be useful if your agency changes to CSV upload or the Submission API later on.
 
-**Third Webform Tab: Programmes:** The programme tab will only be needed if your report results from a programme-related activity. Fill the form with the required information and then click the *Add Programme* button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned. (See [Programme Data Elements](#programme-data-elements) above.)
+You can select institutions using the search box. If you are uploading a report on an institution that has no DEQAR record yet, see [Institution Data](institution_data.md) on how to add it before uploading reports.
 
-**Fourth Webform Tab: Report Files:** Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files). The report file fields are conditionally required. At least one must be present but agencies can either provide a URL or selected as a file for upload. For each file, please specify the language(s) of the contents. The display name is optional; the text "Report" will be used as a default otherwise. (See [QA Report Files](#qa-report-files) above.)
+Data on programmes will only be needed if your report results from a programme-level activity. Fill the form with the required information and then click the *Add Programme* button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned. (See [Programme Data Elements](#programme-data-elements) above.)
+
+Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files). The report file fields are conditionally required. At least one must be present, but agencies can either provide a URL or upload a file directly (in either case, only PDF files are accepted). For each file, please specify the language(s) of its contents. The display name is optional; the text "Report" will be used as a default otherwise. (See [QA Report Files](#qa-report-files) above.)
 
 ### CSV Upload
 
@@ -438,15 +456,10 @@ You can use one of the sample CSV files below as a starting point and adjust it 
 
 #### Template and samples
 
-* [Microsoft Excel format](files/SubmissionTemplate_version2.xlsx)
-* [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](files/SubmissionTemplate_version2.ods)
+* [Microsoft Excel format](files/SubmissionTemplate.xlsx)
+* [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](files/SubmissionTemplate.ods)
 * [View on-line](https://cloud.eqar.eu/s/sarDLSrJgQjkTie)
-* CSV format (only examples, without comments):
-    * [Institutional reports](files/SubmissionSample_institutional.csv)
-    * [Programme reports](files/SubmissionSample_programme.csv)
-    * [Joint programme reports](files/SubmissionSample_joint-programme.csv)
-    * [Combined institution/programme reports](files/SubmissionSample_institutional-programme.csv)
-    * [Mixed types of reports](files/SubmissionSample_mixed.csv)
+* [Sample in CSV format](files/SubmissionSample_mixed.csv) (without comments)
 
 #### Preparing/exporting CSV files
 
@@ -562,137 +575,4 @@ The Sandbox is reached through separate links:
 * To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: <https://sandbox.deqar.eu/>
 
 The Sandbox is an identical copy of the live system. The entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day.
-
-## Creating Institution Records
-
-Each report must be associated with at least one institution. If a record for an institution does not already exist in DEQAR, the institution must be created **before** a report can be submitted.
-
-### Institution Data Elements
-
-Institutions are described with the elements below. **As a minimum the institution name, country and website must be provided** for a new record to be created. Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.
-
-|ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
-|:--------------------------------------------|:------------|:---------|:-----------------------|
-|**Official Institution Name(\*)** |yes |one |*Graz University of Technology*<br>*Югозападен университет "Неофит Рилски"*<br>*Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*|
-|Official Institution Name, transliterated |no |one |*Yugo-zapaden universitet "Neofit Rilski”*<br>*Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*|
-|English Institution Name |no |one |*South-West University "Neofit Rilski", Blagoevgrad*|
-|Institution Acronym |no |one |*SWU* | |**Institution Country(\*)** |yes |many (per)|*BG*<br>*BGR* |
-|Institution City |no |many (per)|*Sofia* |
-|Institution Latitude<br>Institution Longitude|no |many (per)|*48,208,356; 1,636,776* |
-|Institution QF-EHEA Level |no |many (per)|*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
-|**Institutional Website(\*)** |yes |one |*http://www.swu.bg* |
-
-#### Institution Name
-
-One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided. (Note: alternative or other language institution names can be provided through the administrative interface.)
-
-* **Official Institution Name(\*)** (<code>name_official</code>; required; string)  
-  The official name of each institution in the original alphabet must be provided for every new institution record. The official name will be indexed for search and may be used as the primary institution name in the search interface if no English institution name is assigned.  
-  *e.g. Graz University of Technology*  
-  *e.g. Югозападен университет "Неофит Рилски"*  
-  *e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*
-
-* Official Institution Name, transliterated (<code>name_official_transliterated</code>; not required; string)  
-  A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then [ISO romanisation standards](https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created romanised forms. If transliteration is not provided, access to the institution record through the search interface will be more limited. For those languages included in the [Python transliterate package](https://pypi.org/project/transliterate/) transliterations can be generated automatically when [supplying institution data in bulk](#bulk-upload).
-  *e.g. Yugo-zapaden universitet "Neofit Rilski”*  
-  *e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*
-
-* English Institution Name (<code>name_english</code>; recommended; string)  
-  A single English institution name may be provided for any institution without an English official name. If provided, the English institution name will be used as the primary institution name in the search interface. While not required, providing an English name is strongly recommended to enhance the user experience.  
-  *e.g. South-West University "Neofit Rilski", Blagoevgrad*
-
-* Institution Acronym (<code>acronym</code>; not required; string)  
-  The official acronym for each institution may be provided. This will be indexed for search.  
-  *e.g. SWU*
-
-#### Institution Location
-
-One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.
-
-* **Institution Country(\*)** (<code>country_id</code>; conditionally required; string)  
-  The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)), or using the DEQAR numerical ID. Institution countries will be indexed for search.  
-  *e.g. BG*  
-  *e.g. BGR*
-
-* Institution City (<code>city</code>; recommended; string)  
-  The city name, preferably in English, where the institution is located in each country may be provided for each institution record. If an institution is located in more than one city, then a separate country/city pairing should be entered for each city. Institution cities will be indexed for search.
-  *e.g. Sofia*
-
-* Institution Latitude (<code>latitude</code>; not required; float)
-* Institution Longitude (<code>longitude</code>; not required; float)  
-  The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
-  *e.g. 48,208,356; 1,636,776*
-
-#### Institution Qualification Level
-
-The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then *ALL* levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.
-
-* Institution QF-EHEA Level (<code>qf_ehea_levels</code>; required; string)  
-  One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area). These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)
-
-|ID |name |
-|:--|:-----------|
-|0 |short cycle |
-|1 |first cycle |
-|2 |second cycle|
-|3 |third cycle |
-
-#### Institution Website
-
-One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.
-
-* **Institutional Website(\*)** (<code>website_link</code>; required; string)  
-  The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.  
-  *e.g. http://www.swu.bg*
-
-#### Institution Identifier
-
-You may provide a local or national identifier for the institution, which can later be used to identify this institution in report submission objects.
-
-* Institutional Identifier (<code>identifier</code>; not required; string)  
-  The identifier for this institution. Please note that identifiers must be unique within your agency or within the resource provided.  
-  *e.g. HCERES21*
-
-* Identifier Resource (<code>identifier_resource</code>; not required; string)  
-  If the identifier is not a local identifier of your agency but a national identifier (or other third-party identifier), please provide a short label designating the resource in order to distinguish it from other identifiers.  
-  *e.g. DE-HRK*
-
-#### Institution Dates
-
-Founding and closing years or dates can be provided if known.
-
-* Founding date (<code>founding_date</code>; not required; date)
-* Closing date (<code>closing_date</code>; not required; date)  
-  Dates should be formated as *YYYY-MM-DD* and years should be given in four digits (*YYYY*).
-  *e.g. 2020-07-01*
-
-#### Hierarchical Relationship
-
-* Parent institution (<code>parent_id</code>; not required; string)  
-  If the institution is a faculty or independent unit of another institution, or is part of a grouping of institutions that is also recorded in DEQAR, ETER or OrgReg, you should specify the parent institution. The parent institution can be specified by its DEQARINST ID, optionally in numerical form without the prefix *DEQARINST*.
-  *e.g. DEQARINST4711*
-
-### How to Provide Data
-
-There are two ways to add missing institution records to DEQAR:
-
-1. Manually through the webform
-2. Bulk upload in spreadsheet format
-
-#### Manually Adding Institutions
-
-Before creating a new institution, please check carefully that the institution is not yet listed in the [reference list of institutions](https://admin.deqar.eu/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions already recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface.
-
-If you are sure it has no record yet, a single institution can be [created in the administrative interface](https://admin.deqar.eu/reference/institutions/create).
-
-#### Bulk Upload
-
-If you identify that several institutions are missing, we strongly recommend you send us a spreadsheet for bulk upload.
-
-Please supply the institution data using the template available in two formats:
-
-* [Open Document Format](files/Template_HEI_lists.ods) (OpenOffice, LibreOffice)
-* [Microsoft Excel Format](files/Template_HEI_lists.xlsx)
-
-You may save the spreadsheet in either format or as a CSV file. Send the filled spreadsheet to [deqar@eqar.eu](mailto:deqar@eqar.eu); we will check the list shortly and return your original file with the newly generated DEQARINST IDs added.
 
