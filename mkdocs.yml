@@ -2,15 +2,18 @@ site_name: DEQAR Documentation
 ### document structure ###
 nav:
     - Home: index.md
-    - Quick Start Guide: quick_start_guide.md
-    - Architecture and Data Model: architecture_data_model.md
-    - Data Submission: data_submission.md
-    - Search and Discovery: web_api.md
+    - quick_start_guide.md
+    - architecture_data_model.md
+    - institution_data.md
+    - data_submission.md
+    - web_api.md
 ### theme configuration ###
 theme:
     name: readthedocs
     collapse_navigation: true
 extra_css: [ "css/deqar.css" ]
+plugins:
+    - search
 markdown_extensions:
     - toc:
         permalink: True
