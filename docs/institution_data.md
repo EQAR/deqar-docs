@@ -93,14 +93,14 @@ One and only one website link must be provided for each new institution record. 
 
 ### Identifier
 
-You may provide a local or national identifier for the institution, which can later be used to identify this institution in report submission objects.
+You may provide a local or other identifier for the institution, which can later be used to identify this institution in report submission objects. Local identifier are for use by your agency only, whereas other identifiers can be used also by others.
 
 * Institutional Identifier (<code>identifier</code>; not required; string)  
   The identifier for this institution. Please note that identifiers must be unique within your agency or within the resource provided.  
   *e.g. HCERES21*
 
 * Identifier Resource (<code>identifier_resource</code>; not required; string)  
-  If the identifier is not a local identifier of your agency but a national identifier (or other third-party identifier), please provide a short label designating the resource in order to distinguish it from other identifiers.  
+  If the identifier is not a local identifier of your agency, please provide a short label designating the resource in order to distinguish it from other identifiers. As the resource tag needs to be used consistently, and the combination of identifier and resource tag needs to be globally unique in DEQAR, it should be agreed with the EQAR secretariat.  
   *e.g. DE-HRK*
 
 ### Dates

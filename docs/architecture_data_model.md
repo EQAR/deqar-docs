@@ -43,7 +43,7 @@ DEQAR uses a set of standard identifiers which are provided by the system for ea
 | Agency      | DEQAR Agency ID            | agency acronym             |
 | Activity    | DEQAR Activity ID          | activity local identifier, activity name |
 | Reports     | local report identifier    | DEQAR Report ID            |
-| Institution | DEQARINST ID               | ETER ID, local institution identifier|
+| Institution | DEQARINST ID               | ETER ID, local institution identifier, other institution identifier |
 | Programme   | local programme identifier |                            |
 
 As a rule, entities already in the system should be identified to facilitate linking up. In other words: 
@@ -87,7 +87,9 @@ Institutions already described in DEQAR should be identified in report submissio
     
 - **ETER IDs**: DEQAR harvests records from the ETER/OrgReg database once a year. These records are the source of many of the institution records in DEQAR. The ETER ID for these institutions can be found through the administrative interface. The ETER IDs may be stored and used by agencies for submission as an alternative to the DEQARINST IDs.
     
-- **Local/national identifiers**: Agencies may also create and store local or national identifiers for institutions. These can be used for submission as an alternative to the DEQARINST IDs if supplied in advance. Each agency can provide these individually through the administrative interface or these can provided in bulk to the EQAR Secretariat.
+- **Local identifiers**: Agencies may also create and store local identifiers for institutions. These can be used for submission as an alternative to the DEQARINST IDs if supplied in advance. Each agency can provide these individually through the administrative interface or these can provided in bulk to the EQAR Secretariat. Local identifiers are managed by one agency independently and can only be used by that agency.
+
+- **Other identifiers**: DEQAR allows to store additional national, European or other identifiers. These can be used for submission as an alternative to the DEQARINST IDs and are available to all agencies; other identifiers available in the system can be consulted through the administrative interface. In order to ensure uniqueness and stability these are managed by the EQAR secretariat, but agencies are invited to provide identifiers to EQAR that might be useful to other agencies. Other identifiers are always used in combination with a resource indication, in combination with which they are unique.
 
 *Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.* 
 
