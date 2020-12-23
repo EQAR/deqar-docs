@@ -220,7 +220,8 @@ Only one institution identifier should be submitted for each institution in the 
 |:--------------------------------------------|:------------|:---------|:-----------------------|
 |**DEQARINST ID(\*)** |conditionally|one (per) |*DEQARINST0034* |
 |**ETER ID(\*)** |conditionally|one (per) |*BG0001* |
-|**Local Institutional Identifier(\*)** |conditionally|one (per) |*HCERES21*<br>*AT0004* |
+|**Institutional Identifier(\*)** |conditionally|one (per) |*HCERES21*<br>*AT0004* |
+|Identifier Resource|conditionally|one (per) |*SI-ETER.BAS.NATID*<br>*Erasmus* |
 
 * **DEQARINST ID(\*)** (<code>institution[n].deqar_id</code>; conditionally required; string)  
   Each institution already described in DEQAR is assigned a DEQARINST ID. The DEQARINST ID may be used to establish a link between submitted report data and an existing institution record.  
@@ -230,10 +231,16 @@ Only one institution identifier should be submitted for each institution in the 
   Each institution described in OrgReg or ETER is assigned an ETER ID (see [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/)). The ETER ID may be used to establish a link between submitted report data and an ETER record in DEQAR.  
   *e.g. BG0001*
 
-* **Local Institutional Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
-  A local identifier is any identifier used by the Agency to identify an institution. A local identifier may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission.)  
+* **Institutional Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
+  A local identifier is any identifier used by the Agency to identify an institution, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat.)  
   *e.g. HCERES21*  
   *e.g. AT0004*
+
+* Identifier Resource (<code>institution[n].resource[1]</code>; conditionally required; string)  
+  If the identifier you use is not a local identifier of your agency, you need to provide its corresponding resource tag. The value for this field can be consulted through the administrative interface.  
+  *e.g. DE-HRK*  
+  *e.g. SI-ETER.BAS.NATID*  
+  *e.g. Erasmus*
 
 ### Programme Data
 
