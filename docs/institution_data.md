@@ -2,15 +2,67 @@
 
 Each report must be associated with at least one institution. If a record already exists in DEQAR, the institutions needs to be identified; otherwise, the institution must be created **before** a report can be submitted.
 
-## Finding Existing Institutions
-
 DEQAR has records on a large number of higher education institutions (over 4000 institutions from 42 European countries) harvested from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/). More than 2000 additional institutions are already recorded in DEQAR based on other official sources (e.g. lists by national ministries) or have already been added by other agencies.
 
-Existing institutions need to be identified by their DEQARINST ID, ETER ID or a local or national identifier (if available). All [institution identifiers](architecture_data_model.md#institution-identifiers) can be found through the [administrative interface](https://admin.deqar.eu/reference/institutions).
+## Finding Existing Institutions
 
-**Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all institutions, but only those institutions for which at least one report is available. It is therefore important that you **always search for institutions in the [administrative interface](https://admin.deqar.eu/reference/institutions)** or use the [downloadable list](), as DEQAR contains records on several hundreds of institutions for which no reports have been submitted yet.
+Existing institutions need to be identified by their DEQARINST ID, ETER ID or a local or national identifier (if available).
+
+### Admin Interface
+
+All [institution identifiers](architecture_data_model.md#institution-identifiers) can be found through the [administrative interface](https://admin.deqar.eu/reference/institutions).
+
+**Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all institutions, but only those institutions for which at least one report is available. It is therefore important that you **always search for institutions in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of institutions for which no reports have been submitted yet.
 
 Reports on existing institutions can be submitted directly, providing identifiers in CSV or JSON objects as described under [Submission Object Data Elements: Institution(s)](data_submission.md#institution-identification) or by selecting the institution in the web form.
+
+### Download CSV File
+
+The full list of higher education institutions can also be downloaded as a CSV file from:
+
+<https://www.eqar.eu/qa-results/download-data-sets/>
+
+### Connect API
+
+The full institution list can be accessed and searched using the Connect API. EQAR-registered agencies have access to the Connect API using the same credentials as for the DEQAR administrative interface, the Submission API and the Web API.
+
+Please refer to the [explanations on authentication for the Submission API](data_submission.md#authentication) for information on how to obtain and use a token.
+
+The base URL for the Connect API is:
+
+`https://backend.deqar.eu/connectapi/v1`
+
+The endpoint <https://backend.deqar.eu/connectapi/v1/institutions/> allows to query the full list of higher education institutions, with or without reports.
+
+The full definitions of the endpoint, the search parameters and the response object is available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
+
+<https://backend.deqar.eu/connectapi/v1/swagger/>
+
+To retrieve the details on a single institution, please use the [Web API endpoint](web_api.md#institutions).
+
+## Defining Institutions
+
+Before suggesting to add a new institution, please consider the following notes:
+
+ 1. DEQAR mainly follows European Tertiary Education Register's (ETER) [data model and coverage](https://eter-project.com/#/info/coverage).
+
+ 2. The primary unit of registration is the university/higher education institution, i.e. an institution of higher learning that awards academic degrees in diverse disciplines, is organised as central unit and consists of separate functional units (i.e. faculties, institutes, schools, departments).
+
+ 3. Functional units (i.e. faculties, institutes, schools, departments) themselves are not registered in DEQAR as separate entity. Reports on functional units are uploaded/recorded/shown under the central unit's record.
+
+ 4. Reports on consortia consisting of several universities will be showcased in the record of each university separately. Consortia themselves will not be presented as a central unit.
+
+    Only in exceptional cases, when the consortium has a long-term tradition of organising education and is recognised by stakeholders as an institution itself, will it be registered as a separate institution in DEQAR.
+
+ 5. Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university). Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.
+
+ 6. In cases when the status of the entity is not clearly determined by the aforementioned cases or the status is debatable, EQAR and the agency will discuss the nature of it taking into account five main indicators:
+
+    - legal status
+    - organisational independence
+    - financial independence
+    - stakeholders’ perceptions
+    - local context and approaches to higher education
 
 ## Institution Data Elements
 
@@ -120,20 +172,9 @@ Founding and closing years or dates can be provided if known.
 
 ## How to Provide Data
 
-There are two ways to add missing institution records to DEQAR:
+If you identify that institutions are missing, please send us a spreadsheet with the required data.
 
-1. Manually through the webform
-2. Bulk upload in spreadsheet format
-
-### Manually Adding Institutions
-
-Before creating a new institution, please check carefully that the institution is not yet listed in the [reference list of institutions](https://admin.deqar.eu/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions already recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface.
-
-If you are sure it has no record yet, a single institution can be [created in the administrative interface](https://admin.deqar.eu/reference/institutions/create).
-
-### Bulk Upload
-
-If you identify that several institutions are missing, we strongly recommend you send us a spreadsheet for bulk upload.
+Before sending data on a new institution, please check carefully that the institution is not yet listed in the [reference list of institutions](https://admin.deqar.eu/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions already recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface.
 
 Please supply the institution data using the template available in two formats:
 

@@ -74,7 +74,7 @@ The structure of the elements below best reflects our CSV template. To see how t
 
 <https://backend.deqar.eu/submissionapi/v1/swagger/>
 
-Please note that new records for institutions not currently represented in DEQAR should be submitted separately. To submit institution records, please use the dedicated CSV template or webform (see [Creating a New Institution Record](creating-institution-records)).
+Please note that new records for institutions not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated [CSV template described above](institution_data.md#how-to-provide-data).
 
 |ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
 |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -141,6 +141,7 @@ Each report must be assigned a single status and a single decision value. Togeth
 
 * **Status\*** (<code>status</code>; required; string)  
   The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.  
+  **NB** The status "part of obligatory EQA system" may only be used in the EHEA.
 
 |ID |name |
 |:--|:-----------------------------|
@@ -519,7 +520,7 @@ REST API is a convenient way for software developers to communicate with web ser
 
 #### Authentication
 
-Requests for submission to DEQAR are only accepted from registered users and must therefore be identified. DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header will authenticate the user in place of a regular username and password.
+Requests for submission to DEQAR are only accepted from registered users and must therefore be identified. DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header (with type/scheme Bearer) will authenticate the user in place of a regular username and password.
 
 To get your authentication token you can send a `POST` request to the following URL:
 
@@ -533,10 +534,18 @@ curl -s -H "Content-Type: application/json" -XPOST https://backend.deqar.eu/acco
 
 The username is the agency’s acronym (in lower case). Please see [above](#webform) how to reset your password.
 
-Or for those who prefer to use the more user friendly httpie3 client:
+Or for those who prefer to use the more user friendly [HTTPie](https://httpie.io/) client:
 
 ```
 http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
+```
+
+You should send this token, preceded by the word `Bearer`, in the Authorization header with every further request. An example of a submission using curl or HTTPie:
+
+```
+curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOKEN" -XPOST https://backend.deqar.eu/submissionapi/v1/submit/report --data-binary @$DEQAR_FILE
+
+http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
 ```
 
 #### Report Submission Endpoint
@@ -552,6 +561,8 @@ The **Submission Request Object** is the JSON object (or array of objects) which
 Fields and accepted types are as described in [Submission Object Data Elements](#submission-object-data-elements) above. The full definition of request and response objects can be find in OpenAPI format under:
 
 <https://backend.deqar.eu/submissionapi/v1/swagger/>
+
+**Important:** Please do **not** include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single [identifier](architecture_data_model.md#institution-identifiers) only (DEQARINST ID, ETER ID, local or other identifier). New institutions [must be added separately beforehand](institution_data.md#institution-data-elements).
 
 #### Report File Submission Endpoint
 
