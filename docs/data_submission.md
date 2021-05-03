@@ -530,7 +530,7 @@ To get your authentication token you can send a `POST` request to the following 
 
 An example of obtaining a token using curl in command line:
 
-```
+```sh
 curl -s -H "Content-Type: application/json" -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{"username":"testuser","password":"testpassword"}'
 ```
 
@@ -538,13 +538,13 @@ The username is the agency’s acronym (in lower case). Please see [above](#webf
 
 Or for those who prefer to use the more user friendly [HTTPie](https://httpie.io/) client:
 
-```
+```sh
 http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
 ```
 
 You should send this token, preceded by the word `Bearer`, in the Authorization header with every further request. An example of a submission using curl or HTTPie:
 
-```
+```sh
 curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOKEN" -XPOST https://backend.deqar.eu/submissionapi/v1/submit/report --data-binary @$DEQAR_FILE
 
 http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
@@ -579,10 +579,164 @@ Files (PDF versions of reports) can be submitted in two separate ways:
 
 The examples below show how a JSON Submission Request Object might look for different types of reports:
 
-* [Institutional report](https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/institutional.json)
-* [Programme report](https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/programme.json)
-* [Institutional/Programme report](https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/institutional_programme.json)
-* [Joint Programme report](https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/joint_programme.json)
+#### Institutional report
+
+```json
+[
+    {
+        "agency": "MusiQuE",
+        "local_identifier": "CRDB-October14",
+        "activity": "183",
+        "status": "part of obligatory EQA system",
+        "decision": "positive",
+        "valid_from": "2016-10-28",
+        "valid_to": "2018-01-15",
+        "date_format": "%Y-%m-%d",
+        "report_files": [
+            {
+                "original_location": "http://www.musique-qe.eu/userfiles/File/2014-10-bruxelles-website.pdf",
+                "display_name": "Evaluation report",
+                "report_language": [
+                    "fr"
+                ]
+            }
+        ],
+        "institutions": [
+            {
+                "eter_id": "BE0035"
+            }
+        ]
+    },
+    {
+        "agency": "MusiQuE",
+        "local_identifier": "ENH-4711",
+        "activity": "97",
+        "status": "2",
+        "decision": "4",
+        "valid_from": "2021-01-15",
+        "date_format": "%Y-%m-%d",
+        "report_files": [
+            {
+                "original_location": "http://www.musique-qe.eu/userfiles/File/2015-06-25-hamu-review-reportfinal.pdf",
+                "display_name": "Institutional Review",
+                "report_language": [
+                    "eng"
+                ]
+            },
+            {
+                "original_location": "https://zenodo.org/record/4516653/files/Database_of_External_QA_Results_Report%2BModel_2016.pdf?download=1",
+                "display_name": "Addendum to the report",
+                "report_language": [
+                    "ger"
+                ]
+            }
+        ],
+        "institutions": [
+            {
+                "deqar_id": "DEQARINST0390"
+            },
+            {
+                "eter_id": "AT0006"
+            }
+        ]
+    }
+]
+```
+
+#### Programme report
+
+```json
+{
+    "agency": "MusiQuE",
+    "local_identifier": "SHM-April09",
+    "activity": "181",
+    "status": "2",
+    "decision": "1",
+    "valid_from": "2017-04-09",
+    "valid_to": "2022-02-15",
+    "date_format": "%Y-%m-%d",
+    "report_files": [
+        {
+            "original_location": "http://www.musique-qe.eu/userfiles/File/2009-06-report-trossingen-website.pdf",
+            "display_name": "Review report",
+            "report_language": [
+                "ger"
+            ]
+        }
+    ],
+    "institutions": [
+        {
+            "eter_id": "DE0140"
+        }
+    ],
+    "programmes": [
+        {
+            "identifiers": [
+                {
+                    "identifier": "16"
+                }
+            ],
+            "name_primary": "Organ Expert",
+            "qualification_primary": "Master of Arts",
+            "nqf_level": "level 7",
+            "qf_ehea_level": "second cycle"
+        }
+    ]
+}
+```
+
+#### Joint Programme report
+
+```json
+{
+    "agency": "MusiQuE",
+    "local_identifier": "EAMT-September13",
+    "activity": "182",
+    "status": "voluntary",
+    "decision": "positive",
+    "valid_from": "15.01.2020",
+    "valid_to": "15.01.2025",
+    "date_format": "%d.%m.%Y",
+    "report_files": [
+        {
+            "original_location": "http://www.musique-qe.eu/userfiles/File/final-reportaec-programme-reviewcopeco.pdf",
+            "display_name": "Review report",
+            "report_language": [
+                "eng"
+            ]
+        }
+    ],
+    "institutions": [
+        {
+            "eter_id": "EE0022"
+        }, {
+            "eter_id": "SE0037"
+        }, {
+            "identifiers": [
+                {
+                    "identifier": "F  LYON24",
+                    "resource": "Erasmus"
+                }
+            ]
+        }, {
+            "deqar_id": "DEQARINST0460"
+        }
+    ],
+    "programmes": [
+        {
+            "identifiers": [
+                {
+                    "identifier": "18"
+                }
+            ],
+            "name_primary": "CoPeCo – Contemporary Performance and Composition",
+            "qualification_primary": "Master (no joint degree)",
+            "nqf_level": "level 6",
+            "qf_ehea_level": "second cycle"
+        }
+    ]
+}
+```
 
 ## Sandbox
 
