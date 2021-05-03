@@ -562,6 +562,8 @@ Fields and accepted types are as described in [Submission Object Data Elements](
 
 <https://backend.deqar.eu/submissionapi/v1/swagger/>
 
+**Important:** Please do **not** include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single [identifier](architecture_data_model.md#institution-identifiers) only (DEQARINST ID, ETER ID, local or other identifier). New institutions [must be added separately beforehand](institution_data.md#institution-data-elements).
+
 #### Report File Submission Endpoint
 
 Files (PDF versions of reports) can be submitted in two separate ways:
