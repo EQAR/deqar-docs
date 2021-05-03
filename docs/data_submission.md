@@ -387,11 +387,13 @@ Records not meeting all of the above criteria will be rejected. The system will 
 
 Once the submission objects clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records.
 
-DEQAR records failing sanity checks may receive either a “low-level flag” or a “high-level flag”. In the first case, records will appear online with submitted data while they await checks and confirmation by the EQAR secretariat. In the second case, records will not be published until they have been checked and confirmed by the EQAR secretariat.
+At this stage, DEQAR records may receive either a “low-level flag” or a “high-level flag”. In the first case, records will appear online with submitted data, while the EQAR Secretariat is informed to take note. In the second case, records will not be published until they have been checked and confirmed by the EQAR Secretariat.
+
+The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does not indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do *not* try to change the data of a report in order to prevent it from being flagged. Simply wait for EQAR staff to have checked the report.
 
 Sanity checks may result in **high-level flags** for the following reasons:
 
-* Report Status is listed as *part of obligatory EQA system* in a country where the Agency does not have official status.
+* Report Status is listed as *part of obligatory EQA system* in a country where the Agency does not have official status according to EQAR's information.
 * Defined QF-EHEA levels of an institution and one or more of its programmes do not match.
 
 Sanity checks may result in **low-level flags** for the following reasons:
