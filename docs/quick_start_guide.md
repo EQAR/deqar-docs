@@ -37,7 +37,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >     _Note: there are a few “soft requirements” for DEQAR which are not necessary for ingest but which do trigger a red or yellow alert flag in the system._
 >
 > For details, please see:<br />
-> [Submission Object Data Elements](data_submission.md#submission-object-data-elements)<br />
+> [Report Data Elements](report_data.md)<br />
 > [Data Pipeline](data_submission.md#data-pipeline)
 
 ### How to Upload?
@@ -54,7 +54,6 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >
 > For details, please see:<br />
 > [Choosing a Submission Method](data_submission.md#choosing-a-submission-method)<br />
-> [Submission Methods](data_submission.md#submission-methods)
 
 ## Finding your Legs in DEQAR
 

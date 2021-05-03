@@ -1,26 +1,17 @@
-# Report Data Submission
-
-Agencies are asked to prepare data on quality assurance reports for submission to DEQAR. Each agency has the choice to manually submit records one by one through the DEQAR administrative interface or to submit larger batches of data in CSV or JSON format. In the latter cases, the agency must prepare Submission Objects before uploading to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system.
-
-Submission objects can be packaged together for batch submission. Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to update information on existing records through batch submission. Deletion of existing records can only be performed by DEQAR administrators.
+# Report Submission
 
 Each agency should follow four discrete steps to prepare their data submission:
 
-1. Choose a particular submission method:
-    - [Manual Entry through Webform](data_submission.md#webform)
-    - [Batch Submission in CSV through Webform](data_submission.md#csv-upload)
-    - [Batch or Event Driven Submission in JSON through the API](data_submission.md#submission-api)
-2. Prepare your data with guidance from the [Submission Object Data Elements](data_submission.md#submission_object_data_elements) section below.
+1. Choose a particular [submission method](#choosing-a-submission-method).
+2. Prepare your data with guidance on the [Report Data Elements](report_data.md) above.
 3. Submit data using your chosen submission method.
-4. Await data ingest via the [Data Pipeline](data_submission.md#data-pipeline) and receive response object with possible further instructions.
+4. Await data ingest via the [Data Pipeline](#data-pipeline) and receive response object with possible further instructions.
 
 ## Choosing a Submission Method
 
 Considering the various needs of the agencies, DEQAR supports three different submission methods. Their use is highly dependent on the technical resources available to a particular agency. Importantly, all three methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
 
-### Data Submission via Webform
-
-Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or modify existing ones. Flags and validation errors will be returned immediately upon submission. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.
+[**Webform**](#webform): Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or modify existing ones. Flags and validation errors will be returned immediately upon submission. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.
 
 We recommend this method for agencies:
 
@@ -29,11 +20,7 @@ We recommend this method for agencies:
 * who would like to submit small amounts of data occasionally
 * who would like to interact with their DEQAR data directly
 
-(See [Webform](data_submission.md#webform) below.)
-
-### Data Submission in CSV via Webform
-
-In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below (see [Submission Object Data Elements](data_submission.md#submission-object-data-elements)).
+[**CSV Upload**](#csv-upload): In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements above (see [Report Data Elements](report_data.md)).
 
 Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and information on the status of each record in the uploaded batch are shown on the import interface. Agency staff can then decide to ingest the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import.
 
@@ -44,11 +31,7 @@ We recommend this method for agencies:
 * who would like to submit bigger amounts of data in a batch
 * who would like to work manually on their data before submitting to DEQAR
 
-(See [CSV Upload](data_submission.md#csv-upload) below.)
-
-### Data Submission in JSON via API
-
-[Rest API](https://en.wikipedia.org/wiki/Representational_state_transfer) is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the [JSON format](https://www.json.org/) it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
+[**Submission API**](#submission-api): [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the [JSON format](https://www.json.org/) it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
 
 We recommend this method for agencies:
 
@@ -57,296 +40,6 @@ We recommend this method for agencies:
 * who would like to submit individual reports immediately upon their creation
 * who would like to keep DEQAR and their local system in sync
 * who plan to submit data periodically and at longer intervals (e.g. weekly or monthly).
-
-(See [Submission API](data_submission.md#submission-api) below.)
-
-## Submission Object Data Elements
-
-Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold** with a \* , conditionally required data elements in **bold** with a (\*). We use the terminology:
-
-* "must" to denote that an element is required or required in certain situations
-* "should" to denote that an element is highly recommended
-* "may" to denote that an element is optional
-
-(See [RFC 2119 Best Current Practice](https://tools.ietf.org/html/rfc2119).)
-
-The structure of the elements below best reflects our CSV template. To see how these elements are arrayed in JSON for API submission, see our JSON definition at:
-
-<https://backend.deqar.eu/submissionapi/v1/swagger/>
-
-Please note that new records for institutions not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated [CSV template described above](institution_data.md#how-to-provide-data).
-
-|ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
-|:--------------------------------------------|:------------|:---------|:-----------------------|
-|**Agency\*** |yes |one |*AAQ*<br>*33* |
-|DEQAR Report ID |no |one |*000786* | |Local Report Identifier |no |one |*QAA1153-March15* |
-|**Activity(\*)** |conditionally|one |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|
-|**Activity Local Identifier(\*)** |conditionally|one |*inst_aud* |
-|**Status\*** |yes |one |*1 - part of obligatory EQA system*<br>*2 - voluntary*|
-|**Decision\*** |yes |one |*1 - positive*<br>*2 - positive with conditions or restrictions*<br>*3 - negative*<br>*4 - not applicable*|
-|**Valid from\*** |yes |one |*2015-01-15* |
-|Valid to |no |one |*2020-01-15* |
-|**Date Format\*** |yes |one |*%d/%m/%y* |
-|Link |no |one |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
-|Comment |no |one |*Evaluation undertaken with Musique.*<br>*Programme group reports are created for programmes with a similar profile across the entire sector on a 7-year rotating basis.*|
-
-### Report Creation
-
-A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency (see [Agency Identifiers](architecture_data_model.md#agency-identifiers)).
-
-- **Agency\*** (<code>agency</code>; required; string)  
-  The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.  
-  *e.g. AAQ*  
-  *e.g. 33*
-
-### Report Identification
-
-A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object (see [Report and Programme Identifiers](architecture_data_model.md#report-and-programme-identifiers)).
-
-* DEQAR Report ID (<code>report_id</code>; not required; string)  
-  Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.  
-  *e.g. 000786*
-
-* Local Report Identifier (<code>local_identifier</code>; not required; string)  
-  The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.  
-  *e.g. QAA1153-March15*
-
-### Report Activity
-
-A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
-
-* **Activity(\*)** (<code>activity</code>; conditionally required; string)  
-  A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.  
-  *e.g. institutional audit*  
-  *e.g. programme evaluation*  
-  *e.g. 2*  
-  *e.g. 8*  
-
-* **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
-  A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)  
-  *e.g. inst_aud*  
-
-Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.
-
-|Type |Report record structure |
-|:----------------------|:------------------------------|
-|institutional |at least one institution<br>no programme|
-|institutional/programme|one and only one institution<br>at least one programme|
-|programme |one and only one institution<br>at least one programme|
-|joint programme |at least two institutions<br>at least one programme|
-
-### Report Details
-
-Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report. Status and decision values may be provided as either string values or DEQAR IDs.
-
-* **Status\*** (<code>status</code>; required; string)  
-  The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.  
-  **NB** The status "part of obligatory EQA system" may only be used in the EHEA.
-
-|ID |name |
-|:--|:-----------------------------|
-|1 |part of obligatory EQA system |
-|2 |voluntary |
-
-* **Decision\*** (<code>decision</code>; required; string)  
-  The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision records the final result of the QA procedure/report.
-
-|ID |name |
-|:--|:---------------------------------------|
-|1 |positive |
-|2 |positive with conditions or restrictions|
-|3 |negative |
-|4 |not applicable |
-
-* Comment (<code>other_comment</code>; not required; string)  
-  The optional comment can contain important information on the report that cannot be represented in the structured data, e.g. involvement of other partner agencies or any specific notes about the QA procedure.  
-  *e.g. Evaluation undertaken in cooperation with MusiQuE.*  
-  *e.g. Programme group reports are created for programmes with a similar profile across the entire sector on a 7-year rotating basis.*
-
-### Report Validity
-
-Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
-
-* **Valid from\*** (<code>valid_from</code>; required; date)  
-  A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.  
-  *e.g. 2015-01-15*
-
-* Valid to (<code>valid_to</code>; not required; date)  
-  A valid to date marking the ending date of the report's validity should be provided for each report. This date determines when report data will be archived in DEQAR. If no valid to date is assigned, then the report will be treated as valid for six years after the valid from date.  
-  *e.g. 2020-01-15*
-
-* **Date Format\*** (<code>date_format</code>; required; string)  
-  A date format must be provided for each report. Dates may be submitted in any standard format; the format should be represented as a combination of the following characters:
-
-|symbol(s)| meaning |example |
-|:--------|:--------------------------------------|:----------------------------|
-|%d |day as expressed in two digits |02 |
-|%-d |day as expressed in one or two digits |2 |
-|%m |month as expressed in two digits |05 for May |
-|%-m |month as expressed in one or two digits|5 for May and 12 for December|
-|%Y |year as expressed in four digits |2014 |
-|%y |year as expressed in two digits |14 |
-|%d-%m-%Y | |04-01-2014 |
-|%d/%m/%y | |04/01/14 |
-|%Y-%m-%d | |2015-01-15 |
-
-### Report Link
-
-One or more links may be provided to alternative views of the report data on the agency's own website or other webpage(s) in order to provide more context.
-
-If one link is provided, it will be displayed with the text "View record on agency's website".
-
-If several links are provided, display names must be provided for each link. These texts will be displayed on DEQAR in order to distinguish the different links.
-
-* Link (<code>link[n]</code>, not required, string)  
-  One or more URL links may be provided for each report to the same report presented on other sites in order to provide more context to the report.  
-  *e.g. http://srv.aneca.es/ListadoTitulos/node/1182321350*
-
-* Link Display Name (<code>link_display_name[n]</code>, conditionally required, string)  
-  A short text describing where the link points to; required and used only when several links are provided.  
-  *e.g. report in national qualifications database*  
-  *e.g. decision on ministry's website*
-
-### Institution Identification
-
-Each report must be associated with at least one institution. The record(s) for the institution(s) need(s) to already exists in DEQAR, see [the information below on adding missing insitutions to DEQAR](#creating-institution-records).
-
-Preferably, the DEQARINST ID or the ETER ID should be provided to identify the institution(s).
-
-Optionally, an agency may choose to use local or national identifiers for institutions. Before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.
-
-Only one institution identifier should be submitted for each institution in the submission object (see [Institution Identifiers](architecture_data_model.md#institutional-identifiers)). If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID, followed by the local identifier.
-
-|ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
-|:--------------------------------------------|:------------|:---------|:-----------------------|
-|**DEQARINST ID(\*)** |conditionally|one (per) |*DEQARINST0034* |
-|**ETER ID(\*)** |conditionally|one (per) |*BG0001* |
-|**Institutional Identifier(\*)** |conditionally|one (per) |*HCERES21*<br>*AT0004* |
-|Identifier Resource|conditionally|one (per) |*SI-ETER.BAS.NATID*<br>*Erasmus* |
-
-* **DEQARINST ID(\*)** (<code>institution[n].deqar_id</code>; conditionally required; string)  
-  Each institution already described in DEQAR is assigned a DEQARINST ID. The DEQARINST ID may be used to establish a link between submitted report data and an existing institution record.  
-  *e.g. DEQARINST0034*
-
-* **ETER ID(\*)** (<code>institution[n].eter_id</code>; conditionally required; string)  
-  Each institution described in OrgReg or ETER is assigned an ETER ID (see [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/)). The ETER ID may be used to establish a link between submitted report data and an ETER record in DEQAR.  
-  *e.g. BG0001*
-
-* **Institutional Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
-  A local identifier is any identifier used by the Agency to identify an institution, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat.)  
-  *e.g. HCERES21*  
-  *e.g. AT0004*
-
-* Identifier Resource (<code>institution[n].resource[1]</code>; conditionally required; string)  
-  If the identifier you use is not a local identifier of your agency, you need to provide its corresponding resource tag. The value for this field can be consulted through the administrative interface.  
-  *e.g. DE-HRK*  
-  *e.g. SI-ETER.BAS.NATID*  
-  *e.g. Erasmus*
-
-### Programme Data
-
-Information on one or more programmes is required for all reports with the assigned activity types: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports.
-
-A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then **as a minimum the programme name must be provided** for programme data to be valid.)
-
-|ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
-|:--------------------------------------------|:------------|:---------|:-----------------------|
-|Local Programme Identifier |no |many (per)|*61*<br>*60800* |
-|**Primary Programme Name(\*)** |conditionally|one (per) |*Arts-specialist in opleiding*|
-|Programme Qualification |no |one (per) |*Master in de specialistische geneeskunde*|
-|Programme Name Alternative |no |many (per)|*Medical Natural Sciences*|
-|Programme Qualification Alternative |no |many (per)|*Master of Medicine* |
-|Programme Country |no |many (per)|*BE*<br>*BEL* |
-|Programme NQF Level |no |one (per) |*level 6*<br>*level 7* |
-|Programme QF-EHEA Level |no |one (per) |*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
-
-#### Programme Identification
-
-An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record (see [Report and Programme Identifiers](architecture_data_model.md#report-and-programme-identifiers)). (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)
-
-* Local Programme Identifier (<code>programme[n].identifier[1]</code>; not required; string)  
-  One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.  
-  *e.g. 61*  
-  *e.g. 60800*
-
-#### Programme Name and Qualification
-
-One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.
-
-* **Primary Programme Name(\*)** (<code>programme[n].name_primary</code>; conditionally required; string)  
-  One and only one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English.  
-  *e.g. Medical Natural Sciences*
-
-* Programme Qualification (<code>programme[n].qualification_primary</code>; not required; string)  
-  The qualification offered by each programme should be recorded in the same language that is used for primary name.  
-  *e.g. Master of Medicine*
-
-* Programme Name Alternative (<code>programme[n].name_alternative[n]</code>; not required; string)  
-  One or more alternative or other language names may be provided for each programme associated with the submitted report, e.g. in the local language.  
-  *e.g. Arts-specialist in opleiding*
-
-* Programme Qualification Alternative (<code>programme[n].qualification_alternative[n]</code>; not required; string)  
-  The qualification offered by each programme may be recorded in the same language that is used for the alternative name version.  
-  *e.g. Master in de specialistische geneeskunde*
-
-#### Programme Location
-
-Information on the country/ies where each programme is located should be provided if different from the host institution country.
-
-* Programme Country (<code>programme[n].country[n]</code>; not required; string)  
-  The one or more countries where the programme is located should be provided if different from the institution country. The country/ies should be provided in the form of an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)).  
-  *e.g. BE*  
-  *e.g. BEL*
-
-#### Programme Qualification Level
-
-Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.
-
-* Programme NQF Level (<code>programme[n].nqf_level</code>; not required, string)  
-  A single national qualification framework (NQF) level may be provided for each programme.  
-  *e.g. level 6*  
-  *e.g. level 7*
-
-* Programme QF-EHEA Level (<code>programme[n].qf_ehea_level</code>; not required; string)  
-  A single QF-EHEA level should be provided for each programme in the form of either a QF-EHEA level name or QF-EHEA level id (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area).
-
-  |ID |name |
-  |:--|:-----------|
-  |0 |short cycle |
-  |1 |first cycle |
-  |2 |second cycle|
-  |3 |third cycle |
-
-### QA Report Files
-
-DEQAR requires PDF versions of quality assurance reports for every submission object. Agencies can choose either to make files available for harvest or to upload files. In order to make files available for harvest, agencies must provide the URL for files already available on a public server. Alternatively, files may be submitted using the API or uploaded through the administrative interface. All reports must be submitted with data on the language(s) used in the report. A file display name can be provided as well.
-
-|ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
-|:--------------------------------------------|:------------|:---------|:-----------------------|
-|**File Original Location(\*)** |conditionally|many |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
-|File Display Name |no |one (per) |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
-|**Report Language\*** |yes |many (per)|*es*<br>*spa* |
-
-* **File Original Location(\*)** (<code>file[n].original_location</code>; conditionally required; string)  
-  At least one PDF file should be provided with each submitted report in the form of a URL. Optionally, PDF files can be uploaded through the API or user interface.  
-  *e.g. http://estudis.aqu.cat/MAD2014_UPC_es.pdf*
-
-    > The URL *SHOULD* return the [HTTP content-type header](https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Content-Type) `application/pdf` upon a *HEAD* request. The URL *MUST* return `application/pdf` upon a *GET* request. If another content-type is reported, the file will not be downloaded and saved.
-    >
-    >  The maximum filesize is 10MB.
-
-* File Display Name (<code>file[n].display_name</code>; not required; string)  
-  A single file display name may be provided for each PDF report file, used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.  
-  *e.g. Report*  
-  *e.g. Evaluation*  
-  *e.g. MAD2014_UPC_es.pdf*
-
-    > This should be a short and generic term (such as “Report and Decision”, “Evaluation Report”, “Accreditation Decision”, “Summary report”, ...). The display name should *not* repeat the name of the institution or programme addressed in the report.
-
-* **Report Language\*** (<code>file[n].report_language[n]</code>; required; string)  
-  One or more languages must be provided for each file in the form of an ISO 639 1 (two-digit) or ISO 639 2 (three digit) language code (see [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).  
-  *e.g. es*  
-  *e.g. spa*
 
 ## Data Pipeline
 
@@ -405,11 +98,7 @@ Sanity checks may result in **low-level flags** for the following reasons:
 
 *Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.*
 
-## Submission Methods
-
-As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV file via webform; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
-
-### Webform
+## Webform
 
 The DEQAR administrative interface includes an interactive webform, allowing you to submit single reports. The administrative interface is available at:
 
@@ -423,7 +112,7 @@ The email address linked to your login is the same email address to which submis
 
 The webform can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/submit-report)*.
 
-Required fields are marked with a <span style="color: #f00;">\*</span> in the form; fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. Please note that the [Activity](#report-activity) chosen might influence which information is required (see [Submission Object Data Elements](#submission-object-data-elements) above). The *Save Record* button becomes active once all required information has been provided.
+Required fields are marked with a <span style="color: #f00;">\*</span> in the form; fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. Please note that the [Activity](#report-activity) chosen might influence which information is required (see [Report Data Elements](report_data.md) above). The *Save Record* button becomes active once all required information has been provided.
 
 We strongly recommend that you provide a [Local Report Identifier](#report-identification) that identifies the specific report in your own information system or workflow, even when you use the webform. This will facilitate later updates should they be necessary, and can be useful if your agency changes to CSV upload or the Submission API later on.
 
@@ -433,11 +122,11 @@ Data on programmes will only be needed if your report results from a programme-l
 
 Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files). The report file fields are conditionally required. At least one must be present, but agencies can either provide a URL or upload a file directly (in either case, only PDF files are accepted). For each file, please specify the language(s) of its contents. The display name is optional; the text "Report" will be used as a default otherwise. (See [QA Report Files](#qa-report-files) above.)
 
-### CSV Upload
+## CSV Upload
 
 [Comma-separated values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a common and interoperable data-exchange format. Files can be imported and exported from all usual [spreadsheet software](#preparingexporting-csv-files) (e.g. Excel, LibreOffice, ...) and numerous other applications.
 
-The first row of your file is a header which should include column names as defined under [Submission Object Data Elements](#submission-object-data-elements) above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:
+The first row of your file is a header which should include column names as defined under [Report Data Elements](report_data.md) above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:
 
 ```
 agency, activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
@@ -445,7 +134,7 @@ agency, activity, status, decision, valid_from, valid_to, date_format, file[1].o
 
 (Spaces added for readability, these should not appear in an actual file.)
 
-One report may often include/relate to several items, such as one or more institution(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type `field_name[n]` (See [Submission Object Data Elements](#submission-object-data-elements) above). You should create as many columns as you need and replace `n` by 1, 2, ...
+One report may often include/relate to several items, such as one or more institution(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type `field_name[n]` (See [Report Data Elements](report_data.md) above). You should create as many columns as you need and replace `n` by 1, 2, ...
 
 For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
 
@@ -464,20 +153,20 @@ You can use one of the sample CSV files below as a starting point and adjust it 
 * You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.
 * You may omit columns from the sample CSV file that are not used in any of the reports.
 
-#### Template and samples
+### Template and samples
 
 * [Microsoft Excel format](files/SubmissionTemplate.xlsx)
 * [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](files/SubmissionTemplate.ods)
 * [View on-line](https://cloud.eqar.eu/s/sarDLSrJgQjkTie)
 * [Sample in CSV format](files/SubmissionSample_mixed.csv) (without comments)
 
-#### Preparing/exporting CSV files
+### Preparing/exporting CSV files
 
 Despite being software-independent, there are some known issues when creating/exporting CSV files from some major office applications. Given that it has the most clean and straight-forward CSV export, we recommend the [LibreOffice package](https://www.libreoffice.org/), a free and open-source desktop application supported on all major operating systems.
 
 For all software packages, please note that CSV format does not support multiple sheets, but it will always be only the current work sheet that is saved in CSV format.
 
-##### Microsoft Excel
+#### Microsoft Excel
 
 Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft Excel does not create correct CSV files when certain character sets are used (e.g. Greek or Cyrillic alphabets, or certain Roman characters with diacritics). You can use the following work-around:
 
@@ -488,7 +177,7 @@ Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft 
 * Now change the file extension from `.txt` into `.csv`. You will encounter the following message: *If you change file name extension, the file may become unusable. You still want to change them, you should press ‘Yes’...* Confirm the warning by clicking Yes.
 * This CSV file is now suitable for upload.
 
-##### LibreOffice/OpenOffice/NeoOffice
+#### LibreOffice/OpenOffice/NeoOffice
 
 Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice:
 
@@ -496,11 +185,11 @@ Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice
 * Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:<br /> ![CSV export settings](img/csv-libreoffice-0.png)
 * The CSV file is now suitable for upload.
 
-##### Google Sheets
+#### Google Sheets
 
 In Google Sheets, choose *Comma-separated values* from the *File* > *Download as...* menu.
 
-#### Uploading CSV files
+### Uploading CSV files
 
 The CSV upload module is part of the DEQAR admin interface:
 
@@ -516,11 +205,11 @@ password: [your personal password] (see [above](#webform) how to reset your pass
 * If you experienced errors, you can correct the respective lines and click on *Ingest* again.
 * Please note that the green rows will be re-ingested, but overwrite the existing report based on the DEQAR Report ID. Any changes you make to green rows will therefore be recorded on further ingest.
 
-### Submission API
+## Submission API
 
 REST API is a convenient way for software developers to communicate with web services via HTTP, the protocol used by the internet. Together with JSON it provides an easy, straightforward and flexible means of exchanging data between systems. With the possibility of sending complex request and response objects, we can accept structured data and give immediate feedbacks (e.g. error checks, warnings) about the submitted data as well as metadata enhancements (e.g. ETER IDs on HEIs, when applicable; links to new records on the EQAR public interface, etc.).
 
-#### Authentication
+### Authentication
 
 Requests for submission to DEQAR are only accepted from registered users and must therefore be identified. DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header (with type/scheme Bearer) will authenticate the user in place of a regular username and password.
 
@@ -550,7 +239,7 @@ curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOK
 http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
 ```
 
-#### Report Submission Endpoint
+### Report Submission Endpoint
 
 The address of the submission endpoint is:
 
@@ -560,13 +249,13 @@ This is the URL that you can use to make a `POST` request including the Submissi
 
 The **Submission Request Object** is the JSON object (or array of objects) which is the manifestation of a report or set of reports an agency wants to submit.
 
-Fields and accepted types are as described in [Submission Object Data Elements](#submission-object-data-elements) above. The full definition of request and response objects can be find in OpenAPI format under:
+Fields and accepted types are as described in [Report Data Elements](report_data.md) above. The full definition of request and response objects can be find in OpenAPI format under:
 
 <https://backend.deqar.eu/submissionapi/v1/swagger/>
 
 **Important:** Please do **not** include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single [identifier](architecture_data_model.md#institution-identifiers) only (DEQARINST ID, ETER ID, local or other identifier). New institutions [must be added separately beforehand](institution_data.md#institution-data-elements).
 
-#### Report File Submission Endpoint
+### Report File Submission Endpoint
 
 Files (PDF versions of reports) can be submitted in two separate ways:
 
@@ -575,7 +264,7 @@ Files (PDF versions of reports) can be submitted in two separate ways:
 
   `report_file_id`: The id number of the Report File object available in the response after successful submission. The `report_file_id` is contained in the response object of the successful report submission. `filename`: The name of the file that you will submit in this request.
 
-#### Examples
+### Examples
 
 The examples below show how a JSON Submission Request Object might look for different types of reports:
 
@@ -737,6 +426,26 @@ The examples below show how a JSON Submission Request Object might look for diff
     ]
 }
 ```
+
+## Updating Reports
+
+Normally, once a QA report has been published it will not change. Changing or updating reports in DEQAR should therefore be the exception, rather than regular practice.
+
+Reports can, however, be changed if needed as follows:
+
+ 1. **Manually via admin interface**
+
+    Please find the report that you want to change in the admin interface, under under Reference data > Reports. To narrow down the search, use filters and search by report number, name, year, agency, country, activity type and flag. Once you find the report, open the record and click on Edit Report. When submitting, please leave a short note to explain the changes you made.
+
+ 2. **Submission API or CSV Upload**
+
+    Please use the same method/template as for initially uploading reports.
+
+    Use either the DEQAR Report ID (`report_id`) or the same [Local Report Identifier](report_data.md#report-identifier) (`local_identifier`) that you provided to DEQAR with your earlier/initial upload of the report. Lacking an ID prevents the system from recognising the report that needs to be updated, and will lead to creation of new (duplicate) record in the database, not overwriting.
+
+    As the system replaces the entire record, you must provide the full submission object once again, including all fields and not just the altered ones.
+
+    Failing to provide information in required fields will lead to rejection of the change, and the old record will remain. Failing to provide information in optional fields will empty those fields, even if they were filled before, and will thus cause deletion of the information.
 
 ## Sandbox
 
