@@ -14,7 +14,7 @@ All [institution identifiers](architecture_data_model.md#institution-identifiers
 
 **Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all institutions, but only those institutions for which at least one report is available. It is therefore important that you **always search for institutions in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of institutions for which no reports have been submitted yet.
 
-Reports on existing institutions can be submitted directly, providing identifiers in CSV or JSON objects as described under [Submission Object Data Elements: Institution(s)](data_submission.md#institution-identification) or by selecting the institution in the web form.
+Reports on existing institutions can be submitted directly, providing identifiers in CSV or JSON objects as described under [Submission Object Data Elements: Institution(s)](report_data.md#institutions) or by selecting the institution in the web form.
 
 ### Download CSV File
 

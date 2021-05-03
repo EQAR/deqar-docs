@@ -5,6 +5,7 @@ nav:
     - quick_start_guide.md
     - architecture_data_model.md
     - institution_data.md
+    - report_data.md
     - data_submission.md
     - web_api.md
 ### theme configuration ###
