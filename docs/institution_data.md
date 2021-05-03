@@ -40,6 +40,30 @@ The full definitions of the endpoint, the search parameters and the response obj
 
 To retrieve the details on a single institution, please use the [Web API endpoint](web_api.md#institutions).
 
+## Defining Institutions
+
+Before suggesting to add a new institution, please consider the following notes:
+
+ 1. DEQAR mainly follows European Tertiary Education Register's (ETER) [data model and coverage](https://eter-project.com/#/info/coverage).
+
+ 2. The primary unit of registration is the university/higher education institution, i.e. an institution of higher learning that awards academic degrees in diverse disciplines, is organised as central unit and consists of separate functional units (i.e. faculties, institutes, schools, departments).
+
+ 3. Functional units (i.e. faculties, institutes, schools, departments) themselves are not registered in DEQAR as separate entity. Reports on functional units are uploaded/recorded/shown under the central unit's record.
+
+ 4. Reports on consortia consisting of several universities will be showcased in the record of each university separately. Consortia themselves will not be presented as a central unit.
+
+    Only in exceptional cases, when the consortium has a long-term tradition of organising education and is recognised by stakeholders as an institution itself, will it be registered as a separate institution in DEQAR.
+
+ 5. Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university). Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.
+
+ 6. In cases when the status of the entity is not clearly determined by the aforementioned cases or the status is debatable, EQAR and the agency will discuss the nature of it taking into account five main indicators:
+
+    - legal status
+    - organisational independence
+    - financial independence
+    - stakeholders’ perceptions
+    - local context and approaches to higher education
+
 ## Institution Data Elements
 
 If a record for an **institution does not already exist in DEQAR** it should be described with the elements below; required elements are marked by **(\*)**. Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.
@@ -148,20 +172,9 @@ Founding and closing years or dates can be provided if known.
 
 ## How to Provide Data
 
-There are two ways to add missing institution records to DEQAR:
+If you identify that institutions are missing, please send us a spreadsheet with the required data.
 
-1. Manually through the webform
-2. Bulk upload in spreadsheet format
-
-### Manually Adding Institutions
-
-Before creating a new institution, please check carefully that the institution is not yet listed in the [reference list of institutions](https://admin.deqar.eu/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions already recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface.
-
-If you are sure it has no record yet, a single institution can be [created in the administrative interface](https://admin.deqar.eu/reference/institutions/create).
-
-### Bulk Upload
-
-If you identify that several institutions are missing, we strongly recommend you send us a spreadsheet for bulk upload.
+Before sending data on a new institution, please check carefully that the institution is not yet listed in the [reference list of institutions](https://admin.deqar.eu/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions already recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface.
 
 Please supply the institution data using the template available in two formats:
 
