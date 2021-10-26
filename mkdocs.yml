@@ -8,6 +8,8 @@ nav:
     - report_data.md
     - data_submission.md
     - web_api.md
+    - Integrations:
+        - europass.md
 ### theme configuration ###
 theme:
     name: readthedocs
