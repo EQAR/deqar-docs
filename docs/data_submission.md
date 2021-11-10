@@ -157,7 +157,6 @@ You can use one of the sample CSV files below as a starting point and adjust it 
 
 * [Microsoft Excel format](files/SubmissionTemplate.xlsx)
 * [Open Document Format (OpenOffice/LibreOffice/NeoOffice)](files/SubmissionTemplate.ods)
-* [View on-line](https://cloud.eqar.eu/s/sarDLSrJgQjkTie)
 * [Sample in CSV format](files/SubmissionSample_mixed.csv) (without comments)
 
 ### Preparing/exporting CSV files

@@ -21,11 +21,13 @@ Please note that new records for institutions not currently represented in DEQAR
 |ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
 |:--------------------------------------------|:------------|:---------|:-----------------------|
 |**Agency\*** |yes |one |*AAQ*<br>*33* |
+|Contributing Agencies | no | many | *MusiQuE*<br>*34* |
 |DEQAR Report ID |no |one |*000786* | |Local Report Identifier |no |one |*QAA1153-March15* |
 |**Activity(\*)** |conditionally|one |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|
 |**Activity Local Identifier(\*)** |conditionally|one |*inst_aud* |
 |**Status\*** |yes |one |*1 - part of obligatory EQA system*<br>*2 - voluntary*|
 |**Decision\*** |yes |one |*1 - positive*<br>*2 - positive with conditions or restrictions*<br>*3 - negative*<br>*4 - not applicable*|
+|Summary |no |one | |
 |**Valid from\*** |yes |one |*2015-01-15* |
 |Valid to |no |one |*2020-01-15* |
 |**Date Format\*** |yes |one |*%d/%m/%y* |
@@ -36,10 +38,18 @@ Please note that new records for institutions not currently represented in DEQAR
 
 A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency (see [Agency Identifiers](architecture_data_model.md#agency-identifiers)).
 
+> When a report is co-created by several EQAR-registered agencies, one of the agencies needs to take responsibility for uploading the report to DEQAR and keeping it up-to-date. This one should be specified as (main) Agency, the other ones as Contributing Agencies.
+
 - **Agency\*** (<code>agency</code>; required; string)  
-  The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.  
+  The (main) agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.  
   *e.g. AAQ*  
   *e.g. 33*
+
+- Contributing Agencies (<code>contributing_agencies[n]</code>; not required; string)  
+  Additional EQAR-registered agencies that were involved in the external QA procedure and the production of the report. Contributing agencies can only be recorded if they were registered in EQAR at the time of issuing of the report (<code>valid_from</code> date). Otherwise, all validation and flagging rules follow the main agency. The report will also be shown under the contributing agencies’ profiles in DEQAR.  
+  *e.g. MusiQuE*  
+  *e.g. 34*
+
 
 ## Report Identifier
 
@@ -99,6 +109,9 @@ Each report must be assigned a single status and a single decision value. Togeth
 |2 |positive with conditions or restrictions|
 |3 |negative |
 |4 |not applicable |
+
+* Summary (<code>summary</code>; not required; string)  
+  A textual summary of the key findings of the report/decision that allows users to understand the outcomes without reading the full report. Strongly recommended, the summary should be in English.
 
 * Comment (<code>other_comment</code>; not required; string)  
   The optional comment can contain important information on the report that cannot be represented in the structured data, e.g. involvement of other partner agencies or any specific notes about the QA procedure.  
