@@ -181,7 +181,7 @@ Despite offering CSV as a target file type in its *Save as* dialogue, Microsoft 
 Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice:
 
 * Choose *Text CSV (\*.csv)* as file type in the *Save As ...* or *Save a Copy ...* dialogue:<br /> ![LibreOffice save file dialogue](img/csv-libreoffice-0.png)
-* Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:<br /> ![CSV export settings](img/csv-libreoffice-0.png)
+* Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:<br /> ![CSV export settings](img/csv-libreoffice-1.png)
 * The CSV file is now suitable for upload.
 
 #### Google Sheets
