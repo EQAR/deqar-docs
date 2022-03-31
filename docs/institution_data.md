@@ -38,7 +38,7 @@ The full definitions of the endpoint, the search parameters and the response obj
 
 <https://backend.deqar.eu/connectapi/v1/swagger/>
 
-To retrieve the details on a single institution, please use the [Web API endpoint](web_api.md#institutions).
+To retrieve the details on a single institution, please use the [Web API endpoint](web_api_endpoints.md#institutions).
 
 ## Defining Institutions
 
