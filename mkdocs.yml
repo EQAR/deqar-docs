@@ -4,10 +4,15 @@ nav:
     - Home: index.md
     - quick_start_guide.md
     - architecture_data_model.md
-    - institution_data.md
-    - report_data.md
-    - data_submission.md
-    - web_api.md
+    - Submitting data:
+        - institution_data.md
+        - report_data.md
+        - data_submission.md
+    - Web API:
+        - web_api_intro.md
+        - web_api_auth.md
+        - web_api_endpoints.md
+        - web_api_examples.md
     - Integrations:
         - europass.md
 ### theme configuration ###
