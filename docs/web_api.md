@@ -102,6 +102,8 @@ These endpoints provide information on higher education institutions covered by 
 | GET    | `/browse/institutions/`                   | List or search institutions appearing in reports                  |
 | GET    | `/browse/institutions/{institutionID}`    | Returns a specific institution record, identified by DEQARINST ID |
 | GET    | `/browse/institutions/by-eter/{eter_id}/` | Specific institution record, identified by ETER ID instead        |
+| GET    | `/browse/institutions/resources/`         | List known identifier resource tags (e.g. Eramus, EU-PIC, ...)    |
+| GET    | `/browse/institutions/by-identifier/{resource}/{identifier}/` | Specific institution record, identified by any identifier known in DEQAR |
 
 #### Reports
 
@@ -472,6 +474,183 @@ In the example:
     "local_identifier": null,
     "other_comment": "",
     "flag": "none"
+}
+```
+
+#### Example #3: use other institutional identifiers
+
+In this example, a user looks up an institution based on the SCHAC identifier.
+
+The client makes a first GET request to receive the list of known identifier types:
+
+```sh
+curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/institutions/resources/"
+```
+
+The result shows that there are seven reports:
+
+```json
+[
+    "AD-national",
+    "BA-national",
+    "BG-ETER.BAS.NATID",
+    "BY-national",
+    "CZ-ETER.BAS.NATID",
+    "DE-ETER.BAS.NATID",
+    "DE-HRK",
+    "DID-EBSI",
+    "DK-ETER.BAS.NATID",
+    "ELIAS.HS_ID",
+    "Erasmus",
+    "Erasmus-Charter",
+    "EU-PIC",
+    "EU-VAT",
+    "FI-ETER.BAS.NATID",
+    "FR-ETER.BAS.NATID",
+    "GB-ETER.BAS.NATID",
+    "GE-national",
+    "HR-Mozvag",
+    "HU-ETER.BAS.NATID",
+    "IE-ETER.BAS.NATID",
+    "IT-ETER.BAS.NATID",
+    "KZ-national",
+    "local identifier",
+    "LT-ETER.BAS.NATID",
+    "LV-ETER.BAS.NATID",
+    "MD-national",
+    "PL-ETER.BAS.NATID",
+    "PT-ETER.BAS.NATID",
+    "RO-ETER.BAS.NATID",
+    "SCHAC",
+    "SE-ETER.BAS.NATID",
+    "SI-ETER.BAS.NATID",
+    "UA-national"
+]
+```
+
+These resource tags can then be used in a request for a specific institution record:
+
+```sh
+curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/institutions/by-identifier/SCHAC/urv.cat"
+```
+
+In the example, this returns (data abridged):
+
+```json
+{
+    "closure_date": null,
+    "countries": [
+        {
+            "city": "Tarragona",
+            "country": {
+                "...": "...",
+                "iso_3166_alpha2": "ES",
+                "iso_3166_alpha3": "ESP",
+                "name_english": "Spain"
+            },
+            "country_source": "ETER",
+            "country_valid_from": "2014-01-01",
+            "country_valid_to": null,
+            "country_verified": true,
+            "lat": 41.122694,
+            "long": 1.249866
+        }
+    ],
+    "eter": "ES0022 - Universitat Rovira i Virgili",
+    "founding_date": "1992-01-01",
+    "hierarchical_relationships": {
+        "includes": [
+            {
+                "...": "..."
+            },
+            {
+                "...": "..."
+            }
+        ],
+        "part_of": []
+    },
+    "historical_data": [],
+    "historical_relationships": [],
+    "id": 792,
+    "identifiers": [
+        {
+            "agency": null,
+            "identifier": "E  TARRAGO01",
+            "identifier_valid_from": "1992-01-01",
+            "identifier_valid_to": null,
+            "resource": "Erasmus"
+        },
+        {
+            "agency": null,
+            "identifier": "E10208977",
+            "identifier_valid_from": "1992-01-01",
+            "identifier_valid_to": null,
+            "resource": "Erasmus-Charter"
+        },
+        {
+            "agency": null,
+            "identifier": "urv.cat",
+            "identifier_valid_from": "1992-01-01",
+            "identifier_valid_to": null,
+            "resource": "SCHAC"
+        },
+        {
+            "agency": null,
+            "identifier": "did:ebsi:ziBBPgHRMxmPaKmW1TCm9Cj",
+            "identifier_valid_from": "2022-01-16",
+            "identifier_valid_to": null,
+            "resource": "DID-EBSI"
+        },
+        {
+            "agency": null,
+            "identifier": "999880560",
+            "identifier_valid_from": "1992-01-01",
+            "identifier_valid_to": null,
+            "resource": "EU-PIC"
+        },
+        {
+            "agency": null,
+            "identifier": "ESQ9350003A",
+            "identifier_valid_from": "1992-01-01",
+            "identifier_valid_to": null,
+            "resource": "EU-VAT"
+        }
+    ],
+    "names": [
+        {
+            "acronym": "URV",
+            "name_english": "Rovira i Virgili University",
+            "name_official": "Universitat Rovira i Virgili",
+            "name_official_transliterated": "",
+            "name_source_note": "OrgReg-2020-CHARES0022-1",
+            "name_valid_to": null,
+            "name_versions": []
+        }
+    ],
+    "qf_ehea_levels": [
+        {
+            "qf_ehea_level": "first cycle",
+            "qf_ehea_level_source": "ETER",
+            "qf_ehea_level_source_note": "",
+            "qf_ehea_level_valid_from": "2014-01-01",
+            "qf_ehea_level_valid_to": null
+        },
+        {
+            "qf_ehea_level": "second cycle",
+            "qf_ehea_level_source": "ETER",
+            "qf_ehea_level_source_note": "",
+            "qf_ehea_level_valid_from": "2014-01-01",
+            "qf_ehea_level_valid_to": null
+        },
+        {
+            "qf_ehea_level": "third cycle",
+            "qf_ehea_level_source": "ETER",
+            "qf_ehea_level_source_note": "",
+            "qf_ehea_level_valid_from": "2014-01-01",
+            "qf_ehea_level_valid_to": null
+        }
+    ],
+    "website_link": "http://www.urv.cat"
 }
 ```
 
