@@ -1,11 +1,10 @@
 # Report Submission
 
-Each agency should follow four discrete steps to prepare their data submission:
+Each agency should follow three steps to submit their report data:
 
 1. Choose a particular [submission method](#choosing-a-submission-method).
 2. Prepare your data with guidance on the [Report Data Elements](report_data.md) above.
-3. Submit data using your chosen submission method.
-4. Await data ingest via the [Data Pipeline](#data-pipeline) and receive response object with possible further instructions.
+3. Submit data using your chosen submission method and review the response after your data has passed through validation and flagging as described in [Data Pipeline](#data-pipeline) below.
 
 ## Choosing a Submission Method
 
@@ -20,9 +19,9 @@ We recommend this method for agencies:
 * who would like to submit small amounts of data occasionally
 * who would like to interact with their DEQAR data directly
 
-[**CSV Upload**](#csv-upload): In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements above (see [Report Data Elements](report_data.md)).
+[**CSV Upload**](#csv-upload): In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. This termed a semi-automatic data submission method. DEQAR has provided a CSV template which can be complemented with the detailed explanation of the [Report Data Elements](report_data.md) above.
 
-Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and information on the status of each record in the uploaded batch are shown on the import interface. Agency staff can then decide to ingest the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import.
+Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file for import. When uploading, records (i.e. single lines of the file) are validated and information on the status of each record in the uploaded batch are shown on the import interface. Agency staff can then decide to fix failed records ad-hoc or re-upload them later.
 
 We recommend this method for agencies:
 
@@ -31,7 +30,7 @@ We recommend this method for agencies:
 * who would like to submit bigger amounts of data in a batch
 * who would like to work manually on their data before submitting to DEQAR
 
-[**Submission API**](#submission-api): [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the [JSON format](https://www.json.org/) it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
+[**Submission API**](#submission-api): [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the [JSON format](https://www.json.org/) it provides flexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
 
 We recommend this method for agencies:
 
@@ -43,60 +42,81 @@ We recommend this method for agencies:
 
 ## Data Pipeline
 
-In general, irrespective of the submission method, all data submitted to DEQAR is handled following these steps:
+In general, irrespective of the submission method, all report data submitted to DEQAR is handled following these steps:
 
-1. The submission object goes through the first level of validation.
-2. If the data format is invalid or the submitted identifiers cannot be resolved, the record is rejected (see [Validation Criteria](#validation-criteria) below).
-3. Valid report data is populated in the appropriate tables.
-4. Sanity checks are run against pre-defined flagging criteria; reports which contain conflicts are flagged (see [Flagging Criteria](#flagging-criteria) below).
-5. A Response Object (or array of objects) is sent back to the agency, containing:
-    * detailed error descriptions for objects that were rejected
-    * identifiers of records that were created or identified (in the case of Institutions)
-    * identifiers for newly created records (Reports, Report Files)
-    * information on records where sanity checks found errors.
+1. The first level of validation concerns the data format, including that all required fields are present and all identifiers used are valid. If the record does not pass the requirements and constraints described in [Validation Criteria](#validation-criteria) below, the record is rejected.
+2. Valid report data is saved in the database.
+3. Sanity checks are run against pre-defined [Flagging Criteria](#flagging-criteria); reports which meet any of these criteria are flagged. Flagged reports are nevertheless saved in the database and should not be re-submitted.
+4. A Response Object (or array of objects) is sent back to the agency, containing:
+    * detailed error descriptions for report objects that were rejected
+    * identifiers of report records that were created or identified
+    * information on records where sanity checks found issues.
 
 ### Validation criteria
 
 In order for submission objects to clear the first level of validation, they must meet the following criteria:
 
-1. The **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified. The agency may be identified using an agreed upon acronym or a DEQAR agency ID which has been provided by the EQAR secretariat.
-2. All **required data** must be present for each report. Required data for all records includes:
-    * [ESG activity performed](#report-activity): provided as activity name, ID given by EQAR or as a local identifier.
-    * [Status of report](#report-details), provided as text or as an ID
-    * [Decision](#report-details), provided as text or as an ID.
-    * Report [valid from date, including date format](#report-validity) used by the agency
-    * Language(s) of the report: At least one language for each report should be provided as a two- or three-digit [ISO 639-1 or 2/B code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Ideally language information is provided along with the link to the location of the PDF file.
-    * Institution: a report must relate to at least one institution, either an [existing DEQAR institution record](#linking-to-an-existing-record) identified by DEQARINST ID, ETER ID or Agency Local Identifier, or a [new institution record](#new-institution-record). The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.
-    * For reports on programmes, the [programme name](#programme-name-and-qualification) (in whatever language it is stored by the Agency).
-3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element.
-4. Submitted data must be of the **correct type, form and value range/options** as described above.
-5. Submitted data must **align with the Agency Profile** information, specifically report validation date should fall after Agency EQAR registration dates and activities should match defined ESG activities for the Agency.
-6. Submitted data must **meet basic data integrity rules** for the system, i.e. there should be one and only one creating agency and at least one institution covered by each report.
-7. Submitted report data must meet the structural requirements determined by the [ESG activity](#report-activity).
+1. The **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified and, if your user is not linked to the agency itself, you must have a proxy to submit reports for the agency.
 
-Records not meeting all of the above criteria will be rejected. The system will return a response object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more submission objects does not imply the failure of the whole submission batch.
+2. Submitted data must **align with the Agency Profile** information, specifically report validity date must be after the Agency's EQAR registration start date and before the registration end date, if applicable.
+
+3. All **required data** must be present for each report. Required data for all records includes:
+    * [ESG activity performed](report_data.md#activity)
+    * [Status of report](report_data.md#details)
+    * [Decision](report_data.md#details)
+    * Report [valid from date, including date format](report_data.md#validity) used by the agency
+    * At least one [report file](report_data.md#files) including the language(s) in which it is drafted
+    * Organisation: a report must relate to at least one [existing organisation record](report_data.md#organisations) identified by a DEQARINST ID, ETER ID or another known identifier.
+    * Indicator whether [micro – credential(s) are covered](report_data.md#details) as part of the report – required as from 2024
+
+3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element. In particular:
+    * Requirements based on the **type of ESG activity**:
+        - institutional: no programme data must be provided
+        - programme or programme/institution: exactly one organisation must be identified, data on one or several programme(s) must be provided
+        - joint programme: at least two organisations must be identified, data on one or several programme(s) must be provided
+    * Data required for **each programme** (except institutional reports):
+        - the [programme name](report_data.md#programme-name-and-qualification) (in whatever language it is stored by the Agency)
+        - the [degree outcome](report_data.md#programme-qualification-level) indicating whether full degree or not – required as from 2024
+        - the [qualification level](report_data.md#programme-qualification-level) – required for non-full degree programmes, as from 2024 required for all
+    * Data required for **programmes with degree outcome "no"** (= not leading to a full degree):
+        - [Workload expressed in ECTS](report_data.md#programme-details)
+        - Whether programme includes [assessment or certification](report_data.md#programme-details)
+    * Constraint if any programme covered by the report has **degree outcome "no"** (= not leading to a full degree):
+        - Report must be marked as [micro-credentials included/covered](report_data.md#details)
+    * Constraints for **reports on only alternative providers**, i.e. when none of the organisations identified is a higher education institution:
+        - [Status](report_data.md##report-details) may only be "voluntary"
+        - [Degree outcome](report_data.md#programme-qualification-level) must be "no" (= no full degree)
+
+4. Submitted data must be of the **correct type, form and value range/options** as described above.
+
+Records not meeting all of the above criteria will be rejected and no data on the report will be saved. The system will return a response object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more submission objects does not imply the failure of the whole submission batch.
 
 ### Flagging criteria
 
-Once the submission objects clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records.
+Once the report data passed the first level of validation, DEQAR report records are created or updated with the submitted data. Now, some final sanity checks are run on the records: records may receive a “low-level flag” or a “high-level flag”.
 
-At this stage, DEQAR records may receive either a “low-level flag” or a “high-level flag”. In the first case, records will appear online with submitted data, while the EQAR Secretariat is informed to take note. In the second case, records will not be published until they have been checked and confirmed by the EQAR Secretariat.
+In the first case, records will appear online with submitted data, while the EQAR Secretariat is informed to take note. In the second case, records will not be published until they have been checked and confirmed by the EQAR Secretariat.
 
-The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does not indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do *not* try to change the data of a report in order to prevent it from being flagged. Simply wait for EQAR staff to have checked the report.
+> The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does **not** indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do **not** try to change the data of a report in order to prevent it from being flagged, but simply wait for EQAR staff to have checked the report.
 
 Sanity checks may result in **high-level flags** for the following reasons:
 
-* Report Status is listed as *part of obligatory EQA system* in a country where the Agency does not have official status according to EQAR's information.
-* Defined QF-EHEA levels of an institution and one or more of its programmes do not match.
+* Report Status is listed as *part of obligatory EQA system* and the Agency does not have official status (according to EQAR's information) in any legal seat country of any higher education covered by the report.
+
+    > For reports on both alternative providers and higher education institutions, agency must have official status in one of the higher education institutions' countries, the status in the alternative providers' countries is not relevant to this check.
 
 Sanity checks may result in **low-level flags** for the following reasons:
 
-* Report is on an institution in a country in which the agency has not previously been active.
-* Validity From date of a report is more than one year before the submission date. (NB: this check is suspended during the uploading of legacy data from each agency.)
-* Country of the Institution does not match the country of one or more of its programmes.
-* Report on an Institution in the EHEA is submitted without the QF-EHEA levels provided.
+* Report is on an organisation with a legal seat in or a programme delivered in a country in which the agency has not previously been active.
+* Country of the programme (if specified) does not match any location country of any organisation covered.
+* Programme-level report is "voluntary" and the programme's qualification level is not contained in the list of qualification levels of any of the higher education institutions specified
+* One or more PDF files of the report could not be downloaded (in case a URL was specified) or was not yet uploaded (using the specific API endpoint)
 
-*Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.*
+In addition, the following data on agencies or institutions will automatically be complemented at flagging stage:
+
+* If the report is on an organisation with a legal seat in or a programme delivered in a country in which the agency has not previously been active, this country will automatically be added to the agency's profile.
+* Programme qualification level is added to a higher education institution's qualification levels if the report is "part of the obligatory EQA system".
+* Programme qualification level is always to an alternative provider's qualification levels.
 
 ## Webform
 
@@ -139,7 +159,7 @@ One report may often include/relate to several items, such as one or more instit
 For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
 
 ```
-..., file[1].original_location,   file[1].display_name, file[1].report_language[1], file[2].original_location,   file[2].display_name, file[2].report_language[1], file[2].report_language[1], ...
+..., file[1].original_location,   file[1].display_name, file[1].report_language[1], file[2].original_location,   file[2].display_name, file[2].report_language[1], file[2].report_language[2], ...
 ..., "http://some.url/to/report", "Expert report",      "de",                       "http://some.url/to/report", "Summary",            "en",                       "de", ...
 ```
 
@@ -425,6 +445,18 @@ The examples below show how a JSON Submission Request Object might look for diff
     ]
 }
 ```
+
+#### Micro-credential provided by a higher education institution
+
+(add when API and field names are 100% final)
+
+#### Audit of an alternative provider
+
+(add when API and field names are 100% final)
+
+#### Accreditation of a micro-credential provided by an alternative provider
+
+(add when API and field names are 100% final)
 
 ## Updating Reports
 
