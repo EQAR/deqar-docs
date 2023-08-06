@@ -92,34 +92,40 @@ One and only one official institution name must be provided for each new institu
 
 * Official Institution Name, transliterated (<code>name_official_transliterated</code>; not required; string)  
   A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then [ISO romanisation standards](https://en.wikipedia.org/wiki/List_of_ISO_romanizations) can be used to created romanised forms. If transliteration is not provided, access to the institution record through the search interface will be more limited. For those languages included in the [Python transliterate package](https://pypi.org/project/transliterate/) transliterations can be generated automatically when [supplying institution data in bulk](#bulk-upload).
-  *e.g. Yugo-zapaden universitet "Neofit Rilski”*  
-  *e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*
+
+    *e.g. Yugo-zapaden universitet "Neofit Rilski”*  
+    *e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*
 
 * English Institution Name (<code>name_english</code>; recommended; string)  
-  A single English institution name may be provided for any institution without an English official name. If provided, the English institution name will be used as the primary institution name in the search interface. While not required, providing an English name is strongly recommended to enhance the user experience.  
-  *e.g. South-West University "Neofit Rilski", Blagoevgrad*
+  A single English institution name may be provided for any institution without an English official name. If provided, the English institution name will be used as the primary institution name in the search interface. While not required, providing an English name is strongly recommended to enhance the user experience.
+
+    *e.g. South-West University "Neofit Rilski", Blagoevgrad*
 
 * Institution Acronym (<code>acronym</code>; not required; string)  
-  The official acronym for each institution may be provided. This will be indexed for search.  
-  *e.g. SWU*
+  The official acronym for each institution may be provided. This will be indexed for search.
+
+    *e.g. SWU*
 
 ### Location
 
 One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.
 
 * **Institution Country (\*)** (<code>country_id</code>; conditionally required; string)  
-  The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)), or using the DEQAR numerical ID. Institution countries will be indexed for search.  
-  *e.g. BG*  
-  *e.g. BGR*
+  The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)), or using the DEQAR numerical ID. Institution countries will be indexed for search.
+
+    *e.g. BG*  
+    *e.g. BGR*
 
 * Institution City (<code>city</code>; recommended; string)  
   The city name, preferably in English, where the institution is located in each country may be provided for each institution record. If an institution is located in more than one city, then a separate country/city pairing should be entered for each city. Institution cities will be indexed for search.
-  *e.g. Sofia*
 
-* Institution Latitude (<code>latitude</code>; not required; float)
-* Institution Longitude (<code>longitude</code>; not required; float)  
-  The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.  
-  *e.g. 48,208,356; 1,636,776*
+    *e.g. Sofia*
+
+* Institution Latitude (<code>latitude</code>; not required; float)  
+  Institution Longitude (<code>longitude</code>; not required; float)  
+  The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.
+
+    *e.g. 48,208,356; 1,636,776*
 
 ### Qualification Level
 
@@ -128,47 +134,52 @@ The institution QF-EHEA levels may be provided for each institution. If QF-EHEA 
 * Institution QF-EHEA Level (<code>qf_ehea_levels</code>; required; string)  
   One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see [Framework for Qualifications of the European Higher Education Area](http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area). These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)
 
-|ID |name |
-|:--|:-----------|
-|0 |short cycle |
-|1 |first cycle |
-|2 |second cycle|
-|3 |third cycle |
+    |ID |name |
+    |:--|:-----------|
+    |0 |short cycle |
+    |1 |first cycle |
+    |2 |second cycle|
+    |3 |third cycle |
 
 ### Website
 
 One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.
 
 * **Institutional Website (\*)** (<code>website_link</code>; required; string)  
-  The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.  
-  *e.g. http://www.swu.bg*
+  The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.
+
+    *e.g. http://www.swu.bg*
 
 ### Identifier
 
 You may provide a local or other identifier for the institution, which can later be used to identify this institution in report submission objects. Local identifier are for use by your agency only, whereas other identifiers can be used also by others.
 
 * Institutional Identifier (<code>identifier</code>; not required; string)  
-  The identifier for this institution. Please note that identifiers must be unique within your agency or within the resource provided.  
-  *e.g. HCERES21*
+  The identifier for this institution. Please note that identifiers must be unique within your agency or within the resource provided.
+
+    *e.g. HCERES21*
 
 * Identifier Resource (<code>identifier_resource</code>; not required; string)  
-  If the identifier is not a local identifier of your agency, please provide a short label designating the resource in order to distinguish it from other identifiers. As the resource tag needs to be used consistently, and the combination of identifier and resource tag needs to be globally unique in DEQAR, it should be agreed with the EQAR secretariat.  
-  *e.g. DE-HRK*
+  If the identifier is not a local identifier of your agency, please provide a short label designating the resource in order to distinguish it from other identifiers. As the resource tag needs to be used consistently, and the combination of identifier and resource tag needs to be globally unique in DEQAR, it should be agreed with the EQAR secretariat.
+
+    *e.g. DE-HRK*
 
 ### Dates
 
 Founding and closing years or dates can be provided if known.
 
-* Founding date (<code>founding_date</code>; not required; date)
-* Closing date (<code>closing_date</code>; not required; date)  
+* Founding date (<code>founding_date</code>; not required; date)  
+  Closing date (<code>closing_date</code>; not required; date)  
   Dates should be formated as *YYYY-MM-DD* and years should be given in four digits (*YYYY*).
-  *e.g. 2020-07-01*
+
+    *e.g. 2020-07-01*
 
 ### Hierarchical Relationship
 
 * Parent institution (<code>parent_id</code>; not required; string)  
   If the institution is a faculty or independent unit of another institution, or is part of a grouping of institutions that is also recorded in DEQAR, ETER or OrgReg, you should specify the parent institution. The parent institution can be specified by its DEQARINST ID, optionally in numerical form without the prefix *DEQARINST*.
-  *e.g. DEQARINST4711*
+
+    *e.g. DEQARINST4711*
 
 ## How to Provide Data
 
