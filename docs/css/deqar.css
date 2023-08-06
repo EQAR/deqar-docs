@@ -145,12 +145,12 @@
 }
 
 .rst-content table {
-    margin-left: 24px;
     margin-bottom: 24px;
 }
 
 .rst-content table td,
 .rst-content table th {
+    white-space: normal;
     padding: 5px 10px;
 }
 
