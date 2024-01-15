@@ -8,7 +8,7 @@ Each agency should follow three steps to submit their report data:
 
 ## Choosing a Submission Method
 
-Considering the various needs of the agencies, DEQAR supports three different submission methods. Their use is highly dependent on the technical resources available to a particular agency. Importantly, all three methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
+Considering the various needs of the agencies, DEQAR supports three different submission methods. Their use is highly dependent on the technical resources available to a particular agency. Important: all three methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.
 
 [**Webform**](#webform): Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or modify existing ones. Flags and validation errors will be returned immediately upon submission. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.
 
@@ -67,7 +67,6 @@ In order for submission objects to clear the first level of validation, they mus
     * Report [valid from date, including date format](report_data.md#validity) used by the agency
     * At least one [report file](report_data.md#files) including the language(s) in which it is drafted
     * Organisation: a report must relate to at least one [existing organisation record](report_data.md#organisations) identified by a DEQARINST ID, ETER ID or another known identifier.
-    * Indicator whether [micro – credential(s) are covered](report_data.md#details) as part of the report – required as from 2024
 
 3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element. In particular:
     * Requirements based on the **type of ESG activity**:

@@ -127,24 +127,6 @@ Each report must be assigned a single status and a single decision value. Togeth
     |3 |negative |
     |4 |not applicable |
 
-* **Micro-credential(s) covered as part of the report\*** (<code>micro_credentials_covered</code>; conditionally required\*; string)  
-  A quality assurance report could also include a review of one or multiple [micro-credentials (i.e. a short term learning experience not leading to a full degree)](index.md#definitions) provided by the organisation(s) or related to the programme(s) covered by the report. The data should indicate whether this is the case. Only one value, expressed numerically through its ID or textually through the category, can be added. 
-
-    |ID |name |
-    |:--|:----|
-    |1  |yes  |
-    |2  |no   |
-
-    For reports uploaded solely for programmes offered by one or more alternative provider(s), the field must always be “yes”, as it is expected that alternative providers offer only micro-credentials and no full degrees.
-
-    > \* This field was added to the current DEQAR data model and API. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs. The current default is “no”, for all scenarios except one (see table below), i.e. a report is considered not to cover any micro-credentials unless specified otherwise.
-
-    |Organisation(s)                       |Higher education institutions (HEIs) only |HEIs only                                         |Alternative providers (APs) only |APs only                                                  |Collaboration between HEI(s) and AP(s) |Collaboration between HEI(s) and AP(s)            |
-    |:-------------------------------------|:-----------------------------------------|:-------------------------------------------------|:--------------------------------|:---------------------------------------------------------|:--------------------------------------|:-------------------------------------------------|
-    |**Type of report**                    |**Institutional or full-degree programme** |**Non-full-degree programme (i.e. micro-credential)** |**Review of a provider**        |**Programme (always non-full-degree, i.e. micro-credential)** |**Institutional or full-degree programme** |**Non-full-degree programme (i.e. micro-credential)** |
-    |Allowed values                        | yes OR no                                | yes                                              | yes OR no                       | yes                                                      | yes OR no                             | yes                                              |
-    |If no value provided: current default | no                                       | yes                                              | no                              | yes                                                      | no                                    | yes                                              |
-
 * Summary (<code>summary</code>; not required; string)  
   A textual summary of the key findings of the report/decision that allows users to understand the outcomes without reading the full report. Strongly recommended, the summary should be in English.
 
@@ -270,7 +252,7 @@ Only one identifier should be submitted for each organisation in the submission 
     *e.g. HCERES21*  
     *e.g. AT0004*
 
-* Identifier Resource (<code>institution[n].resource[1]</code>; conditionally required; string)  
+* Identifier Resource(\*) (<code>institution[n].resource[1]</code>; conditionally required; string)  
   If the identifier you use is not a local identifier of your agency, you need to provide its corresponding resource tag. The value for this field can be consulted through the administrative interface.
 
     *e.g. DE-HRK*  
@@ -349,14 +331,14 @@ Information on the country/ies where each programme is located should be provide
 Information on the qualification level of each programme must be provided as a standardised level (based on the QF-EHEA levels); agencies may also choose to indicate the NQF level for each programme.
 
 * **Degree outcome\*** (<code>programme[n].degree_outcome</code>; required \*; string)  
-  A programme, in combination with other programmes, can lead to a full degree (i.e. of bachelors, master or PhD) or not. This is what distinguishes traditional programmes from micro credentials. This field specifies whether the programme leads to a full degree or not.
+  A programme, in combination with other programmes, can lead to a full degree (i.e. of bachelors, master or PhD) or not. This is what distinguishes traditional programmes from micro credentials. This field specifies whether the programme leads to a full degree recognised by the national authorities where the organisation is based at.
 
     When a programme report is uploaded solely for an alternative provider, the value of the field must be "No" (= no full degree) (i.e. it is considered that the programme is a micro credential by default). If the value is marked as "yes", the report upload will be automatically rejected.
 
-    |ID |name |
-    |:--|:----|
-    | 1 |Yes  |
-    | 2 |No   |
+    |ID |value|description               |
+    |:--|:----|:-------------------------|
+    | 1 |Yes  |Fully recognised degree   |
+    | 2 |No   |No fully recognised degree|
 
     > \* This field was added to the current DEQAR data model and API. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs. The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by alternative providers, as micro credentials do not lead to a full degree.
 

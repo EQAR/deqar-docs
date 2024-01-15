@@ -2,13 +2,13 @@
 
 Structural Overview
 -------------------
-The DEQAR data model has been designed around four main entities: registered quality assurance **Agencies**, higher education **Institutions**, educational **Programmes** associated with institutions, and external quality assurance **Reports**.
+The DEQAR data model has been designed around four main entities: registered quality assurance **agencies**, higher education **providers**, their educational **programmes**, and external quality assurance **Reports**.
 
 ![DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg)
 
-Registered agency users are invited to submit and manage information on their external quality assurance reports, including information about the particular study programme described in the report, if applicable. On the other hand, institutional information is managed by the EQAR secretariat, largely based on data from ETER/OrgReg.
+Registered agency users are invited to submit and manage information on external quality assurance reports, including information about the particular programme described in the report, if applicable. Information on higher education providers is managed by the EQAR secretariat. The information on higher education institutions is largely based on data from ETER/OrgReg. The information on alternative providers is provided by QA agencies and managed by the EQAR Secretariat.
 
-EQAR will also continue to collect and manage agency data as well as country data through their registry. These will be linked to report and institution data in DEQAR. To support this, DEQAR also includes a **Country** entity, which contains information on the official external quality assurance regime in any country which hosts an institution evaluated by an EQAR-registered agency.
+EQAR continues to collect and manage agency data, through its register, as well as country data in its knowledge base. These will be linked to report and provider data in DEQAR. To support this, DEQAR also includes a **country** entity, which contains information on the official external quality assurance regime in the countries/higher education systems of the European Higher Education Area (EHEA).
 
 ![DEQAR High Level Data Model with Countries](img/DEQARPhysicalERDiagram_Design31_20-01-18_countryplain.jpg)
 
@@ -16,7 +16,7 @@ Functional Overview
 -------------------
 DEQAR supports three core activities:
 
-- **Submission of data objects:** agencies submit objects and PDF files meeting defined criteria using one of three methods
+- **Submission of data objects:** agencies submit objects and PDF files, meeting defined criteria, using one of three methods:
 
     - as [individual records via webform](data_submission.md#webform)
     - as [batch CSV file via webform](data_submission.md#csv-upload)
@@ -24,32 +24,32 @@ DEQAR supports three core activities:
     
 - **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term. Agencies may update report records already in the system and track their own activity.
 
-- **Search and discovery of information:** records are published on an [public web interface](https://www.deqar.eu/) for search, retrieval and export or download by end users. There is also a [public API](web_api_intro.md) available to all registered users; this allows users to embed DEQAR search interface in their local site.
+- **Search and discovery of information:** records are published on a [public web interface](https://www.deqar.eu/) for search, retrieval and export or download by end users. There is also a [public API](web_api_intro.md) available to all registered users; this allows users to embed DEQAR search interface in their local site.
 
 
 Role of Standards and Identifiers 
 ---------------------------------
 
-As DEQAR aggregates data from different sources, we face several challenges:
+As DEQAR aggregates data from different sources, several challenges are faced:
 
-1. To keep the same data from different sources synchronised (e.g. the same institution may be described differently by different agencies),
-2. To try to avoid duplication, and
-3. To identify already existing records for update if necessary.
+1. to keep the same data from different sources synchronised (e.g. the same provider may be described differently by different agencies);
+2. to try to avoid duplication;
+3. to identify already existing records for update if necessary.
 
-DEQAR uses a set of standard identifiers which are provided by the system for each entity.  In several cases, we also allow agencies to provide their local or national identifiers for entities in order to ease their internal workflows.  Entities are identified in the following ways:
+DEQAR uses a set of standard identifiers, which are provided by the system for each entity.  In several cases, agencies are able to provide their local or national identifiers for entities in order to ease their internal workflows.  Entities are identified in the following ways:
 
 | Entity      | Recommended Identification | Alternative Identification |
 | ----------- | -------------------------- | -------------------------- |
 | Agency      | DEQAR Agency ID            | agency acronym             |
 | Activity    | DEQAR Activity ID          | activity local identifier, activity name |
 | Reports     | local report identifier    | DEQAR Report ID            |
-| Institution | DEQARINST ID               | ETER ID, local institution identifier, other institution identifier |
+| Provider    | DEQARINST ID               | ETER ID, local identifier, other identifier |
 | Programme   | local programme identifier |                            |
 
 As a rule, entities already in the system should be identified to facilitate linking up. In other words: 
 
 1. The **agency responsible** for the report and the **activity** to which it belongs *must be identified with any submission*.
-2. An identifier must be provided for each **institution** covered by the report. If institution records do not yet exist in DEQAR, information on the institutions [must be provided separately](institution_data.md#how-to-provide-data) before reports can be submitted.
+2. An identifier must be provided for each **provider** (higher education institution or alternative provider) covered by the report. If provider records do not yet exist in DEQAR, information on them [must be provided separately](institution_data.md#how-to-provide-data) before reports can be submitted.
 3. In the case of **reports** and **programmes**, agencies are encouraged to provide local identifiers with each new submission of data in order to facilitate subsequent linking:
 
     - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be used to later update the report using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
@@ -79,23 +79,23 @@ We strongly recommend that agencies provide a local identifier with each report 
 
 (See [Submission Object Data Elements: Report Identifier](report_data.md#report-identifier).)
 
-### Institution Identifiers 
+### Provider Identifiers
 
-Institutions already described in DEQAR should be identified in report submissions using one of several identifiers. This allows the system to automatically link report data to existing institution records. 
+Providers already described in DEQAR should be identified in report submissions using one of several identifiers. This allows the system to automatically link report data to existing institution records.
 
-- **DEQARINST IDs**: DEQAR automatically generates a so-called "DEQARINST ID" for each institution record that is created in the system. These can be found through the administrative interface. (They are also returned to the agency as part of the response object after each successful submission.) Ideally, each registered agency will store the DEQARINST IDs for institutions treated in their reports. These are recommended for use in each submission.
+- **DEQARINST IDs**: DEQAR automatically generates a so-called "DEQARINST ID" for each provider record that is created in the system. These can be found through the administrative interface. (They are also returned to the agency as part of the response object after each successful submission.) Ideally, each registered agency will store the DEQARINST IDs for providers treated in their reports. These are recommended for use in each submission.
     
-- **ETER IDs**: DEQAR harvests records from the ETER/OrgReg database once a year. These records are the source of many of the institution records in DEQAR. The ETER ID for these institutions can be found through the administrative interface. The ETER IDs may be stored and used by agencies for submission as an alternative to the DEQARINST IDs.
+- **ETER IDs**: DEQAR creates and updates records on higher education institutions from many European countries from the ETER/OrgReg database every 24&nbsp;hours. The ETER ID for these institutions can be found through the administrative interface. The ETER IDs may be stored and used by agencies for submission as an alternative to the DEQARINST IDs.
     
-- **Local identifiers**: Agencies may also create and store local identifiers for institutions. These can be used for submission as an alternative to the DEQARINST IDs if supplied in advance. Each agency can provide these individually through the administrative interface or these can provided in bulk to the EQAR Secretariat. Local identifiers are managed by one agency independently and can only be used by that agency.
+- **Local identifiers**: Agencies may also create and store local identifiers for providers. These can be used for submission as an alternative to the DEQARINST IDs if supplied in advance. Each agency can provide these individually through the administrative interface or these can provided in bulk to the EQAR Secretariat. Local identifiers are managed by one agency independently and can only be used by that agency.
 
-- **Other identifiers**: DEQAR allows to store additional national, European or other identifiers. These can be used for submission as an alternative to the DEQARINST IDs and are available to all agencies; other identifiers available in the system can be consulted through the administrative interface. In order to ensure uniqueness and stability these are managed by the EQAR secretariat, but agencies are invited to provide identifiers to EQAR that might be useful to other agencies. Other identifiers are always used in combination with a resource indication, in combination with which they are unique.
+- **Other identifiers**: DEQAR allows to store additional national, European or other identifiers. These can be used for submission as an alternative to the DEQARINST IDs and are available to all agencies; other identifiers available in the system can be consulted through the administrative interface. In order to ensure uniqueness and stability these are managed by the EQAR secretariat, but agencies are invited to provide identifiers to EQAR that might be useful to other agencies.
 
-*Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.* 
+Other identifiers are always used in combination with a resource indication, denoting the type of identifier, in combination with which they are unique. EQAR maintains a background list of other trusted identifiers, available here (link to the table). Agencies and other stakeholders can contact EQAR if they want to provide other identifiers.
 
-If an agency cannot locate an existing institution record in DEQAR (and therefore cannot provide either the DEQARINST ID, ETER ID or local identifier), then it will need to provide institution data separately before being able to submit reports on that institution.
+> *Note:* If an agency cannot locate an existing provider record in DEQAR (and therefore cannot provide either the DEQARINST ID, ETER ID or local identifier), then it will need to provide data separately before being able to submit reports on that provider.
 
-(See [Institution Data](institution_data.md) and [Submission Object Data Elements: Institution(s)](report_data.md#institutions).)
+(See [Provider Data](institution_data.md) and [Submission Object Data Elements: Provider(s)](report_data.md#institutions).)
 
 ### Programme Identifiers
 
@@ -105,22 +105,37 @@ DEQAR will not synchronise data on programmes; however, if a local or national i
 
 ### Other Identifiers and Codes
 
-**Countries** are identified via the [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1).
+**Countries** are identified via the [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1). Both two-letter (alpha-2) or three-letter (alpha-3) codes can be used.
 
-**Language** data is accepted in [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+As some EHEA countries consist of several sub-national higher education systems with separate legislation on higher education, those sub-systems are represented as distinct “countries” in DEQAR to provide accurate system-level information. Sub-national systems have no alpha-3 code assigned but can be identified by the following non-standard extended alpha-2 codes:
+
+| Code   | Country        | Sub-system                |
+| ------ | -------------- | ------------------------- |
+| BE-fl  | Belgium        | Flemish Community         |
+| BE-fr  | Belgium        | French Community          |
+| BE-de  | Belgium        | German-speaking Community |
+| UK-ENG | United Kingdom | England                   |
+| UK-SCT | United Kingdom | Scotland                  |
+| UK-WLS | United Kingdom | Wales                     |
+| UK-NIR | United Kingdom | Northern Ireland          |
+
+**Language** codes are accepted in [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 
 Finally, DEQAR provides DEQAR IDs for standard values used for **Report Status** and **Report Decision**. These can be provided instead of the equivalent string values in CSV or JSON objects.
 
 (See [Submission Object Data Elements: Report Details](report_data.md#details).)
 
-Building Institution Records
--------------------------------
+Building Provider Records
+-------------------------
 
-DEQAR has two basic workflows for creating institution records. Either records are harvested from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/); or, if no record exists in ETER/OrgReg, a new institution record is created from scratch based on data submitted by an agency.
+DEQAR has two basic workflows for creating and updating provider records:
+
+1. records on *higher education institutions from most European countries* are created and updated from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/);
+2. records on *higher education institutions located in countries not covered by ETER/OrgReg* and records on *alternative providers* are created from scratch based on data submitted by an agency.
 
 ### Use of Data from ETER/OrgReg
 
-DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as base set of records on European higher education institutions in DEQAR. DEQAR stores the following ETER data on institutions: 
+DEQAR updates records from ETER/OrgReg every 24&nbsp;hours. These records serve as base set of records on European higher education institutions in DEQAR. DEQAR stores the following ETER data on institutions:
 
 - ETER ID
 - official name
@@ -136,22 +151,21 @@ DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve 
 
 ETER/OrgReg data is managed according to the following principles:
 
-1. As a general policy, DEQAR keeps ETER data stable and unchanged between harvests.
-2. If an agency would like to propose a correction or change of ETER data, the EQAR secretariat should be contacted.
-3. Alternative names and local identifiers may be added to ETER records and managed by agencies through the administrative interface (see [Institution Identifiers](#institution-identifiers) above).
-4. The EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources.
-5. Added information and updates are carried through to records from subsequent harvests.
+1. DEQAR uses ETER/OrgReg data as a “single source of truth”.
+2. If an agency would like to propose a correction or change of ETER/OrgReg-based data, the EQAR secretariat should be contacted. After reviewing, the EQAR Secretariat will make these changes in OrgReg and they will be reflected in DEQAR automatically afterwards.
+3. Alternative names and local identifiers may be added to ETER-based records and managed by agencies through the administrative interface (see [Institution Identifiers](#institution-identifiers) above).
+5. Added information and updates in ETER/OrgReg are carried through to records in DEQAR from the next daily update.
 
-### Institutions Not in ETER/OrgReg
+### Providers Not in ETER/OrgReg
 
-For data not existing in ETER/OrgReg, a new record must be created based on data submitted by an agency.
+For data not existing in ETER/OrgReg, a new record must be created based on data submitted by an agency. In the majority of cases these providers will be higher education institutions which are either based in countries not covered by ETER/OrgReg or alternative providers.
 
-In order to ensure data quality and avoid record duplication institution data is always manually screened by EQAR staff and thus needs to be submitted separately and before reports are uploaded for an institution. The minimum data needed to create a record is: name official, country of institution and website (the URL of domain).
+In order to ensure data quality and avoid record duplication, provider data is always manually screened by EQAR staff and thus needs to be submitted separately and before reports are uploaded for an institution. The minimum data needed to create a record is: name official, country of institution and website (the URL of domain).
 
-Institution data created based on information by agencies is managed according to similar principles as data harvested from ETER/OrgReg:
+Provider data is managed as follows in this case:
 
-1. As a general policy, DEQAR keeps institution data, including that submitted directly by an agency, stable and unchanged.
-2. If an agency would like to propose a correction or change of existing institution data, the EQAR secretariat should be contacted.
+1. As a general policy, DEQAR keeps provider data, including that submitted directly by an agency, stable and unchanged.
+2. If an agency would like to propose a correction or change of data for more than 5 organisations,  we are inviting agencies to add the information on the changes in the tab “Update institutions” or “Update alternative providers” in the templates available here respectively and send it to <deqar@eqar.eu>. For changes of data on less than 5 providers, please contact the EQAR secretariat with a description of the change (i.e. a new name, closure of an organisation, new website etc.) at the above mentioned email address.
 3. Alternative names and local identifiers may be added to any institution record and managed by agencies through the administrative interface (see [Institution Identifiers](#institution-identifiers) above).
 4. The EQAR secretariat reserves the right to adapt records based on the information that we receive through agencies and other sources.
 
@@ -159,21 +173,27 @@ Institution data created based on information by agencies is managed according t
 
 ### Hierarchical and Historical Institutional Relationships
 
-In those cases that **quality assurance reports are produced for different organisational levels of an institution**, DEQAR collects and stores data on both entities and establishes a hierarchical link between them. This may be the case of an institution and its "child" faculties or of an institution and its "parent" institution group. DEQAR bases its hierarchical links on information taken from ETER/OrgReg. If any agency would like to propose an additional structural link between two or more institutions or institutional levels, then the proposed link can be provided individually or in a longer list to the EQAR secretariat. In the public search interface, quality assurance reports produced for different levels in the same institution will *cascade* -- i.e. records on child institutions will include the reports produced on the parents; records on parent institutions will show the reports produced on its children.
+In those cases that **quality assurance reports are produced for different organisational levels of a provider**, DEQAR collects and stores data on both entities and establishes a hierarchical link between them. This may be the case of a higher education institution and its "child" faculties, or of a provider and its "parent" group. Another example could be that a university founds an alternative provider through which it organises labour market focused short courses.
 
-DEQAR will also store information on **historical changes in the structure of institutions, e.g. mergers, splits, spin offs and absorptions**. This will allow users to view historical records in the correct context. It will also facilitate the search and discovery of current institutions.
+In the public search interface, quality assurance reports produced for different levels in the same provider will *cascade* -- i.e. records on child providers will include the reports produced on the parents; records on parent providers will show the reports produced on its children.
+
+For higher education institutions, DEQAR bases its hierarchical links on information taken from ETER/OrgReg. If any agency would like to propose an additional structural link between two or more providers or institutional levels, then the proposed link can be provided individually or in a longer list to the EQAR secretariat.
+
+Please bear in mind that the main higher education institution unit is the university and that EQAR encourages agencies to upload reports under the university’s record rather than the smaller units. More on the definition of higher education institutions can be found under [defining institutions](institution_data.md#defining-higher-education-institutions).
+
+DEQAR also stores information on **historical changes in the structure of providers, e.g. mergers, splits, spin offs and absorptions**. This allows users to view historical records in the correct context. It will also facilitate the search and discovery of current providers.
 
 *Note: historical changes in the structure of agencies will also be stored and presented online.*
 
 Presenting Historical Data
 --------------------------
 
-DEQAR not only presents information on the recent ESG-compliant quality assurance activities performed on institutions across Europe and beyond, but also records an historical "trail" of the these activities since 2008, a date which marked the launch of EQAR. Thus DEQAR stores both current and past valid reports on each institution and both are presented to end users through the search interface. Historical data is especially important for DEQAR users from recognition offices or information centres.
+DEQAR not only presents information on the recent ESG-compliant quality assurance activities, but also records an historical "trail" of the these activities since 2008, a date which marked the launch of EQAR. Thus DEQAR stores both current and past valid reports on each provider and both are presented to end users through the search interface. Historical data is especially important for DEQAR users from recognition offices or information centres.
 
-Preferably, agencies should thus upload information on all external QA procedures that were completed during their registration period, including those reports that are already "expired". Agencies should at least upload information on all external QA reports that are still valid.
+> Agencies should thus upload information on all external QA procedures that were completed during their registration period, including those reports that are already "expired". Agencies should at least upload information on all external QA reports that are still valid.
 
-DEQAR also captures historical changes in the status and profile of agencies and institutions e.g. name changes, changed activity, physical relocation and changes in the institutional structure (see [Hierarchical and Historical Institutional Relationships](#hierarchical-and-historical-institutional-relationships)). Changes in the quality assurance regulations within EQAR countries are also captured. To this end, DEQAR differentiates between updates in data due to typographical or syntax errors, and “substantial” updates considered part of the historical data trail. Historical data will be part of the search domain and can therefore be queried by end users.
+DEQAR also captures historical changes in the status and profile of agencies and providers, e.g. name changes, changed activity, physical relocation and changes in the organisational structure (see [Hierarchical and Historical Institutional Relationships](#hierarchical-and-historical-institutional-relationships)). Changes in the quality assurance regulations within EQAR countries are also captured. To this end, DEQAR differentiates between updates in data due to typographical or syntax errors, and “substantial” updates considered part of the historical data trail. Historical data will be part of the search domain and can therefore be queried by end users.
 
-Any request for an update to an institution record to record historical changes of this sort may be submitted to the EQAR secretariat for review. (It is part of the daily work of the EQAR secretariat to keep the registry of agencies and countries complete and up to date.  Changes to the agency's activities, other than purely editorial or technical changes, must be made through [Substantive Change Reports](https://www.eqar.eu/register/reporting-and-renewal/). Nevertheless, in case there is a concern about the recorded status, location or activities of a specific agency or of the quality assurance regime in a particular country, questions can also be directed to the EQAR secretariat.)
+Any request for an update to a provider record to record historical changes of this sort may be submitted to the EQAR secretariat for review. (It is part of the daily work of the EQAR secretariat to keep the registry of agencies and countries complete and up to date.  Changes to the agency's activities, other than purely editorial or technical changes, must be made through [Substantive Change Reports](https://www.eqar.eu/register/reporting-and-renewal/). Nevertheless, in case there is a concern about the recorded status, location or activities of a specific agency or of the quality assurance regime in a particular country, questions can also be directed to the EQAR secretariat.)
 
 ![DEQAR High Level Data Model with historical records](img/DEQARPhysicalERDiagram_Design31_20-01-18_historical.jpg)
