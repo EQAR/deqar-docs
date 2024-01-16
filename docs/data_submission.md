@@ -56,7 +56,9 @@ In general, irrespective of the submission method, all report data submitted to 
 
 In order for submission objects to clear the first level of validation, they must meet the following criteria:
 
-1. The **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified and, if your user is not linked to the agency itself, you must have a proxy to submit reports for the agency.
+1. The main **agency** that created the report (which may or may not be the agency submitting the records) must be clearly identified and, if your user is not linked to the agency itself, you must have a proxy to submit reports for the agency.
+
+    Additional, contributing agencies [can be identified](report_data.md#agency), but all validation and flagging criteria relate to the main agency only.
 
 2. Submitted data must **align with the Agency Profile** information, specifically report validity date must be after the Agency's EQAR registration start date and before the registration end date, if applicable.
 
@@ -73,18 +75,17 @@ In order for submission objects to clear the first level of validation, they mus
         - institutional: no programme data must be provided
         - programme or programme/institution: exactly one organisation must be identified, data on one or several programme(s) must be provided
         - joint programme: at least two organisations must be identified, data on one or several programme(s) must be provided
-    * Data required for **each programme** (except institutional reports):
-        - the [programme name](report_data.md#programme-name-and-qualification) (in whatever language it is stored by the Agency)
+    * Data required for **each programme** (i.e. except institutional reports):
+        - the [programme name](report_data.md#programme-name-and-qualification) (in whichever language it is stored by the Agency)
         - the [degree outcome](report_data.md#programme-qualification-level) indicating whether full degree or not – required as from 2024
         - the [qualification level](report_data.md#programme-qualification-level) – required for non-full degree programmes, as from 2024 required for all
     * Data required for **programmes with degree outcome "no"** (= not leading to a full degree):
         - [Workload expressed in ECTS](report_data.md#programme-details)
         - Whether programme includes [assessment or certification](report_data.md#programme-details)
-    * Constraint if any programme covered by the report has **degree outcome "no"** (= not leading to a full degree):
-        - Report must be marked as [micro-credentials included/covered](report_data.md#details)
+    * Constraints for **reports not covering any higher education institution from the EHEA**, e.g. report on a non-European higher education institution or on an alternative provider:
+        - [Status](report_data.md##report-details) must be "voluntary"
     * Constraints for **reports on only alternative providers**, i.e. when none of the organisations identified is a higher education institution:
-        - [Status](report_data.md##report-details) may only be "voluntary"
-        - [Degree outcome](report_data.md#programme-qualification-level) must be "no" (= no full degree)
+        - [Degree outcome](report_data.md#programme-qualification-level) must be "no" (= not leading to a full recognised degree)
 
 4. Submitted data must be of the **correct type, form and value range/options** as described above.
 
@@ -96,7 +97,7 @@ Once the report data passed the first level of validation, DEQAR report records 
 
 In the first case, records will appear online with submitted data, while the EQAR Secretariat is informed to take note. In the second case, records will not be published until they have been checked and confirmed by the EQAR Secretariat.
 
-> The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does **not** indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do **not** try to change the data of a report in order to prevent it from being flagged, but simply wait for EQAR staff to have checked the report.
+> The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does **not** indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do **not** try to change the data of a report in order to prevent it from being flagged, but simply wait for EQAR Secretariat to have checked the report.
 
 Sanity checks may result in **high-level flags** for the following reasons:
 
@@ -106,16 +107,16 @@ Sanity checks may result in **high-level flags** for the following reasons:
 
 Sanity checks may result in **low-level flags** for the following reasons:
 
-* Report is on an organisation with a legal seat in or a programme delivered in a country in which the agency has not previously been active.
-* Country of the programme (if specified) does not match any location country of any organisation covered.
+* The report covers a provider with a legal seat in or a programme delivered in a country in which the agency has not previously been active.
+* Country of the programme (if specified) does not match any location country of any provider covered.
 * Programme-level report is "voluntary" and the programme's qualification level is not contained in the list of qualification levels of any of the higher education institutions specified
 * One or more PDF files of the report could not be downloaded (in case a URL was specified) or was not yet uploaded (using the specific API endpoint)
 
 In addition, the following data on agencies or institutions will automatically be complemented at flagging stage:
 
-* If the report is on an organisation with a legal seat in or a programme delivered in a country in which the agency has not previously been active, this country will automatically be added to the agency's profile.
-* Programme qualification level is added to a higher education institution's qualification levels if the report is "part of the obligatory EQA system".
-* Programme qualification level is always to an alternative provider's qualification levels.
+* If the report covers a provider with a legal seat in or a programme delivered in a country in which the agency has not previously been active, this **country is added to the agency's profile**.
+* The **programme qualification level** is added to a higher education institution's qualification levels if the report is "part of the obligatory EQA system".
+* The programme qualification level is always added to an alternative provider's qualification levels.
 
 ## Webform
 
@@ -153,7 +154,7 @@ agency, activity, status, decision, valid_from, valid_to, date_format, file[1].o
 
 (Spaces added for readability, these should not appear in an actual file.)
 
-One report may often include/relate to several items, such as one or more institution(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type `field_name[n]` (See [Report Data Elements](report_data.md) above). You should create as many columns as you need and replace `n` by 1, 2, ...
+One report may often include/relate to several items, such as one or more provider(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type `field_name[n]` (See [Report Data Elements](report_data.md) above). You should create as many columns as you need and replace `n` by 1, 2, ...
 
 For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:
 

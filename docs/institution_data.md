@@ -264,16 +264,22 @@ Providing an identifier serves as proof of confirming the validity of the provid
 
     *e.g. World Higher Education Database*
 
-| Identifier resource | Source | Description |
-|:--------------------|:-------|:------------|
-| DID-EBSI | Higher education institutions | Type of identifier that enables verifiable, decentralised digital identity through the European Blockchain Service Infrastructure (EBSI) |
-| Erasmus | European Commmission | Erasmus institution code |
-| Erasmus-Charter | European Commission | |
-| EU-PIC | European Commission | A 9-digit Participant Identification Code (PIC) are unique identifiers of providers/institutions used to participate in a call for proposals (e.g. Erasmus+ projects) |
-| EU-VAT | National (tax) authorities of EU member states | Identification number for value-added tax (VAT) within the EU system, assigned to most legal entities in the EU |
-| SCHAC | SCHema for ACademia | (to be filled in) |
-| WHED | International Association of Universities (IAU) & UNESCO | Global ID, which uniquely identifies each higher education institution listed in the World Higher Education Database (WHED) |
+The following common European or international identifier types are known in DEQAR and can be used without additional information, i.e. it is sufficient to provide the identifier resource, the identifier source does not need to be specified.
 
+| Identifier resource | Title  | Source |
+|:--------------------|:-------|:------------|
+| DID-EBSI | DID for the European Blockchain Service Infrastructure (EBSI) | Decentralised Identifier (DID) that enables verifiable, decentralised digital identity within the EBSI ecosystem - data provided by higher education institutions participating in EBSI, see <https://ec.europa.eu/digital-building-blocks/wikis/display/EBSIDOC/EBSI+DID+Method> |
+| Erasmus | Erasmus Institution Code | Identifier assigned by the European Commission to higher education institutions participating in the Erasmus+ programme - data harvested from ETER/OrgReg, see <https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-charter-for-higher-education> |
+| Erasmus-Charter | Erasmus Charter for Higher Education (ECHE) | Application number related to the ECHE, required for higher education institutions participating in the Erasmus+ programme - data acquired using the European University Foundation (EUF) HEI API, see <https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-charter-for-higher-education> |
+| EU-PIC | Participant Identification Code (PIC) | A PIC is assigned to legal entities participating in EU-funded programmes - data acquired using the European University Foundation (EUF) HEI API, see <https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register> |
+| EU-VAT | EU VAT number | Identifier of economic operators for value-added tax (VAT) within the EU system, assigned by their national authority - data acquired using the EU participant register API, see <https://ec.europa.eu/taxation_customs/vies/#/vat-validation> |
+| SCHAC | SCHema for Academia | Internet domain (DNS)-based identifier of institutions, used in several European initiatives for data exchange in the education and research sector, e.g. Emrex - data acquired using the European University Foundation (EUF) HEI API, see <https://wiki.refeds.org/display/STAN/SCHAC> |
+| WHED | IAU World Higher Education Database (WHED) | Identifier used in the world-wide WHED database of higher education institutions, managed by the International Association of Universities (IAU) - data harvested from ETER/OrgReg, see <https://www.whed.net/> |
+
+The following table contains some examples of national identifiers already known in DEQAR:
+
+| Identifier resource | Title  | Source |
+|:--------------------|:-------|:------------|
 | FR-SIREN | French Tax administration | see <https://sirene.fr/sirene/public/accueil> |
 | UK-PIN | The UK Register of Learning Providers | see <https://www.ukrlp.co.uk/> |
 | KZ-BIN | Kazakh Tax administration | see <https://kgd.gov.kz/en/services/taxpayer_search> |

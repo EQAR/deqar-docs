@@ -173,7 +173,7 @@ Building Provider Records
 
 DEQAR has two basic workflows for creating and updating provider records:
 
-1. records on *higher education institutions from most European countries* are created and updated from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/);
+1. records on *higher education institutions from most European countries* are created and updated from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](https://www.risis2.eu/registers-orgreg/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/);
 2. records on *higher education institutions located in countries not covered by ETER/OrgReg* and records on *alternative providers* are created from scratch based on data submitted by an agency.
 
 ### Use of Data from ETER/OrgReg

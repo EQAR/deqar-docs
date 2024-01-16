@@ -2,25 +2,19 @@
 
 Agencies are asked to prepare data on quality assurance reports for submission to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system. Submission objects can be packaged together for batch submission.
 
-Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to [update information on existing records](data_submission.md#updating-reports) through batch submission. Deletion of existing records can be requested, but final deletion can only be performed by DEQAR administrators.
+Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to [update information on existing records](data_submission.md#updating-reports) through batch submission. Deletion of existing records can be requested, but final deletion can only be performed by the EQAR Secretariat.
 
-Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold** with a \* , conditionally required data elements in **bold** with a (\*). We use the terminology:
+Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold** with a \* , conditionally required data elements in **bold** with a (\*).
 
-* "must" to denote that an element is required or required in certain situations
-* "should" to denote that an element is highly recommended
-* "may" to denote that an element is optional
+There are several possible “one-to-many” relations within a report record: e.g. one report might cover several providers (e.g. in case of a joint programme), or several programmes of one institution, or can have several associated files, etc.. In JSON for API submission, these cases can be naturally represented as arrays of objects; in a CSV file, these relations are difficult to represent due to the flat/one-dimensional structure.
 
-(See [RFC 2119 Best Current Practice](https://tools.ietf.org/html/rfc2119).)
-
-There are several possible “one-to-many” relations within a report record: e.g. one report might cover several organisations (e.g. in case of a joint programme), or several programmes of one institution, or can have several associated files, etc.. In JSON for API submission, these cases can be naturally represented as arrays of objects; in a CSV file, these relations are difficult to represent due to the flat/one-dimensional structure.
-
-In the CSV template, such columns or groups of columns can thus be duplicated and indexed with an integer in square brackets, e.g. `institution[1].deqar_id`, `institution[2].deqar_id`, …fr The structure and field names of the elements below directly reflect our CSV template, with repeatable columns indicated by `[n]` part of the column name.
+In the CSV template, such columns or groups of columns can thus be duplicated and indexed with an integer in square brackets, e.g. `institution[1].deqar_id`, `institution[2].deqar_id`, … The structure and field names of the elements below directly reflect the CSV template, with repeatable columns indicated by `[n]` part of the column name.
 
 To see how these elements are arrayed in JSON for API submission, see our JSON definition at:
 
 <https://backend.deqar.eu/submissionapi/v1/swagger/>
 
-Please note that new records for organisations not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated [CSV template described above](institution_data.md#how-to-provide-data).
+Please note that new records for providers not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated [CSV templates described above](institution_data.md#how-to-provide-data).
 
 |ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
 |:--------------------------------------------|:------------|:---------|:-----------------------|
@@ -96,12 +90,12 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 
 Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record:
 
-|Type |Report record structure |
-|:----------------------|:------------------------------|
-|institutional |at least one organisation<br>no programme|
-|institutional/programme|one and only one organisation<br>at least one programme|
-|programme |one and only one organisation<br>at least one programme|
-|joint programme |at least two organisations<br>at least one programme|
+|Type                    |Provider(s)            |Programme(s)           |
+|:-----------------------|:----------------------|:----------------------|
+|institutional           |at least one provider  |no programme           |
+|institutional/programme |only one provider      |at least one programme |
+|programme               |only one provider      |at least one programme |
+|joint programme         |at least two providers |at least one programme |
 
 ## Details
 
@@ -110,15 +104,23 @@ Each report must be assigned a single status and a single decision value. Togeth
 * **Status\*** (<code>status</code>; required; string)  
   The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.
 
-    > The status "part of obligatory EQA system" may only be used in the EHEA and for reports that cover at least one higher education institution. **For reports on only alternative providers, the status must always be "voluntary".
-
     |ID |name |description |
     |:--|:-----------------------------|:-----------|
-    |1 |part of obligatory EQA system |A review is of obligatory nature if the QA process/the report/the decision has any kind of official status in the higher education system where the institution is based/established, e.g. further serves for accreditation or licencing of the higher education institution, fulfils a legal obligation to undergo a regular evaluation or audit, etc.; field **only applicable for higher education institutions in the EHEA**. |
-    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the organisation's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the organisation); **reports on alternative providers only must be marked as voluntary**. |
+    |1 |part of obligatory EQA system |A review is of obligatory nature if the QA process/the report/the decision has any kind of official status in the higher education system where the institution is based/established, e.g. further serves for accreditation or licencing of the higher education institution, fulfils a legal obligation to undergo a regular evaluation or audit, etc. |
+    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the provider); **reports on alternative providers only must be marked as voluntary**. |
+
+    > The status "part of obligatory EQA system" may only be used for reports that cover at least one higher education institution based in the EHEA. **For reports that cover only higher education institutions beyond the EHEA or only alternative providers, the status must always be "voluntary".
+
+    | Type of provider | Higher education institution in the EHEA | Higher education institution beyond the EHEA | Alternative provider |
+    |:--------------------------|:----|:--------------|:-----------|
+    | Part of obligatory system | Yes | Only if the report also covers at least one institution based in the EHEA | Only if the report also covers at least one institution based in the EHEA |
+    | Voluntary | Yes | Yes | Yes |
+
 
 * **Decision\*** (<code>decision</code>; required; string)  
   The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision records the final result of the QA procedure/report.
+
+    The decision should be final. Only in cases when the decision is “positive with conditions”, the decision can be changed to “positive”. In such cases, a second report file that confirms the upgraded decision should be added to the record without deleting the initial report file.
 
     |ID |name |
     |:--|:---------------------------------------|
@@ -182,7 +184,7 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
 
     > The URL *should* return the [HTTP content-type header](https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Content-Type) `application/pdf` upon a *HEAD* request. The URL *must* return `application/pdf` upon a *GET* request. If another content-type is reported, the file will not be downloaded and saved.
     >
-    >  The maximum filesize is 10MB.
+    >  The maximum file size is 10MB.
 
 * File Display Name (<code>file[n].display_name</code>; not required; string)  
   A single file display name may be provided for each PDF report file, used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.
@@ -190,7 +192,7 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
     *e.g. Report*  
     *e.g. Evaluation*
 
-    > This should be a short and generic term (such as “Report and Decision”, “Evaluation Report”, “Accreditation Decision”, “Summary report”, ...). The display name should *not* repeat the name of the organisation or programme addressed in the report.
+    > This should be a short and generic term (such as “Report and Decision”, “Evaluation Report”, “Accreditation Decision”, “Summary report”, ...). The display name should *not* repeat the name of the provider or programme addressed in the report.
 
 * **Report Language\*** (<code>file[n].report_language[n]</code>; required; string)  
   One or more languages must be provided for each file in the form of an ISO 639 1 (two-digit) or ISO 639 2 (three digit) language code (see [ISO 639-1 or ISO 639-2/B format](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)).
@@ -217,15 +219,15 @@ If several links are provided, display names must be provided for each link. The
     *e.g. report in national qualifications database*  
     *e.g. decision on ministry's website*
 
-## Organisation(s)
+## Provider(s)
 
-Each report must be associated with at least one organisation. The record(s) for the organisation(s) need(s) to already exists in DEQAR, see [the previous section on adding missing organisations to DEQAR](institution_data.md).
+Each report must be associated with at least one provider. The record(s) for the provider(s) need(s) to already exists in DEQAR, see [the previous section on adding missing providers to DEQAR](institution_data.md).
 
-Preferably, the DEQARINST ID or the ETER ID (for higher education institutions) should be provided to identify the organisation(s).
+Preferably, the DEQARINST ID should be provided to identify the provider(s). In addition, the ETER ID can be used for higher education institutions listed in ETER/OrgReg.
 
-Optionally, an agency may choose to use local or other identifiers for the organisation(s). Before thesue can be used for submission, the local identifiers should be provided in bulk to the EQAR secretariat.
+Alternatively, an agency may choose to use local or other identifiers for the provider(s). Before thesue can be used for submission, the local identifiers should be provided in bulk to the EQAR secretariat.
 
-Only one identifier should be submitted for each organisation in the submission object (see [Organisation Identifiers](architecture_data_model.md#organisation-identifiers)). If more than one identifier is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID (for higher education institutions), followed by the local or other identifier.
+Only one identifier should be submitted for each provider in the submission object (see [Provider Identifiers](architecture_data_model.md#provider-identifiers)). If more than one identifier is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID (for higher education institutions), followed by the local or other identifier.
 
 |ELEMENT NAME                 |REQUIRED FOR HEI |REQUIRED FOR AP |ONE/MANY  |EXAMPLE                          |
 |:----------------------------|:----------------|:---------------|:---------|:--------------------------------|
@@ -235,19 +237,19 @@ Only one identifier should be submitted for each organisation in the submission 
 |Identifier Resource          |conditionally    |conditionally   |one (per) |*SI-ETER.BAS.NATID*<br>*Erasmus* |
 
 * **DEQARINST ID(\*)** (<code>institution[n].deqar_id</code>; conditionally required; string)  
-  Each organisation already described in DEQAR is assigned a DEQARINST ID. The DEQARINST ID may be used to establish a link between submitted report data and an existing organisation record.
+  Each provider already described in DEQAR is assigned a DEQARINST ID. The DEQARINST ID may be used to establish a link between submitted report data and an existing provider record.
 
     *e.g. DEQARINST0034*
 
 * **ETER ID(\*)** (<code>institution[n].eter_id</code>; conditionally required; string)  
-  (*Only applicable to reports on higher education institutions*) Each institution described in OrgReg or ETER is assigned an ETER ID (see [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/)). The ETER ID may be used to establish a link between submitted report data and an ETER record in DEQAR.
+  (*Only applicable to reports on higher education institutions*) Each institution described in OrgReg or ETER is assigned an ETER ID (see [Register of Public Sector Organisations - OrgReg](https://www.risis2.eu/registers-orgreg/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/)). The ETER ID may be used to establish a link between submitted report data and an ETER record in DEQAR.
 
     *e.g. BG0001*
 
-* **Organisation Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
-  A local identifier is any identifier used by the Agency to identify an organisation, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID (or ETER ID for higher education institutions) to establish a link between submitted report data and an existing organisation record.
+* **Provider Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
+  A local identifier is any identifier used by the Agency to identify an provider, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID (or ETER ID for higher education institutions) to establish a link between submitted report data and an existing provider record.
 
-    > Local identifiers need to be assigned in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat; see [Organisation Identifiers](architecture_data_model.md#organisation-identifiers) for details.)
+    > Local identifiers need to be assigned in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat; see [Provider Identifiers](architecture_data_model.md#provider-identifiers) for details.)
 
     *e.g. HCERES21*  
     *e.g. AT0004*
@@ -263,9 +265,9 @@ Only one identifier should be submitted for each organisation in the submission 
 
 Information on one or more programmes is required for all reports with the assigned activity types: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme.
 
-The term "programme" is used both for learning units that lead to a full degree (traditional programmes offered by HEIs) and those that don’t (i.e. micro credentials offered by HEIs or alternative providers). Whenever there is a difference, the handbook points to "programmes leading to full degree" and "programmes not leading to a full degree" (i.e. micro credentials). See also the [definitions on micro-credentials and alternative providers](index.md#definitions).
+See the [definitions on programmes and higher education providers](index.md#definitions).
 
-|ELEMENT NAME |REQUIRED FOR FULL DEGREE PROGRAMMES |REQUIRED FOR NON FULL DEGREE PROGRAMMES (MICRO-CREDENTIALS) |ONE/MANY |EXAMPLE |
+|ELEMENT NAME |REQUIRED FOR PROGRAMMES LEADING TO A FULL DEGREE |REQUIRED FOR PROGRAMMES THAT DO NOT LEAD TO A FULL DEGREE (MICRO-CREDENTIALS) |ONE/MANY |EXAMPLE |
 |:------------|:-----------------------------------|:-----------------------------------------------------------|:--------|:-------|
 |Local Programme Identifier             |no      |no      |many (per) | *61*<br>*60800* |
 |**Primary Programme Name**             |yes     |yes     |one (per)  | *Arts-specialist in opleiding*|
@@ -318,10 +320,10 @@ One and only one primary programme name must be provided for each programme asso
 
 ### Programme Location
 
-Information on the country/ies where each programme is located should be provided **if different from the organisation country**.
+Information on the country/ies where each programme is located should be provided **only if different from the provider country**.
 
 * Programme Country (<code>programme[n].country[n]</code>; not required; string)  
-  The one or more countries where the programme is located should be provided if different from the organisation's country. The country/ies should be provided in the form of an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)).
+  The one or more countries where the programme is located should be provided if different from the provider's country. The country/ies should be provided in the form of an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see [ISO 3166-1 standard](https://en.wikipedia.org/wiki/ISO_3166-1)).
 
     *e.g. BE*  
     *e.g. BEL*
@@ -331,7 +333,7 @@ Information on the country/ies where each programme is located should be provide
 Information on the qualification level of each programme must be provided as a standardised level (based on the QF-EHEA levels); agencies may also choose to indicate the NQF level for each programme.
 
 * **Degree outcome\*** (<code>programme[n].degree_outcome</code>; required \*; string)  
-  A programme, in combination with other programmes, can lead to a full degree (i.e. of bachelors, master or PhD) or not. This is what distinguishes traditional programmes from micro credentials. This field specifies whether the programme leads to a full degree recognised by the national authorities where the organisation is based at.
+  The field specifies whether the programme leads to a full degree recognised by the national authorities where the provider is based at.
 
     When a programme report is uploaded solely for an alternative provider, the value of the field must be "No" (= no full degree) (i.e. it is considered that the programme is a micro credential by default). If the value is marked as "yes", the report upload will be automatically rejected.
 
@@ -340,7 +342,15 @@ Information on the qualification level of each programme must be provided as a s
     | 1 |Yes  |Fully recognised degree   |
     | 2 |No   |No fully recognised degree|
 
-    > \* This field was added to the current DEQAR data model and API. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs. The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by alternative providers, as micro credentials do not lead to a full degree.
+    When a report is shown on the public DEQAR website (as well as in the Web API), three programme types are distinguished based on the degree outcome and workload of the programme:
+
+    | Degree outcome | Workload   | Programme type shown              |
+    |:---------------|:-----------|:----------------------------------|
+    | Yes            | regardless | Fully recognised degree programme |
+    | No             | < 60 ECTS  | Micro-credential                  |
+    | No             | ≥ 60 ECTS  | Other provisions                  |
+
+    > \* This field was recently added to the current DEQAR data model. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs (expected in September 2024). The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by alternative providers, as micro credentials do not lead to a full degree.
 
 * **Programme Qualification Level\*** (<code>programme[n].qf_ehea_level</code>; required \*; string)  
   A single standardised qualification level must be provided for each programme in the form of either a level name or level ID. These levels are based on the [Framework for Qualifications of the European Higher Education Area (QF-EHEA)](https://www.ehea.info/page-qualification-frameworks), the [European Qualifications Framework (EQF)](https://europa.eu/europass/en/europass-tools/european-qualifications-framework) and the [International Standard Classification of Education (ISCED)](https://uis.unesco.org/en/topic/international-standard-classification-education-isced).
@@ -370,7 +380,7 @@ Information on the qualification level of each programme must be provided as a s
     *e.g. 15*
 
 * **Assessment and certification\*** (<code>programme[n].assessment_certification</code>; conditionally required; string)  
-  While a programme does not lead to a full degree, it could still have a formal outcome.
+  A programme that does not lead to a full degree could still have a formal outcome (e.g. a micro-credential).
 
     The field is **required** for programmes not leading to a full degree (e.g. micro-credentials) and **must be empty** for programmes leading to a full degree.
 
@@ -404,7 +414,7 @@ Information on the qualification level of each programme must be provided as a s
     *e.g. Digitise and scan lasts. Work with files in various CAD systems. Produce 3D models of heels and create 2D computer aided designs. Grade and obtain the size series. Prepare technical specifications for manufacturing. Produce 2D and 3D computer aided engineering designs and technical drawings of moulds for vulcanised and injected heels. Export the files of the virtual models to 3D printers, CAM or CNC systems.*
 
 * Field of study (<code>programme[n].field_study</code>; not required, string)  
-  DEQAR is using the International Standard Classification of Education (ISCED) framework (2013) for assembling the organisation of education programmes and related qualifications by levels and fields of education. ESCO uses ISCED-F to organise/categorise the knowledge pillar of skills.
+  DEQAR is using the International Standard Classification of Education (ISCED) framework (2013) for assembling the provider of education programmes and related qualifications by levels and fields of education. ESCO uses ISCED-F to organise/categorise the knowledge pillar of skills.
 
     A 2-digit (broad field), 3-digit (narrow field) or 4-digit (detailed field) code of the ISCED 2013 classification or a URI from the ESCO taxonomy can be used to indicate the field of study.
 

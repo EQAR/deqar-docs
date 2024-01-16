@@ -113,7 +113,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 
 > - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the test environment, i.e. the [Sandbox](https://admin.sandbox.deqar.eu/).
 >
-> - Once you do the first test upload through the Sandbox, please check whether the test reports are red flagged through using the filter “Flags” in the section “Reports”. Should that be the case, at the bottom of the page, press “Show info” and read the note on the reasons. Please alter the upload accordingly.
+> - Once you do the first test upload through the Sandbox, please check whether the test reports are red flagged through using the filter “Flags” in the section “Reports”. Should that be the case, at the bottom of the page, press “Show info” and read the note on the reasons. Please correct your data if applicable (e.g. the status of the report is marked as "part of the obligatory EQA system" for a higher education institution with a legal seat outside EHEA, in which case it must be "voluntary") or contact the EQAR Secretariat.
 >
 > - If the system ingests your files and there are no red flagged reports, please proceed with uploading your reports through the real live environment.
 >
