@@ -112,9 +112,17 @@
     margin: 0 0 10px 10px;
 }
 
-.rst-content .section ol p, .rst-content .section ul p {
-    margin-bottom: 0;
-    margin-top: 12px;
+.rst-content .section ol li > p,
+.rst-content .section ol li > p:first-child,
+.rst-content .section ol li > p:only-child,
+.rst-content .section ol li > p:last-child,
+.rst-content .section ul li > p,
+.rst-content .section ul li > p:first-child,
+.rst-content .section ul li > p:only-child,
+.rst-content .section ul li > p:last-child
+{
+    margin-bottom: revert;
+    margin-top: revert;
 }
 
 .rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4, .rst-content h5 {
