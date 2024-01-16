@@ -22,6 +22,17 @@ theme:
 extra_css: [ "css/deqar.css" ]
 plugins:
     - search
+    - mermaid2:
+        arguments:
+          er:
+            minEntityHeight: 35
+          theme: base
+          themeVariables:
+            primaryColor: '#f3f6f6'
+            primaryTextColor: '#404040'
+            primaryBorderColor: '#033163'
+            lineColor: '#033163'
+
 markdown_extensions:
     - toc:
         permalink: True
