@@ -1,7 +1,5 @@
 # Quick Start Guide
 
-![We want you to join DEQAR!](img/DEQARWantsYou.png)
-
 The purpose of DEQAR is to give wide public access to the reports and decisions on higher education institutions/programmes externally reviewed by EQAR-registered agencies.  We accomplish this through:
 
 - an easily searchable database of institutions where users can find up-to-date QA reports for download;
@@ -22,7 +20,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >
 >     _Note: the list of eligible activities can be found on the register record for the agency ([https://www.eqar.eu/register/agencies/](https://www.eqar.eu/register/agencies/)) and also in the DEQAR administrative interface  accessible after the agency activates its account (see below: [Activate your Account](quick_start_guide.md#activate_your_account))._
 >
->     _If a new activity is introduced, then a formal change report should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
+>     _If a new activity is introduced, then a [formal change report](https://www.eqar.eu/register/guide-for-agencies/reporting-and-renewal/) should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
 >
 > - Only upload **reports created since the date of the agency’s registration** on EQAR (i.e. the date of the first external review of your agency against the ESG).
 >
@@ -83,7 +81,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 > - You should also analyse DEQAR’s institutional list to ensure that institutions evaluated/accredited by your agency are already present in the system.  The institution list can be found on the EQAR Admin Interface at: [https://admin.deqar.eu/institutions](https://admin.deqar.eu/institutions)
 >
->     _Note: the base institution list has been taken from the European Tertiary Education Register (ETER/OrgReg; [https://risis-eter.orgreg.joanneum.at/about/intro](https://risis-eter.orgreg.joanneum.at/about/intro))._
+>     _Note: the base institution list is synchronised daily with the [Register of Public Sector Organisations (OrgReg)](https://www.risis2.eu/registers-orgreg/) and the [European Tertiary Education Register (ETER)](https://eter-project.com/), which cover a large number of European countries._
 >
 >     _If institutions are missing from the list, please contact the EQAR secretariat: [deqar@eqar.eu](mailto:deqar@eqar.eu) to arrange for the data to be imported. For details, see [Institution Data](institution_data.md)._
 
@@ -113,9 +111,13 @@ Once you have figured out what you will submit and how, then it is time to enter
 
 ### Perform your First Submission
 
-> - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the Sandbox.
+> - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the test environment, i.e. the [Sandbox](https://admin.sandbox.deqar.eu/).
 >
-> - When you are ready to submit to the live site, please contact the EQAR secretariat at: [deqar@eqar.eu](mailto:deqar@eqar.eu). This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
+> - Once you do the first test upload through the Sandbox, please check whether the test reports are red flagged through using the filter “Flags” in the section “Reports”. Should that be the case, at the bottom of the page, press “Show info” and read the note on the reasons. Please alter the upload accordingly.
+>
+> - If the system ingests your files and there are no red flagged reports, please proceed with uploading your reports through the real live environment.
+>
+> - In case of doubt, please contact the EQAR secretariat at: [deqar@eqar.eu](mailto:deqar@eqar.eu). This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
 
 ## DEQAR in the Longer Term
 
