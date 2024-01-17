@@ -448,15 +448,123 @@ The examples below show how a JSON Submission Request Object might look for diff
 
 #### Micro-credential provided by a higher education institution
 
-(add when API and field names are 100% final)
+```json
+{
+  "agency": "AAQ",
+  "local_identifier": "230830/4711/01",
+  "activity": "386",
+  "status": "part of obligatory EQA system",
+  "decision": "positive",
+  "valid_from": "2022-11-11",
+  "valid_to": "2033-03-03",
+  "date_format": "%Y-%m-%d",
+  "institutions": [
+    {
+      "deqar_id": "DEQARINST0006"
+    }
+  ],
+  "report_files": [
+    {
+      "display_name": "report",
+      "original_location": "https://www.eqar.eu/assets/uploads/2021/06/RC_10_1_ComplaintsPolicy_v3_0.pdf",
+      "report_language": [
+        "EN"
+      ]
+    }
+  ],
+  "programmes": [
+    {
+      "name_primary": "Micro master in IT",
+      "qf_ehea_level": "2",
+      "degree_outcome": "no",
+      "workload_ects": "25",
+      "assessment_certification": "1",
+      "field_study": "0288",
+      "learning_outcomes": [
+        "http://data.europa.eu/esco/skill/7c4fc5e4-10cc-4457-9038-77907fee1290",
+        "http://data.europa.eu/esco/skill/390bd026-943b-44a5-b871-def0248e26b8",
+        "http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e"
+      ]
+    }
+  ],
+  "summary": "We evaluated this micro-credential positively."
+}
+```
 
 #### Audit of an alternative provider
 
-(add when API and field names are 100% final)
+```json
+{
+  "agency": "AAQ",
+  "local_identifier": "240117/4711/009",
+  "activity": "231",
+  "status": "voluntary",
+  "decision": "2",
+  "valid_from": "2022-11-11",
+  "valid_to": "2033-03-03",
+  "date_format": "%Y-%m-%d",
+  "institutions": [
+    {
+      "deqar_id": "DEQARINST7773"
+    }
+  ],
+  "report_files": [
+    {
+      "display_name": "report",
+      "original_location": "https://www.eqar.eu/assets/uploads/2021/06/RC_10_1_ComplaintsPolicy_v3_0.pdf",
+      "report_language": [
+        "EN"
+      ]
+    }
+  ],
+  "summary": "Experts were very satisfied with the academy's internal QA system."
+}
+```
 
 #### Accreditation of a micro-credential provided by an alternative provider
 
-(add when API and field names are 100% final)
+```json
+{
+  "agency": "AAQ",
+  "local_identifier": "230830/4711/02",
+  "activity": "386",
+  "status": "voluntary",
+  "decision": "positive",
+  "valid_from": "2022-11-11",
+  "valid_to": "2033-03-03",
+  "date_format": "%Y-%m-%d",
+  "institutions": [
+    {
+      "deqar_id": "DEQARINST7773"
+    }
+  ],
+  "report_files": [
+    {
+      "display_name": "report",
+      "original_location": "https://www.eqar.eu/assets/uploads/2021/06/RC_10_1_ComplaintsPolicy_v3_0.pdf",
+      "report_language": [
+        "EN"
+      ]
+    }
+  ],
+  "programmes": [
+    {
+      "name_primary": "Using Pandas and Python for survey analysis",
+      "qf_ehea_level": "2",
+      "degree_outcome": "2",
+      "workload_ects": "5",
+      "assessment_certification": "1",
+      "field_study": "0288",
+      "learning_outcomes": [
+        "http://data.europa.eu/esco/skill/7c4fc5e4-10cc-4457-9038-77907fee1290",
+        "http://data.europa.eu/esco/skill/390bd026-943b-44a5-b871-def0248e26b8",
+        "http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e"
+      ]
+    }
+  ],
+  "summary": "This micro-credential offers valuable skills to students. It is offered by a company."
+}
+```
 
 ## Updating Reports
 
