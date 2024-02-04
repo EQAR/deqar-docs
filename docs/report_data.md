@@ -107,11 +107,11 @@ Each report must be assigned a single status and a single decision value. Togeth
     |ID |name |description |
     |:--|:-----------------------------|:-----------|
     |1 |part of obligatory EQA system |A review is of obligatory nature if the QA process/the report/the decision has any kind of official status in the higher education system where the institution is based/established, e.g. further serves for accreditation or licencing of the higher education institution, fulfils a legal obligation to undergo a regular evaluation or audit, etc. |
-    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the provider); **reports on alternative providers only must be marked as voluntary**. |
+    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the provider); **reports on other providers only must be marked as voluntary**. |
 
-    > The status "part of obligatory EQA system" may only be used for reports that cover at least one higher education institution based in the EHEA. **For reports that cover only higher education institutions beyond the EHEA or only alternative providers, the status must always be "voluntary".
+    > The status "part of obligatory EQA system" may only be used for reports that cover at least one higher education institution based in the EHEA. **For reports that cover only higher education institutions beyond the EHEA or only other providers, the status must always be "voluntary".
 
-    | Type of provider | Higher education institution in the EHEA | Higher education institution beyond the EHEA | Alternative provider |
+    | Type of provider | Higher education institution in the EHEA | Higher education institution beyond the EHEA | Other provider |
     |:--------------------------|:----|:--------------|:-----------|
     | Part of obligatory system | Yes | Only if the report also covers at least one institution based in the EHEA | Only if the report also covers at least one institution based in the EHEA |
     | Voluntary | Yes | Yes | Yes |
@@ -335,7 +335,7 @@ Information on the qualification level of each programme must be provided as a s
 * **Degree outcome\*** (<code>programme[n].degree_outcome</code>; required \*; string)  
   The field specifies whether the programme leads to a full degree recognised by the national authorities where the provider is based at.
 
-    When a programme report is uploaded solely for an alternative provider, the value of the field must be "No" (= no full degree) (i.e. it is considered that the programme is a micro credential by default). If the value is marked as "yes", the report upload will be automatically rejected.
+    When a programme report is uploaded solely for an "other provider", the value of the field must be "No" (= no full degree) (i.e. it is considered that the programme is a micro credential by default). If the value is marked as "yes", the report upload will be automatically rejected.
 
     |ID |value|description               |
     |:--|:----|:-------------------------|
@@ -350,7 +350,7 @@ Information on the qualification level of each programme must be provided as a s
     | No             | < 60 ECTS  | Micro-credential                  |
     | No             | ≥ 60 ECTS  | Other provisions                  |
 
-    > \* This field was recently added to the current DEQAR data model. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs (expected in September 2024). The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by alternative providers, as micro credentials do not lead to a full degree.
+    > \* This field was recently added to the current DEQAR data model. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs (expected in September 2024). The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by other providers, as micro credentials do not lead to a full degree.
 
 * **Programme Qualification Level\*** (<code>programme[n].qf_ehea_level</code>; required \*; string)  
   A single standardised qualification level must be provided for each programme in the form of either a level name or level ID. These levels are based on the [Framework for Qualifications of the European Higher Education Area (QF-EHEA)](https://www.ehea.info/page-qualification-frameworks), the [European Qualifications Framework (EQF)](https://europa.eu/europass/en/europass-tools/european-qualifications-framework) and the [International Standard Classification of Education (ISCED)](https://uis.unesco.org/en/topic/international-standard-classification-education-isced).

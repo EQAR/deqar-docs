@@ -14,7 +14,7 @@ erDiagram
 
 Registered agency users are invited to submit and manage information on external quality assurance reports, including information about the particular programme described in the report, if applicable.
 
-Information on higher education providers is managed by the EQAR Secretariat. The information on higher education institutions is largely based on data from ETER/OrgReg. The information on alternative providers is provided by QA agencies and managed by the EQAR Secretariat.
+Information on higher education providers is managed by the EQAR Secretariat. The information on higher education institutions is largely based on data from ETER/OrgReg. The information on other providers is provided by QA agencies and managed by the EQAR Secretariat.
 
 EQAR continues to collect and manage agency data, through its register, as well as country data in its knowledge base. These will be linked to report and provider data in DEQAR. To support this, DEQAR also includes a **country** entity, which contains information on the official external quality assurance regime in the countries/higher education systems of the European Higher Education Area (EHEA).
 
@@ -92,7 +92,7 @@ erDiagram
 As a rule, objects already in the system should be identified to facilitate linking up. In other words:
 
 1. The **agency responsible** for the report and the **activity** to which it belongs *must be identified with any submission*.
-2. An identifier must be provided for each **provider** (higher education institution or alternative provider) covered by the report. If provider records do not yet exist in DEQAR, information on them [must be provided separately](institution_data.md#how-to-provide-data) before reports can be submitted.
+2. An identifier must be provided for each **provider** (higher education institution or other provider) covered by the report. If provider records do not yet exist in DEQAR, information on them [must be provided separately](institution_data.md#how-to-provide-data) before reports can be submitted.
 3. In the case of **reports** and **programmes**, agencies are encouraged to provide local identifiers with each new submission of data in order to facilitate subsequent linking:
 
     - For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be used to later update the report using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.
@@ -174,7 +174,7 @@ Building Provider Records
 DEQAR has two basic workflows for creating and updating provider records:
 
 1. records on *higher education institutions from most European countries* are created and updated from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](https://www.risis2.eu/registers-orgreg/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/);
-2. records on *higher education institutions located in countries not covered by ETER/OrgReg* and records on *alternative providers* are created from scratch based on data submitted by an agency.
+2. records on *higher education institutions located in countries not covered by ETER/OrgReg* and records on *other providers* are created from scratch based on data submitted by an agency.
 
 ### Use of Data from ETER/OrgReg
 
@@ -201,14 +201,14 @@ ETER/OrgReg data is managed according to the following principles:
 
 ### Providers Not in ETER/OrgReg
 
-For data not existing in ETER/OrgReg, a new record must be created based on data submitted by an agency. In the majority of cases these providers will be higher education institutions which are either based in countries not covered by ETER/OrgReg or alternative providers.
+For data not existing in ETER/OrgReg, a new record must be created based on data submitted by an agency. In the majority of cases these providers will be higher education institutions which are either based in countries not covered by ETER/OrgReg or other providers.
 
 In order to ensure data quality and avoid record duplication, provider data is always manually screened by EQAR staff and thus needs to be submitted separately and before reports are uploaded for an institution. The minimum data needed to create a record is: name official, country of institution and website (the URL of domain).
 
 Provider data is managed as follows in this case:
 
 1. As a general policy, DEQAR keeps provider data, including that submitted directly by an agency, stable and unchanged.
-2. If an agency would like to propose a correction or change of data for more than 5 providers,  we are inviting agencies to add the information on the changes in the tab “Update institutions” or “Update alternative providers” in the templates [available here](institution_data.md#how-to-provide-data) respectively and send it to <deqar@eqar.eu>. For changes of data on less than 5 providers, please contact the EQAR secretariat with a description of the change (i.e. a new name, closure date of the provider, new website etc.) at the above mentioned email address.
+2. If an agency would like to propose a correction or change of data for more than 5 providers,  we are inviting agencies to add the information on the changes in the tab “Update institutions” or “Update other providers” in the templates [available here](institution_data.md#how-to-provide-data) respectively and send it to <deqar@eqar.eu>. For changes of data on less than 5 providers, please contact the EQAR secretariat with a description of the change (i.e. a new name, closure date of the provider, new website etc.) at the above mentioned email address.
 3. Local identifiers may be added to any provider record and managed by agencies through the administrative interface (see [Provider Identifiers](#provider-identifiers) above).
 4. The EQAR Secretariat reserves the right to adapt records based on the information that we receive through agencies and other sources.
 

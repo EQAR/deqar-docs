@@ -82,9 +82,9 @@ In order for submission objects to clear the first level of validation, they mus
     * Data required for **programmes with degree outcome "no"** (= not leading to a full degree):
         - [Workload expressed in ECTS](report_data.md#programme-details)
         - Whether programme includes [assessment or certification](report_data.md#programme-details)
-    * Constraints for **reports not covering any higher education institution from the EHEA**, e.g. report on a non-European higher education institution or on an alternative provider:
+    * Constraints for **reports not covering any higher education institution from the EHEA**, e.g. report on a non-European higher education institution or other provider:
         - [Status](report_data.md##report-details) must be "voluntary"
-    * Constraints for **reports on only alternative providers**, i.e. when none of the organisations identified is a higher education institution:
+    * Constraints for **reports on only other providers**, i.e. when none of the organisations identified is a higher education institution:
         - [Degree outcome](report_data.md#programme-qualification-level) must be "no" (= not leading to a full recognised degree)
 
 4. Submitted data must be of the **correct type, form and value range/options** as described above.
@@ -103,7 +103,7 @@ Sanity checks may result in **high-level flags** for the following reasons:
 
 * Report Status is listed as *part of obligatory EQA system* and the Agency does not have official status (according to EQAR's information) in any legal seat country of any higher education covered by the report.
 
-    > For reports on both alternative providers and higher education institutions, agency must have official status in one of the higher education institutions' countries, the status in the alternative providers' countries is not relevant to this check.
+    > For reports on both higher education institutions and other providers, agency must have official status in one of the higher education institutions' countries, the status in the other providers' countries is not relevant to this check.
 
 Sanity checks may result in **low-level flags** for the following reasons:
 
@@ -116,7 +116,7 @@ In addition, the following data on agencies or institutions will automatically b
 
 * If the report covers a provider with a legal seat in or a programme delivered in a country in which the agency has not previously been active, this **country is added to the agency's profile**.
 * The **programme qualification level** is added to a higher education institution's qualification levels if the report is "part of the obligatory EQA system".
-* The programme qualification level is always added to an alternative provider's qualification levels.
+* The programme qualification level is always added to an other provider's qualification levels.
 
 ## Webform
 
@@ -491,7 +491,7 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Audit of an alternative provider
+#### Audit of an another provider
 
 ```json
 {
@@ -521,7 +521,7 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Accreditation of a micro-credential provided by an alternative provider
+#### Accreditation of a micro-credential provided by another provider
 
 ```json
 {

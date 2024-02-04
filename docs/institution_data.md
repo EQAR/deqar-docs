@@ -4,11 +4,11 @@ Each report must be associated with at least one higher education provider. If a
 
 ## Providers in DEQAR
 
-DEQAR distinguishes two types of providers - higher education institutions and alternative providers. DEQAR only registers providers which provide learning opportunities at the QF-EHEA Levels (equivalent to EQF and ISCED levels 5 to 8). Vocational education and training provisions at EHEA QF level 5 which are not considered as higher education in the national systems are not included.
+DEQAR distinguishes two types of providers - higher education institutions and other providers. DEQAR only registers providers which provide learning opportunities at the QF-EHEA Levels (equivalent to EQF and ISCED levels 5 to 8). Vocational education and training provisions at EHEA QF level 5 which are not considered as higher education in the national systems are not included.
 
 The main difference between the two types of providers is whether the entity has full degree awarding powers or not. The number of programmes for which the provider has awarding powers, the subject area and the mode of delivery of the programme is not important for the differentiation.
 
-|   | Higher education institution | Alternative provider           |
+|   | Higher education institution | Other provider           |
 |:--|:-----------------------------|:-------------------------------|
 | QF-EHEA/EQF Levels 5-8 | Yes | Yes |
 | Provides short courses (< 90 ECTS) | Yes, optionally | Only short courses |
@@ -27,7 +27,7 @@ DEQAR has records on a large number of higher education institutions (over 4000 
 
 All [provider identifiers](architecture_data_model.md#provider-identifiers) can be found through the [administrative interface](https://admin.deqar.eu/reference/institutions).
 
-> **Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all providers, but only those organsations for which at least one report is available. It is therefore important that you **always search for providers in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of higher education institutions and some alternative providers for which no reports have been submitted yet.
+> **Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all providers, but only those organsations for which at least one report is available. It is therefore important that you **always search for providers in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of higher education institutions and some other providers for which no reports have been submitted yet.
 
 Reports on existing providers can be submitted directly, providing identifiers in CSV or JSON objects as described under [Submission Object Data Elements: Institution(s)](report_data.md#institutions) or by selecting the provider in the web form.
 
@@ -49,7 +49,7 @@ The base URL for the Connect API is:
 
 The endpoint <https://backend.deqar.eu/connectapi/v1/institutions/> allows to query the full list of higher education institutions, with or without reports.
 
-The endpoint <https://backend.deqar.eu/connectapi/v1/providers/> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education instutitons and alternative providers.
+The endpoint <https://backend.deqar.eu/connectapi/v1/providers/> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education instutitons and other providers.
 
 The full definitions of the endpoints, the search parameters and the response object is available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
 
@@ -73,7 +73,7 @@ Before suggesting to add a new higher education institution, please consider the
 
  5. Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university), while such additional branches/campuses will be shown as further locations of the institution. Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.
 
- 5. Providers that award full recognised degrees through a franchise or validation partnership with a higher education institution, but have no own degree-awarding power, will be recorded as an alternative provider.
+ 5. Providers that award full recognised degrees through a franchise or validation partnership with a higher education institution, but have no own degree-awarding power, will be recorded as other provider.
 
  6. In cases when the status of the entity is not clearly determined by the aforementioned cases or the status is debatable, EQAR and the agency will discuss the nature of it taking into account five main indicators:
 
@@ -83,9 +83,9 @@ Before suggesting to add a new higher education institution, please consider the
     - stakeholders’ perceptions
     - local context and approaches to higher education
 
-## Defining Alternative Providers
+## Defining Other Providers
 
-In DEQAR, an alternative provider is an provider that delivers content or provides skills training:
+In DEQAR, "other provider" is a provider that delivers content or provides skills training:
 
  1. At higher education level (i.e. EHEA QF level 5 to 8; EQF 5 to 8; EHEA cycle first to third)
 
@@ -93,13 +93,13 @@ In DEQAR, an alternative provider is an provider that delivers content or provid
 
  3. Whose educational offer is of short nature (i.e. less workload/ECTS than a full short degree - i.e. <90 ECTS)
 
-The mode of delivery of the classes, whether the provision is done independently or in partnership with a higher education institution, the ownership of the provider (e.g. private or public provider), the connection to the labour market and the area of study are not defining elements of the providers "alternative providers" in DEQAR.  
+The mode of delivery of the classes, whether the provision is done independently or in partnership with a higher education institution, the ownership of the provider (e.g. private or public provider), the connection to the labour market and the area of study are not defining elements of "other providers" in DEQAR.  
 
 The use of terminology “alternative providers” varies between systems/countries. For example, in the UK, alternative providers are higher education providers who do not receive recurrent funding from Office for Students (previously HEFCE) or other public body and who are not further education colleges. The degree awarding status is not taken in consideration when defining the status in this system.
 
-Reports for programmes done as a collaboration between a higher education institution and an alternative provider that organises programmes in the field of HE will be showcased under both entities respectively.
+Reports for programmes done as a collaboration between a higher education institution and another provider that organises programmes in the field of HE will be showcased under both entities respectively.
 
-Similarly, an provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered an alternative provider, whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.
+Similarly, an provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered as other provider, whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.
 
 ## Provider Data Elements
 
@@ -192,7 +192,7 @@ Each provider must have one and only one location designated as main legal seat.
 
 For higher education institutions, the legal seat is considered as the higher education system in which the institution is formally recognised as such. In case an institution is a legal entity incorporated in country A but formally recognised as higher education institution in system B, the legal seat should specified in B. In case a higher education institution is formally recognised in several higher education systems, separate provider records should be created, one for each system.
 
-For alternative providers, the legal seat is considered as the country in which the legal entity is incorporated.
+For other providers, the legal seat is considered as the country in which the legal entity is incorporated.
 
 For providers with multiple seats (e.g. branches), each of the locations (i.e. country and city) could be provided in a separate column with number in the brackets (`[n]`).
 
@@ -241,15 +241,15 @@ The following set of columns can be copied for each additional location:
 
 ### Qualification Level
 
-The provider QF-EHEA levels may be provided for each higher education institution and must be provided for each alternative provider.
+The provider QF-EHEA levels may be provided for higher education institutions and must be provided for other providers.
 
 * Provider Qualification Level (<code>qf_ehea_level[n]</code>; conditionally required; string)  
-  One or more qualification levels may be provided for higher education institutions and must be provided for alternative providers as either a DEQAR level name or a DEQAR level id. DEQAR uses levels based on three main frameworks/classifications:
+  One or more qualification levels may be provided for higher education institutions and must be provided for other providers as either a DEQAR level name or a DEQAR level id. DEQAR uses levels based on three main frameworks/classifications:
     - [Framework for Qualifications of the European Higher Education Area](https://www.ehea.info/page-qualification-frameworks) (QF EHEA level),
     - [European Qualification Framework](https://europa.eu/europass/en/europass-tools/european-qualifications-framework) (EQF) and
     - [International Standard Classification of Education](https://uis.unesco.org/en/topic/international-standard-classification-education-isced) (ISCED).
 
-    These are the qualification framework levels at which each higher education institution may award degrees or offer programmes at (for alternative providers). Note: if QF levels are provided, then *all* levels covered by the provider should be provided at the same time.
+    These are the qualification framework levels at which each higher education institution may award degrees or offer programmes at (for other providers). Note: if QF levels are provided, then *all* levels covered by the provider should be provided at the same time.
 
     In the CSV template, each level can be presented as ONE of the possible numbers OR words. Each additional level should be presented in a new column with the subsequent number in brackets (i.e. `[n+1]`).
 
@@ -276,7 +276,7 @@ Providing an identifier serves as proof of confirming the validity of the provid
 
 > A local identifier could be provided for the providers . Local identifier are for use by your agency only, whereas other identifiers can be used also by others.
 > 
-> Other identifier may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all alternative providers.
+> Other identifier may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all other providers.
 >
 > EQAR runs a background list of other trusted identifiers presented below.
 
@@ -291,7 +291,7 @@ Providing an identifier serves as proof of confirming the validity of the provid
     *e.g. DE-HRK*
 
 * Identifier Source (<code>identifier_source</code>; conditionally required; string)  
-  The agency must provide other identifier for higher education institutions which are not in OrgReg and all alternative providers. The field must be filled in if the identifier is not yet known to EQAR (see table below for trusted identifiers). The source could be a national authority, an international provider or another entity.
+  The agency must provide other identifier for higher education institutions which are not in OrgReg and all other providers. The field must be filled in if the identifier is not yet known to EQAR (see table below for trusted identifiers). The source could be a national authority, an international provider or another entity.
 
     If the identifier is already known to EQAR (see table), there is no need to fill in this field.
 
@@ -338,16 +338,16 @@ Founding and closing years or dates should be provided if known.
 
     In case the parent institution is not in DEQAR or ETER/OrgReg, a request for adding the parent institution should be submitted too.
 
-    For alternative providers: If the provider part of another provider that offers courses at higher education level, is part of a higher education institution, or is part of a grouping of providers that is also recorded in DEQAR the parent provider should be specified.
+    For other providers: If the provider part of another provider that offers courses at higher education level, is part of a higher education institution, or is part of a grouping of providers that is also recorded in DEQAR the parent provider should be specified.
 
     If the parent provider is not recorded in DEQAR yet, a request for adding that provider should be submitted too. Please note that for DEQAR it is not relevant if the provider is part of a larger grouping that does work in fields other than higher education provision. Such relationships will not be recorded in DEQAR.
 
     *e.g. DEQARINST4711*
 
-### Type of Alternative Provider
+### Type of Other Provider
 
-* Type of Alternative Provider (<code>type_provider</code>; not required; string)  
-  Information of relevance only for alternative providers. The nature of the provider should be marked if known.
+* Type of Other Provider (<code>type_provider</code>; not required; string)  
+  Information of relevance only for other providers. The nature of the provider should be marked if known.
 
     Four main categories are defined:
 
@@ -386,7 +386,7 @@ Please supply the providers data using the right template depending on the type 
 * For higher education institutions in other countries:
      - [Open Document Format](files/Template_HEI_lists.ods) (OpenOffice, LibreOffice, NeoOffice)
      - [Microsoft Excel format](files/Template_HEI_lists.xlsx)
-* For alternative providers (irrespective of their location):
+* For other providers (irrespective of their location):
      - [Open Document Format](files/Template_AP_lists.ods) (OpenOffice, LibreOffice, NeoOffice)
      - [Microsoft Excel format](files/Template_AP_lists.xlsx)
 
