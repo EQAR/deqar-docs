@@ -114,13 +114,46 @@ If a record for an **provider does not already exist in DEQAR** it should be des
 |**Location Country** |yes |yes |yes |many |*BG*<br>*BGR* |
 |**Location City** |yes |yes |yes |many |*Sofia* |
 |**Location Postcode** |yes |no |no |many |*Sofia* |
-|Location Latitude & Longitude|no |no |no |many |*48,208,356; 1,636,776* |
+|Location Latitude & Longitude|no |no |no |many |*48.208356; 1.636776* |
 |**Website** |yes |yes |yes |one |*http://www.swu.bg* |
 |**Other Identifier** |no |yes |yes |many |*IAU-019335* |
 |Identifier Resource |no |yes |yes |many |*WHED* |
 |Identifier Source |no |yes (conditionally)|yes (conditionally) |many |*National register of learning providers in the UK, see https://www.ukrlp.co.uk/* |
 |Type of provider |n/a |n/a |no |one |*private* |
 |Qualification Level |no |no |yes |many |*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
+
+```mermaid
+erDiagram
+    PROVIDER {
+	TYPE FIELD "EXAMPLE"
+        str website "http://www.swu.bg"
+        str provider_type "private"
+    }
+    NAME {
+	TYPE FIELD "EXAMPLE"
+        str name_official "Graz University of Technology"
+        str name_transliterated "Yugo-zapaden universitet 'Neofit Rilski'"
+        str name_english "South-West University 'Neofit Rilski'"
+        str acronym "SWU"
+        date valid_until
+    }
+    LOCATION {
+	TYPE FIELD "EXAMPLE"
+        str country FK "BG, BGR"
+        str city "Sofia"
+        str postcode "4711"
+        float latitude "48.208356"
+        float longitude "1.636776"
+    }
+    IDENTIFIER {
+	TYPE FIELD "EXAMPLE"
+        str identifier "IAU-019335"
+        str resource "WHED"
+    }
+    PROVIDER ||--|{ NAME : "known as"
+    PROVIDER ||--|{ LOCATION : "based in"
+    PROVIDER ||--o{ IDENTIFIER : "identified by"
+```
 
 ### Name(s)
 
