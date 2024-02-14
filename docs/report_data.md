@@ -1,12 +1,10 @@
 # Report Data Elements
 
-Agencies are asked to prepare data on quality assurance reports for submission to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system. Submission objects can be packaged together for batch submission.
+Different [submission methods](data_submission.md) can be used to create or [update](data_submission.md#updating-reports) quality assurance report records in DEQAR. Deletion of existing records can be requested through the API or manually through the admin interface, but final deletion can only be performed by the EQAR Secretariat.
 
-Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to [update information on existing records](data_submission.md#updating-reports) through batch submission. Deletion of existing records can be requested, but final deletion can only be performed by the EQAR Secretariat.
+Below we provide a full list of the data elements that can make up a report record. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold** with a \* , conditionally required data elements in **bold** with a (\*).
 
-Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in **bold** with a \* , conditionally required data elements in **bold** with a (\*).
-
-There are several possible “one-to-many” relations within a report record: e.g. one report might cover several providers (e.g. in case of a joint programme), or several programmes of one institution, or can have several associated files, etc.. In JSON for API submission, these cases can be naturally represented as arrays of objects; in a CSV file, these relations are difficult to represent due to the flat/one-dimensional structure.
+There are several possible one-to-many relations within a report record: e.g. one report might cover several providers (e.g. in case of a joint programme), or several programmes of one institution, or can have several associated files, etc.. In JSON for API submission, these cases can be naturally represented as arrays of objects; in a CSV file, these relations are difficult to represent due to the flat/one-dimensional structure.
 
 In the CSV template, such columns or groups of columns can thus be duplicated and indexed with an integer in square brackets, e.g. `institution[1].deqar_id`, `institution[2].deqar_id`, … The structure and field names of the elements below directly reflect the CSV template, with repeatable columns indicated by `[n]` part of the column name.
 
@@ -53,9 +51,9 @@ A single creating agency must be clearly identified for each report. The creatin
 
 ## Report Identifier
 
-Each uploaded report is assigned a unique DEQAR report ID. The identifiers of the reports uploaded in each batch are automatically sent back to the agency via email tied to the username.
+Each uploaded report is assigned a unique DEQAR report ID. The identifiers of new reports uploaded are shown in the DEQAR admin interface. When using the Submission API, the identifiers are also included in the response object and automatically sent back to the agency via the email tied to the username.
 
-Each report can be identified using an agency's local identifiers or through DEQAR report IDs. It is recommended that agencies submit local report identifiers with every submission object (see [Report and Programme Identifiers](architecture_data_model.md#report-and-programme-identifiers)).
+Each report can be identified using an agency's local identifiers or through DEQAR report IDs. It is recommended that agencies submit a local report identifier for every report (see [Report Identifiers](architecture_data_model.md#report-identifiers)).
 
 * DEQAR Report ID (<code>report_id</code>; not required; string)  
   A report identifier must be used when submitting updates to an existing report in CSV or JSON. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.
@@ -107,14 +105,15 @@ Each report must be assigned a single status and a single decision value. Togeth
     |ID |name |description |
     |:--|:-----------------------------|:-----------|
     |1 |part of obligatory EQA system |A review is of obligatory nature if the QA process/the report/the decision has any kind of official status in the higher education system where the institution is based/established, e.g. further serves for accreditation or licencing of the higher education institution, fulfils a legal obligation to undergo a regular evaluation or audit, etc. |
-    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the provider); **reports on other providers only must be marked as voluntary**. |
+    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the provider). |
 
-    > The status "part of obligatory EQA system" may only be used for reports that cover at least one higher education institution based in the EHEA. **For reports that cover only higher education institutions beyond the EHEA or only other providers, the status must always be "voluntary".
-
-    | Type of provider | Higher education institution in the EHEA | Higher education institution beyond the EHEA | Other provider |
-    |:--------------------------|:----|:--------------|:-----------|
-    | Part of obligatory system | Yes | Only if the report also covers at least one institution based in the EHEA | Only if the report also covers at least one institution based in the EHEA |
-    | Voluntary | Yes | Yes | Yes |
+    > The status "part of obligatory EQA system" may only be used for reports that cover at least one higher education institution based in the EHEA. **For reports that cover only higher education institutions beyond the EHEA or only other providers, the status must always be "voluntary".**
+    >
+    > | Type of provider | Part of obligatory system | Voluntary |
+    > |:-----------------|:--------------------------|:----------|
+    > | Higher education institution in the EHEA | Yes | Yes     |
+    > | Higher education institution beyond the EHEA | Only if the report also covers at least one institution based in the EHEA | Yes |
+    > | Other provider   | Only if the report also covers at least one institution based in the EHEA | Yes |
 
 
 * **Decision\*** (<code>decision</code>; required; string)  
@@ -140,7 +139,7 @@ Each report must be assigned a single status and a single decision value. Togeth
 
 ## Validity
 
-Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
+Each report must have a date defining the start of its validity. Agencies should also provide a date defining the end of the report's validity. In case the end date is left open, the report will be treated as valid for six years from the start of its validity. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.
 
 * **Valid from\*** (<code>valid_from</code>; required; date)  
   A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.
@@ -221,11 +220,11 @@ If several links are provided, display names must be provided for each link. The
 
 ## Provider(s)
 
-Each report must be associated with at least one provider. The record(s) for the provider(s) need(s) to already exists in DEQAR, see [the previous section on adding missing providers to DEQAR](institution_data.md).
+Each report must be associated with at least one provider. The record(s) for the provider(s) need(s) to already exist in DEQAR, see [the previous section on adding missing providers to DEQAR](institution_data.md).
 
 Preferably, the DEQARINST ID should be provided to identify the provider(s). In addition, the ETER ID can be used for higher education institutions listed in ETER/OrgReg.
 
-Alternatively, an agency may choose to use local or other identifiers for the provider(s). Before thesue can be used for submission, the local identifiers should be provided in bulk to the EQAR secretariat.
+Alternatively, an agency may choose to use local or other identifiers for the provider(s). Before these can be used for submission, the local identifiers should be provided in bulk to the EQAR secretariat.
 
 Only one identifier should be submitted for each provider in the submission object (see [Provider Identifiers](architecture_data_model.md#provider-identifiers)). If more than one identifier is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID (for higher education institutions), followed by the local or other identifier.
 
@@ -247,7 +246,7 @@ Only one identifier should be submitted for each provider in the submission obje
     *e.g. BG0001*
 
 * **Provider Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
-  A local identifier is any identifier used by the Agency to identify an provider, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID (or ETER ID for higher education institutions) to establish a link between submitted report data and an existing provider record.
+  A local identifier is any identifier used by the Agency to identify a provider, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID (or ETER ID for higher education institutions) to establish a link between submitted report data and an existing provider record.
 
     > Local identifiers need to be assigned in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat; see [Provider Identifiers](architecture_data_model.md#provider-identifiers) for details.)
 
@@ -294,10 +293,10 @@ See the [definitions on programmes and higher education providers](index.md#defi
 
 ### Programme Name and Qualification
 
-One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.
+Exactly one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.
 
 * **Primary Programme Name(\*)** (<code>programme[n].name_primary</code>; conditionally required; string)  
-  One and only one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English.
+  Exactly one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English.
 
     *e.g. Medical Natural Sciences*
 
@@ -333,9 +332,9 @@ Information on the country/ies where each programme is located should be provide
 Information on the qualification level of each programme must be provided as a standardised level (based on the QF-EHEA levels); agencies may also choose to indicate the NQF level for each programme.
 
 * **Degree outcome\*** (<code>programme[n].degree_outcome</code>; required \*; string)  
-  The field specifies whether the programme leads to a full degree recognised by the national authorities where the provider is based at.
+  The field specifies whether the programme leads to a full degree, recognised by the national authorities where the provider is based at.
 
-    When a programme report is uploaded solely for an "other provider", the value of the field must be "No" (= no full degree) (i.e. it is considered that the programme is a micro credential by default). If the value is marked as "yes", the report upload will be automatically rejected.
+    When a programme report is uploaded solely for an "other provider", the value of the field must be "No" (= no full degree). If the value is marked as "yes", the report upload will be automatically rejected.
 
     |ID |value|description               |
     |:--|:----|:-------------------------|
@@ -344,11 +343,11 @@ Information on the qualification level of each programme must be provided as a s
 
     When a report is shown on the public DEQAR website (as well as in the Web API), three programme types are distinguished based on the degree outcome and workload of the programme:
 
-    | Degree outcome | Workload   | Programme type shown              |
-    |:---------------|:-----------|:----------------------------------|
-    | Yes            | regardless | Fully recognised degree programme |
-    | No             | < 60 ECTS  | Micro-credential                  |
-    | No             | ≥ 60 ECTS  | Other provisions                  |
+    | Degree outcome | Workload   | Programme type shown             |
+    |:---------------|:-----------|:---------------------------------|
+    | Yes            | regardless | Full recognised degree programme |
+    | No             | < 60 ECTS  | Micro-credential                 |
+    | No             | ≥ 60 ECTS  | Other provision                  |
 
     > \* This field was recently added to the current DEQAR data model. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs (expected in September 2024). The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by other providers, as micro credentials do not lead to a full degree.
 
@@ -373,7 +372,7 @@ Information on the qualification level of each programme must be provided as a s
 ### Programme Details
 
 * **Workload expressed in ECTS Credits\*** (<code>programme[n].workload_ects</code>; conditionally required; string)  
-  The workload as number of ECTS credits for programmes that do not lead to a full degree (i.e. micro credentials) must be provided to indicate the volume of learning. For programmes that do not bear ECTS, the workload could be calculated using the following tool ECTS calculator.
+  The workload as number of ECTS credits for programmes that do not lead to a full degree (i.e. micro credentials) must be provided to indicate the volume of learning. For programmes that do not bear ECTS, the workload could be calculated using the following tool: [ECTS calculator](https://www.germangradecalculator.com/ects-calculator/).
 
     This field is **required** for programmes not leading to a full degree (e.g. micro-credentials) and optional otherwise.
 
@@ -394,7 +393,7 @@ Information on the qualification level of each programme must be provided as a s
 
 
 * Learning outcomes - ESCO (<code>programme[n].learning_outcome_esco[n]</code>; not required; string)  
-  DEQAR uses the the [European Skills, Competences, Qualifications and Occupations (ESCO)](https://esco.ec.europa.eu/en) classification of skills and competences as the preferred and interoperable way to specify the learning outcomes of a programme.
+  DEQAR uses the [European Skills, Competences, Qualifications and Occupations (ESCO)](https://esco.ec.europa.eu/en) classification of skills and competences as the preferred and interoperable way to specify the learning outcomes of a programme.
 
     A Uniform Resource Identifier (URI) of an ESCO skill may be provided for each learning outcome. For multiple learning outcomes in the CSV file, copy paste the columns and change the number in the brackets for every next value (i.e. n+1), see [above](#).
 

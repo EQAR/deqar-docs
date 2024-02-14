@@ -14,10 +14,10 @@ Considering the various needs of the agencies, DEQAR supports three different su
 
 We recommend this method for agencies:
 
-* without IT developers
-* with a closed system architecture from which data export is not straightforward
-* who would like to submit small amounts of data occasionally
-* who would like to interact with their DEQAR data directly
+* without IT developers;
+* with a closed system architecture from which data export is not straightforward;
+* who would like to submit small amounts of data occasionally;
+* who would like to interact with their DEQAR data directly.
 
 [**CSV Upload**](#csv-upload): In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. [Comma Separated Values (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. This termed a semi-automatic data submission method. DEQAR has provided a CSV template which can be complemented with the detailed explanation of the [Report Data Elements](report_data.md) above.
 
@@ -25,19 +25,19 @@ Using CSV, transformation of data can be done manually by administrative staff w
 
 We recommend this method for agencies:
 
-* without IT developers
-* with a local system from which they can export data in tables
-* who would like to submit bigger amounts of data in a batch
-* who would like to work manually on their data before submitting to DEQAR
+* without IT developers;
+* with a local system from which they can export data in tables;
+* who would like to submit bigger amounts of data in a batch;
+* who would like to work manually on their data before submitting to DEQAR.
 
 [**Submission API**](#submission-api): [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the [JSON format](https://www.json.org/) it provides flexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.
 
 We recommend this method for agencies:
 
-* with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint
-* who would like to submit large amounts of data at once with a single call
-* who would like to submit individual reports immediately upon their creation
-* who would like to keep DEQAR and their local system in sync
+* with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint;
+* who would like to submit large amounts of data at once with a single call;
+* who would like to submit individual reports immediately upon their creation;
+* who would like to keep DEQAR and their local system in sync;
 * who plan to submit data periodically and at longer intervals (e.g. weekly or monthly).
 
 ## Data Pipeline
@@ -48,8 +48,8 @@ In general, irrespective of the submission method, all report data submitted to 
 2. Valid report data is saved in the database.
 3. Sanity checks are run against pre-defined [Flagging Criteria](#flagging-criteria); reports which meet any of these criteria are flagged. Flagged reports are nevertheless saved in the database and should not be re-submitted.
 4. A Response Object (or array of objects) is sent back to the agency, containing:
-    * detailed error descriptions for report objects that were rejected
-    * identifiers of report records that were created or identified
+    * detailed error descriptions for report objects that were rejected;
+    * identifiers of report records that were created or identified;
     * information on records where sanity checks found issues.
 
 ### Validation criteria
@@ -99,11 +99,11 @@ In the first case, records will appear online with submitted data, while the EQA
 
 > The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does **not** indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do **not** try to change the data of a report in order to prevent it from being flagged, but simply wait for EQAR Secretariat to have checked the report.
 
-Sanity checks may result in **high-level flags** for the following reasons:
+Sanity checks may result in **high-level flags** for the following reason:
 
 * Report Status is listed as *part of obligatory EQA system* and the Agency does not have official status (according to EQAR's information) in any legal seat country of any higher education covered by the report.
 
-    > For reports on both higher education institutions and other providers, agency must have official status in one of the higher education institutions' countries, the status in the other providers' countries is not relevant to this check.
+    > For reports on both higher education institutions and other providers, the agency must have official status in one of the higher education institutions' countries, the status in the other providers' countries is not relevant to this check.
 
 Sanity checks may result in **low-level flags** for the following reasons:
 
@@ -172,6 +172,7 @@ You can use one of the sample CSV files below as a starting point and adjust it 
 * The subsequent worksheets include more condensed examples with sample data, including those columns that will typically be used in reports concerning institutions, programmes or joint programmes.
 * You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.
 * You may omit columns from the sample CSV file that are not used in any of the reports.
+* CSV files should be saved in UTF-8 encoding.
 
 ### Template and samples
 
@@ -183,7 +184,7 @@ You can use one of the sample CSV files below as a starting point and adjust it 
 
 Despite being software-independent, there are some known issues when creating/exporting CSV files from some major office applications. Given that it has the most clean and straight-forward CSV export, we recommend the [LibreOffice package](https://www.libreoffice.org/), a free and open-source desktop application supported on all major operating systems.
 
-For all software packages, please note that CSV format does not support multiple sheets, but it will always be only the current work sheet that is saved in CSV format.
+For all software packages, please note that the CSV format does not support multiple sheets, but it will always be only the current work sheet that is saved in CSV format.
 
 #### Microsoft Excel
 
@@ -220,9 +221,9 @@ password: [your personal password] (see [above](#webform) how to reset your pass
 * Choose your file under *Select CSV file* and click *Upload*.
 * You can now review your data one more time under *Uploaded CSV Data*, and make changes if necessary.
 * Afterwards, click on *Ingest* under the table. The uploaded CSV file now passes the same [validation](#validation-criteria) pipeline as information submitted through any other method.
-* After ingest, you will see all rows highlighted in green if they were succesfully injected, or in red if they could not be ingested due to validation errors. Click on one row to see details about errors or [flags](#flagging-criteria) in the top-right corner.
+* After ingest, you will see all rows highlighted in green if they were successfully saved, or in red if they could not be ingested due to validation errors. Click on a row to see details about the errors.
 * If you experienced errors, you can correct the respective lines and click on *Ingest* again.
-* Please note that the green rows will be re-ingested, but overwrite the existing report based on the DEQAR Report ID. Any changes you make to green rows will therefore be recorded on further ingest.
+* Please note that the green rows will be re-ingested, but overwrite the existing report based on the DEQAR Report ID. Any changes you make to green rows will therefore be recorded on a further ingest, too.
 
 ## Submission API
 
@@ -491,7 +492,7 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Audit of an another provider
+#### Audit of an other provider
 
 ```json
 {
@@ -521,7 +522,7 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Accreditation of a micro-credential provided by another provider
+#### Accreditation of a micro-credential provided by an other provider
 
 ```json
 {

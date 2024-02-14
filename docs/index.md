@@ -14,7 +14,7 @@ The database is expected to satisfy the information needs of a broad range of us
 * Ministry representatives and other national authorities
 * Employers
 
-The database also supports different types of activities (e.g. issuing digital credentials, recognition of degrees, mobility of students, portability of grants/loans etc.). Through this database, EQAR thus contributes to the transparency of external quality assurance in the European Higher Education Area.
+The database also supports different types of activities (e.g. issuing digital credentials, recognition of degrees, mobility of students, portability of grants/loans, etc.). Through this database, EQAR thus contributes to the transparency of external quality assurance in the European Higher Education Area.
 
 ### EU funding
 
@@ -40,7 +40,7 @@ All software components of DEQAR are open source and available on GitHub:
 
 Despite thorough internal testing, bugs and errors may still occur. If you encounter any problem submitting data and/or files, please share these with us by email to <mailto:deqar@eqar.eu> or by opening an [issue on GitHub](https://github.com/EQAR/eqar_backend/issues). Please also include the CSV file/JSON data that caused the problem, so that the EQAR secretariat and developers can reproduce the error.
 
-In case you are interested contributing to the codebase or you would like to share your thoughts and ideas, we welcome you to do so through the DEQAR [GitHub page](https://github.com/EQAR/eqar_backend)
+In case you are interested to contribute to the codebase or you would like to share your thoughts and ideas, you are welcome to do so through the DEQAR [GitHub page](https://github.com/EQAR/eqar_backend)
 
 ## Terminology
 
@@ -68,14 +68,16 @@ The data types used in DEQAR follow the common definitions:
 
  - **Provider**: any actor that provides degree programmes, micro-credentials or other learning opportunities in terms of teaching, classes, learning materials, etc. This may include higher education institutions (public, private, academic, professional, preparatory, initial, continuing, adult, local, foreign, cross-border, European or international), as well as other providers, including employers, companies, social partners, NGOs, public authorities and others.
  - **Higher education institution** (**HEI**): an entity that has full degree awarding powers at higher education level (i.e. EQF levels 5 to 8; QF-EHEA cycle first to third) recognised by at least one national authority.
- - **Other provider**: an entity that provides learning opportunities at higher education level (i.e. EQF levels 5 to 8; QF-EHEA cycle first to third), but does not have full (recognised) degree awarding powers themselves[^1].
- - **Awarder**: the body that certifies the micro-credential. The awarding body may differ from the provider, e.g. in the case of partnerships, franchise.
- - **Programme**: learning provision that can lead to a full degree (traditional programmes offered by HEIs) or to another type of certificate (i.e. micro-credentials offered by HEIs or other providers). Whenever there is a difference, the handbook points to “programme leading to full degree” and “programme not leading to a full degree” (i.e. micro-credentials).
- - **Micro-credential**: a certified small volume of learning not leading to a full degree. Micro-credentials may be provided through a cooperation of different providers.
+ - **Other provider**: an entity that provides learning opportunities at higher education level (i.e. EQF levels 5 to 8; QF-EHEA cycle first to third), but that does not have full (recognised) degree awarding powers themselves.
+ - **Awarder**: the body that certifies the provision. The awarding body may differ from the provider, e.g. in the case of partnerships, franchise.
+ - **Programme**: learning provision that can lead to a full degree (traditional programmes offered by HEIs) or to another type of certificate (i.e. micro-credentials or other provisions offered by HEIs or other providers). Whenever there is a difference, the handbook points to “programme leading to full degree” and “programme not leading to a full degree” (e.g. micro-credentials).
+ - **Micro-credential**: a certified small volume of learning (i.e. workload &lt;60 ECTS), not leading to a full (recognised) degree. Micro-credentials may be provided through a cooperation of different providers.
+ - **Other provision**: a larger volume of learning (i.e. workload &ge;60 ECTS), not leading to a full (recognised) degree.
  - **Joint programme**: an integrated curriculum coordinated and offered jointly by different higher education institutions, and leading to double/multiple degrees or a joint degree.
- - **Joint degree**: a single document awarded by higher education institutions offering the joint programme and nationally acknowledged as the recognised award of the joint programme.
+ - **Full (recognised) degree**: a document awarded by a higher education institution that attests the successful completion of a programme at QF level (5), 6, 7 or 8 and that is officially recognised as part of the national system by at least one national authority in the EHEA.
+ - **Joint degree**: a single document awarded by higher education institutions offering the joint programme attesting the successful completion of this programme and nationally acknowledged as the recognised award of the joint programme.
  - **Double/multiple degrees**: separate degrees awarded by higher education institutions offering the joint programme attesting the successful completion of this programme (if two degrees are awarded by two institutions, this is a ‘double degree’).
- - **QF-EHEA level**: expressed as a cycle defined in the overarching [Framework of Qualifications of the European Higher Education Area](https://www.ehea.info/page-qualification-frameworks) (QF-EHEA); when used for a programme, the indication of a level refers to the learning outcomes of the programme aligning with the generic learning outcomes as defined for the given cycle in the QF-EHEA.
+ - **QF-EHEA level**: a cycle defined in the overarching [Framework of Qualifications of the European Higher Education Area](https://www.ehea.info/page-qualification-frameworks) (QF-EHEA); when used for a programme, the indication of a level refers to the learning outcomes of the programme aligning with the generic learning outcomes as defined for the given cycle in the QF-EHEA.
 
 ### Entity relationship diagrams
 
@@ -89,4 +91,3 @@ erDiagram
 
 Read: every Artist may have zero, one or more Songs, while each Song is performed by exactly one Artist. A Person may be a current student of one School or not be a student of any School, but may not be a student of several Schools at once, while a School has one or more Persons as students.
 
-[^1]: The use of terminology “alternative providers” varies between systems/countries. For example, in England (UK),  alternative providers are higher education providers who do not receive recurrent funding from Office for Students (previously HEFCE) or other public body and who are not further education colleges. The degree awarding status is not taken in consideration when defining the status in this system.

@@ -6,28 +6,28 @@ Each report must be associated with at least one higher education provider. If a
 
 DEQAR distinguishes two types of providers - higher education institutions and other providers. DEQAR only registers providers which provide learning opportunities at the QF-EHEA Levels (equivalent to EQF and ISCED levels 5 to 8). Vocational education and training provisions at EHEA QF level 5 which are not considered as higher education in the national systems are not included.
 
-The main difference between the two types of providers is whether the entity has full degree awarding powers or not. The number of programmes for which the provider has awarding powers, the subject area and the mode of delivery of the programme is not important for the differentiation.
+The main difference between the two types of providers is whether the entity has full degree awarding powers or not. The number of programmes for which the provider has awarding powers, the subject area and the mode of delivery of the programme are not important for the differentiation.
 
 |   | Higher education institution | Other provider           |
 |:--|:-----------------------------|:-------------------------------|
 | QF-EHEA/EQF Levels 5-8 | Yes | Yes |
-| Provides short courses (< 90 ECTS) | Yes, optionally | Only short courses |
-| Courses lead to full degree (bachelor, master, PhD degree) | Yes | No |
-| Courses can lead to other types of certificates (e.g. nano or micro degree, badges etc.) | Yes | Yes|
+| Short programmes (&lt;60 ECTS) | Yes, optionally | Yes |
+| Programmes leading to full degree (bachelor, master, PhD degree) | Yes | No |
+| Programmes leading to other types of certificates (e.g. nano or micro degree, badges etc.) | Yes | Yes |
 
-In case of doubt of the nature of the provider, agencies are advised to consult with the EQAR Secretariat at deqar@eqar.eu. Should this be the case, agencies are encouraged to share materials on the provider, and any other evidence that could help in concluding the status.
+Agencies are advised to consult with the EQAR Secretariat at deqar@eqar.eu in case they are in doubt about the nature of the provider. Should this be the case, agencies are encouraged to share materials on the provider, and any other evidence that could help EQAR in concluding the status.
 
 ## Finding Existing Providers
 
 Existing providers need to be identified by their DEQARINST ID, ETER ID (for higher education institutions), another international identifier, or a local or national identifier (if available).
 
-DEQAR has records on a large number of higher education institutions (over 4000 institutions from 42 European countries) harvested from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/). More than 2000 additional providers are already recorded in DEQAR based on other official sources (e.g. lists by national ministries) or have already been added by other agencies.
+DEQAR has records on a large number of higher education institutions (over 4000 institutions from 42 European countries) harvested from the ETER/OrgReg databases (available through [Research infrastructure for research and innovation policy studies - RISIS](http://datasets.risis.eu/) or [European Tertiary Education Register - ETER](https://www.eter-project.com/)). More than 2000 additional providers are already recorded in DEQAR based on other official sources (e.g. lists by national ministries) or have been added by other agencies.
 
 ### Admin Interface
 
 All [provider identifiers](architecture_data_model.md#provider-identifiers) can be found through the [administrative interface](https://admin.deqar.eu/reference/institutions).
 
-> **Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all providers, but only those organsations for which at least one report is available. It is therefore important that you **always search for providers in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of higher education institutions and some other providers for which no reports have been submitted yet.
+> **Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all providers, but only those for which at least one report is available. It is therefore important that you **always search for providers in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of higher education institutions and a few other providers for which no reports have been submitted yet.
 
 Reports on existing providers can be submitted directly, providing identifiers in CSV or JSON objects as described under [Submission Object Data Elements: Institution(s)](report_data.md#institutions) or by selecting the provider in the web form.
 
@@ -39,7 +39,7 @@ The full list of providers can also be downloaded as a CSV file from:
 
 ### Connect API
 
-The full providers list can be accessed and searched using the Connect API. EQAR-registered agencies have access to the Connect API using the same credentials as for the DEQAR administrative interface, the Submission API and the Web API.
+The full providers list can be searched and accessed using the Connect API. EQAR-registered agencies have access to the Connect API using the same credentials as for the DEQAR administrative interface, the Submission API and the Web API.
 
 Please refer to the [explanations on authentication for the Submission API](data_submission.md#authentication) for information on how to obtain and use a token.
 
@@ -49,9 +49,9 @@ The base URL for the Connect API is:
 
 The endpoint <https://backend.deqar.eu/connectapi/v1/institutions/> allows to query the full list of higher education institutions, with or without reports.
 
-The endpoint <https://backend.deqar.eu/connectapi/v1/providers/> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education instutitons and other providers.
+The endpoint <https://backend.deqar.eu/connectapi/v1/providers/> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education institutions and other providers.
 
-The full definitions of the endpoints, the search parameters and the response object is available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
+The full definitions of the endpoints, the search parameters and the response object are available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
 
 <https://backend.deqar.eu/connectapi/v1/swagger/>
 
@@ -65,11 +65,11 @@ Before suggesting to add a new higher education institution, please consider the
 
  2. The primary unit of registration is the university/higher education institution, i.e. an institution of higher learning that awards full recognised academic degrees in diverse disciplines, is organised as central unit and consists of separate functional units (i.e. faculties, institutes, schools, departments). The degree-awarding powers of the institution are recognised by at least one national authority.
 
- 3. Functional units (i.e. faculties, institutes, schools, departments) themselves are not registered in DEQAR as separate entity. Reports on functional units are uploaded/recorded/shown under the central unit's record.
+ 3. Functional units (i.e. faculties, institutes, schools, departments) themselves are not registered in DEQAR as separate entities. Reports on functional units are uploaded/recorded/shown under the central unit's record.
 
  4. Reports on consortia consisting of several providers will be showcased in the record of each provider separately. Consortia themselves will not be presented as a central unit.
 
-    Only in exceptional cases, when the consortium has a long-term tradition of organising education and is recognised by stakeholders as an institution itself, will it be registered as a separate institution in DEQAR.
+    Only in exceptional cases, when the consortium has a long-term tradition of organising education and is recognised by stakeholders as an institution itself, will it be registered as a separate institution in DEQAR; such cases are to be discussed with the EQAR Secretariat in advance.
 
  5. Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university), while such additional branches/campuses will be shown as further locations of the institution. Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.
 
@@ -91,21 +91,17 @@ In DEQAR, "other provider" is a provider that delivers content or provides skill
 
  2. Does not have a full degree awarding powers (i.e. right to award bachelor, master or PhD degrees)
 
- 3. Whose educational offer is of short nature (i.e. less workload/ECTS than a full short degree - i.e. <90 ECTS)
-
 The mode of delivery of the classes, whether the provision is done independently or in partnership with a higher education institution, the ownership of the provider (e.g. private or public provider), the connection to the labour market and the area of study are not defining elements of "other providers" in DEQAR.  
 
-The use of terminology “alternative providers” varies between systems/countries. For example, in the UK, alternative providers are higher education providers who do not receive recurrent funding from Office for Students (previously HEFCE) or other public body and who are not further education colleges. The degree awarding status is not taken in consideration when defining the status in this system.
+Reports for programmes offered in collaboration by a higher education institution and another provider will be showcased under both entities respectively.
 
-Reports for programmes done as a collaboration between a higher education institution and another provider that organises programmes in the field of HE will be showcased under both entities respectively.
-
-Similarly, an provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered as other provider, whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.
+Similarly, a provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered as "other provider", whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.
 
 ## Provider Data Elements
 
-If a record for an **provider does not already exist in DEQAR** it should be described with the elements below; required elements are marked in bold or by a **\***. Before a new record is created, data will be checked against provider data already in DEQAR. If a DEQAR provider record is identified as a match, the existing record will take precedence over submitted data.
+If a record for a **provider does not already exist in DEQAR** it should be described with the elements below; required elements are marked in bold or by a **\***. Before a new record is created, data will be checked against provider data already in DEQAR. If a DEQAR provider record is identified as a match, the existing record will take precedence over submitted data.
 
-|ELEMENT NAME |REQUIRED FOR HEIs IN OrgReg |REQUIRED FOR HEIs NOT IN OrgReg |REQUIRED FOR APs |ONE/MANY |EXAMPLE |
+|ELEMENT NAME |REQUIRED FOR HEIs IN OrgReg |REQUIRED FOR HEIs NOT IN OrgReg |REQUIRED FOR OPs |ONE/MANY |EXAMPLE |
 |:------------|:---------------------------|:-------------------------------|:----------------|:--------|:-------|
 |**Official Name** |yes |yes |yes |one |*Graz University of Technology*<br>*Югозападен университет "Неофит Рилски"*<br>*Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα*|
 |Official Name, transliterated |no |no |no |one |*Yugo-zapaden universitet "Neofit Rilski”*<br>*Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata*|
@@ -157,7 +153,7 @@ erDiagram
 
 ### Name(s)
 
-One and only one official provider name must be provided for each new provider record. Each official name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. An English provider name should be provided for each new provider record. If provided, the English name will be used for display. An provider acronym may also be provided. (Note: alternative or other language names can be provided through the administrative interface.)
+Exactly one official provider name must be provided for each new provider record. Each official name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. An English provider name should be provided for each new provider record. If provided, the English name will be used for display. A provider acronym may also be provided. (Note: alternative or other language names can be provided through the administrative interface.)
 
 * **Official Name\*** (<code>name_official</code>; required; string)  
   The official name of each provider in the original alphabet must be provided for every new provider record. The official name will be indexed for search and may be used as the primary provider name in the search interface if no English institution name is assigned.
@@ -190,7 +186,7 @@ One or more locations must be provided for each new provider record. A location 
 
 Each provider must have one and only one location designated as main legal seat.
 
-For higher education institutions, the legal seat is considered as the higher education system in which the institution is formally recognised as such. In case an institution is a legal entity incorporated in country A but formally recognised as higher education institution in system B, the legal seat should specified in B. In case a higher education institution is formally recognised in several higher education systems, separate provider records should be created, one for each system.
+For higher education institutions, the legal seat is considered as the higher education system in which the institution is formally recognised. In case an institution is a legal entity incorporated in country A but formally recognised as higher education institution in system B, the legal seat should be specified in B. In case a higher education institution is formally recognised in several higher education systems, separate provider records should be created, one for each system.
 
 For other providers, the legal seat is considered as the country in which the legal entity is incorporated.
 
@@ -207,7 +203,7 @@ The first country (i.e. country_id) will be considered as the main legal seat of
     *e.g. BGR*
 
 * **Provider Legal Seat City\*** (<code>city</code>; required; string)  
-  The city name, preferably in English, where the provider has its legal seat may be provided for each provider  record. If an provider is located in more than one city, further cities can be provided as other locations (see below).
+  The city name, preferably in English, where the provider has its legal seat may be provided for each provider  record. If a provider is located in more than one city, further cities can be provided as other locations (see below).
 
     *e.g. Sofia*
 
@@ -220,7 +216,7 @@ The first country (i.e. country_id) will be considered as the main legal seat of
 
 * Provider Legal Seat Latitude (<code>latitude</code>; not required; float)  
   Provider Legal Seat Longitude (<code>longitude</code>; not required; float)  
-  The exact latitude and longitude of the organisaton site or the general latitude and longitude of the cityi may also be provided for each provider record.
+  The exact latitude and longitude of the organisation site or the general latitude and longitude of the city may also be provided for each provider record.
 
     *e.g. 48,208,356; 1,636,776*
 
@@ -241,7 +237,7 @@ The following set of columns can be copied for each additional location:
 
 ### Qualification Level
 
-The provider QF-EHEA levels may be provided for higher education institutions and must be provided for other providers.
+The provider QF-EHEA levels **may** be provided for higher education institutions and **must** be provided for other providers.
 
 * Provider Qualification Level (<code>qf_ehea_level[n]</code>; conditionally required; string)  
   One or more qualification levels may be provided for higher education institutions and must be provided for other providers as either a DEQAR level name or a DEQAR level id. DEQAR uses levels based on three main frameworks/classifications:
@@ -249,7 +245,7 @@ The provider QF-EHEA levels may be provided for higher education institutions an
     - [European Qualification Framework](https://europa.eu/europass/en/europass-tools/european-qualifications-framework) (EQF) and
     - [International Standard Classification of Education](https://uis.unesco.org/en/topic/international-standard-classification-education-isced) (ISCED).
 
-    These are the qualification framework levels at which each higher education institution may award degrees or offer programmes at (for other providers). Note: if QF levels are provided, then *all* levels covered by the provider should be provided at the same time.
+    These are the qualification framework levels at which each higher education institution may award degrees or offer programmes (for other providers). Note: if QF levels are provided, then *all* levels covered by the provider should be provided at the same time.
 
     In the CSV template, each level can be presented as ONE of the possible numbers OR words. Each additional level should be presented in a new column with the subsequent number in brackets (i.e. `[n+1]`).
 
@@ -262,7 +258,7 @@ The provider QF-EHEA levels may be provided for higher education institutions an
 
 ### Website
 
-One and only one website link must be provided for each new provider record.
+Exactly one website link must be provided for each new provider record.
 
 * **Provider Website (\*)** (<code>website_link</code>; required; string)  
   The URL to the primary provider website or home page. The root domain name of the site should be used when possible, without language or other qualifiers.
@@ -274,9 +270,9 @@ One and only one website link must be provided for each new provider record.
 
 Providing an identifier serves as proof of confirming the validity of the provider and aiding the users to find providers easily in other databases. The identifier can be used later to identify this provider in the report submission objects.
 
-> A local identifier could be provided for the providers . Local identifier are for use by your agency only, whereas other identifiers can be used also by others.
+> A local identifier may be provided for the providers. Local identifiers are for use by your agency only, whereas other identifiers can be used also by others.
 > 
-> Other identifier may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all other providers.
+> Other identifiers may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all other providers.
 >
 > EQAR runs a background list of other trusted identifiers presented below.
 
@@ -291,9 +287,9 @@ Providing an identifier serves as proof of confirming the validity of the provid
     *e.g. DE-HRK*
 
 * Identifier Source (<code>identifier_source</code>; conditionally required; string)  
-  The agency must provide other identifier for higher education institutions which are not in OrgReg and all other providers. The field must be filled in if the identifier is not yet known to EQAR (see table below for trusted identifiers). The source could be a national authority, an international provider or another entity.
+  The agency must provide other identifiers for higher education institutions which are not in OrgReg and for all other providers. The field must be filled in if the identifier is not yet known to EQAR (see table below for trusted identifiers). The source can be a national authority, an international provider or another entity.
 
-    If the identifier is already known to EQAR (see table), there is no need to fill in this field.
+    If the identifier is already known to EQAR (see table), there is no need to fill this field.
 
     *e.g. World Higher Education Database*
 
@@ -311,11 +307,11 @@ The following common European or international identifier types are known in DEQ
 
 The following table contains some examples of national identifiers already known in DEQAR:
 
-| Identifier resource | Title  | Source |
+| Identifier resource | Source | Further information |
 |:--------------------|:-------|:------------|
-| FR-SIREN | French Tax administration | see <https://sirene.fr/sirene/public/accueil> |
-| UK-PIN | The UK Register of Learning Providers | see <https://www.ukrlp.co.uk/> |
-| KZ-BIN | Kazakh Tax administration | see <https://kgd.gov.kz/en/services/taxpayer_search> |
+| FR-SIREN | The National Institute of Statistics and Economic Studies of France | <https://sirene.fr/sirene/public/accueil> |
+| UK-PIN | The UK Register of Learning Providers | <https://www.ukrlp.co.uk/> |
+| KZ-BIN | Ministry of Finance of the Republic of Kazakhstan | <https://kgd.gov.kz/en/services/taxpayer_search> |
 
 ### Dates
 
@@ -323,9 +319,9 @@ Founding and closing years or dates should be provided if known.
 
 * Founding date (<code>founding_date</code>; not required; date)  
   Closing date (<code>closing_date</code>; conditionally required; date)  
-  Dates should be formated as *YYYY-MM-DD* and years should be given in four digits (*YYYY*).
+  Dates should be formatted as *YYYY-MM-DD* and years should be given in four digits (*YYYY*).
 
-    The closing date must be provided if the provider is closed.
+    The closing date must be provided if the provider has closed its operation.
 
     *e.g. 2020-07-01*
 
@@ -334,13 +330,13 @@ Founding and closing years or dates should be provided if known.
 * Parent Provider (<code>parent_id</code>; not required; string)  
   The parent can be specified by its DEQARINST ID, optionally in numerical form without the prefix *DEQARINST*.
 
-    For higher education institutions: If the institution is a faculty or independent unit of another institution, or is part of a grouping of institutions that is also recorded in DEQAR, ETER or OrgReg, you should specify the parent institution.
+    For higher education institutions: if the institution is a faculty or independent unit of another institution, or is part of a grouping of institutions that is also recorded in DEQAR, ETER or OrgReg, you must specify the parent institution.
 
-    In case the parent institution is not in DEQAR or ETER/OrgReg, a request for adding the parent institution should be submitted too.
+    In case the parent institution is not in DEQAR or ETER/OrgReg, a request for adding the parent institution must be submitted too.
 
-    For other providers: If the provider part of another provider that offers courses at higher education level, is part of a higher education institution, or is part of a grouping of providers that is also recorded in DEQAR the parent provider should be specified.
+    For other providers: if the provider is part of another provider that offers courses at higher education level, is part of a higher education institution, or is part of a grouping of providers that is also recorded in DEQAR the parent provider should be specified.
 
-    If the parent provider is not recorded in DEQAR yet, a request for adding that provider should be submitted too. Please note that for DEQAR it is not relevant if the provider is part of a larger grouping that does work in fields other than higher education provision. Such relationships will not be recorded in DEQAR.
+    If the parent provider is not recorded in DEQAR yet, a request for adding that provider must be submitted too. Please note that for DEQAR it is not relevant if the provider is part of a larger grouping that does work in fields other than higher education provision. Such relationships will not be recorded in DEQAR.
 
     *e.g. DEQARINST4711*
 

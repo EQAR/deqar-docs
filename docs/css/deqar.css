@@ -51,8 +51,9 @@
 .rst-content code, .rst-content tt {
     font-size: 90%;
     padding: 2px 0px;
-    color: #033163;
+    color: #FF8A00;
     border: none;
+    background: none;
 }
 
 /* quotes from documents */
