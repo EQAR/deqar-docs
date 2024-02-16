@@ -266,7 +266,7 @@ Information on one or more programmes is required for all reports with the assig
 
 See the [definitions on programmes and higher education providers](index.md#definitions).
 
-|ELEMENT NAME |REQUIRED FOR PROGRAMMES LEADING TO A FULL DEGREE |REQUIRED FOR PROGRAMMES THAT DO NOT LEAD TO A FULL DEGREE (MICRO-CREDENTIALS) |ONE/MANY |EXAMPLE |
+|ELEMENT NAME |REQUIRED FOR PROGRAMMES LEADING TO A FULL DEGREE |REQUIRED FOR PROGRAMMES THAT DO NOT LEAD TO A FULL DEGREE |ONE/MANY |EXAMPLE |
 |:------------|:-----------------------------------|:-----------------------------------------------------------|:--------|:-------|
 |Local Programme Identifier             |no      |no      |many (per) | *61*<br>*60800* |
 |**Primary Programme Name**             |yes     |yes     |one (per)  | *Arts-specialist in opleiding*|

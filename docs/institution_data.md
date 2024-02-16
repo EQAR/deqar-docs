@@ -376,15 +376,12 @@ Before sending data on a new providers, please check carefully that the provider
 
 Please supply the providers data using the right template depending on the type of provider:
 
-* For higher education institutions in countries covered by OrgReg/ETER:
-     - [Open Document Format](files/Template_HEI_OrgReg.ods) (OpenOffice, LibreOffice, NeoOffice)
-     - [Microsoft Excel format](files/Template_HEI_OrgReg.xlsx)
-* For higher education institutions in other countries:
-     - [Open Document Format](files/Template_HEI_lists.ods) (OpenOffice, LibreOffice, NeoOffice)
+* For higher education institutions:
+     - [Open Document Format](files/Template_HEI_lists.ods) (LibreOffice, OpenOffice)
      - [Microsoft Excel format](files/Template_HEI_lists.xlsx)
-* For other providers (irrespective of their location):
-     - [Open Document Format](files/Template_AP_lists.ods) (OpenOffice, LibreOffice, NeoOffice)
-     - [Microsoft Excel format](files/Template_AP_lists.xlsx)
+* For other providers:
+     - [Open Document Format](files/Template_OP_lists.ods) (LibreOffice, OpenOffice)
+     - [Microsoft Excel format](files/Template_OP_lists.xlsx)
 
 You may save the spreadsheet in either format or as a CSV file. Send the filled spreadsheet to [deqar@eqar.eu](mailto:deqar@eqar.eu); the EQAR Secretariat will check the list shortly and return the original file with the newly generated DEQARINST IDs added.
 
