@@ -392,7 +392,7 @@ Information on the qualification level of each programme must be provided as a s
     |3  |No assessment and no certificate |No certificate is awarded |
 
 
-* Learning outcomes - ESCO (<code>programme[n].learning_outcome_esco[n]</code>; not required; string)  
+* Learning outcomes - ESCO (<code>programme[n].learning_outcome[n]</code>; not required; string)  
   DEQAR uses the [European Skills, Competences, Qualifications and Occupations (ESCO)](https://esco.ec.europa.eu/en) classification of skills and competences as the preferred and interoperable way to specify the learning outcomes of a programme.
 
     A Uniform Resource Identifier (URI) of an ESCO skill may be provided for each learning outcome. For multiple learning outcomes in the CSV file, copy paste the columns and change the number in the brackets for every next value (i.e. n+1), see [above](#).
