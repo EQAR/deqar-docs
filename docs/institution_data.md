@@ -87,7 +87,7 @@ Before suggesting to add a new higher education institution, please consider the
 
 In DEQAR, "other provider" is a provider that delivers content or provides skills training:
 
- 1. At higher education level (i.e. EHEA QF level 5 to 8; EQF 5 to 8; EHEA cycle first to third)
+ 1. At higher education level (i.e. EHEA QF level 5 to 8; EQF 5 to 8; EHEA cycle short to third)
 
  2. Does not have a full degree awarding powers (i.e. right to award bachelor, master or PhD degrees)
 
@@ -275,6 +275,8 @@ Providing an identifier serves as proof of confirming the validity of the provid
 > Other identifiers may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all other providers.
 >
 > EQAR runs a background list of other trusted identifiers presented below.
+>
+> For other providers based in the European Union, agencies are expected to submit the EU - VAT number as identifier.
 
 * Provider Identifier (<code>identifier</code>; conditionally required; string)  
   Please note that identifiers must be unique within your agency or within the resource provided.
