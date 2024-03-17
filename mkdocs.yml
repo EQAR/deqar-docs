@@ -15,6 +15,7 @@ nav:
         - web_api_examples.md
     - Integrations:
         - europass.md
+        - ebsi.md
 ### theme configuration ###
 theme:
     name: readthedocs
