@@ -73,7 +73,7 @@ Before suggesting to add a new higher education institution, please consider the
 
  5. Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university), while such additional branches/campuses will be shown as further locations of the institution. Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.
 
- 5. Providers that award full recognised degrees through a franchise or validation partnership with a higher education institution, but have no own degree-awarding power, will be recorded as other provider.
+ 5. Providers that award full recognised degrees through a franchise or validation partnership with a higher education institution, but have no own degree-awarding power, will be recorded as other provider. A hierarchical relationship to the partner higher education institution should be recorded for transparency.
 
  6. In cases when the status of the entity is not clearly determined by the aforementioned cases or the status is debatable, EQAR and the agency will discuss the nature of it taking into account five main indicators:
 
