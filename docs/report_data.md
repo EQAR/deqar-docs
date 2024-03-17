@@ -63,6 +63,10 @@ Each report can be identified using an agency's local identifiers or through DEQ
 * Local Report Identifier (<code>local_identifier</code>; not required; string)  
   The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.
 
+    The format and semantics of the local identifier are at the agency's discretion. Please note that local identifiers must be **stable** and **unique** (within your agency): if you submit a report with the same local identifier as an existing report of your agency, you will overwrite the existing record.
+
+    Local identifiers are always linked to a specific agency. Hence, there is no need to include your agency acronym as part of your identifier.
+
     *e.g. QAA1153-March15*
 
 ## Activity
