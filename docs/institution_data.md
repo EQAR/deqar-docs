@@ -354,6 +354,18 @@ Founding and closing years or dates should be provided if known.
 
     *e.g. DEQARINST4711*
 
+* Relationship Type (<code>parent_type</code>; conditionally required; string)  
+  If a parent provider is specified, the type of hierarchical relationship must be classified as one of the following types:
+
+    |ID |Type |Remarks |
+    |:--|:----|:-------|
+    |1  |consortium |default type for multi-level institutions or consortia |
+    |2  |faculty |faculty names always appear together with their parent university's name (NB: exceptional case, faculties are normally not recorded) |
+    |3  |independent faculty or school |used if a faculty or department is recorded separately and should appear under its own name only |
+    |5  |franchise or validation partnership |used if a provider offers education leading to a degree/award by another higher education institution |
+
+    *e.g. faculty*
+
 ### Type of Other Provider
 
 * Type of Other Provider (<code>type_provider</code>; not required; string)  
