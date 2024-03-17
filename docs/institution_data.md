@@ -115,7 +115,8 @@ If a record for a **provider does not already exist in DEQAR** it should be desc
 |**Other Identifier** |no |yes |yes |many |*IAU-019335* |
 |Identifier Resource |no |yes |yes |many |*WHED* |
 |Identifier Source |no |yes (conditionally)|yes (conditionally) |many |*National register of learning providers in the UK, see https://www.ukrlp.co.uk/* |
-|Type of provider |n/a |n/a |no |one |*private* |
+|Proof of Status |n/a |yes (conditionally)|n/a |one |*https://www.gov.si/teme/evs-evidenca-visokosolskih-zavodov-in-studijskih-programov/* |
+|Type of Provider |n/a |n/a |no |one |*private* |
 |Qualification Level |no |no |yes |many |*0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
 
 ```mermaid
@@ -274,6 +275,12 @@ Providing an identifier serves as proof of confirming the validity of the provid
 > 
 > Other identifiers may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all other providers.
 >
+> For higher education institutions, it is **strongly recommended** to provide the institution's identifier in the [IAU/UNESCO World Higher Education Database (WHED)](https://www.whed.net/).
+>
+> Institutions listed in WHED are confirmed to be nationally-recognised higher education institutions. If a WHED identifier is provided the institution is thus accepted automatically.
+
+> **If no WHED identifier is provided, additional proof of the institution's official status is required**, see below.
+>
 > EQAR runs a background list of other trusted identifiers presented below.
 
 * Provider Identifier (<code>identifier</code>; conditionally required; string)  
@@ -292,6 +299,13 @@ Providing an identifier serves as proof of confirming the validity of the provid
     If the identifier is already known to EQAR (see table), there is no need to fill this field.
 
     *e.g. World Higher Education Database*
+
+* Proof of Status (<code>proof_of_status</code>; conditionally required; string)  
+  If the higher education institution is not listed in WHED, or the agency does not provide the WHED identifier, an official source must be provided to proof that the institution indeed has full degree awarding powers in at least one higher education system.
+
+    The source could be the website of the ministry responsible for higher education, an official national register of higher education institutions or similar. Please note that a link to the **institution's own website is not accepted as official source**.
+
+    *e.g. https://www.gov.si/teme/evs-evidenca-visokosolskih-zavodov-in-studijskih-programov/*
 
 The following common European or international identifier types are known in DEQAR and can be used without additional information, i.e. it is sufficient to provide the identifier resource, the identifier source does not need to be specified.
 
