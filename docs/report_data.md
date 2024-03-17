@@ -297,7 +297,9 @@ See the [definitions on programmes and higher education providers](index.md#defi
 
 ### Programme Name and Qualification
 
-Exactly one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.
+Exactly one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language (information inserted in the Programme qualification field). Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.
+
+The Programme Name field should only contain information on the name (further details on the qualification, level etc. should be provided in the other fields as presented below). 
 
 * **Primary Programme Name(\*)** (<code>programme[n].name_primary</code>; conditionally required; string)  
   Exactly one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English.

@@ -10,9 +10,9 @@ The main difference between the two types of providers is whether the entity has
 
 |   | Higher education institution | Other provider           |
 |:--|:-----------------------------|:-------------------------------|
-| QF-EHEA/EQF Levels 5-8 | Yes | Yes |
+| QF-EHEA short to PhD/EQF Levels 5-8 | Yes | Yes |
 | Short programmes (&lt;60 ECTS) | Yes, optionally | Yes |
-| Programmes leading to full degree (bachelor, master, PhD degree) | Yes | No |
+| Programmes leading to full degree (short, bachelor, master, PhD degree) | Yes | No |
 | Programmes leading to other types of certificates (e.g. nano or micro degree, badges etc.) | Yes | Yes |
 
 Agencies are advised to consult with the EQAR Secretariat at deqar@eqar.eu in case they are in doubt about the nature of the provider. Should this be the case, agencies are encouraged to share materials on the provider, and any other evidence that could help EQAR in concluding the status.
@@ -87,7 +87,7 @@ Before suggesting to add a new higher education institution, please consider the
 
 In DEQAR, "other provider" is a provider that delivers content or provides skills training:
 
- 1. At higher education level (i.e. EHEA QF level 5 to 8; EQF 5 to 8; EHEA cycle first to third)
+ 1. At higher education level (i.e. EHEA QF level 5 to 8; EQF 5 to 8; EHEA cycle short to third)
 
  2. Does not have a full degree awarding powers (i.e. right to award bachelor, master or PhD degrees)
 
@@ -282,6 +282,8 @@ Providing an identifier serves as proof of confirming the validity of the provid
 > **If no WHED identifier is provided, additional proof of the institution's official status is required**, see below.
 >
 > EQAR runs a background list of other trusted identifiers presented below.
+>
+> For other providers based in the European Union, agencies are expected to submit the EU - VAT number as identifier.
 
 * Provider Identifier (<code>identifier</code>; conditionally required; string)  
   Please note that identifiers must be unique within your agency or within the resource provided.
