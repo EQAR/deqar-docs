@@ -109,7 +109,7 @@ Each report must be assigned a single status and a single decision value. Togeth
     |ID |name |description |
     |:--|:-----------------------------|:-----------|
     |1 |part of obligatory EQA system |A review is of obligatory nature if the QA process/the report/the decision has any kind of official status in the higher education system where the institution is based/established, e.g. further serves for accreditation or licencing of the higher education institution, fulfils a legal obligation to undergo a regular evaluation or audit, etc. |
-    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to an accreditation or certification of the provider). |
+    |2 |voluntary | Any other review is of a voluntary nature, e.g. if it is requested at the provider's own initiative and serves enhancement purposes only (i.e. does not lead to a nationally-recognised accreditation or certification of the provider). |
 
     > The status "part of obligatory EQA system" may only be used for reports that cover at least one higher education institution based in the EHEA. **For reports that cover only higher education institutions beyond the EHEA or only other providers, the status must always be "voluntary".**
     >
