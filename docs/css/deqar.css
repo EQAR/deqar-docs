@@ -51,8 +51,9 @@
 .rst-content code, .rst-content tt {
     font-size: 90%;
     padding: 2px 0px;
-    color: #033163;
+    color: #FF8A00;
     border: none;
+    background: none;
 }
 
 /* quotes from documents */
@@ -112,9 +113,17 @@
     margin: 0 0 10px 10px;
 }
 
-.rst-content .section ol p, .rst-content .section ul p {
-    margin-bottom: 0;
-    margin-top: 12px;
+.rst-content .section ol li > p,
+.rst-content .section ol li > p:first-child,
+.rst-content .section ol li > p:only-child,
+.rst-content .section ol li > p:last-child,
+.rst-content .section ul li > p,
+.rst-content .section ul li > p:first-child,
+.rst-content .section ul li > p:only-child,
+.rst-content .section ul li > p:last-child
+{
+    margin-bottom: revert;
+    margin-top: revert;
 }
 
 .rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4, .rst-content h5 {
@@ -145,12 +154,12 @@
 }
 
 .rst-content table {
-    margin-left: 24px;
     margin-bottom: 24px;
 }
 
 .rst-content table td,
 .rst-content table th {
+    white-space: normal;
     padding: 5px 10px;
 }
 

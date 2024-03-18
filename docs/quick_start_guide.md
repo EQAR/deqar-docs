@@ -1,7 +1,5 @@
 # Quick Start Guide
 
-![We want you to join DEQAR!](img/DEQARWantsYou.png)
-
 The purpose of DEQAR is to give wide public access to the reports and decisions on higher education institutions/programmes externally reviewed by EQAR-registered agencies.  We accomplish this through:
 
 - an easily searchable database of institutions where users can find up-to-date QA reports for download;
@@ -22,7 +20,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >
 >     _Note: the list of eligible activities can be found on the register record for the agency ([https://www.eqar.eu/register/agencies/](https://www.eqar.eu/register/agencies/)) and also in the DEQAR administrative interface  accessible after the agency activates its account (see below: [Activate your Account](quick_start_guide.md#activate_your_account))._
 >
->     _If a new activity is introduced, then a formal change report should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
+>     _If a new activity is introduced, then a [formal change report](https://www.eqar.eu/register/guide-for-agencies/reporting-and-renewal/) should be submitted to the EQAR secretariat before the activity is deemed eligible in DEQAR. For other changes to activities, please contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
 >
 > - Only upload **reports created since the date of the agency’s registration** on EQAR (i.e. the date of the first external review of your agency against the ESG).
 >
@@ -34,7 +32,7 @@ To get started with DEQAR, it is a good idea to first take measure of your agenc
 >
 > - It is necessary to meet certain **data requirements** in order for reports to be ingested into the system. Data requirements for reports vary depending on the type of activity described.  Ensure that you have this data available or can generate it as needed.
 >
->     _Note: there are a few “soft requirements” for DEQAR which are not necessary for ingest but which do trigger a red or yellow alert flag in the system._
+>     _Note: there are a few “soft requirements” for DEQAR which are not necessary for ingestion but which do trigger a red or yellow alert flag in the system._
 >
 > For details, please see:<br />
 > [Report Data Elements](report_data.md)<br />
@@ -77,13 +75,13 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     - to update publicly available contact data on your agency, such as agency website, contact person, phone number, address and email.
 >
->     - _(coming soon)_ to assign local IDs to agency activities.
+>     - to assign local IDs to agency activities.
 >
 >     _Note: if you would like to change the general “Information on the agency’s work”, listed agency activities or the list of countries where the agency’s activities are officially recognised, you should contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
 >
 > - You should also analyse DEQAR’s institutional list to ensure that institutions evaluated/accredited by your agency are already present in the system.  The institution list can be found on the EQAR Admin Interface at: [https://admin.deqar.eu/institutions](https://admin.deqar.eu/institutions)
 >
->     _Note: the base institution list has been taken from the European Tertiary Education Register (ETER/OrgReg; [https://risis-eter.orgreg.joanneum.at/about/intro](https://risis-eter.orgreg.joanneum.at/about/intro))._
+>     _Note: the base institution list is synchronised daily with the [Register of Public Sector Organisations (OrgReg)](https://www.risis2.eu/registers-orgreg/) and the [European Tertiary Education Register (ETER)](https://eter-project.com/), which cover a large number of European countries._
 >
 >     _If institutions are missing from the list, please contact the EQAR secretariat: [deqar@eqar.eu](mailto:deqar@eqar.eu) to arrange for the data to be imported. For details, see [Institution Data](institution_data.md)._
 
@@ -93,11 +91,11 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 > - Once in the system, you should become familiar with the different modules available to you through the administrative interface:
 >
->     - **My Data:** including records on your uploaded reports as well as your agency's profile (see above); (coming soon) alerts and flags management.
+>     - **My Data:** including records on your uploaded reports as well as your agency's profile (see above); information on alerts and flags.
 >
 >     - **Submit Reports:** giving access to the manual and CSV submission methods (see below for API).
 >
->     - **Reference Data:** including records on all uploaded reports and records on all higher education institutions currently in DEQAR; (coming soon) all agencies and countries in DEQAR.
+>     - **Reference Data:** including records on all agencies, countries, higher education institutions and reports currently in DEQAR.
 >
 > - If you are planning to use the submission API, you can use API token found in your agency Profile and the following link: [https://backend.deqar.eu/submissionapi/v1/submit/report](https://backend.deqar.eu/submissionapi/v1/submit/report)
 >
@@ -113,9 +111,13 @@ Once you have figured out what you will submit and how, then it is time to enter
 
 ### Perform your First Submission
 
-> - To perform your first submission—whether through the manual upload, CSV or API—we strongly encourage every agency to use the Sandbox.
+> - To perform your first submission &ndash; whether through the manual upload, CSV or API &ndash; we strongly encourage every agency to use the test environment, i.e. the [Sandbox](https://admin.sandbox.deqar.eu/).
 >
-> - When you are ready to submit to the live site, please contact the EQAR secretariat at: [deqar@eqar.eu](mailto:deqar@eqar.eu). This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
+> - Once you do the first test upload through the Sandbox, please check whether the test reports are red flagged by using the filter “Flags” in the section “Reports”. Should that be the case, at the bottom of the page, press “Show info” and read the note on the reasons. Please correct your data if applicable (e.g. the status of the report is marked as "part of the obligatory EQA system" for a higher education institution with a legal seat outside EHEA, in which case it must be "voluntary") or contact the EQAR Secretariat.
+>
+> - If the system ingests your files and there are no red flagged reports, please proceed with uploading your reports through the real live environment.
+>
+> - In case of doubt, please contact the EQAR secretariat at: [deqar@eqar.eu](mailto:deqar@eqar.eu). This will allow us to check your proposed data (particularly if submitted as a CSV), walk you through the submission process one last time and double check your results.
 
 ## DEQAR in the Longer Term
 
@@ -127,8 +129,8 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 > - **Current data:** set a continuous workflow to ensure that DEQAR is kept up to date with current activities. Determine:
 >
->     - at what point in the work process will reports be uploaded to DEQAR?
->     - will reports be uploaded one-by-one upon completion or in batches, e.g. every month or every quarter?
+>     - at what point in the work process will the reports be uploaded to DEQAR?
+>     - will the reports be uploaded one-by-one upon completion or in batches, e.g. every month or every quarter?
 >
 >   _Note: methods for submitting legacy data — which is generally done in a few large batches — may be quite distinct from methods for continuous submission._
 
@@ -138,7 +140,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 > _Remember: **“With great power comes great responsibility.”**_
 >
-> Once you commit to using DEQAR, it is important to stick with it so that your agency’s presence in the system is as continuous and coherent as possible.  Be sure to load new reports soon after they are ready for publication; otherwise you risk confusing the public, institutions or other agencies. You are encouraged to adapt the method and timing of submissions to best fit your internal work processes.
+> Once you commit to using DEQAR, it is important that you stay active so that your agency’s presence in the system is as continuous and coherent as possible.  Be sure to load new reports soon after they are ready for publication; otherwise you risk confusing the public, institutions or other agencies. You are encouraged to adapt the method and timing of submissions to best fit your internal work processes.
 >
 > On our side, we have tried to design DEQAR to be as effortless as possible. We hope that the system will prove a boost rather than a burden to your QA work.
 >
