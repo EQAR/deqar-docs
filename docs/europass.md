@@ -1,10 +1,8 @@
 # European Digital Credentials for Learning
 
-European Digital Credentials for Learning are a standard for issuing education credentials (e.g. diplomas, transcripts of records, etc.) in a tamper-proof digital format, with authentication and verification checks built in. The standard was developed and is maintained by the European Union.
+[European Digital Credentials for Learning]() are a standard for issuing education credentials (e.g. diplomas, transcripts of records, etc.) in a tamper-proof digital format, with authentication and verification checks built in. The standard was developed and is maintained by the European Union. [Accredited credentials](https://europass.europa.eu/en/stakeholders/qdr/accreditation#8576) are checked against the accreditation database that is part of the Qualifications Dataset Register (QDR).
 
-DEQAR data is automatically loaded into the Europass Qualifications Dataset Register (QDR) and then feeds the Accreditation Database against which European Digital Credentials are verified.
-
-**If your external quality assurance (whether at institutional or programme level) is recorded in DEQAR, you can immediately issue EDC credentials that are classified as "accredited".**
+DEQAR data is automatically exported to the QDR. **That is, if your external quality assurance (whether at institutional or programme level) is recorded in DEQAR, you can immediately issue EDC credentials that can be verified as accredited.**
 
 ## Reports exported
 
@@ -21,6 +19,8 @@ Given the relevant EDC policies and requirements, reports are exported from DEQA
  3. Report has **no high-level flags**.
 
     > *Why: a high-level (red) flag indicates that a report might have been wrongly classified or the agency's official status in a country still needs to be verified by EQAR staff.*
+
+DEQAR exports are generated and refreshed by QDR on a nightly basis. It may thus take 1 - 2 days for a newly uploaded DEQAR report to be found in EDC.
 
 ## Use in practice
 
