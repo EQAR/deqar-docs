@@ -1,6 +1,6 @@
 # European Digital Credentials for Learning
 
-[European Digital Credentials for Learning]() are a standard for issuing education credentials (e.g. diplomas, transcripts of records, etc.) in a tamper-proof digital format, with authentication and verification checks built in. The standard was developed and is maintained by the European Union. [Accredited credentials](https://europass.europa.eu/en/stakeholders/qdr/accreditation#8576) are checked against the accreditation database that is part of the Qualifications Dataset Register (QDR).
+[European Digital Credentials for Learning](https://europass.europa.eu/en/stakeholders/european-digital-credentials) are a standard for issuing education credentials (e.g. diplomas, transcripts of records, etc.) in a tamper-proof digital format, with authentication and verification checks built in. The standard was developed and is maintained by the European Union. [Accredited credentials](https://europass.europa.eu/en/stakeholders/qdr/accreditation#8576) are checked against the accreditation database that is part of the Qualifications Dataset Register (QDR).
 
 DEQAR data is automatically exported to the QDR. **That is, if your external quality assurance (whether at institutional or programme level) is recorded in DEQAR, you can immediately issue EDC credentials that can be verified as accredited.**
 
