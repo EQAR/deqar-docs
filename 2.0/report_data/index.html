@@ -142,7 +142,7 @@
 <p>There are several possible one-to-many relations within a report record: e.g. one report might cover several providers (e.g. in case of a joint programme), or several programmes of one institution, or can have several associated files, etc.. In JSON for API submission, these cases can be naturally represented as arrays of objects; in a CSV file, these relations are difficult to represent due to the flat/one-dimensional structure.</p>
 <p>In the CSV template, such columns or groups of columns can thus be duplicated and indexed with an integer in square brackets, e.g. <code>institution[1].deqar_id</code>, <code>institution[2].deqar_id</code>, … The structure and field names of the elements below directly reflect the CSV template, with repeatable columns indicated by <code>[n]</code> part of the column name.</p>
 <p>To see how these elements are arrayed in JSON for API submission, see our JSON definition at:</p>
-<p><a href="https://backend.deqar.eu/submissionapi/v2/swagger/">https://backend.deqar.eu/submissionapi/v2/swagger/</a></p>
+<p><a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">https://backend.testzone.eqar.eu/submissionapi/v2/swagger/</a></p>
 <p>Please note that new records for providers not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated <a href="../institution_data/#how-to-provide-data">CSV templates described above</a>.</p>
 <table>
 <thead>
