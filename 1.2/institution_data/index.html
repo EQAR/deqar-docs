@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Provider Data - DEQAR Documentation</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<link href="../css/deqar.css" rel="stylesheet"/>
+<link href="../css/version-select.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Provider Data";
+        var mkdocs_page_input_path = "institution_data.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> DEQAR Documentation
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Submitting data</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Provider Data</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#providers-in-deqar">Providers in DEQAR</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-existing-providers">Finding Existing Providers</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#admin-interface">Admin Interface</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#download-csv-file">Download CSV File</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-api">Connect API</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-higher-education-institutions">Defining Higher Education Institutions</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#defining-other-providers">Defining Other Providers</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#provider-data-elements">Provider Data Elements</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#names">Name(s)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#location">Location</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#qualification-level">Qualification Level</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#website">Website</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#identifier">Identifier</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dates">Dates</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#hierarchical-relationship">Hierarchical Relationship</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#type-of-other-provider">Type of Other Provider</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#data-source">Data Source</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-provide-data">How to Provide Data</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_submission/">Report Submission</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../web_api_examples/">Examples</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Integrations</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../europass/">European Digital Credentials for Learning</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ebsi/">European Blockchain Service Infrastructure (EBSI)</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">DEQAR Documentation</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Submitting data</li>
+<li class="breadcrumb-item active">Provider Data</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="provider-data">Provider Data<a class="headerlink" href="#provider-data" title="Permanent link">¶</a></h1>
+<p>Each report must be associated with at least one higher education provider. If a record already exists in DEQAR, the provider needs to be identified; otherwise, the provider must be created <strong>before</strong> a report can be submitted.</p>
+<h2 id="providers-in-deqar">Providers in DEQAR<a class="headerlink" href="#providers-in-deqar" title="Permanent link">¶</a></h2>
+<p>DEQAR distinguishes two types of providers - higher education institutions and other providers. DEQAR only registers providers which provide learning opportunities at the QF-EHEA Levels (equivalent to EQF and ISCED levels 5 to 8). Vocational education and training provisions at EHEA QF level 5 which are not considered as higher education in the national systems are not included.</p>
+<p>The main difference between the two types of providers is whether the entity has full degree awarding powers or not. The number of programmes for which the provider has awarding powers, the subject area and the mode of delivery of the programme are not important for the differentiation.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Higher education institution</th>
+<th style="text-align: left;">Other provider</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">QF-EHEA short to PhD/EQF Levels 5-8</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Short programmes (&lt;60 ECTS)</td>
+<td style="text-align: left;">Yes, optionally</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Programmes leading to full degree (short, bachelor, master, PhD degree)</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Programmes leading to other types of certificates (e.g. nano or micro degree, badges etc.)</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Agencies are advised to consult with the EQAR Secretariat at deqar@eqar.eu in case they are in doubt about the nature of the provider. Should this be the case, agencies are encouraged to share materials on the provider, and any other evidence that could help EQAR in concluding the status.</p>
+<h2 id="finding-existing-providers">Finding Existing Providers<a class="headerlink" href="#finding-existing-providers" title="Permanent link">¶</a></h2>
+<p>Existing providers need to be identified by their DEQARINST ID, ETER ID (for higher education institutions), another international identifier, or a local or national identifier (if available).</p>
+<p>DEQAR has records on a large number of higher education institutions (over 4000 institutions from 42 European countries) harvested from the ETER/OrgReg databases (available through <a href="http://datasets.risis.eu/">Research infrastructure for research and innovation policy studies - RISIS</a> or <a href="https://www.eter-project.com/">European Tertiary Education Register - ETER</a>). More than 2000 additional providers are already recorded in DEQAR based on other official sources (e.g. lists by national ministries) or have been added by other agencies.</p>
+<h3 id="admin-interface">Admin Interface<a class="headerlink" href="#admin-interface" title="Permanent link">¶</a></h3>
+<p>All <a href="../architecture_data_model/#provider-identifiers">provider identifiers</a> can be found through the <a href="https://admin.deqar.eu/reference/institutions">administrative interface</a>.</p>
+<blockquote>
+<p><strong>Important:</strong> The public <a href="https://www.deqar.eu/">DEQAR website</a> does <em>not</em> show all providers, but only those for which at least one report is available. It is therefore important that you <strong>always search for providers in the <a href="https://admin.deqar.eu/reference/institutions">administrative interface</a></strong>, as DEQAR contains records on several hundreds of higher education institutions and a few other providers for which no reports have been submitted yet.</p>
+</blockquote>
+<p>Reports on existing providers can be submitted directly, providing identifiers in CSV or JSON objects as described under <a href="../report_data/#institutions">Submission Object Data Elements: Institution(s)</a> or by selecting the provider in the web form.</p>
+<h3 id="download-csv-file">Download CSV File<a class="headerlink" href="#download-csv-file" title="Permanent link">¶</a></h3>
+<p>The full list of providers can also be downloaded as a CSV file from:</p>
+<p><a href="https://www.eqar.eu/qa-results/download-data-sets/">https://www.eqar.eu/qa-results/download-data-sets/</a></p>
+<h3 id="connect-api">Connect API<a class="headerlink" href="#connect-api" title="Permanent link">¶</a></h3>
+<p>The full providers list can be searched and accessed using the Connect API. EQAR-registered agencies have access to the Connect API using the same credentials as for the DEQAR administrative interface, the Submission API and the Web API.</p>
+<p>Please refer to the <a href="../data_submission/#authentication">explanations on authentication for the Submission API</a> for information on how to obtain and use a token.</p>
+<p>The base URL for the Connect API is:</p>
+<p><code>https://backend.deqar.eu/connectapi/v1</code></p>
+<p>The endpoint <a href="https://backend.deqar.eu/connectapi/v1/institutions/">https://backend.deqar.eu/connectapi/v1/institutions/</a> allows to query the full list of higher education institutions, with or without reports.</p>
+<p>The endpoint <a href="https://backend.deqar.eu/connectapi/v1/providers/">https://backend.deqar.eu/connectapi/v1/providers/</a> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education institutions and other providers.</p>
+<p>The full definitions of the endpoints, the search parameters and the response object are available as <a href="https://en.wikipedia.org/wiki/OpenAPI_Specification">OpenAPI Specification 3.0</a> at:</p>
+<p><a href="https://backend.deqar.eu/connectapi/v1/swagger/">https://backend.deqar.eu/connectapi/v1/swagger/</a></p>
+<p>To retrieve the details on a single provider, please use the <a href="../web_api_endpoints/#institutions">Web API endpoint</a>.</p>
+<h2 id="defining-higher-education-institutions">Defining Higher Education Institutions<a class="headerlink" href="#defining-higher-education-institutions" title="Permanent link">¶</a></h2>
+<p>Before suggesting to add a new higher education institution, please consider the following notes:</p>
+<ol>
+<li>
+<p>DEQAR mainly follows European Tertiary Education Register's (ETER) <a href="https://eter-project.com/#/info/coverage">data model and coverage</a>.</p>
+</li>
+<li>
+<p>The primary unit of registration is the university/higher education institution, i.e. an institution of higher learning that awards full recognised academic degrees in diverse disciplines, is organised as central unit and consists of separate functional units (i.e. faculties, institutes, schools, departments). The degree-awarding powers of the institution are recognised by at least one national authority.</p>
+</li>
+<li>
+<p>Functional units (i.e. faculties, institutes, schools, departments) themselves are not registered in DEQAR as separate entities. Reports on functional units are uploaded/recorded/shown under the central unit's record.</p>
+</li>
+<li>
+<p>Reports on consortia consisting of several providers will be showcased in the record of each provider separately. Consortia themselves will not be presented as a central unit.</p>
+<p>Only in exceptional cases, when the consortium has a long-term tradition of organising education and is recognised by stakeholders as an institution itself, will it be registered as a separate institution in DEQAR; such cases are to be discussed with the EQAR Secretariat in advance.</p>
+</li>
+<li>
+<p>Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university), while such additional branches/campuses will be shown as further locations of the institution. Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.</p>
+</li>
+<li>
+<p>Providers that award full recognised degrees through a franchise or validation partnership with a higher education institution, but have no own degree-awarding power, will be recorded as other provider. A hierarchical relationship to the partner higher education institution should be recorded for transparency.</p>
+</li>
+<li>
+<p>In cases when the status of the entity is not clearly determined by the aforementioned cases or the status is debatable, EQAR and the agency will discuss the nature of it taking into account five main indicators:</p>
+<ul>
+<li>legal status</li>
+<li>provideral independence</li>
+<li>financial independence</li>
+<li>stakeholders’ perceptions</li>
+<li>local context and approaches to higher education</li>
+</ul>
+</li>
+</ol>
+<h2 id="defining-other-providers">Defining Other Providers<a class="headerlink" href="#defining-other-providers" title="Permanent link">¶</a></h2>
+<p>In DEQAR, "other provider" is a provider that delivers content or provides skills training:</p>
+<ol>
+<li>
+<p>At higher education level (i.e. EHEA QF level 5 to 8; EQF 5 to 8; EHEA cycle short to third)</p>
+</li>
+<li>
+<p>Does not have a full degree awarding powers (i.e. right to award bachelor, master or PhD degrees)</p>
+</li>
+</ol>
+<p>The mode of delivery of the classes, whether the provision is done independently or in partnership with a higher education institution, the ownership of the provider (e.g. private or public provider), the connection to the labour market and the area of study are not defining elements of "other providers" in DEQAR.  </p>
+<p>Reports for programmes offered in collaboration by a higher education institution and another provider will be showcased under both entities respectively.</p>
+<p>Similarly, a provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered as "other provider", whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.</p>
+<h2 id="provider-data-elements">Provider Data Elements<a class="headerlink" href="#provider-data-elements" title="Permanent link">¶</a></h2>
+<p>If a record for a <strong>provider does not already exist in DEQAR</strong> it should be described with the elements below; required elements are marked in bold or by a <strong>*</strong>. Before a new record is created, data will be checked against provider data already in DEQAR. If a DEQAR provider record is identified as a match, the existing record will take precedence over submitted data.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED FOR HEIs IN OrgReg</th>
+<th style="text-align: left;">REQUIRED FOR HEIs NOT IN OrgReg</th>
+<th style="text-align: left;">REQUIRED FOR OPs</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Official Name</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>Graz University of Technology</em><br/><em>Югозападен университет "Неофит Рилски"</em><br/><em>Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Official Name, transliterated</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>Yugo-zapaden universitet "Neofit Rilski”</em><br/><em>Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">English Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>South-West University "Neofit Rilski", Blagoevgrad</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Acronym</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>SWU</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Location Country</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>BG</em><br/><em>BGR</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Location City</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>Sofia</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Location Postcode</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>Sofia</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Location Latitude &amp; Longitude</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>48.208356; 1.636776</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Website</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>http://www.swu.bg</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Other Identifier</strong></td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>IAU-019335</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Identifier Resource</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>WHED</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Identifier Source</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes (conditionally)</td>
+<td style="text-align: left;">yes (conditionally)</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>National register of learning providers in the UK, see https://www.ukrlp.co.uk/</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Proof of Status</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">yes (conditionally)</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>https://www.gov.si/teme/evs-evidenca-visokosolskih-zavodov-in-studijskih-programov/</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Type of Provider</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">n/a</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>private</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Qualification Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>0 - short cycle</em><br/><em>1 - first cycle</em><br/><em>2 - second cycle</em><br/><em>3 - third cycle</em></td>
+</tr>
+</tbody>
+</table>
+<div class="mermaid">erDiagram
+    PROVIDER {
+    TYPE FIELD "EXAMPLE"
+        str website "http://www.swu.bg"
+        str provider_type "private"
+    }
+    NAME {
+    TYPE FIELD "EXAMPLE"
+        str name_official "Graz University of Technology"
+        str name_transliterated "Yugo-zapaden universitet 'Neofit Rilski'"
+        str name_english "South-West University 'Neofit Rilski'"
+        str acronym "SWU"
+        date valid_until
+    }
+    LOCATION {
+    TYPE FIELD "EXAMPLE"
+        str country FK "BG, BGR"
+        str city "Sofia"
+        str postcode "4711"
+        float latitude "48.208356"
+        float longitude "1.636776"
+    }
+    IDENTIFIER {
+    TYPE FIELD "EXAMPLE"
+        str identifier "IAU-019335"
+        str resource "WHED"
+    }
+    PROVIDER ||--|{ NAME : "known as"
+    PROVIDER ||--|{ LOCATION : "based in"
+    PROVIDER ||--o{ IDENTIFIER : "identified by"
+</div>
+<h3 id="names">Name(s)<a class="headerlink" href="#names" title="Permanent link">¶</a></h3>
+<p>Exactly one official provider name must be provided for each new provider record. Each official name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. An English provider name should be provided for each new provider record. If provided, the English name will be used for display. A provider acronym may also be provided. (Note: alternative or other language names can be provided through the administrative interface.)</p>
+<ul>
+<li>
+<p><strong>Official Name*</strong> (<code>name_official</code>; required; string)<br>
+  The official name of each provider in the original alphabet must be provided for every new provider record. The official name will be indexed for search and may be used as the primary provider name in the search interface if no English institution name is assigned.</br></p>
+<p><em>e.g. Graz University of Technology</em><br>
+<em>e.g. Югозападен университет "Неофит Рилски"</em><br>
+<em>e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em></br></br></p>
+</li>
+<li>
+<p>Official Name, transliterated (<code>name_official_transliterated</code>; not required; string)<br>
+  A romanised transliteration should be provided if the official provider name is in non-Latin script. If no romanised form is stored locally, then <a href="https://en.wikipedia.org/wiki/List_of_ISO_romanizations">ISO romanisation standards</a> can be used to created romanised forms. If transliteration is not provided, access to the provider record through the search interface will be more limited. For those languages included in the <a href="https://pypi.org/project/transliterate/">Python transliterate package</a> transliterations can be generated automatically when <a href="#bulk-upload">supplying provider data in bulk</a>.</br></p>
+<p><em>e.g. Yugo-zapaden universitet "Neofit Rilski”</em><br>
+<em>e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata</em></br></p>
+</li>
+<li>
+<p>English Name (<code>name_english</code>; recommended; string)<br>
+  A single English provider name should be provided for any provider without an English official name. If provided, the English name will be used as the primary name for display in the DEQAR interface; the search, however, always matches against all name versions/variations. While not required, providing an English name is strongly recommended to enhance the user experience.</br></p>
+<p><em>e.g. South-West University "Neofit Rilski", Blagoevgrad</em></p>
+</li>
+<li>
+<p>Provider Acronym (<code>acronym</code>; not required; string)<br>
+  The official acronym for each provider may be provided. This will be indexed for search. It should thus be provided especially where it is commonly used to refer to the institution, so that it can be found more easily.</br></p>
+<p><em>e.g. SWU</em><br/>
+<em>e.g. BOKU</em></p>
+</li>
+</ul>
+<h3 id="location">Location<a class="headerlink" href="#location" title="Permanent link">¶</a></h3>
+<p>One or more locations must be provided for each new provider record. A location is provided as a combination of a country and a city name along with an optional latitude and longitude.</p>
+<p>Each provider must have one and only one location designated as main legal seat.</p>
+<p>For higher education institutions, the legal seat is considered as the higher education system in which the institution is formally recognised. In case an institution is a legal entity incorporated in country A but formally recognised as higher education institution in system B, the legal seat should be specified in B. In case a higher education institution is formally recognised in several higher education systems, separate provider records should be created, one for each system.</p>
+<p>For other providers, the legal seat is considered as the country in which the legal entity is incorporated.</p>
+<p>For providers with multiple seats (e.g. branches), each of the locations (i.e. country and city) could be provided in a separate column with number in the brackets (<code>[n]</code>).</p>
+<p>The first country (i.e. country_id) will be considered as the main legal seat of the provider.</p>
+<ul>
+<li>
+<p><strong>Provider Legal Seat Country*</strong> (<code>country_id</code>; required; string)<br/>
+  The country where each provider has its legal seat (see above) must be provided for every new provider record.</p>
+<p>Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166-1 standard</a>), or using the DEQAR numerical ID. Provider countries will be indexed for search.</p>
+<p><em>e.g. BG</em><br/>
+<em>e.g. BGR</em></p>
+</li>
+<li>
+<p><strong>Provider Legal Seat City*</strong> (<code>city</code>; required; string)<br/>
+  The city name, preferably in English, where the provider has its legal seat may be provided for each provider  record. If a provider is located in more than one city, further cities can be provided as other locations (see below).</p>
+<p><em>e.g. Sofia</em></p>
+</li>
+<li>
+<p><strong>Provider Legal Seat Postcode*</strong> (<code>postcode</code>; conditionally required; string)<br/>
+  The postcode of the provider's legal seat.</p>
+<p>This field is required for higher education institution in systems covered by OrgReg/ETER.</p>
+<p>e.g. 1030</p>
+</li>
+<li>
+<p>Provider Legal Seat Latitude (<code>latitude</code>; not required; float)<br/>
+  Provider Legal Seat Longitude (<code>longitude</code>; not required; float)<br/>
+  The exact latitude and longitude of the organisation site or the general latitude and longitude of the city may also be provided for each provider record.</p>
+<p><em>e.g. 48,208,356; 1,636,776</em></p>
+</li>
+</ul>
+<p>If the provider has further locations in the same or other countries, the agency may provide further information. In the CSV file, each additional location should be presented in a new column with the subsequent number in brackets (i.e. <code>[n+1]</code>).</p>
+<p>The following set of columns can be copied for each additional location:</p>
+<ul>
+<li>
+<p>Other Location Country (<code>other_location[n].country</code>; not required; string)  </p>
+</li>
+<li>
+<p>Other Location City (<code>other_location[n].city</code>; not required; string)  </p>
+</li>
+<li>
+<p>Other Location Postcode (<code>other_location[n].postcode</code>; conditionally required; string)  </p>
+</li>
+<li>
+<p>Other Location Latitude (<code>other_location[n].latitude</code>; not required; float)<br/>
+  Other Location Longitude (<code>other_location[n].longitude</code>; not required; float)</p>
+<p>The format and requirements are identical to the corresponding fields above.</p>
+</li>
+</ul>
+<h3 id="qualification-level">Qualification Level<a class="headerlink" href="#qualification-level" title="Permanent link">¶</a></h3>
+<p>The provider QF-EHEA levels <strong>may</strong> be provided for higher education institutions and <strong>must</strong> be provided for other providers.</p>
+<ul>
+<li>
+<p>Provider Qualification Level (<code>qf_ehea_level[n]</code>; conditionally required; string)<br/>
+  One or more qualification levels may be provided for higher education institutions and must be provided for other providers as either a DEQAR level name or a DEQAR level id. DEQAR uses levels based on three main frameworks/classifications:</p>
+<ul>
+<li><a href="https://www.ehea.info/page-qualification-frameworks">Framework for Qualifications of the European Higher Education Area</a> (QF EHEA level),</li>
+<li><a href="https://europa.eu/europass/en/europass-tools/european-qualifications-framework">European Qualification Framework</a> (EQF) and</li>
+<li><a href="https://uis.unesco.org/en/topic/international-standard-classification-education-isced">International Standard Classification of Education</a> (ISCED).</li>
+</ul>
+<p>These are the qualification framework levels at which each higher education institution may award degrees or offer programmes (for other providers). Note: if QF levels are provided, then <em>all</em> levels covered by the provider should be provided at the same time.</p>
+<p>In the CSV template, each level can be presented as ONE of the possible numbers OR words. Each additional level should be presented in a new column with the subsequent number in brackets (i.e. <code>[n+1]</code>).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID (QF-EHEA level)</th>
+<th style="text-align: left;">ID (EQF level, ISCED level)</th>
+<th style="text-align: left;">name (QF-EHEA level)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">short cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">first cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">second cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">third cycle</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="website">Website<a class="headerlink" href="#website" title="Permanent link">¶</a></h3>
+<p>Exactly one website link must be provided for each new provider record.</p>
+<ul>
+<li>
+<p><strong>Provider Website (*)</strong> (<code>website_link</code>; required; string)<br/>
+  The URL to the primary provider website or home page. The root domain name of the site should be used when possible, without language or other qualifiers.</p>
+<p><em>e.g. http://www.swu.bg</em><br/>
+<em>e.g. https://qualifications.pearson.com/</em></p>
+</li>
+</ul>
+<h3 id="identifier">Identifier<a class="headerlink" href="#identifier" title="Permanent link">¶</a></h3>
+<p>Providing an identifier serves as proof of confirming the validity of the provider and aiding the users to find providers easily in other databases. The identifier can be used later to identify this provider in the report submission objects.</p>
+<blockquote>
+<p>A local identifier may be provided for the providers. Local identifiers are for use by your agency only, whereas other identifiers can be used also by others.</p>
+<p>Other identifiers may be provided for higher education institutions in OrgReg and must be provided for higher education institutions which are not in OrgReg and for all other providers.</p>
+<p>For higher education institutions, it is <strong>strongly recommended</strong> to provide the institution's identifier in the <a href="https://www.whed.net/">IAU/UNESCO World Higher Education Database (WHED)</a>.</p>
+<p>Institutions listed in WHED are confirmed to be nationally-recognised higher education institutions. If a WHED identifier is provided the institution is thus accepted automatically.</p>
+<p><strong>If no WHED identifier is provided, additional proof of the institution's official status is required</strong>, see below.</p>
+<p>EQAR runs a background list of other trusted identifiers presented below.</p>
+<p>For other providers based in the European Union, agencies are expected to submit the EU - VAT number as identifier.</p>
+</blockquote>
+<ul>
+<li>
+<p>Provider Identifier (<code>identifier</code>; conditionally required; string)<br/>
+  Please note that identifiers must be unique within your agency or within the resource provided.</p>
+<p><em>e.g. HCERES21</em></p>
+</li>
+<li>
+<p>Identifier Resource (<code>identifier_resource</code>; conditionally required; string)<br/>
+  If the identifier is not a local identifier of your agency, you must provide a short label designating the resource in order to distinguish it from other identifiers. As the resource tag needs to be used consistently, and the combination of identifier and resource tag needs to be globally unique in DEQAR, it should be communicated with the EQAR secretariat.</p>
+<p><em>e.g. DE-HRK</em></p>
+</li>
+<li>
+<p>Identifier Source (<code>identifier_source</code>; conditionally required; string)<br/>
+  The agency must provide other identifiers for higher education institutions which are not in OrgReg and for all other providers. The field must be filled in if the identifier is not yet known to EQAR (see table below for trusted identifiers). The source can be a national authority, an international provider or another entity.</p>
+<p>If the identifier is already known to EQAR (see table), there is no need to fill this field.</p>
+<p><em>e.g. World Higher Education Database</em></p>
+</li>
+<li>
+<p>Proof of Status (<code>proof_of_status</code>; conditionally required; string)<br/>
+  If the higher education institution is not listed in WHED, or the agency does not provide the WHED identifier, an official source must be provided to proof that the institution indeed has full degree awarding powers in at least one higher education system.</p>
+<p>The source could be the website of the ministry responsible for higher education, an official national register of higher education institutions or similar. Please note that a link to the <strong>institution's own website is not accepted as official source</strong>.</p>
+<p><em>e.g. https://www.gov.si/teme/evs-evidenca-visokosolskih-zavodov-in-studijskih-programov/</em></p>
+</li>
+</ul>
+<p>The following common European or international identifier types are known in DEQAR and can be used without additional information, i.e. it is sufficient to provide the identifier resource, the identifier source does not need to be specified.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Identifier resource</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">DID-EBSI</td>
+<td style="text-align: left;">DID for the European Blockchain Service Infrastructure (EBSI)</td>
+<td style="text-align: left;">Decentralised Identifier (DID) that enables verifiable, decentralised digital identity within the EBSI ecosystem - data provided by higher education institutions participating in EBSI, see <a href="https://ec.europa.eu/digital-building-blocks/wikis/display/EBSIDOC/EBSI+DID+Method">https://ec.europa.eu/digital-building-blocks/wikis/display/EBSIDOC/EBSI+DID+Method</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Erasmus</td>
+<td style="text-align: left;">Erasmus Institution Code</td>
+<td style="text-align: left;">Identifier assigned by the European Commission to higher education institutions participating in the Erasmus+ programme - data harvested from ETER/OrgReg, see <a href="https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-charter-for-higher-education">https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-charter-for-higher-education</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Erasmus-Charter</td>
+<td style="text-align: left;">Erasmus Charter for Higher Education (ECHE)</td>
+<td style="text-align: left;">Application number related to the ECHE, required for higher education institutions participating in the Erasmus+ programme - data acquired using the European University Foundation (EUF) HEI API, see <a href="https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-charter-for-higher-education">https://erasmus-plus.ec.europa.eu/resources-and-tools/erasmus-charter-for-higher-education</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">EU-PIC</td>
+<td style="text-align: left;">Participant Identification Code (PIC)</td>
+<td style="text-align: left;">A PIC is assigned to legal entities participating in EU-funded programmes - data acquired using the European University Foundation (EUF) HEI API, see <a href="https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register">https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/how-to-participate/participant-register</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">EU-VAT</td>
+<td style="text-align: left;">EU VAT number</td>
+<td style="text-align: left;">Identifier of economic operators for value-added tax (VAT) within the EU system, assigned by their national authority - data acquired using the EU participant register API, see <a href="https://ec.europa.eu/taxation_customs/vies/#/vat-validation">https://ec.europa.eu/taxation_customs/vies/#/vat-validation</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">SCHAC</td>
+<td style="text-align: left;">SCHema for Academia</td>
+<td style="text-align: left;">Internet domain (DNS)-based identifier of institutions, used in several European initiatives for data exchange in the education and research sector, e.g. Emrex - data acquired using the European University Foundation (EUF) HEI API, see <a href="https://wiki.refeds.org/display/STAN/SCHAC">https://wiki.refeds.org/display/STAN/SCHAC</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">WHED</td>
+<td style="text-align: left;">IAU World Higher Education Database (WHED)</td>
+<td style="text-align: left;">Identifier used in the world-wide WHED database of higher education institutions, managed by the International Association of Universities (IAU) - data harvested from ETER/OrgReg, see <a href="https://www.whed.net/">https://www.whed.net/</a></td>
+</tr>
+</tbody>
+</table>
+<p>The following table contains some examples of national identifiers already known in DEQAR:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Identifier resource</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Further information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">FR-SIREN</td>
+<td style="text-align: left;">The National Institute of Statistics and Economic Studies of France</td>
+<td style="text-align: left;"><a href="https://sirene.fr/sirene/public/accueil">https://sirene.fr/sirene/public/accueil</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">UK-PIN</td>
+<td style="text-align: left;">The UK Register of Learning Providers</td>
+<td style="text-align: left;"><a href="https://www.ukrlp.co.uk/">https://www.ukrlp.co.uk/</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">KZ-BIN</td>
+<td style="text-align: left;">Ministry of Finance of the Republic of Kazakhstan</td>
+<td style="text-align: left;"><a href="https://kgd.gov.kz/en/services/taxpayer_search">https://kgd.gov.kz/en/services/taxpayer_search</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dates">Dates<a class="headerlink" href="#dates" title="Permanent link">¶</a></h3>
+<p>Founding and closing years or dates should be provided if known.</p>
+<ul>
+<li>
+<p>Founding date (<code>founding_date</code>; not required; date)<br/>
+  Closing date (<code>closing_date</code>; conditionally required; date)<br/>
+  Dates should be formatted as <em>YYYY-MM-DD</em> and years should be given in four digits (<em>YYYY</em>).</p>
+<p>The closing date must be provided if the provider has closed its operation.</p>
+<p><em>e.g. 2020-07-01</em></p>
+</li>
+</ul>
+<h3 id="hierarchical-relationship">Hierarchical Relationship<a class="headerlink" href="#hierarchical-relationship" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>Parent Provider (<code>parent_id</code>; not required; string)<br/>
+  The parent can be specified by its DEQARINST ID, optionally in numerical form without the prefix <em>DEQARINST</em>.</p>
+<p>For higher education institutions: if the institution is a faculty or independent unit of another institution, or is part of a grouping of institutions that is also recorded in DEQAR, ETER or OrgReg, you must specify the parent institution.</p>
+<p>In case the parent institution is not in DEQAR or ETER/OrgReg, a request for adding the parent institution must be submitted too.</p>
+<p>For other providers: if the provider is part of another provider that offers courses at higher education level, is part of a higher education institution, or is part of a grouping of providers that is also recorded in DEQAR the parent provider should be specified.</p>
+<p>If the parent provider is not recorded in DEQAR yet, a request for adding that provider must be submitted too. Please note that for DEQAR it is not relevant if the provider is part of a larger grouping that does work in fields other than higher education provision. Such relationships will not be recorded in DEQAR.</p>
+<p><em>e.g. DEQARINST4711</em></p>
+</li>
+<li>
+<p>Relationship Type (<code>parent_type</code>; conditionally required; string)<br/>
+  If a parent provider is specified, the type of hierarchical relationship must be classified as one of the following types:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">consortium</td>
+<td style="text-align: left;">default type for multi-level institutions or consortia</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">faculty</td>
+<td style="text-align: left;">faculty names always appear together with their parent university's name (NB: exceptional case, faculties are normally not recorded)</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">independent faculty or school</td>
+<td style="text-align: left;">used if a faculty or department is recorded separately and should appear under its own name only</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">franchise or validation partnership</td>
+<td style="text-align: left;">used if a provider offers education leading to a degree/award by another higher education institution</td>
+</tr>
+</tbody>
+</table>
+<p><em>e.g. faculty</em></p>
+</li>
+</ul>
+<h3 id="type-of-other-provider">Type of Other Provider<a class="headerlink" href="#type-of-other-provider" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>Type of Other Provider (<code>type_provider</code>; not required; string)<br/>
+  Information of relevance only for other providers. The nature of the provider should be marked if known.</p>
+<p>Four main categories are defined:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">private company</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">non governmental provider</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">public – private partnership</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">public provider</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">other</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="data-source">Data Source<a class="headerlink" href="#data-source" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>Agency providing information on the provider (<code>agency_id</code>; recommended; string)<br/>
+  The agency that provides the information should provide its DEQAR ID. The ID can be consulted in the admin interface.</p>
+<p><em>e.g. 1</em><br/>
+<em>e.g. 73</em></p>
+</li>
+<li>
+<p>Source of information on the provider (<code>source_information</code>; recommended; string)<br/>
+  Link to databases where more information on the organization could be found.</p>
+<p><em>e.g. World Higher</em></p>
+</li>
+</ul>
+<h2 id="how-to-provide-data">How to Provide Data<a class="headerlink" href="#how-to-provide-data" title="Permanent link">¶</a></h2>
+<p>If you identify that providers are missing, please send us a spreadsheet with the required data.</p>
+<p>Before sending data on a new providers, please check carefully that the providers is not yet listed in the <a href="https://admin.deqar.eu/reference/institutions">reference list of providers</a>. It is important to use the administrative interface to do so, as there are many institutions and few providers  recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface; see also the section <a href="#finding-existing-providers">Finding Existing Providers</a> above.</p>
+<p>Please supply the providers data using the right template depending on the type of provider:</p>
+<ul>
+<li>For higher education institutions:<ul>
+<li><a href="../files/Template_HEI_lists.ods">Open Document Format</a> (LibreOffice, OpenOffice)</li>
+<li><a href="../files/Template_HEI_lists.xlsx">Microsoft Excel format</a></li>
+</ul>
+</li>
+<li>For other providers:<ul>
+<li><a href="../files/Template_OP_lists.ods">Open Document Format</a> (LibreOffice, OpenOffice)</li>
+<li><a href="../files/Template_OP_lists.xlsx">Microsoft Excel format</a></li>
+</ul>
+</li>
+</ul>
+<p>You may save the spreadsheet in either format or as a CSV file. Send the filled spreadsheet to <a href="mailto:deqar@eqar.eu">deqar@eqar.eu</a>; the EQAR Secretariat will check the list shortly and return the original file with the newly generated DEQARINST IDs added.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../architecture_data_model/" title="Architecture and Data Model"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../report_data/" title="Report Data Elements">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../architecture_data_model/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../report_data/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/version-select.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({
+    er: {
+        minEntityHeight: 35
+    },
+    theme: "base",
+    themeVariables: {
+        primaryColor: "#f3f6f6",
+        primaryTextColor: "#404040",
+        primaryBorderColor: "#033163",
+        lineColor: "#033163"
+    }
+});</script></body>
+</html>
