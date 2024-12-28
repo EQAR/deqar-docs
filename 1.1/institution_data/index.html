@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Institution Data - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Institution Data";
+        var mkdocs_page_input_path = "institution_data.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Submitting data</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Institution Data</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#finding-existing-institutions">Finding Existing Institutions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#admin-interface">Admin Interface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#download-csv-file">Download CSV File</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#connect-api">Connect API</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#defining-institutions">Defining Institutions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#institution-data-elements">Institution Data Elements</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#names">Name(s)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#location">Location</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#qualification-level">Qualification Level</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#website">Website</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#identifier">Identifier</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dates">Dates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hierarchical-relationship">Hierarchical Relationship</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-provide-data">How to Provide Data</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Report Submission</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Integrations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../europass/">European Digital Credentials for Learning</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Submitting data</li>
+      <li class="breadcrumb-item active">Institution Data</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="institution-data">Institution Data<a class="headerlink" href="#institution-data" title="Permanent link">&para;</a></h1>
+<p>Each report must be associated with at least one institution. If a record already exists in DEQAR, the institutions needs to be identified; otherwise, the institution must be created <strong>before</strong> a report can be submitted.</p>
+<p>DEQAR has records on a large number of higher education institutions (over 4000 institutions from 42 European countries) harvested from the ETER/OrgReg databases (available through <a href="http://datasets.risis.eu/">Research infrastructure for research and innovation policy studies - RISIS</a> or <a href="https://www.eter-project.com/">European Tertiary Education Register - ETER</a>. More than 2000 additional institutions are already recorded in DEQAR based on other official sources (e.g. lists by national ministries) or have already been added by other agencies.</p>
+<h2 id="finding-existing-institutions">Finding Existing Institutions<a class="headerlink" href="#finding-existing-institutions" title="Permanent link">&para;</a></h2>
+<p>Existing institutions need to be identified by their DEQARINST ID, ETER ID or a local or national identifier (if available).</p>
+<h3 id="admin-interface">Admin Interface<a class="headerlink" href="#admin-interface" title="Permanent link">&para;</a></h3>
+<p>All <a href="../architecture_data_model/#institution-identifiers">institution identifiers</a> can be found through the <a href="https://admin.deqar.eu/reference/institutions">administrative interface</a>.</p>
+<p><strong>Important:</strong> The public <a href="https://www.deqar.eu/">DEQAR website</a> does <em>not</em> show all institutions, but only those institutions for which at least one report is available. It is therefore important that you <strong>always search for institutions in the <a href="https://admin.deqar.eu/reference/institutions">administrative interface</a></strong>, as DEQAR contains records on several hundreds of institutions for which no reports have been submitted yet.</p>
+<p>Reports on existing institutions can be submitted directly, providing identifiers in CSV or JSON objects as described under <a href="../report_data/#institutions">Submission Object Data Elements: Institution(s)</a> or by selecting the institution in the web form.</p>
+<h3 id="download-csv-file">Download CSV File<a class="headerlink" href="#download-csv-file" title="Permanent link">&para;</a></h3>
+<p>The full list of higher education institutions can also be downloaded as a CSV file from:</p>
+<p><a href="https://www.eqar.eu/qa-results/download-data-sets/">https://www.eqar.eu/qa-results/download-data-sets/</a></p>
+<h3 id="connect-api">Connect API<a class="headerlink" href="#connect-api" title="Permanent link">&para;</a></h3>
+<p>The full institution list can be accessed and searched using the Connect API. EQAR-registered agencies have access to the Connect API using the same credentials as for the DEQAR administrative interface, the Submission API and the Web API.</p>
+<p>Please refer to the <a href="../data_submission/#authentication">explanations on authentication for the Submission API</a> for information on how to obtain and use a token.</p>
+<p>The base URL for the Connect API is:</p>
+<p><code>https://backend.deqar.eu/connectapi/v1</code></p>
+<p>The endpoint <a href="https://backend.deqar.eu/connectapi/v1/institutions/">https://backend.deqar.eu/connectapi/v1/institutions/</a> allows to query the full list of higher education institutions, with or without reports.</p>
+<p>The full definitions of the endpoint, the search parameters and the response object is available as <a href="https://en.wikipedia.org/wiki/OpenAPI_Specification">OpenAPI Specification 3.0</a> at:</p>
+<p><a href="https://backend.deqar.eu/connectapi/v1/swagger/">https://backend.deqar.eu/connectapi/v1/swagger/</a></p>
+<p>To retrieve the details on a single institution, please use the <a href="../web_api_endpoints/#institutions">Web API endpoint</a>.</p>
+<h2 id="defining-institutions">Defining Institutions<a class="headerlink" href="#defining-institutions" title="Permanent link">&para;</a></h2>
+<p>Before suggesting to add a new institution, please consider the following notes:</p>
+<ol>
+<li>
+<p>DEQAR mainly follows European Tertiary Education Register's (ETER) <a href="https://eter-project.com/#/info/coverage">data model and coverage</a>.</p>
+</li>
+<li>
+<p>The primary unit of registration is the university/higher education institution, i.e. an institution of higher learning that awards academic degrees in diverse disciplines, is organised as central unit and consists of separate functional units (i.e. faculties, institutes, schools, departments).</p>
+</li>
+<li>
+<p>Functional units (i.e. faculties, institutes, schools, departments) themselves are not registered in DEQAR as separate entity. Reports on functional units are uploaded/recorded/shown under the central unit's record.</p>
+</li>
+<li>
+<p>Reports on consortia consisting of several universities will be showcased in the record of each university separately. Consortia themselves will not be presented as a central unit.</p>
+<p>Only in exceptional cases, when the consortium has a long-term tradition of organising education and is recognised by stakeholders as an institution itself, will it be registered as a separate institution in DEQAR.</p>
+</li>
+<li>
+<p>Reports on institutions' branches and campuses, home and abroad, will be showcased in the record of the central institution (i.e. the university). Only in exceptional cases, where the branch/campus has a proven long-term tradition of organising education and is recognised by stakeholders as a semi-independent institution, will it be registered in DEQAR.</p>
+</li>
+<li>
+<p>In cases when the status of the entity is not clearly determined by the aforementioned cases or the status is debatable, EQAR and the agency will discuss the nature of it taking into account five main indicators:</p>
+<ul>
+<li>legal status</li>
+<li>organisational independence</li>
+<li>financial independence</li>
+<li>stakeholders’ perceptions</li>
+<li>local context and approaches to higher education</li>
+</ul>
+</li>
+</ol>
+<h2 id="institution-data-elements">Institution Data Elements<a class="headerlink" href="#institution-data-elements" title="Permanent link">&para;</a></h2>
+<p>If a record for an <strong>institution does not already exist in DEQAR</strong> it should be described with the elements below; required elements are marked by <strong>(*)</strong>. Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Official Institution Name (*)</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>Graz University of Technology</em><br><em>Югозападен университет "Неофит Рилски"</em><br><em>Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Official Institution Name, transliterated</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>Yugo-zapaden universitet "Neofit Rilski”</em><br><em>Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">English Institution Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>South-West University "Neofit Rilski", Blagoevgrad</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution Acronym</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>SWU</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institution Country (*)</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>BG</em><br><em>BGR</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution City</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Sofia</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution Latitude<br>Institution Longitude</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>48,208,356; 1,636,776</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution QF-EHEA Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>0 - short cycle</em><br><em>1 - first cycle</em><br><em>2 - second cycle</em><br><em>3 - third cycle</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institutional Website (*)</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>http://www.swu.bg</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="names">Name(s)<a class="headerlink" href="#names" title="Permanent link">&para;</a></h3>
+<p>One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided. (Note: alternative or other language institution names can be provided through the administrative interface.)</p>
+<ul>
+<li>
+<p><strong>Official Institution Name (*)</strong> (<code>name_official</code>; required; string)<br />
+  The official name of each institution in the original alphabet must be provided for every new institution record. The official name will be indexed for search and may be used as the primary institution name in the search interface if no English institution name is assigned.<br />
+<em>e.g. Graz University of Technology</em><br />
+<em>e.g. Югозападен университет "Неофит Рилски"</em><br />
+<em>e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em></p>
+</li>
+<li>
+<p>Official Institution Name, transliterated (<code>name_official_transliterated</code>; not required; string)<br />
+  A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then <a href="https://en.wikipedia.org/wiki/List_of_ISO_romanizations">ISO romanisation standards</a> can be used to created romanised forms. If transliteration is not provided, access to the institution record through the search interface will be more limited. For those languages included in the <a href="https://pypi.org/project/transliterate/">Python transliterate package</a> transliterations can be generated automatically when <a href="#bulk-upload">supplying institution data in bulk</a>.
+  <em>e.g. Yugo-zapaden universitet "Neofit Rilski”</em><br />
+<em>e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata</em></p>
+</li>
+<li>
+<p>English Institution Name (<code>name_english</code>; recommended; string)<br />
+  A single English institution name may be provided for any institution without an English official name. If provided, the English institution name will be used as the primary institution name in the search interface. While not required, providing an English name is strongly recommended to enhance the user experience.<br />
+<em>e.g. South-West University "Neofit Rilski", Blagoevgrad</em></p>
+</li>
+<li>
+<p>Institution Acronym (<code>acronym</code>; not required; string)<br />
+  The official acronym for each institution may be provided. This will be indexed for search.<br />
+<em>e.g. SWU</em></p>
+</li>
+</ul>
+<h3 id="location">Location<a class="headerlink" href="#location" title="Permanent link">&para;</a></h3>
+<p>One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.</p>
+<ul>
+<li>
+<p><strong>Institution Country (*)</strong> (<code>country_id</code>; conditionally required; string)<br />
+  The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166-1 standard</a>), or using the DEQAR numerical ID. Institution countries will be indexed for search.<br />
+<em>e.g. BG</em><br />
+<em>e.g. BGR</em></p>
+</li>
+<li>
+<p>Institution City (<code>city</code>; recommended; string)<br />
+  The city name, preferably in English, where the institution is located in each country may be provided for each institution record. If an institution is located in more than one city, then a separate country/city pairing should be entered for each city. Institution cities will be indexed for search.
+  <em>e.g. Sofia</em></p>
+</li>
+<li>
+<p>Institution Latitude (<code>latitude</code>; not required; float)</p>
+</li>
+<li>Institution Longitude (<code>longitude</code>; not required; float)<br />
+  The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.<br />
+<em>e.g. 48,208,356; 1,636,776</em></li>
+</ul>
+<h3 id="qualification-level">Qualification Level<a class="headerlink" href="#qualification-level" title="Permanent link">&para;</a></h3>
+<p>The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then <em>ALL</em> levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.</p>
+<ul>
+<li>Institution QF-EHEA Level (<code>qf_ehea_levels</code>; required; string)<br />
+  One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see <a href="http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area">Framework for Qualifications of the European Higher Education Area</a>. These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">short cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">first cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">second cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">third cycle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="website">Website<a class="headerlink" href="#website" title="Permanent link">&para;</a></h3>
+<p>One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.</p>
+<ul>
+<li><strong>Institutional Website (*)</strong> (<code>website_link</code>; required; string)<br />
+  The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.<br />
+<em>e.g. http://www.swu.bg</em></li>
+</ul>
+<h3 id="identifier">Identifier<a class="headerlink" href="#identifier" title="Permanent link">&para;</a></h3>
+<p>You may provide a local or other identifier for the institution, which can later be used to identify this institution in report submission objects. Local identifier are for use by your agency only, whereas other identifiers can be used also by others.</p>
+<ul>
+<li>
+<p>Institutional Identifier (<code>identifier</code>; not required; string)<br />
+  The identifier for this institution. Please note that identifiers must be unique within your agency or within the resource provided.<br />
+<em>e.g. HCERES21</em></p>
+</li>
+<li>
+<p>Identifier Resource (<code>identifier_resource</code>; not required; string)<br />
+  If the identifier is not a local identifier of your agency, please provide a short label designating the resource in order to distinguish it from other identifiers. As the resource tag needs to be used consistently, and the combination of identifier and resource tag needs to be globally unique in DEQAR, it should be agreed with the EQAR secretariat.<br />
+<em>e.g. DE-HRK</em></p>
+</li>
+</ul>
+<h3 id="dates">Dates<a class="headerlink" href="#dates" title="Permanent link">&para;</a></h3>
+<p>Founding and closing years or dates can be provided if known.</p>
+<ul>
+<li>Founding date (<code>founding_date</code>; not required; date)</li>
+<li>Closing date (<code>closing_date</code>; not required; date)<br />
+  Dates should be formated as <em>YYYY-MM-DD</em> and years should be given in four digits (<em>YYYY</em>).
+  <em>e.g. 2020-07-01</em></li>
+</ul>
+<h3 id="hierarchical-relationship">Hierarchical Relationship<a class="headerlink" href="#hierarchical-relationship" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Parent institution (<code>parent_id</code>; not required; string)<br />
+  If the institution is a faculty or independent unit of another institution, or is part of a grouping of institutions that is also recorded in DEQAR, ETER or OrgReg, you should specify the parent institution. The parent institution can be specified by its DEQARINST ID, optionally in numerical form without the prefix <em>DEQARINST</em>.
+  <em>e.g. DEQARINST4711</em></li>
+</ul>
+<h2 id="how-to-provide-data">How to Provide Data<a class="headerlink" href="#how-to-provide-data" title="Permanent link">&para;</a></h2>
+<p>If you identify that institutions are missing, please send us a spreadsheet with the required data.</p>
+<p>Before sending data on a new institution, please check carefully that the institution is not yet listed in the <a href="https://admin.deqar.eu/reference/institutions">reference list of institutions</a>. It is important to use the administrative interface to do so, as there are many institutions already recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface.</p>
+<p>Please supply the institution data using the template available in two formats:</p>
+<ul>
+<li><a href="../files/Template_HEI_lists.ods">Open Document Format</a> (OpenOffice, LibreOffice, NeoOffice)</li>
+<li><a href="../files/Template_HEI_lists.xlsx">Microsoft Excel format</a></li>
+<li><a href="https://cloud.eqar.eu/s/f9xo8yXYoH8ZFrA">View on-line</a></li>
+</ul>
+<p>You may save the spreadsheet in either format or as a CSV file. Send the filled spreadsheet to <a href="mailto:deqar@eqar.eu">deqar@eqar.eu</a>; we will check the list shortly and return your original file with the newly generated DEQARINST IDs added.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../architecture_data_model/" class="btn btn-neutral float-left" title="Architecture and Data Model"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../report_data/" class="btn btn-neutral float-right" title="Report Data Elements">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../architecture_data_model/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../report_data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

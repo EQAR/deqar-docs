@@ -1,0 +1,224 @@
+/* CSS custom for DEQAR MkDocs */
+
+.wy-side-nav-search {
+    background-color: #033163;
+}
+.wy-menu li.current ul.subnav ul {
+    padding-left: 1em;
+}
+
+.wy-menu li.current ul.subnav > li a {
+    font-weight: bold;
+}
+
+.wy-menu-vertical .subnav li.current > ul li a {
+    padding-left: 2.427em;
+}
+
+/* number TOC menu */
+
+.wy-menu .toctree-l1 {
+    counter-reset: first-toc;
+}
+.wy-menu .toctree-l2 {
+    counter-reset: second-toc;
+}
+.wy-menu .toctree-l2 > a::before {
+    content: counter(first-toc) ". ";
+    counter-increment: first-toc;;
+}
+.wy-menu .toctree-l3 > a::before {
+    content: counter(first-toc) "." counter(second-toc) " ";
+    counter-increment: second-toc;
+}
+
+/* breadcrumbs & footer */
+
+.wy-breadcrumbs,
+.rst-content footer {
+    color: #18498F;
+}
+.wy-breadcrumbs a,
+.wy-breadcrumbs a:visited,
+.rst-content footer a,
+.rst-content footer a:visited {
+    color: #18498F;
+    text-decoration: none;
+}
+
+/* adjust colours to EQAR theme */
+
+.rst-content code, .rst-content tt {
+    font-size: 90%;
+    padding: 2px 0px;
+    color: #033163;
+    border: none;
+}
+
+/* quotes from documents */
+.rst-content blockquote {
+    background-color: #E6F6FF;
+    color: #033163;
+    margin: 10px 0 20px 0;
+    border-left: 6px solid #18498F;
+    padding: 15px;
+    border-radius: 5px;
+}
+.rst-content blockquote p:last-child {
+   margin-bottom: 0;
+}
+
+.rst-content pre {
+   background-color: #E6F6FF;
+   color: #033163;
+   margin: 10px 0 20px 0;
+   border-left: 6px solid #18498F;
+   padding: 15px;
+   border-radius: 5px;
+}
+
+.rst-content pre code {
+    background: transparent;
+}
+
+.rst-content .section a, .rst-content .section a:visited {
+    color: #033163;
+    text-decoration: underline #03316388;
+}
+.rst-content .section a[href$=".pdf"], .rst-content .section a[href$=".pdf"]:visited {
+    color: #FF8A00;
+    padding: 9px 12px 9px 40px;
+    display: block;
+    background: #FFF3D9 url(../img/pdf.svg) no-repeat 13px center;
+    text-decoration: none;
+}
+.rst-content .section a.link-button, .rst-content .section a.link-button:visited {
+    color: #FF8A00;
+    padding: 9px 12px 9px 40px;
+    display: block;
+    background: #FFF3D9 url(../img/link.svg) no-repeat 10px center;
+    text-decoration: none;
+}
+.rst-content .section a:hover {
+    text-decoration: underline #033163;
+}
+.rst-content .section a[href$=".pdf"]:hover {
+    text-decoration: underline #FF8A00;
+}
+
+/* we want you for DEQAR */
+.rst-content img[src="../img/DEQARWantsYou.png"] {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.rst-content .section ol p, .rst-content .section ul p {
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+
+.rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4, .rst-content h5 {
+    clear: both;
+}
+
+.rst-content h1, .rst-content h2 {
+    color: #033163;
+}
+
+.rst-content h1 {
+    counter-reset: first-body;
+}
+.rst-content h2 {
+    counter-reset: second-body;
+}
+.rst-content h2:before {
+    content: counter(first-body) ". ";
+    counter-increment: first-body;
+}
+.rst-content h3:before {
+    content: counter(first-body) "." counter(second-body) " ";
+    counter-increment: second-body;
+}
+
+.rst-content hr {
+    border-top: 1px solid #18498F;
+}
+
+.rst-content table {
+    margin-left: 24px;
+    margin-bottom: 24px;
+}
+
+.rst-content table td,
+.rst-content table th {
+    padding: 5px 10px;
+}
+
+/* ordered lists */
+.rst-content .section ol {
+   counter-reset: orderedlist;
+}
+.rst-content .section ol > li {
+    list-style-type: none;
+    counter-increment: orderedlist;
+    position: relative;
+}
+.rst-content .section ol > li:before {
+    content: counter(orderedlist) ".";
+    position:absolute;
+    left: -2.6em;
+    width: 2em;
+    text-align: right;
+}
+.rst-content .section ol > li > ol {
+    margin-bottom: 0;
+}
+.rst-content .section ol > li > ol > li:before {
+    content: "(" counter(orderedlist, lower-roman) ")";
+}
+
+.rst-content .footnote {
+    color: #666;
+    font-size: 13px;
+}
+.rst-content .footnote p {
+    font-size: inherit;
+}
+
+/* CSS for print output */
+
+@media print {
+
+	h1, h2, h3, h4, h5 {
+	  page-break-after: avoid;
+	}
+
+}
+
+@page {
+  size: A4;
+  margin: 2cm;
+}
+
+@page { 
+  @top-center {
+    margin: 10pt 0 30pt 0;
+    border-bottom: .25pt solid #0e447d;
+    content: "DEQAR Documentation";
+    font-size: 9pt;
+    color: #0e447d;
+  }
+}
+
+@page:right{
+  @bottom-right {
+    content: counter(page);
+  }
+}
+
+@page:left{
+  @bottom-left {
+    content: counter(page);
+  }
+}
+

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Examples - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Examples";
+        var mkdocs_page_input_path = "web_api_examples.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Submitting data</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../institution_data/">Institution Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Report Submission</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web API</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Examples</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#example-1-find-an-institutions-accredited-programmes">Example #1: Find an institution's accredited programmes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-2-cross-border-reports-by-a-specific-agency">Example #2: cross-border reports by a specific agency</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-3-use-other-institutional-identifiers">Example #3: use other institutional identifiers</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Integrations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../europass/">European Digital Credentials for Learning</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Web API</li>
+      <li class="breadcrumb-item active">Examples</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
+<p>In the following, we present two examples of how the DEQAR Web API might be used in practice. You will first retrieve your user's authentication token <a href="#authentication">as described above</a> or <a href="https://admin.deqar.eu/my-profile">from the Admin UI</a>.</p>
+<h2 id="example-1-find-an-institutions-accredited-programmes">Example #1: Find an institution's accredited programmes<a class="headerlink" href="#example-1-find-an-institutions-accredited-programmes" title="Permanent link">&para;</a></h2>
+<p>In this example, the user needs to know whether a Master degree in Automotive Engineering from RWTH Aachen University is accredited. Let's assume the user enters <code>aachen</code> into a search box. The client makes a <code>GET</code> request to:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/institutions/&quot; --get --data query=aachen
+</code></pre>
+<p>We'll get 4 matching results:</p>
+<pre><code class="language-json">{
+  &quot;count&quot;: 4,
+  &quot;results&quot;: [
+    {
+      &quot;country&quot;: [
+        &quot;Germany&quot;
+      ],
+      &quot;qf_ehea_level&quot;: [
+        &quot;third cycle&quot;,
+        &quot;first cycle&quot;,
+        &quot;second cycle&quot;
+      ],
+      &quot;place&quot;: [
+        {
+          &quot;country&quot;: &quot;Germany&quot;,
+          &quot;lat&quot;: null,
+          &quot;long&quot;: null,
+          &quot;city&quot;: &quot;Aachen&quot;
+        }
+      ],
+      &quot;eter_id&quot;: &quot;DE0069&quot;,
+      &quot;hierarchical_relationships&quot;: {
+        &quot;includes&quot;: [],
+        &quot;part_of&quot;: []
+      },
+      &quot;id&quot;: &quot;382&quot;,
+      &quot;score&quot;: 31.92261,
+      &quot;deqar_id&quot;: &quot;DEQARINST0382&quot;,
+      &quot;name_official_display&quot;: &quot;RWTH Aachen&quot;,
+      &quot;name_primary&quot;: &quot;Aachen University&quot;,
+      &quot;website_link&quot;: &quot;http://www.rwth-aachen.de&quot;,
+      &quot;name_select_display&quot;: &quot;Aachen University (DE0069)&quot;,
+      &quot;name_sort&quot;: &quot;AachenUniversity&quot;
+    },
+    ((...))
+  ],
+  &quot;facets&quot;: {
+    ((...))
+    &quot;facet_fields&quot;: {
+      &quot;reports_agencies&quot;: [
+        &quot;AAQ&quot;,
+        1,
+        &quot;ACQUIN&quot;,
+        1,
+        &quot;AHPGS&quot;,
+        2,
+        &quot;AQAS&quot;,
+        3,
+        &quot;ASIIN&quot;,
+        2,
+        &quot;FIBAA&quot;,
+        3,
+        &quot;ZEvA&quot;,
+        1
+      ],
+      &quot;qf_ehea_level_facet&quot;: [
+        &quot;first cycle&quot;,
+        4,
+        &quot;second cycle&quot;,
+        4,
+        &quot;third cycle&quot;,
+        1
+      ],
+      &quot;status_facet&quot;: [
+        &quot;part of obligatory EQA system&quot;,
+        4,
+        &quot;voluntary&quot;,
+        2
+      ],
+      &quot;country_facet&quot;: [
+        &quot;Germany&quot;,
+        4
+      ],
+      ((...))
+    }
+  }
+}
+</code></pre>
+<p>Now we can fetch the quality assurance reports on the institution in question, using its ID <code>382</code>.</p>
+<p>This is done separately for the institutional and programme level. For the institutional level, the client makes a request to:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/institutional/by-institution/382/&quot;
+</code></pre>
+<p>Result:</p>
+<pre><code class="language-json">{
+  &quot;count&quot;: 1,
+  &quot;next&quot;: null,
+  &quot;previous&quot;: null,
+  &quot;results&quot;: [
+    {
+      &quot;id&quot;: 47914,
+      &quot;agency_name&quot;: &quot;Swiss Agency of Accreditation and Quality Assurance&quot;,
+      &quot;agency_acronym&quot;: &quot;AAQ&quot;,
+      &quot;agency_id&quot;: 3,
+      &quot;agency_url&quot;: &quot;https://backend.deqar.eu/webapi/v1/browse/agencies/3/&quot;,
+      &quot;agency_esg_activity&quot;: &quot;System accreditation in Germany&quot;,
+      &quot;agency_esg_activity_type&quot;: &quot;institutional&quot;,
+      &quot;name&quot;: &quot;System accreditation&quot;,
+      &quot;institutions&quot;: [
+        {
+          &quot;id&quot;: 382,
+          &quot;deqar_id&quot;: &quot;DEQARINST0382&quot;,
+          &quot;name_primary&quot;: &quot;Aachen University&quot;,
+          &quot;website_link&quot;: &quot;http://www.rwth-aachen.de&quot;
+        }
+      ],
+      &quot;institutions_hierarchical&quot;: [],
+      &quot;institutions_historical&quot;: [],
+      &quot;programmes&quot;: [],
+      &quot;report_valid&quot;: true,
+      &quot;valid_from&quot;: &quot;2018-09-14&quot;,
+      &quot;valid_to&quot;: &quot;2024-09-30&quot;,
+      &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
+      &quot;decision&quot;: &quot;positive&quot;,
+      &quot;report_files&quot;: [
+        {
+          &quot;file_display_name&quot;: &quot;&quot;,
+          &quot;file&quot;: null,
+          &quot;languages&quot;: [
+            &quot;German&quot;
+          ]
+        }
+      ],
+      &quot;report_links&quot;: [
+        {
+          &quot;link_display_name&quot;: &quot;View report record on agency site&quot;,
+          &quot;link&quot;: &quot;https://antrag.akkreditierungsrat.de/akkrstudiengaenge/74812917-e23c-4f7a-a425-a5ca72ad6493/&quot;
+        }
+      ],
+      &quot;local_identifier&quot;: &quot;7c0a1e10-0334-4cd8-a1a9-61dc901ffe98&quot;,
+      &quot;other_comment&quot;: null,
+      &quot;flag&quot;: &quot;none&quot;
+    }
+  ]
+}
+</code></pre>
+<p>We see that RWTH Aachen has a system accreditation by AAQ. But let's assume the degree we are concerned about was awarded in 2017, whereas the system accreditation is valid from September 2018 only.</p>
+<p>To get information on programme level external QA we need to make a further GET request to:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/&quot;
+</code></pre>
+<p>We see that there are 331 programme accreditation reports and can browse through the result pages with custom limit and offset parameters, e.g.:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/&quot; --get --data limit=20 --data offset=100
+</code></pre>
+<p>We can now identify the programme we were looking for. While the programme accreditation is no longer valid (it was superseded by the system accreditation we saw above), it was valid at the time relevant for us, i.e. in 2017 when the degree was issued:</p>
+<pre><code class="language-json">{
+    &quot;count&quot;: 331,
+    &quot;next&quot;: &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&amp;offset=120&quot;,
+    &quot;previous&quot;: &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&amp;offset=80&quot;,
+    &quot;results&quot;: [
+        {
+            &quot;id&quot;: 25106,
+            &quot;agency_name&quot;: &quot;Accreditation Agency for Study Programmes of Engineering, Information Science, Natural Sciences and Mathematics&quot;,
+            &quot;agency_acronym&quot;: &quot;ASIIN&quot;,
+            &quot;agency_id&quot;: 19,
+            &quot;agency_url&quot;: &quot;https://backend.deqar.eu/webapi/v1/browse/agencies/19/&quot;,
+            &quot;agency_esg_activity&quot;: &quot;Programme accreditation&quot;,
+            &quot;agency_esg_activity_type&quot;: &quot;programme&quot;,
+            &quot;name&quot;: &quot;Programme accreditation&quot;,
+            &quot;institutions&quot;: [
+                {
+                    &quot;id&quot;: 382,
+                    &quot;deqar_id&quot;: &quot;DEQARINST0382&quot;,
+                    &quot;name_primary&quot;: &quot;Aachen University&quot;,
+                    &quot;website_link&quot;: &quot;http://www.rwth-aachen.de&quot;
+                }
+            ],
+            &quot;institutions_hierarchical&quot;: [],
+            &quot;institutions_historical&quot;: [],
+            &quot;programmes&quot;: [
+                {
+                    &quot;id&quot;: 42791,
+                    &quot;name_primary&quot;: &quot;Automotive Engineering&quot;,
+                    &quot;programme_names&quot;: [
+                        {
+                            &quot;name&quot;: &quot;Automotive Engineering&quot;,
+                            &quot;name_is_primary&quot;: true,
+                            &quot;qualification&quot;: &quot;Master&quot;
+                        }
+                    ],
+                    &quot;programme_identifiers&quot;: [
+                        {
+                            &quot;identifier&quot;: &quot;e036d81b-cd3c-3ac7-15f7-5c2fdd01db0c&quot;,
+                            &quot;agency&quot;: &quot;ASIIN - Accreditation Agency for Study Programmes of Engineering, Information Science, Natural Sciences and Mathematics&quot;,
+                            &quot;resource&quot;: &quot;local identifier&quot;
+                        }
+                    ],
+                    &quot;nqf_level&quot;: &quot;&quot;,
+                    &quot;qf_ehea_level&quot;: &quot;second cycle&quot;,
+                    &quot;countries&quot;: []
+                }
+            ],
+            &quot;report_valid&quot;: false,
+            &quot;valid_from&quot;: &quot;2013-09-27&quot;,
+            &quot;valid_to&quot;: &quot;2019-09-30&quot;,
+            &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
+            &quot;decision&quot;: &quot;positive with conditions or restrictions&quot;,
+            &quot;report_files&quot;: [
+                {
+                    &quot;file_display_name&quot;: &quot;Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf&quot;,
+                    &quot;file&quot;: &quot;https://backend.deqar.eu/reports/ASIIN/20190826_1647_Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf&quot;,
+                    &quot;languages&quot;: [
+                        &quot;German&quot;
+                    ]
+                }
+            ],
+            &quot;report_links&quot;: [
+                {
+                    &quot;link_display_name&quot;: &quot;View report record on agency site&quot;,
+                    &quot;link&quot;: &quot;https://antrag.akkreditierungsrat.de/akkrstudiengaenge/e036d81b-cd3c-3ac7-15f7-5c2fdd01db0c/&quot;
+                }
+            ],
+            &quot;local_identifier&quot;: &quot;6ea3a64c-925d-d733-a2b3-5f8444e007e8&quot;,
+            &quot;other_comment&quot;: &quot;&quot;,
+            &quot;flag&quot;: &quot;none&quot;
+        },
+        ((...))
+    ]
+}
+</code></pre>
+<h2 id="example-2-cross-border-reports-by-a-specific-agency">Example #2: cross-border reports by a specific agency<a class="headerlink" href="#example-2-cross-border-reports-by-a-specific-agency" title="Permanent link">&para;</a></h2>
+<p>In the second example, the end user needs to look for evaluations carried out by IEP in North Macedonia.</p>
+<p>The report browsing endpoint allows to search for reports directly (i.e. not via institutions) and provides a number of search/filter facets. In the example, we want the reports ordered by the calculated validity date (that is, the explicit validity date or 6 years from the report date).</p>
+<p>The client makes a GET request to:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/&quot; --get --data agency=IEP --data country=North+Macedonia --data ordering=-valid_to_calculated
+</code></pre>
+<p>The result shows that there are seven reports:</p>
+<pre><code class="language-json">{
+    &quot;count&quot;: 7,
+    &quot;results&quot;: [
+        {
+            &quot;country&quot;: [
+                &quot;North Macedonia&quot;
+            ],
+            &quot;agency_name&quot;: &quot;Institutional Evaluation Programme&quot;,
+            &quot;programmes&quot;: [],
+            &quot;id&quot;: &quot;3929&quot;,
+            &quot;agency_esg_activity_type&quot;: &quot;institutional&quot;,
+            &quot;report_files&quot;: [
+                {
+                    &quot;languages&quot;: [
+                        &quot;English&quot;
+                    ],
+                    &quot;file&quot;: &quot;/reports/IEP/20180924_1056_iep%20mk_seeu%20report_final.pdf&quot;,
+                    &quot;file_display_name&quot;: &quot;Evaluation report&quot;
+                }
+            ],
+            &quot;agency_esg_activity&quot;: &quot;Institutional evaluation&quot;,
+            &quot;institutions&quot;: [
+                {
+                    &quot;id&quot;: 1709,
+                    &quot;website_link&quot;: &quot;http://www.seeu.edu.mk/mk&quot;,
+                    &quot;deqar_id&quot;: &quot;DEQARINST1709&quot;,
+                    &quot;name_primary&quot;: &quot;South East European University - Tetovo&quot;
+                }
+            ],
+            &quot;valid_from&quot;: &quot;2018-01-01T00:00:00Z&quot;,
+            &quot;date_created&quot;: &quot;2018-09-24T10:56:21.384Z&quot;,
+            &quot;score&quot;: 1.0,
+            &quot;agency_acronym&quot;: &quot;IEP&quot;,
+            &quot;valid_to_calculated&quot;: &quot;2023-01-01T00:00:00Z&quot;,
+            &quot;report_links&quot;: [],
+            &quot;date_updated&quot;: &quot;2018-09-24T10:56:21.384Z&quot;,
+            &quot;flag_level&quot;: &quot;none&quot;,
+            &quot;status&quot;: &quot;voluntary&quot;,
+            &quot;decision&quot;: &quot;not applicable&quot;
+        },
+        ((...))
+    ]
+}
+</code></pre>
+<p>The list includes most information on the reports already. The full details of the report can be retrieved from:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/3929/&quot;
+</code></pre>
+<p>In the example:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: 3929,
+    &quot;agency_name&quot;: &quot;Institutional Evaluation Programme&quot;,
+    &quot;agency_acronym&quot;: &quot;IEP&quot;,
+    &quot;agency_id&quot;: 31,
+    &quot;agency_url&quot;: &quot;https://backend.deqar.eu/webapi/v1/browse/agencies/31/&quot;,
+    &quot;agency_esg_activity&quot;: &quot;Institutional evaluation&quot;,
+    &quot;agency_esg_activity_type&quot;: &quot;institutional&quot;,
+    &quot;name&quot;: &quot;Institutional evaluation&quot;,
+    &quot;institutions&quot;: [
+        {
+            &quot;id&quot;: 1709,
+            &quot;deqar_id&quot;: &quot;DEQARINST1709&quot;,
+            &quot;name_primary&quot;: &quot;South East European University - Tetovo&quot;,
+            &quot;website_link&quot;: &quot;http://www.seeu.edu.mk/mk&quot;
+        }
+    ],
+    &quot;institutions_hierarchical&quot;: [],
+    &quot;institutions_historical&quot;: [],
+    &quot;programmes&quot;: [],
+    &quot;report_valid&quot;: true,
+    &quot;valid_from&quot;: &quot;2018-01-01&quot;,
+    &quot;valid_to&quot;: null,
+    &quot;status&quot;: &quot;voluntary&quot;,
+    &quot;decision&quot;: &quot;not applicable&quot;,
+    &quot;report_files&quot;: [
+        {
+            &quot;file_display_name&quot;: &quot;Evaluation report&quot;,
+            &quot;file&quot;: &quot;https://backend.deqar.eu/reports/IEP/20180924_1056_iep%20mk_seeu%20report_final.pdf&quot;,
+            &quot;languages&quot;: [
+                &quot;English&quot;
+            ]
+        }
+    ],
+    &quot;report_links&quot;: [],
+    &quot;local_identifier&quot;: null,
+    &quot;other_comment&quot;: &quot;&quot;,
+    &quot;flag&quot;: &quot;none&quot;
+}
+</code></pre>
+<h2 id="example-3-use-other-institutional-identifiers">Example #3: use other institutional identifiers<a class="headerlink" href="#example-3-use-other-institutional-identifiers" title="Permanent link">&para;</a></h2>
+<p>In this example, a user looks up an institution based on the SCHAC identifier.</p>
+<p>The client makes a first GET request to receive the list of known identifier types:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/institutions/resources/&quot;
+</code></pre>
+<p>The result shows that there are seven reports:</p>
+<pre><code class="language-json">[
+    &quot;AD-national&quot;,
+    &quot;BA-national&quot;,
+    &quot;BG-ETER.BAS.NATID&quot;,
+    &quot;BY-national&quot;,
+    &quot;CZ-ETER.BAS.NATID&quot;,
+    &quot;DE-ETER.BAS.NATID&quot;,
+    &quot;DE-HRK&quot;,
+    &quot;DID-EBSI&quot;,
+    &quot;DK-ETER.BAS.NATID&quot;,
+    &quot;ELIAS.HS_ID&quot;,
+    &quot;Erasmus&quot;,
+    &quot;Erasmus-Charter&quot;,
+    &quot;EU-PIC&quot;,
+    &quot;EU-VAT&quot;,
+    &quot;FI-ETER.BAS.NATID&quot;,
+    &quot;FR-ETER.BAS.NATID&quot;,
+    &quot;GB-ETER.BAS.NATID&quot;,
+    &quot;GE-national&quot;,
+    &quot;HR-Mozvag&quot;,
+    &quot;HU-ETER.BAS.NATID&quot;,
+    &quot;IE-ETER.BAS.NATID&quot;,
+    &quot;IT-ETER.BAS.NATID&quot;,
+    &quot;KZ-national&quot;,
+    &quot;local identifier&quot;,
+    &quot;LT-ETER.BAS.NATID&quot;,
+    &quot;LV-ETER.BAS.NATID&quot;,
+    &quot;MD-national&quot;,
+    &quot;PL-ETER.BAS.NATID&quot;,
+    &quot;PT-ETER.BAS.NATID&quot;,
+    &quot;RO-ETER.BAS.NATID&quot;,
+    &quot;SCHAC&quot;,
+    &quot;SE-ETER.BAS.NATID&quot;,
+    &quot;SI-ETER.BAS.NATID&quot;,
+    &quot;UA-national&quot;
+]
+</code></pre>
+<p>These resource tags can then be used in a request for a specific institution record:</p>
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/institutions/by-identifier/SCHAC/urv.cat&quot;
+</code></pre>
+<p>In the example, this returns (data abridged):</p>
+<pre><code class="language-json">{
+    &quot;closure_date&quot;: null,
+    &quot;countries&quot;: [
+        {
+            &quot;city&quot;: &quot;Tarragona&quot;,
+            &quot;country&quot;: {
+                &quot;...&quot;: &quot;...&quot;,
+                &quot;iso_3166_alpha2&quot;: &quot;ES&quot;,
+                &quot;iso_3166_alpha3&quot;: &quot;ESP&quot;,
+                &quot;name_english&quot;: &quot;Spain&quot;
+            },
+            &quot;country_source&quot;: &quot;ETER&quot;,
+            &quot;country_valid_from&quot;: &quot;2014-01-01&quot;,
+            &quot;country_valid_to&quot;: null,
+            &quot;country_verified&quot;: true,
+            &quot;lat&quot;: 41.122694,
+            &quot;long&quot;: 1.249866
+        }
+    ],
+    &quot;eter&quot;: &quot;ES0022 - Universitat Rovira i Virgili&quot;,
+    &quot;founding_date&quot;: &quot;1992-01-01&quot;,
+    &quot;hierarchical_relationships&quot;: {
+        &quot;includes&quot;: [
+            {
+                &quot;...&quot;: &quot;...&quot;
+            },
+            {
+                &quot;...&quot;: &quot;...&quot;
+            }
+        ],
+        &quot;part_of&quot;: []
+    },
+    &quot;historical_data&quot;: [],
+    &quot;historical_relationships&quot;: [],
+    &quot;id&quot;: 792,
+    &quot;identifiers&quot;: [
+        {
+            &quot;agency&quot;: null,
+            &quot;identifier&quot;: &quot;E  TARRAGO01&quot;,
+            &quot;identifier_valid_from&quot;: &quot;1992-01-01&quot;,
+            &quot;identifier_valid_to&quot;: null,
+            &quot;resource&quot;: &quot;Erasmus&quot;
+        },
+        {
+            &quot;agency&quot;: null,
+            &quot;identifier&quot;: &quot;E10208977&quot;,
+            &quot;identifier_valid_from&quot;: &quot;1992-01-01&quot;,
+            &quot;identifier_valid_to&quot;: null,
+            &quot;resource&quot;: &quot;Erasmus-Charter&quot;
+        },
+        {
+            &quot;agency&quot;: null,
+            &quot;identifier&quot;: &quot;urv.cat&quot;,
+            &quot;identifier_valid_from&quot;: &quot;1992-01-01&quot;,
+            &quot;identifier_valid_to&quot;: null,
+            &quot;resource&quot;: &quot;SCHAC&quot;
+        },
+        {
+            &quot;agency&quot;: null,
+            &quot;identifier&quot;: &quot;did:ebsi:ziBBPgHRMxmPaKmW1TCm9Cj&quot;,
+            &quot;identifier_valid_from&quot;: &quot;2022-01-16&quot;,
+            &quot;identifier_valid_to&quot;: null,
+            &quot;resource&quot;: &quot;DID-EBSI&quot;
+        },
+        {
+            &quot;agency&quot;: null,
+            &quot;identifier&quot;: &quot;999880560&quot;,
+            &quot;identifier_valid_from&quot;: &quot;1992-01-01&quot;,
+            &quot;identifier_valid_to&quot;: null,
+            &quot;resource&quot;: &quot;EU-PIC&quot;
+        },
+        {
+            &quot;agency&quot;: null,
+            &quot;identifier&quot;: &quot;ESQ9350003A&quot;,
+            &quot;identifier_valid_from&quot;: &quot;1992-01-01&quot;,
+            &quot;identifier_valid_to&quot;: null,
+            &quot;resource&quot;: &quot;EU-VAT&quot;
+        }
+    ],
+    &quot;names&quot;: [
+        {
+            &quot;acronym&quot;: &quot;URV&quot;,
+            &quot;name_english&quot;: &quot;Rovira i Virgili University&quot;,
+            &quot;name_official&quot;: &quot;Universitat Rovira i Virgili&quot;,
+            &quot;name_official_transliterated&quot;: &quot;&quot;,
+            &quot;name_source_note&quot;: &quot;OrgReg-2020-CHARES0022-1&quot;,
+            &quot;name_valid_to&quot;: null,
+            &quot;name_versions&quot;: []
+        }
+    ],
+    &quot;qf_ehea_levels&quot;: [
+        {
+            &quot;qf_ehea_level&quot;: &quot;first cycle&quot;,
+            &quot;qf_ehea_level_source&quot;: &quot;ETER&quot;,
+            &quot;qf_ehea_level_source_note&quot;: &quot;&quot;,
+            &quot;qf_ehea_level_valid_from&quot;: &quot;2014-01-01&quot;,
+            &quot;qf_ehea_level_valid_to&quot;: null
+        },
+        {
+            &quot;qf_ehea_level&quot;: &quot;second cycle&quot;,
+            &quot;qf_ehea_level_source&quot;: &quot;ETER&quot;,
+            &quot;qf_ehea_level_source_note&quot;: &quot;&quot;,
+            &quot;qf_ehea_level_valid_from&quot;: &quot;2014-01-01&quot;,
+            &quot;qf_ehea_level_valid_to&quot;: null
+        },
+        {
+            &quot;qf_ehea_level&quot;: &quot;third cycle&quot;,
+            &quot;qf_ehea_level_source&quot;: &quot;ETER&quot;,
+            &quot;qf_ehea_level_source_note&quot;: &quot;&quot;,
+            &quot;qf_ehea_level_valid_from&quot;: &quot;2014-01-01&quot;,
+            &quot;qf_ehea_level_valid_to&quot;: null
+        }
+    ],
+    &quot;website_link&quot;: &quot;http://www.urv.cat&quot;
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../web_api_endpoints/" class="btn btn-neutral float-left" title="Endpoints"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../europass/" class="btn btn-neutral float-right" title="European Digital Credentials for Learning">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../web_api_endpoints/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../europass/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>European Digital Credentials for Learning - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "European Digital Credentials for Learning";
+        var mkdocs_page_input_path = "europass.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Submitting data</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../institution_data/">Institution Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Report Submission</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Integrations</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">European Digital Credentials for Learning</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prepare">Prepare</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#use">Use</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Integrations</li>
+      <li class="breadcrumb-item active">European Digital Credentials for Learning</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="european-digital-credentials-for-learning">European Digital Credentials for Learning<a class="headerlink" href="#european-digital-credentials-for-learning" title="Permanent link">&para;</a></h1>
+<p>European Digital Credentials for Learning are a recently launched standard for issuing education credentials (e.g. diplomas, transcripts of records, etc.) in a tamper-proof digital format, with authentication and verification checks built in. The standard was developed by the European Union.</p>
+<p>DEQAR data can be loaded into the Europass Qualifications Dataset Register (QDR) on a per-country basis and then feed the Accreditation Database against which European Digital Credentials are verified.</p>
+<p><strong>Your <a href="https://europa.eu/europass/en/national-europass-centres">national Europass centre</a> or <a href="https://europa.eu/europass/en/implementation-european-qualifications-framework-eqf">EQF national coordination point</a> are the authorised representatives who can access the QDR system and activate the link.</strong></p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>At least one <strong>HEI that is interested to issue European Digital Credentials</strong>.</p>
+<blockquote>
+<p><em>Why: proper testing is only possible based on an actual credential issued and by checking that accreditation validation passes.</em></p>
+</blockquote>
+</li>
+<li>
+<p><strong>Correct data available in DEQAR</strong>, at least for the HEIs that are going to issue credentials.</p>
+<blockquote>
+<p>See <a href="https://www.eqar.eu/qa-results/search/by-institution/">https://www.eqar.eu/qa-results/search/by-institution/</a> or <a href="https://www.eqar.eu/qa-results/search/by-report/">https://www.eqar.eu/qa-results/search/by-report/</a> (use filters to narrow down search by country)</p>
+<ul>
+<li>
+<p>If data is missing, but HEIs/programmes have been accredited/evaluated/audited by an EQAR-registered agency (<a href="https://www.eqar.eu/register/agencies/">https://www.eqar.eu/register/agencies/</a>), please contact that quality assurance agency and ask them to upload the reports to DEQAR.</p>
+<p>Please bear in mind that only EQAR-registered agencies can upload reports in DEQAR</p>
+</li>
+<li>
+<p>In cases when data on quality assurance reports is incorrect, please contact the responsible agency.</p>
+</li>
+<li>
+<p>In cases when basic data for your institution(s) is not up to date, please contact EQAR at <a href="mailto:aleksandra.zhivkovikj@eqar.eu">aleksandra.zhivkovikj@eqar.eu</a> and inform about the required changes</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>External <strong>quality assurance at institutional level</strong>, e.g. institutional audit, system accreditation or similar.</p>
+<blockquote>
+<p><em>Why: unfortunately, support for programme accreditation is not available yet due to delays in updating the Europass QDR platform itself.</em></p>
+</blockquote>
+</li>
+<li>
+<p><strong>EU/EEA membership and having a qualifications framework (NQF) referenced to European Qualifications Framework for Lifelong Learning (EQF)</strong>.</p>
+<blockquote>
+<p><em>Why: European Digital Credentials can be issued by HEIs established in the EU+EEA only (because of the eIDAS regulation); the EU only accepts countries with a NQF referenced to the EQF to upload data to the QDR.</em></p>
+</blockquote>
+</li>
+</ol>
+<h2 id="prepare">Prepare<a class="headerlink" href="#prepare" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1 - National authority</strong>:</p>
+<ul>
+<li>Check current QA reports in DEQAR and take up any issues with the responsible QAA or EQAR (see above)</li>
+</ul>
+<p><strong>Step 2</strong> (if needed) - <strong>QA agency, EQAR</strong>:</p>
+<ul>
+<li>Fix data issues (e.g. missing reports, outdated HEI information etc.).</li>
+</ul>
+<p><strong>Step 3 - National authority</strong>:</p>
+<ul>
+<li>
+<p>Download <a href="https://www.eqar.eu/qa-results/download-data-sets/">list of HEIs</a> and add missing EU VAT number or legal entity identifier (see eIDAS identifier) for the HEIs in your national system</p>
+<blockquote>
+<p><em>Why: VAT numbers or legal entity identifiers are used by Europass to correlate HEIs with accreditation records</em></p>
+<p><strong>Please note</strong>: DEQAR already has VAT numbers on file for a sizeable number of HEIs in the EU (see column <em>identifiers_all</em> in the list of HEIs), we only need identifiers of the missing ones if these should be included in the export.</p>
+</blockquote>
+</li>
+<li>
+<p>If you have any additions, send back the list to EQAR at <a href="mailto:colin.tueck@eqar.eu">colin.tueck@eqar.eu</a> and <a href="mailto:aleksandra.zhivkovikj@eqar.eu">aleksandra.zhivkovikj@eqar.eu</a></p>
+</li>
+</ul>
+<p><strong>Step 4 - EQAR</strong>:</p>
+<ul>
+<li>Record identifiers/VAT numbers in DEQAR, confirm that the system is "ready"</li>
+</ul>
+<h2 id="use">Use<a class="headerlink" href="#use" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1 - National authority</strong>:</p>
+<p>Log into QDR at <a href="https://europa.eu/europass/qdr/#/login">https://europa.eu/europass/qdr/#/login</a>, create a new data set based on DEQAR with these parameters:</p>
+<ul>
+<li>Type of data contained: <strong>Accreditations</strong></li>
+<li>Accreditation publishing scheme: <strong>Accreditation metadata schema (2019)</strong></li>
+<li>Namespace: <strong>https://data.deqar.eu/</strong></li>
+<li>Publishing method: <strong>Hosted on your server - Automatic Update</strong> (or Manual Update if you prefer)</li>
+</ul>
+<p>Use the following download URL:</p>
+<pre><code>https://backend.deqar.eu/connectapi/v1/europass/accreditations/[ISO 3166 Alpha-3 Code, in small letters]
+</code></pre>
+<p><strong>Step 2 - HEI:</strong></p>
+<ul>
+<li>Issue a digital (test) credential</li>
+<li>Verify if accreditation check passes</li>
+</ul>
+<p>Note down any obstacles and ideas and forward them to EQAR at <a href="mailto:aleksandra.zhivkovikj@eqar.eu">aleksandra.zhivkovikj@eqar.eu</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../web_api_examples/" class="btn btn-neutral float-left" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../web_api_examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

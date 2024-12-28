@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Architecture and Data Model - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Architecture and Data Model";
+        var mkdocs_page_input_path = "architecture_data_model.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Architecture and Data Model</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#structural-overview">Structural Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functional-overview">Functional Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#role-of-standards-and-identifiers">Role of Standards and Identifiers</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#agency-identifiers">Agency Identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#activity-identifiers">Activity Identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#report-identifiers">Report Identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#institution-identifiers">Institution Identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#programme-identifiers">Programme Identifiers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-identifiers-and-codes">Other Identifiers and Codes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#building-institution-records">Building Institution Records</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#use-of-data-from-eterorgreg">Use of Data from ETER/OrgReg</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#institutions-not-in-eterorgreg">Institutions Not in ETER/OrgReg</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#hierarchical-and-historical-institutional-relationships">Hierarchical and Historical Institutional Relationships</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#presenting-historical-data">Presenting Historical Data</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Submitting data</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../institution_data/">Institution Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Report Submission</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Integrations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../europass/">European Digital Credentials for Learning</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Architecture and Data Model</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="architecture-and-data-model">Architecture and Data Model<a class="headerlink" href="#architecture-and-data-model" title="Permanent link">&para;</a></h1>
+<h2 id="structural-overview">Structural Overview<a class="headerlink" href="#structural-overview" title="Permanent link">&para;</a></h2>
+<p>The DEQAR data model has been designed around four main entities: registered quality assurance <strong>Agencies</strong>, higher education <strong>Institutions</strong>, educational <strong>Programmes</strong> associated with institutions, and external quality assurance <strong>Reports</strong>.</p>
+<p><img alt="DEQAR High Level Data Model with Countries" src="../img/DEQARPhysicalERDiagram_Design31_20-01-18_highlevel.jpg" /></p>
+<p>Registered agency users are invited to submit and manage information on their external quality assurance reports, including information about the particular study programme described in the report, if applicable. On the other hand, institutional information is managed by the EQAR secretariat, largely based on data from ETER/OrgReg.</p>
+<p>EQAR will also continue to collect and manage agency data as well as country data through their registry. These will be linked to report and institution data in DEQAR. To support this, DEQAR also includes a <strong>Country</strong> entity, which contains information on the official external quality assurance regime in any country which hosts an institution evaluated by an EQAR-registered agency.</p>
+<p><img alt="DEQAR High Level Data Model with Countries" src="../img/DEQARPhysicalERDiagram_Design31_20-01-18_countryplain.jpg" /></p>
+<h2 id="functional-overview">Functional Overview<a class="headerlink" href="#functional-overview" title="Permanent link">&para;</a></h2>
+<p>DEQAR supports three core activities:</p>
+<ul>
+<li>
+<p><strong>Submission of data objects:</strong> agencies submit objects and PDF files meeting defined criteria using one of three methods</p>
+<ul>
+<li>as <a href="../data_submission/#webform">individual records via webform</a></li>
+<li>as <a href="../data_submission/#csv-upload">batch CSV file via webform</a></li>
+<li>as <a href="../data_submission/#submission-api">JSON using an API</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Administration of records:</strong> data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term. Agencies may update report records already in the system and track their own activity.</p>
+</li>
+<li>
+<p><strong>Search and discovery of information:</strong> records are published on an <a href="https://www.deqar.eu/">public web interface</a> for search, retrieval and export or download by end users. There is also a <a href="../web_api_intro/">public API</a> available to all registered users; this allows users to embed DEQAR search interface in their local site.</p>
+</li>
+</ul>
+<h2 id="role-of-standards-and-identifiers">Role of Standards and Identifiers<a class="headerlink" href="#role-of-standards-and-identifiers" title="Permanent link">&para;</a></h2>
+<p>As DEQAR aggregates data from different sources, we face several challenges:</p>
+<ol>
+<li>To keep the same data from different sources synchronised (e.g. the same institution may be described differently by different agencies),</li>
+<li>To try to avoid duplication, and</li>
+<li>To identify already existing records for update if necessary.</li>
+</ol>
+<p>DEQAR uses a set of standard identifiers which are provided by the system for each entity.  In several cases, we also allow agencies to provide their local or national identifiers for entities in order to ease their internal workflows.  Entities are identified in the following ways:</p>
+<table>
+<thead>
+<tr>
+<th>Entity</th>
+<th>Recommended Identification</th>
+<th>Alternative Identification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agency</td>
+<td>DEQAR Agency ID</td>
+<td>agency acronym</td>
+</tr>
+<tr>
+<td>Activity</td>
+<td>DEQAR Activity ID</td>
+<td>activity local identifier, activity name</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td>local report identifier</td>
+<td>DEQAR Report ID</td>
+</tr>
+<tr>
+<td>Institution</td>
+<td>DEQARINST ID</td>
+<td>ETER ID, local institution identifier, other institution identifier</td>
+</tr>
+<tr>
+<td>Programme</td>
+<td>local programme identifier</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>As a rule, entities already in the system should be identified to facilitate linking up. In other words: </p>
+<ol>
+<li>The <strong>agency responsible</strong> for the report and the <strong>activity</strong> to which it belongs <em>must be identified with any submission</em>.</li>
+<li>An identifier must be provided for each <strong>institution</strong> covered by the report. If institution records do not yet exist in DEQAR, information on the institutions <a href="../institution_data/#how-to-provide-data">must be provided separately</a> before reports can be submitted.</li>
+<li>
+<p>In the case of <strong>reports</strong> and <strong>programmes</strong>, agencies are encouraged to provide local identifiers with each new submission of data in order to facilitate subsequent linking:</p>
+<ul>
+<li>For reports, the agency can provide a local identifier with each new report submitted; the local identifier may be used to later update the report using CSV or JSON and may also help each agency to synchronise its local system with DEQAR.</li>
+<li>For programmes, the first time an agency provides information on a programme to DEQAR, a local (or national) identifier can be submitted along with data on the programme; the identifier can later be used by the agency for any report on the same programme.</li>
+</ul>
+</li>
+</ol>
+<p>The identification of each entity type is explained in detail below.</p>
+<h3 id="agency-identifiers">Agency Identifiers<a class="headerlink" href="#agency-identifiers" title="Permanent link">&para;</a></h3>
+<p>Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identified automatically by the system. In some cases, an agency may serve as a <em>proxy agency</em> for a <em>creating agency</em>, submitting and managing data on its behalf (as in the case of umbrella organisations). In this case, the creating agency’s unique acronym or DEQAR Agency ID (which can be found in the administrative interface) must be provided as the source of identification. For this reason, identification of the creating agency is required for each object when using CSV and JSON.</p>
+<p>(See <a href="../report_data/#agency">Submission Object Data Elements: Agency</a>.)</p>
+<h3 id="activity-identifiers">Activity Identifiers<a class="headerlink" href="#activity-identifiers" title="Permanent link">&para;</a></h3>
+<p>DEQAR also assigns IDs to each agency's activities (see list on the agency's <a href="https://www.eqar.eu/register/agencies/">public register entry</a> under <em>Activities within the scope of ESG</em>). These identifiers, which can be found through the administrative interface, should be used to indicate the type of report in each CSV or JSON object. Alternatively, the exact name of the activity can be used or an agency may wish to use its own local activity identifiers; in this case, the agency should supply through their local identifiers through the administrative interface before using them for submission.</p>
+<p><em>Note: Only one identifier should be provided for the assigned activity.</em></p>
+<p>Please note that any changes to the agency's activities, other than purely editorial or technical changes, must be made through <a href="https://www.eqar.eu/register/reporting-and-renewal/">Substantive Change Reports</a>.</p>
+<p>(See <a href="../report_data/#activity">Submission Object Data Elements: Activity</a>.)</p>
+<h3 id="report-identifiers">Report Identifiers<a class="headerlink" href="#report-identifiers" title="Permanent link">&para;</a></h3>
+<p>We strongly recommend that agencies provide a local identifier with each report submitted. This will allow for subsequent updates to the record and will ease synchronisation with each agency's local system. Report local identifiers will be stored and can serve to identify records for update/resubmission. DEQAR will also automatically generate a DEQAR ID for each newly submitted report; this will be returned to agencies as part of the response object. The DEQAR ID can be used for updates/resubmission as an alternative to local identifiers.</p>
+<p>(See <a href="../report_data/#report-identifier">Submission Object Data Elements: Report Identifier</a>.)</p>
+<h3 id="institution-identifiers">Institution Identifiers<a class="headerlink" href="#institution-identifiers" title="Permanent link">&para;</a></h3>
+<p>Institutions already described in DEQAR should be identified in report submissions using one of several identifiers. This allows the system to automatically link report data to existing institution records. </p>
+<ul>
+<li>
+<p><strong>DEQARINST IDs</strong>: DEQAR automatically generates a so-called "DEQARINST ID" for each institution record that is created in the system. These can be found through the administrative interface. (They are also returned to the agency as part of the response object after each successful submission.) Ideally, each registered agency will store the DEQARINST IDs for institutions treated in their reports. These are recommended for use in each submission.</p>
+</li>
+<li>
+<p><strong>ETER IDs</strong>: DEQAR harvests records from the ETER/OrgReg database once a year. These records are the source of many of the institution records in DEQAR. The ETER ID for these institutions can be found through the administrative interface. The ETER IDs may be stored and used by agencies for submission as an alternative to the DEQARINST IDs.</p>
+</li>
+<li>
+<p><strong>Local identifiers</strong>: Agencies may also create and store local identifiers for institutions. These can be used for submission as an alternative to the DEQARINST IDs if supplied in advance. Each agency can provide these individually through the administrative interface or these can provided in bulk to the EQAR Secretariat. Local identifiers are managed by one agency independently and can only be used by that agency.</p>
+</li>
+<li>
+<p><strong>Other identifiers</strong>: DEQAR allows to store additional national, European or other identifiers. These can be used for submission as an alternative to the DEQARINST IDs and are available to all agencies; other identifiers available in the system can be consulted through the administrative interface. In order to ensure uniqueness and stability these are managed by the EQAR secretariat, but agencies are invited to provide identifiers to EQAR that might be useful to other agencies. Other identifiers are always used in combination with a resource indication, in combination with which they are unique.</p>
+</li>
+</ul>
+<p><em>Note: agencies should provide a single identifier; if more than one is provided, the DEQARINST ID will be used to establish the linkage.</em> </p>
+<p>If an agency cannot locate an existing institution record in DEQAR (and therefore cannot provide either the DEQARINST ID, ETER ID or local identifier), then it will need to provide institution data separately before being able to submit reports on that institution.</p>
+<p>(See <a href="../institution_data/">Institution Data</a> and <a href="../report_data/#institutions">Submission Object Data Elements: Institution(s)</a>.)</p>
+<h3 id="programme-identifiers">Programme Identifiers<a class="headerlink" href="#programme-identifiers" title="Permanent link">&para;</a></h3>
+<p>DEQAR will not synchronise data on programmes; however, if a local or national identifier is provided at the time of submission, this will be stored in the system. The agency can use the programme identifier if it would like to simply re-use the existing programme data for subsequent reports. It is thus recommended to provide a unique programme identifier if available.</p>
+<p>(See <a href="../report_data/#programme-identification">Submission Object Data Elements: Programme Identification</a>.)</p>
+<h3 id="other-identifiers-and-codes">Other Identifiers and Codes<a class="headerlink" href="#other-identifiers-and-codes" title="Permanent link">&para;</a></h3>
+<p><strong>Countries</strong> are identified via the <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166-1 standard</a>.</p>
+<p><strong>Language</strong> data is accepted in <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 or ISO 639-2/B format</a>.</p>
+<p>Finally, DEQAR provides DEQAR IDs for standard values used for <strong>Report Status</strong> and <strong>Report Decision</strong>. These can be provided instead of the equivalent string values in CSV or JSON objects.</p>
+<p>(See <a href="../report_data/#details">Submission Object Data Elements: Report Details</a>.)</p>
+<h2 id="building-institution-records">Building Institution Records<a class="headerlink" href="#building-institution-records" title="Permanent link">&para;</a></h2>
+<p>DEQAR has two basic workflows for creating institution records. Either records are harvested from the ETER/OrgReg databases (available through <a href="http://datasets.risis.eu/">Research infrastructure for research and innovation policy studies - RISIS</a> or <a href="https://www.eter-project.com/">European Tertiary Education Register - ETER</a>; or, if no record exists in ETER/OrgReg, a new institution record is created from scratch based on data submitted by an agency.</p>
+<h3 id="use-of-data-from-eterorgreg">Use of Data from ETER/OrgReg<a class="headerlink" href="#use-of-data-from-eterorgreg" title="Permanent link">&para;</a></h3>
+<p>DEQAR harvests records from ETER/OrgReg on an annual basis. These records serve as base set of records on European higher education institutions in DEQAR. DEQAR stores the following ETER data on institutions: </p>
+<ul>
+<li>ETER ID</li>
+<li>official name</li>
+<li>English name</li>
+<li>acronym</li>
+<li>country</li>
+<li>city (when available)</li>
+<li>latitude/longitude (when available)</li>
+<li>QF-EHEA levels</li>
+<li>institution website</li>
+</ul>
+<p><img alt="DEQAR High Level Data Model with ETER/Institution Records" src="../img/DEQARPhysicalERDiagram_Design31_20-01-18_ETER.jpg" /></p>
+<p>ETER/OrgReg data is managed according to the following principles:</p>
+<ol>
+<li>As a general policy, DEQAR keeps ETER data stable and unchanged between harvests.</li>
+<li>If an agency would like to propose a correction or change of ETER data, the EQAR secretariat should be contacted.</li>
+<li>Alternative names and local identifiers may be added to ETER records and managed by agencies through the administrative interface (see <a href="#institution-identifiers">Institution Identifiers</a> above).</li>
+<li>The EQAR secretariat reserves the right to adapt ETER records based on the information that we receive through agencies and other sources.</li>
+<li>Added information and updates are carried through to records from subsequent harvests.</li>
+</ol>
+<h3 id="institutions-not-in-eterorgreg">Institutions Not in ETER/OrgReg<a class="headerlink" href="#institutions-not-in-eterorgreg" title="Permanent link">&para;</a></h3>
+<p>For data not existing in ETER/OrgReg, a new record must be created based on data submitted by an agency.</p>
+<p>In order to ensure data quality and avoid record duplication institution data is always manually screened by EQAR staff and thus needs to be submitted separately and before reports are uploaded for an institution. The minimum data needed to create a record is: name official, country of institution and website (the URL of domain).</p>
+<p>Institution data created based on information by agencies is managed according to similar principles as data harvested from ETER/OrgReg:</p>
+<ol>
+<li>As a general policy, DEQAR keeps institution data, including that submitted directly by an agency, stable and unchanged.</li>
+<li>If an agency would like to propose a correction or change of existing institution data, the EQAR secretariat should be contacted.</li>
+<li>Alternative names and local identifiers may be added to any institution record and managed by agencies through the administrative interface (see <a href="#institution-identifiers">Institution Identifiers</a> above).</li>
+<li>The EQAR secretariat reserves the right to adapt records based on the information that we receive through agencies and other sources.</li>
+</ol>
+<p>(See <a href="../institution_data/#institution-data-elements">Institution Data Elements</a>.)</p>
+<h3 id="hierarchical-and-historical-institutional-relationships">Hierarchical and Historical Institutional Relationships<a class="headerlink" href="#hierarchical-and-historical-institutional-relationships" title="Permanent link">&para;</a></h3>
+<p>In those cases that <strong>quality assurance reports are produced for different organisational levels of an institution</strong>, DEQAR collects and stores data on both entities and establishes a hierarchical link between them. This may be the case of an institution and its "child" faculties or of an institution and its "parent" institution group. DEQAR bases its hierarchical links on information taken from ETER/OrgReg. If any agency would like to propose an additional structural link between two or more institutions or institutional levels, then the proposed link can be provided individually or in a longer list to the EQAR secretariat. In the public search interface, quality assurance reports produced for different levels in the same institution will <em>cascade</em> -- i.e. records on child institutions will include the reports produced on the parents; records on parent institutions will show the reports produced on its children.</p>
+<p>DEQAR will also store information on <strong>historical changes in the structure of institutions, e.g. mergers, splits, spin offs and absorptions</strong>. This will allow users to view historical records in the correct context. It will also facilitate the search and discovery of current institutions.</p>
+<p><em>Note: historical changes in the structure of agencies will also be stored and presented online.</em></p>
+<h2 id="presenting-historical-data">Presenting Historical Data<a class="headerlink" href="#presenting-historical-data" title="Permanent link">&para;</a></h2>
+<p>DEQAR not only presents information on the recent ESG-compliant quality assurance activities performed on institutions across Europe and beyond, but also records an historical "trail" of the these activities since 2008, a date which marked the launch of EQAR. Thus DEQAR stores both current and past valid reports on each institution and both are presented to end users through the search interface. Historical data is especially important for DEQAR users from recognition offices or information centres.</p>
+<p>Preferably, agencies should thus upload information on all external QA procedures that were completed during their registration period, including those reports that are already "expired". Agencies should at least upload information on all external QA reports that are still valid.</p>
+<p>DEQAR also captures historical changes in the status and profile of agencies and institutions e.g. name changes, changed activity, physical relocation and changes in the institutional structure (see <a href="#hierarchical-and-historical-institutional-relationships">Hierarchical and Historical Institutional Relationships</a>). Changes in the quality assurance regulations within EQAR countries are also captured. To this end, DEQAR differentiates between updates in data due to typographical or syntax errors, and “substantial” updates considered part of the historical data trail. Historical data will be part of the search domain and can therefore be queried by end users.</p>
+<p>Any request for an update to an institution record to record historical changes of this sort may be submitted to the EQAR secretariat for review. (It is part of the daily work of the EQAR secretariat to keep the registry of agencies and countries complete and up to date.  Changes to the agency's activities, other than purely editorial or technical changes, must be made through <a href="https://www.eqar.eu/register/reporting-and-renewal/">Substantive Change Reports</a>. Nevertheless, in case there is a concern about the recorded status, location or activities of a specific agency or of the quality assurance regime in a particular country, questions can also be directed to the EQAR secretariat.)</p>
+<p><img alt="DEQAR High Level Data Model with historical records" src="../img/DEQARPhysicalERDiagram_Design31_20-01-18_historical.jpg" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../quick_start_guide/" class="btn btn-neutral float-left" title="Quick Start Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../institution_data/" class="btn btn-neutral float-right" title="Institution Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../quick_start_guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../institution_data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
