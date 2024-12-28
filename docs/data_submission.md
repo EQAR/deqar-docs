@@ -122,15 +122,15 @@ In addition, the following data on agencies or institutions will automatically b
 
 The DEQAR administrative interface includes an interactive webform, allowing you to submit single reports. The administrative interface is available at:
 
-location: <https://admin.deqar.eu/>  
+location: <{{ deqar.admin }}/>  
 username: [agency's acronym (in lower case)]  
 password: [your personal password]
 
-If you do not remember your password or did not change the default password, please go to <https://admin.deqar.eu/forgot-password> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.
+If you do not remember your password or did not change the default password, please go to <{{ deqar.admin }}/forgot-password> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.
 
 The email address linked to your login is the same email address to which submission report emails are sent. If you do not remember which email address is linked to your agency's login, please contact the EQAR Secretariat.
 
-The webform can be found in the menu under *Submit Report* > *[Report Form](https://admin.deqar.eu/submit-report)*.
+The webform can be found in the menu under *Submit Report* > *[Report Form]({{ deqar.admin }}/submit-report)*.
 
 Required fields are marked with a <span style="color: #f00;">\*</span> in the form; fields marked with a <span style="color: #f00;">(\*)</span> are conditionally required. Please note that the [Activity](#report-activity) chosen might influence which information is required (see [Report Data Elements](report_data.md) above). The *Save Record* button becomes active once all required information has been provided.
 
@@ -213,7 +213,7 @@ In Google Sheets, choose *Comma-separated values* from the *File* > *Download as
 
 The CSV upload module is part of the DEQAR admin interface:
 
-location: <https://admin.deqar.eu/upload-csv>  
+location: <{{ deqar.admin }}/upload-csv>  
 username: [agency's acronym (in lower case)]  
 password: [your personal password] (see [above](#webform) how to reset your password)
 
@@ -259,7 +259,7 @@ curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOK
 http -v POST {{ deqar.root }}/submissionapi/v2/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
 ```
 
-### Report Submission Endpoint
+### Report Submission Endpoints
 
 The address of the submission endpoint is:
 
@@ -272,8 +272,6 @@ The **Submission Request Object** is the JSON object (or array of objects) which
 Fields and accepted types are as described in [Report Data Elements](report_data.md) above. The full definition of request and response objects can be find in OpenAPI format under:
 
 <{{ deqar.root }}/submissionapi/v2/swagger/>
-
-**Important:** Please do **not** include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single [identifier](architecture_data_model.md#institution-identifiers) only (DEQARINST ID, ETER ID, local or other identifier). New institutions [must be added separately beforehand](institution_data.md#institution-data-elements).
 
 ### Report File Submission Endpoint
 
