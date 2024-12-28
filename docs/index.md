@@ -33,8 +33,8 @@ Currently, DEQAR is further developed and maintained, mainly through EQAR’s ow
 All software components of DEQAR are open source and available on GitHub:
 
 * [DEQAR backend](https://www.github.com/eqar/eqar_backend) - A [DRF](http://www.django-rest-framework.org/) application responsible for managing the data-model, providing API endpoints for submission, file uploads and the admin user interface.
-* [DEQAR administrative interface](https://github.com/EQAR/deqar_frontend) - <https://admin.deqar.eu/> - A ReactJS frontend for registered agency users and EQAR staff to manage data in DEQAR.
-* [DEQAR public user interface](https://github.com/EQAR/deqar_public_ui) - <https://www.deqar.eu/> - A section on the EQAR website, powered by WordPress and a custom theme, linking to the Web API of the DEQAR backend.
+* [DEQAR administrative interface](https://github.com/EQAR/deqar_frontend) - <{{ deqar.admin }}/> - A ReactJS frontend for registered agency users and EQAR staff to manage data in DEQAR.
+* [DEQAR public user interface](https://github.com/EQAR/deqar_public_ui) - <{{ deqar.frontend }}/> - A section on the EQAR website, powered by WordPress and a custom theme, linking to the Web API of the DEQAR backend.
 
 ## Questions and bug reports
 
@@ -60,7 +60,7 @@ The data types used in DEQAR follow the common definitions:
 
  - **String**: sequence of characters, digits, or symbols &ndash; always treated as text (e.g. `0034`; `institutional accreditation`; `1`)
 
- - **Date**: sequence of numbers pointing to a day and month within a calendar year (e.g. `2023-08-02`); where it is indicated so, the date format can be specified (e.g. see [report validity](https://docs.deqar.eu/report_data/#validity)), otherwise dates must be provided in the format `YYYY-MM-DD` (i.e. in date format `%Y-%m-%d`).
+ - **Date**: sequence of numbers pointing to a day and month within a calendar year (e.g. `2023-08-02`); where it is indicated so, the date format can be specified (e.g. see [report validity](report_data.md#validity)), otherwise dates must be provided in the format `YYYY-MM-DD` (i.e. in date format `%Y-%m-%d`).
 
  - **Integer**: Numeric data type for numbers without fractions (e.g. `2`)
 

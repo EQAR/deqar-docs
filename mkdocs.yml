@@ -36,6 +36,16 @@ plugins:
     - mike:
         canonical_version: stable
         version_selector: true
+    - macros
+extra:
+    deqar:
+        root: https://backend.testzone.eqar.eu
+        admin: https://admin.testzone.eqar.eu
+        frontend: https://www.testzone.eqar.eu/qa-results
+        sandbox:
+            backend: https://backend.sandbox.deqar.eu
+            admin: https://admin.sandbox.deqar.eu
+            frontend: https://sandbox.deqar.eu
 
 markdown_extensions:
     - footnotes

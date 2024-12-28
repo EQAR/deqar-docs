@@ -10,7 +10,7 @@ In the CSV template, such columns or groups of columns can thus be duplicated an
 
 To see how these elements are arrayed in JSON for API submission, see our JSON definition at:
 
-<https://backend.deqar.eu/submissionapi/v1/swagger/>
+<https://backend.deqar.eu/submissionapi/v2/swagger/>
 
 Please note that new records for providers not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated [CSV templates described above](institution_data.md#how-to-provide-data).
 

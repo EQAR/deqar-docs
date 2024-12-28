@@ -235,12 +235,12 @@ Requests for submission to DEQAR are only accepted from registered users and mus
 
 To get your authentication token you can send a `POST` request to the following URL:
 
-`https://backend.deqar.eu/accounts/get_token/`
+`{{ deqar.root }}/accounts/get_token/`
 
 An example of obtaining a token using curl in command line:
 
 ```sh
-curl -s -H "Content-Type: application/json" -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{"username":"testuser","password":"testpassword"}'
+curl -s -H "Content-Type: application/json" -XPOST {{ deqar.root }}/accounts/get_token/ --data '{"username":"testuser","password":"testpassword"}'
 ```
 
 The username is the agency’s acronym (in lower case). Please see [above](#webform) how to reset your password.
@@ -248,22 +248,22 @@ The username is the agency’s acronym (in lower case). Please see [above](#webf
 Or for those who prefer to use the more user friendly [HTTPie](https://httpie.io/) client:
 
 ```sh
-http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
+http POST {{ deqar.root }}/accounts/get_token/ 'username=testuser' 'password=testpassword'
 ```
 
 You should send this token, preceded by the word `Bearer`, in the Authorization header with every further request. An example of a submission using curl or HTTPie:
 
 ```sh
-curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOKEN" -XPOST https://backend.deqar.eu/submissionapi/v1/submit/report --data-binary @$DEQAR_FILE
+curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOKEN" -XPOST {{ deqar.root }}/submissionapi/v2/submit/report --data-binary @$DEQAR_FILE
 
-http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
+http -v POST {{ deqar.root }}/submissionapi/v2/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
 ```
 
 ### Report Submission Endpoint
 
 The address of the submission endpoint is:
 
-`https://backend.deqar.eu/submissionapi/v1/submit/report`
+`{{ deqar.root }}/submissionapi/v2/submit/report`
 
 This is the URL that you can use to make a `POST` request including the Submission Request Object as JSON object, or many objects as JSON array of objects in the request body.
 
@@ -271,7 +271,7 @@ The **Submission Request Object** is the JSON object (or array of objects) which
 
 Fields and accepted types are as described in [Report Data Elements](report_data.md) above. The full definition of request and response objects can be find in OpenAPI format under:
 
-<https://backend.deqar.eu/submissionapi/v1/swagger/>
+<{{ deqar.root }}/submissionapi/v2/swagger/>
 
 **Important:** Please do **not** include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single [identifier](architecture_data_model.md#institution-identifiers) only (DEQARINST ID, ETER ID, local or other identifier). New institutions [must be added separately beforehand](institution_data.md#institution-data-elements).
 
@@ -280,7 +280,7 @@ Fields and accepted types are as described in [Report Data Elements](report_data
 Files (PDF versions of reports) can be submitted in two separate ways:
 
 * URLs submitted with a Submission Request Object will be harvested asynchronously upon successful submission.
-* Files can be submitted directly to a dedicated endpoint as part of a `PUT` request: `https://backend.deqar.eu/submissionapi/v1/submit/reportfile/<report_file_id>/<filename>`
+* Files can be submitted directly to a dedicated endpoint as part of a `PUT` request: `{{ deqar.root }}/submissionapi/v2/submit/reportfile/<report_file_id>/<filename>`
 
   `report_file_id`: The id number of the Report File object available in the response after successful submission. The `report_file_id` is contained in the response object of the successful report submission. `filename`: The name of the file that you will submit in this request.
 
@@ -593,9 +593,9 @@ The DEQAR Sandbox, like any sandbox, is intended for you to “play”, enabling
 
 The Sandbox is reached through separate links:
 
-* To test the manual and CSV submission, go to the Sandbox Administrative Interface at: <https://admin.sandbox.deqar.eu/>
-* To test API submission, go to the Sandbox Submission API at: <https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report>
-* To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: <https://sandbox.deqar.eu/>
+* To test the manual and CSV submission, go to the Sandbox Administrative Interface at: <{{ deqar.sandbox.admin }}/>
+* To test API submission, go to the Sandbox Submission API at: <{{ deqar.sandbox.backend }}/submissionapi/v2/submit/report>
+* To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: <{{ deqar.sandbox.frontend }}/>
 
 The Sandbox is an identical copy of the live system. The entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day.
 

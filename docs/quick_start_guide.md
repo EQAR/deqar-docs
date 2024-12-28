@@ -65,7 +65,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _Note: unless you wish otherwise, the account information (contact name and email) will be based on the information on the agency already in our system._
 >
-> - Enter DEQAR’s Administrative User Interface using the following link: [https://admin.deqar.eu](https://admin.deqar.eu)
+> - Enter DEQAR’s Administrative User Interface using the following link: [{{ deqar.admin }}]({{ deqar.admin }})
 >
 > - Visit your agency’s Profile under My Data:
 >
@@ -79,7 +79,7 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     _Note: if you would like to change the general “Information on the agency’s work”, listed agency activities or the list of countries where the agency’s activities are officially recognised, you should contact the EQAR secretariat: [info@eqar.eu](mailto:info@eqar.eu)_
 >
-> - You should also analyse DEQAR’s institutional list to ensure that institutions evaluated/accredited by your agency are already present in the system.  The institution list can be found on the EQAR Admin Interface at: [https://admin.deqar.eu/institutions](https://admin.deqar.eu/institutions)
+> - You should also analyse DEQAR’s institutional list to ensure that institutions evaluated/accredited by your agency are already present in the system.  The institution list can be found on the EQAR Admin Interface at: [{{ deqar.admin }}/institutions]({{ deqar.admin }}/institutions)
 >
 >     _Note: the base institution list is synchronised daily with the [Register of Public Sector Organisations (OrgReg)](https://www.risis2.eu/registers-orgreg/) and the [European Tertiary Education Register (ETER)](https://eter-project.com/), which cover a large number of European countries._
 >
@@ -97,21 +97,21 @@ Once you have figured out what you will submit and how, then it is time to enter
 >
 >     - **Reference Data:** including records on all agencies, countries, higher education institutions and reports currently in DEQAR.
 >
-> - If you are planning to use the submission API, you can use API token found in your agency Profile and the following link: [https://backend.deqar.eu/submissionapi/v1/submit/report](https://backend.deqar.eu/submissionapi/v1/submit/report)
+> - If you are planning to use the submission API, you can use API token found in your agency Profile and the following link: [{{ deqar.root }}/submissionapi/v2/submit/report]({{ deqar.root }}/submissionapi/v2/submit/report)
 >
 > - The Sandbox is reached through a separate link. The DEQAR Sandbox, like any sandbox, is intended for you to “play”, enabling you to trial particular submission methods, data structures, formats and syntax. More specifically, it is a space where we encourage (even urge) you to test your submissions before putting them into the live system:
 >
->     - To test the manual and CSV submission, go to the Sandbox Administrative Interface at: [https://admin.sandbox.deqar.eu/](https://admin.sandbox.deqar.eu/)
+>     - To test the manual and CSV submission, go to the Sandbox Administrative Interface at: [{{ deqar.sandbox.admin }}/]({{ deqar.sandbox.admin }}/)
 >
->     - To test API submission, go to the Sandbox Submission API at: [https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report](https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report)
+>     - To test API submission, go to the Sandbox Submission API at: [{{ deqar.sandbox.backend }}/submissionapi/v2/submit/report]({{ deqar.sandbox.backend }}/submissionapi/v2/submit/report)
 >
->     - To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: [https://sandbox.deqar.eu/](https://sandbox.deqar.eu/)
+>     - To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: [{{ deqar.sandbox.frontend }}/]({{ deqar.sandbox.frontend }}/)
 >
 >     _Note: the entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day._
 
 ### Perform your First Submission
 
-> - To perform your first submission &ndash; whether through the manual upload, CSV or API &ndash; we strongly encourage every agency to use the test environment, i.e. the [Sandbox](https://admin.sandbox.deqar.eu/).
+> - To perform your first submission &ndash; whether through the manual upload, CSV or API &ndash; we strongly encourage every agency to use the test environment, i.e. the [Sandbox]({{ deqar.sandbox.admin }}/).
 >
 > - Once you do the first test upload through the Sandbox, please check whether the test reports are red flagged by using the filter “Flags” in the section “Reports”. Should that be the case, at the bottom of the page, press “Show info” and read the note on the reasons. Please correct your data if applicable (e.g. the status of the report is marked as "part of the obligatory EQA system" for a higher education institution with a legal seat outside EHEA, in which case it must be "voluntary") or contact the EQAR Secretariat.
 >
