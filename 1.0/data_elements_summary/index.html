@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Data elements summary - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Data elements summary";
+        var mkdocs_page_input_path = "data_elements_summary.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Data Submission</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web_api/">Search and Discovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Data elements summary</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+<h1>Data elements summary</h1>
+<h3 id="report">Report<a class="headerlink" href="#report" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Agency*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>AAQ</em><br><em>33</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">DEQAR Report ID</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>000786</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Local Identifier</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>QAA1153-March15</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Activity(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>institutional audit</em><br><em>programme evaluation</em><br><em>2</em><br><em>8</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Activity Local Identifier(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>inst_aud</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>1 - part of obligatory EQA system</em><br><em>2 - voluntary</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Decision*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>1 - positive</em><br><em>2 - positive with conditions or restrictions</em><br><em>3 - negative</em><br><em>4 - not applicable</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valid from*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>2015-01-15</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Valid to</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>2020-01-15</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date Format*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>%d/%m/%y</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Link</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>http://srv.aneca.es/ListadoTitulos/node/1182321350</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Link Display Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>General information on this programme.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="existing-institution-record">Existing Institution Record<a class="headerlink" href="#existing-institution-record" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DEQARINST ID(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>DEQARINST0034</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ETER ID(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>BG0001</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Local Institutional Identifier(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>HCERES21</em><br><em>AT0004</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="new-institution-record">New Institution Record<a class="headerlink" href="#new-institution-record" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Official Institution Name(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Graz University of Technology</em><br><em>Югозападен университет "Неофит Рилски"</em><br><em>Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Official Institution Name, transliterated</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Yugo-zapaden universitet "Neofit Rilski”</em><br><em>Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">English Institution Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>South-West University "Neofit Rilski", Blagoevgrad</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution Acronym</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>SWU</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institution Country(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>BG</em><br><em>BGR</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution City</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Sofia</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution Latitude<br>Institution Longitude</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>48,208,356; 1,636,776</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution QF-EHEA Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>0 - short cycle</em><br><em>1 - first cycle</em><br><em>2 - second cycle</em><br><em>3 - third cycle</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institutional Website(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>http://www.swu.bg</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="programme">Programme<a class="headerlink" href="#programme" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Local Programme Identifier</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>61</em><br><em>60800</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary Programme Name(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Arts-specialist in opleiding</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Qualification</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Master in de specialistische geneeskunde</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Name Alternative</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Medical Natural Sciences</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Qualification Alternative</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Master of Medicine</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Country</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>BE</em><br><em>BEL</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme NQF Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>level 6</em><br><em>level 7</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme QF-EHEA Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>0 - short cycle</em><br><em>1 - first cycle</em><br><em>2 - second cycle</em><br><em>3 - third cycle</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="report-files">Report Files<a class="headerlink" href="#report-files" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>File Original Location(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>http://estudis.aqu.cat/MAD2014_UPC_es.pdf</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">File Display Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Report</em><br><em>Evaluation</em><br><em>MAD2014_UPC_es.pdf</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Report Language*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>es</em><br><em>spa</em></td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

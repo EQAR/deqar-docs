@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Search and Discovery - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Search and Discovery";
+        var mkdocs_page_input_path = "web_api.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Data Submission</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Search and Discovery</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Search and Discovery</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+<h1>Search and Discovery</h1>
+<h2 id="public-web-interface">Public web interface<a class="headerlink" href="#public-web-interface" title="Permanent link">&para;</a></h2>
+<p>The DEQAR public web interface is freely accessible at:</p>
+<p><a href="https://www.deqar.eu/">https://www.deqar.eu/</a></p>
+<p>DEQAR is currently made available as a public preview and thus still in the stage of active testing/development. Please also take the <a href="https://www.eqar.eu/qa-results/users-survey/">user survey</a> to help us improve DEQAR.</p>
+<h2 id="web-api">Web API<a class="headerlink" href="#web-api" title="Permanent link">&para;</a></h2>
+<p>REST API is a convenient way for software developers to communicate with web services via HTTP, the protocol used by the internet. Together with JSON it provides an easy, straightforward and flexible means of exchanging data between systems.</p>
+<p>The DEQAR Web API allows to search and discover QA reports, and to embed such functionality in own websites or applications.</p>
+<p>The <a href="#public-web-interface">public DEQAR web interface</a> uses the same API.</p>
+<h3 id="access">Access<a class="headerlink" href="#access" title="Permanent link">&para;</a></h3>
+<p>The DEQAR Web API is available to all interested parties, in line with the <a href="https://www.eqar.eu/legal-notice/deqar/">DEQAR Terms and Conditions</a>.</p>
+<p>EQAR-registered agencies have access to the Web API automatically, using their <a href="../data_submission/#webform">credentials for the DEQAR administrative interface</a> and the Submission API.</p>
+<p>For all others, use of the API is free, but subject to prior registration in order to avoid excessive resource consumption and to ensure that the information is not used in a way that jeopardises the objectives of DEQAR.</p>
+<p>Access may be requested by simple email to <a href="mailto:deqar@eqar.eu">deqar@eqar.eu</a>. We will grant access to any individual or organisation unless we have reasons to believe that the information might be abused, misrepresented or used in violation of the DEQAR Terms and Conditions.</p>
+<p>After registration you will obtain a username and password combination for the Web API. We will publish a list of registered users with access to the Web API.</p>
+<h3 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h3>
+<p>DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header will authenticate the user in place of a regular username and password. To get your authentication token you
+can send a POST request to the following URL:</p>
+<p><a href="https://backend.deqar.eu/accounts/get_token/">https://backend.deqar.eu/accounts/get_token/</a></p>
+<p>An example of obtaining a token using curl in command line:</p>
+<pre><code>curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
+</code></pre>
+<p>Or for those who prefer to use the more user friendly httpie3 client:</p>
+<pre><code class="language-sh">http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
+</code></pre>
+<h3 id="api-endpoints">API Endpoints<a class="headerlink" href="#api-endpoints" title="Permanent link">&para;</a></h3>
+<p>The base URL for the following endpoints is:</p>
+<p><code>https://backend.deqar.eu/webapi/v1</code></p>
+<p>The full definitions of the following endpoints and the response objects is available as <a href="https://en.wikipedia.org/wiki/OpenAPI_Specification">OpenAPI Specification 3.0</a> at:</p>
+<p><a href="https://backend.deqar.eu/webapi/v1/swagger/">https://backend.deqar.eu/webapi/v1/swagger/</a></p>
+<h4 id="countries">Countries<a class="headerlink" href="#countries" title="Permanent link">&para;</a></h4>
+<p>These endpoints provide information on countries connected to agencies or institutions. For all countries part of the EHEA, country information includes a short profile of the national external quality assurance system for higher education.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/browse/countries/</code></td>
+<td>Full list of countries connected to agencies or institutions</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/countries/{countryID}/</code></td>
+<td>Returns a specific country record</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/countries/by-agency-focus/{agencyID}/</code></td>
+<td>List of countries in which the specified agency has been operating</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/countries/by-reports/</code></td>
+<td>List those countries with institutions for which QA reports have been submitted to DEQAR</td>
+</tr>
+</tbody>
+</table>
+<h4 id="agencies">Agencies<a class="headerlink" href="#agencies" title="Permanent link">&para;</a></h4>
+<p>These endpoints provide information on EQAR-registered agencies. Please note that they cover both agencies that submit reports to DEQAR as well as those that do not.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/browse/agencies/</code></td>
+<td>Full list of EQAR-registered agencies</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/agencies/{agencyID}/</code></td>
+<td>Returns a specific registered agency record</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/agencies/focusing-to/{countryID}/</code></td>
+<td>List agencies operating in the specified country</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/agencies/based-in/{countryID}/</code></td>
+<td>List agencies based in the specified country</td>
+</tr>
+</tbody>
+</table>
+<h4 id="institutions">Institutions<a class="headerlink" href="#institutions" title="Permanent link">&para;</a></h4>
+<p>These endpoints provide information on higher education institutions covered by QA results. Institutional information is managed by EQAR based on data harvested from ETER/OrgReg as well as participating agencies.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/browse/institutions/</code></td>
+<td>List or search institutions appearing in reports</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/institutions/{institutionID}</code></td>
+<td>Returns a specific institution record</td>
+</tr>
+</tbody>
+</table>
+<h4 id="reports">Reports<a class="headerlink" href="#reports" title="Permanent link">&para;</a></h4>
+<p>These endpoints provide information on QA results concerning a particular institution.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Semantics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/browse/reports/programme/by-institution/{institutionID}</code></td>
+<td>List programme-level reports about the specified institution</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/browse/reports/institutional/by-institution/{institutionID}</code></td>
+<td>List institutional-level reports about the specified institution</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../data_submission/" class="btn btn-neutral float-left" title="Data Submission"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../data_submission/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

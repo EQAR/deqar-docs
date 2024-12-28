@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Data Submission - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Data Submission";
+        var mkdocs_page_input_path = "data_submission.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Data Submission</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#data-submission-via-webform">Data Submission via Webform</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-submission-in-csv-via-webform">Data Submission in CSV via Webform</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-submission-in-json-via-api">Data Submission in JSON via API</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../web_api/">Search and Discovery</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Data Submission</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+<h1>Data Submission</h1>
+<p>Agencies are asked to prepare data on quality assurance reports for submission to DEQAR.  Each agency has the choice to manually submit records one by one through the DEQAR administrative interface or to submit larger batches of data in CSV or JSON format. In the latter cases, the agency must prepare Submission Objects before uploading to DEQAR. A submission object is data related to a single report and is used during ingest to populate report records and to establish linkages inside the system. (Note: a submission object cannot be considered as a report record per se because it may include data stored in other entities as well.) </p>
+<p>Submission objects can be packaged together for batch submission. Though they are used mostly to introduce new report records into DEQAR, submission objects can also be used to update information on existing records through batch submission. Deletion of existing records can only be performed through the administrative interface. </p>
+<p>Each agency should follow four discrete steps to prepare their data submission:</p>
+<ol>
+<li>Choose a particular submission method:<ul>
+<li><a href="./#webform">Manual Entry through Webform</a></li>
+<li><a href="./#csv-upload">Batch Submission in CSV through Webform</a></li>
+<li><a href="./#submission-api">Batch or Event Driven Submission in JSON through the API</a></li>
+</ul>
+</li>
+<li>Prepare your data with guidance from the <a href="./#submission_object_data_elements">Submission Object Data Elements</a> section below.</li>
+<li>Submit data using your chosen submission method.</li>
+<li>Await data ingest via the <a href="./#data-pipeline">Data Pipeline</a> and receive response object with possible further instructions.</li>
+</ol>
+<h2 id="choosing-a-submission-method">Choosing a Submission Method<a class="headerlink" href="#choosing-a-submission-method" title="Permanent link">&para;</a></h2>
+<p>Considering the various needs of the agencies, DEQAR supports three different submission methods. Their use is highly dependent on the technical resources available to a particular agency. Importantly, all three methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.</p>
+<h3 id="data-submission-via-webform">Data Submission via Webform<a class="headerlink" href="#data-submission-via-webform" title="Permanent link">&para;</a></h3>
+<p>Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or
+modify existing ones. Flags and validation errors will be returned immediately upon submission. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.</p>
+<p>We recommend this method for agencies:</p>
+<ul>
+<li>without IT developers</li>
+<li>with a closed system architecture from which data export is not straightforward</li>
+<li>who would like to submit small amounts of data occasionally</li>
+<li>who would like to interact with their DEQAR data directly</li>
+</ul>
+<p>(See <a href="./#webform">Webform</a> below.)  </p>
+<h3 id="data-submission-in-csv-via-webform">Data Submission in CSV via Webform<a class="headerlink" href="#data-submission-in-csv-via-webform" title="Permanent link">&para;</a></h3>
+<p>In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma Separated Values (CSV)</a> is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. Since CSV is a flat format (a single records or object per row), there is some redundancy in the data collected. Thus, this is termed a semi-automatic data submission method. DEQAR has provided a submission file template which can be complemented with the detailed explanation of the data elements below (see <a href="./#submission-object-data-elements">Submission Object Data Elements</a>).</p>
+<p>Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file, staging it for import. When the upload is complete, records (i.e. single lines of the file) are validated and statistics on the status of the uploaded batch are shown on the import interface. Agency staff can then decide to submit the valid records or revert the entire batch, correcting the data in the CSV file and re-uploading it for import. </p>
+<p>We recommend this method for agencies:</p>
+<ul>
+<li>without IT developers</li>
+<li>with a local system from which they can export data in tables</li>
+<li>who would like to submit bigger amounts of data in a batch</li>
+<li>who would like to work manually on their data before submitting to DEQAR</li>
+</ul>
+<p>(See <a href="./#csv-upload">CSV Upload</a> below.) </p>
+<h3 id="data-submission-in-json-via-api">Data Submission in JSON via API<a class="headerlink" href="#data-submission-in-json-via-api" title="Permanent link">&para;</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">Rest API</a> is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the <a href="https://www.json.org/">JSON format</a> it provides fexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.</p>
+<p>We recommend this method for agencies:</p>
+<ul>
+<li>with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint</li>
+<li>who would like to submit large amounts of data at once with a single call</li>
+<li>who would like to individual reports upon their creation</li>
+<li>who would like to keep DEQAR and their local system in sync</li>
+<li>who plan to submit data periodically and at longer intervals (e.g. weekly or monthly).</li>
+</ul>
+<p>(See <a href="./#submission-api">Submission API</a> below.)</p>
+<h2 id="submission-object-data-elements">Submission Object Data Elements<a class="headerlink" href="#submission-object-data-elements" title="Permanent link">&para;</a></h2>
+<p>Below we provide a full list of the data elements that can make up a submission object. It is important to note that the below list is exhaustive, including all possible elements. Required data elements are listed in <strong>bold</strong> with a * , conditionally required data elements in <strong>bold</strong> with a (*).  We use the terminology:</p>
+<ul>
+<li>"must" to denote that an element is required or required in certain situations</li>
+<li>"should" to denote that an element is highly recommended</li>
+<li>"may" to denote that an element is optional</li>
+</ul>
+<p>(See <a href="https://tools.ietf.org/html/rfc2119">RFC 2119 Best Current Practice</a>.)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Agency*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>AAQ</em><br><em>33</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">DEQAR Report ID</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>000786</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Local Identifier</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>QAA1153-March15</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Activity(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>institutional audit</em><br><em>programme evaluation</em><br><em>2</em><br><em>8</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Activity Local Identifier(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>inst_aud</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Status*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>1 - part of obligatory EQA system</em><br><em>2 - voluntary</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Decision*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>1 - positive</em><br><em>2 - positive with conditions or restrictions</em><br><em>3 - negative</em><br><em>4 - not applicable</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Valid from*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>2015-01-15</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Valid to</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>2020-01-15</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Date Format*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">one</td>
+<td style="text-align: left;"><em>%d/%m/%y</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Link</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>http://srv.aneca.es/ListadoTitulos/node/1182321350</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Link Display Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>General information on this programme.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="report-creation">Report Creation<a class="headerlink" href="#report-creation" title="Permanent link">&para;</a></h3>
+<p>A single creating agency must be clearly identified for each report. The creating agency is often, though not always, the same as the submitting agency (see <a href="../architecture_data_model/#agency-identifiers">Agency Identifiers</a>).  </p>
+<ul>
+<li><strong>Agency*</strong> (<code>agency</code>; required; string)<br />
+The agency which created the report must be provided for each report as an agency acronym or as a DEQAR agency ID. This allows the report to be linked to an existing agency record and makes it possible to validate and transform the submitted data in accordance with the agency's profile.<br />
+<em>e.g. AAQ</em><br />
+<em>e.g. 33</em>  </li>
+</ul>
+<h3 id="report-identification">Report Identification<a class="headerlink" href="#report-identification" title="Permanent link">&para;</a></h3>
+<p>A report identifier must be used when submitting updates to an existing report in CSV or JSON. Each report can be identified using an agency's local identifiers or through DEQAR report IDs, which are assigned at upload. It is recommended that agencies submit local report identifiers with every submission object (see <a href="../architecture_data_model/#report-and-programme-identifiers">Report and Programme Identifiers</a>).  </p>
+<ul>
+<li>
+<p>DEQAR Report ID (<code>report_id</code>; not required; string)<br />
+Each uploaded report is assigned a unique DEQAR report ID. This may be used to submit updates to existing reports or to promote synchronisation with an agency's local system.<br />
+<em>e.g. 000786</em> </p>
+</li>
+<li>
+<p>Local Identifier (<code>local_identifier</code>; not required; string)<br />
+The report identifier used in the agency's local system should be provided for each report. This may be used to submit updates to existing reports or to promote synchronisation with the agency's local system; the local report identifier is particularly useful in the identification of invalid submission objects.<br />
+<em>e.g. QAA1153-March15</em></p>
+</li>
+</ul>
+<h3 id="report-activity">Report Activity<a class="headerlink" href="#report-activity" title="Permanent link">&para;</a></h3>
+<p>A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID). Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see <a href="../architecture_data_model/#other-identifiers">Role of Standards and Identifiers: Other Identifiers</a>. If both elements are submitted for a single report, then the DEQAR value will be used by the system.  </p>
+<ul>
+<li>
+<p><strong>Activity(*)</strong> (<code>activity</code>; conditionally required; string)<br />
+A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.<br />
+<em>e.g. institutional audit</em><br />
+<em>e.g. programme evaluation</em><br />
+<em>e.g. 2</em><br />
+<em>e.g. 8</em>  </p>
+</li>
+<li>
+<p><strong>Activity Local Identifier(*)</strong> (<code>activity_local_identifier</code>; conditionally required; string)<br />
+A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)<br />
+<em>e.g. inst_aud</em>  </p>
+</li>
+</ul>
+<p>Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record.  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Report record structure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">institutional</td>
+<td style="text-align: left;">at least one institution<br>no programme</td>
+</tr>
+<tr>
+<td style="text-align: left;">institutional/programme</td>
+<td style="text-align: left;">one and only one institution<br>at least one programme</td>
+</tr>
+<tr>
+<td style="text-align: left;">programme</td>
+<td style="text-align: left;">one and only one institution<br>at least one programme</td>
+</tr>
+<tr>
+<td style="text-align: left;">joint programme</td>
+<td style="text-align: left;">at least two institutions<br>at least one programme</td>
+</tr>
+</tbody>
+</table>
+<h3 id="report-details">Report Details<a class="headerlink" href="#report-details" title="Permanent link">&para;</a></h3>
+<p>Each report must be assigned a single status and a single decision value. Together these elements signal the role, status and nature of the report.  Status and decision values may be provided as either string values or DEQAR IDs.  </p>
+<ul>
+<li><strong>Status*</strong> (<code>status</code>; required; string)<br />
+The status must be provided as either a DEQAR status name or a DEQAR status id for each report. The status specifies whether the report is part of the obligatory EQA system in the country of the institution or whether the institution has undertaken it voluntarily.  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">part of obligatory EQA system</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">voluntary</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Decision*</strong> (<code>decision</code>; required; string)<br />
+The decision must be provided as either a DEQAR decision name or a DEQAR decision id for each report. The decision records the final result of the QA procedure/report.  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">positive</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">positive with conditions or restrictions</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">negative</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">not applicable</td>
+</tr>
+</tbody>
+</table>
+<h3 id="report-validity">Report Validity<a class="headerlink" href="#report-validity" title="Permanent link">&para;</a></h3>
+<p>Each report must have an associated date defining the start of its validity. A date defining the end of the report's validity should also be provided. In the cases that the end date is left open, the report will be treated as valid for six years from the start of its validity, after which it will be archived. DEQAR uses a special notation to denote the date format. This allows each agency to signal the date format it uses; this must be provided for each report.</p>
+<ul>
+<li>
+<p><strong>Valid from*</strong> (<code>valid_from</code>; required; date)<br />
+A valid from date marking the starting date of the report's validity must be provided for each report. This date is used to generate an archiving date when no valid to date is provided.<br />
+<em>e.g. 2015-01-15</em></p>
+</li>
+<li>
+<p>Valid to (<code>valid_to</code>; not required; date)<br />
+A valid to date marking the ending date of the report's validity should be provided for each report. This date determines when report data will be archived in DEQAR. If no valid to date is assigned, then the report will be treated as valid for six years after the valid from date.<br />
+<em>e.g. 2020-01-15</em></p>
+</li>
+<li>
+<p><strong>Date Format*</strong> (<code>date_format</code>; required; string)<br />
+A date format  must be provided for each report. Dates may be submitted in any standard format; the format should be represented as a combination of the following characters:  </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">symbol(s)</th>
+<th style="text-align: left;">meaning</th>
+<th style="text-align: left;">example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">%d</td>
+<td style="text-align: left;">day as expressed in two digits</td>
+<td style="text-align: left;">02</td>
+</tr>
+<tr>
+<td style="text-align: left;">%-d</td>
+<td style="text-align: left;">day as expressed in one or two digits</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">%m</td>
+<td style="text-align: left;">month as expressed in two digits</td>
+<td style="text-align: left;">05 for May</td>
+</tr>
+<tr>
+<td style="text-align: left;">%-m</td>
+<td style="text-align: left;">month as expressed in one or two digits</td>
+<td style="text-align: left;">5 for May and 12 for December</td>
+</tr>
+<tr>
+<td style="text-align: left;">%Y</td>
+<td style="text-align: left;">year as expressed in four digits</td>
+<td style="text-align: left;">2014</td>
+</tr>
+<tr>
+<td style="text-align: left;">%y</td>
+<td style="text-align: left;">year as expressed in two digits</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;">%d-%m-%Y</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">04-01-2014</td>
+</tr>
+<tr>
+<td style="text-align: left;">%d/%m/%y</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">04/01/14</td>
+</tr>
+<tr>
+<td style="text-align: left;">%Y-%m-%d</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">2015-01-15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="report-link">Report Link<a class="headerlink" href="#report-link" title="Permanent link">&para;</a></h3>
+<p>One or more URL links may be provided to alternative views of the report data on the agency's website or other webpage(s) in order to provide more context. A display name may be provided for each URL link. The linked text will display on DEQAR under the display name label provided or, if no name is provided, under generic text provided by DEQAR. </p>
+<ul>
+<li>
+<p>Link (<code>link[n]</code>, not required, string)<br />
+One or more URL links may be provided for each report to the same report presented on other sites in order to provide more context to the report.<br />
+<em>e.g. http://srv.aneca.es/ListadoTitulos/node/1182321350</em></p>
+</li>
+<li>
+<p>Link Display Name (<code>link_display_name[n]</code>, not required, string)<br />
+A display name may optionally be provided for each link to the report on other sites. If no display name is provided, then EQAR will supply generic text.<br />
+<em>e.g. General information on this programme.</em></p>
+</li>
+</ul>
+<h3 id="institution-data-elements">Institution Data Elements<a class="headerlink" href="#institution-data-elements" title="Permanent link">&para;</a></h3>
+<h4 id="linking-to-an-existing-record">Linking to an Existing Record<a class="headerlink" href="#linking-to-an-existing-record" title="Permanent link">&para;</a></h4>
+<p>Each report must be associated with at least one institution. If a record for the institution already exists in DEQAR, a DEQARINST ID or an ETER ID should be provided to establish a link to the existing record. Optionally an agency may choose to provide a local or national identifier for an institution; before these can be used for submission, local identifiers should be assigned to existing institution records through the administrative interface or provided in bulk to the EQAR secretariat.  Only one institution identifier should be submitted for each institution in the submission object (see <a href="architecture_data_model#institution-identifiers">Institution Identifiers</a>). If more than one identifying element is submitted, then the DEQARINST ID will be used to establish internal linkage, followed by the ETER ID. If no record for the institution exists in DEQAR, a new record can be created by filling in several descriptive elements (see <a href="#new-institution-record">New Institution Record</a> below). </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DEQARINST ID(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>DEQARINST0034</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ETER ID(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>BG0001</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Local Institutional Identifier(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>HCERES21</em><br><em>AT0004</em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>DEQARINST ID(*)</strong> (<code>institution[n].deqar_id</code>; conditionally required; string)<br />
+Each institution already described in DEQAR is assigned a DEQARINST ID.  The DEQARINST ID may be used to establish a link between submitted report data and an existing institution record.<br />
+<em>e.g. DEQARINST0034</em>  </p>
+</li>
+<li>
+<p><strong>ETER ID(*)</strong> (<code>institution[n].eter_id</code>; conditionally required; string)<br />
+Each institution described in OrgReg or ETER is assigned an ETER ID (see <a href="http://datasets.risis.eu/">Research infrastructure for research and innovation policy studies - RISIS</a> or <a href="https://www.eter-project.com/">European Tertiary Education Register - ETER</a>). The ETER ID may be used to establish a link between submitted report data and  an ETER record in DEQAR.<br />
+<em>e.g. BG0001</em>  </p>
+</li>
+<li>
+<p><strong>Local Institutional Identifier(*)</strong> (<code>institution[n].identifier[1]</code>; conditionally required; string)<br />
+A local identifier is any identifier used by the Agency to identify an institution. A local identifier may optionally be used in the place of a DEQARINST ID or ETER ID to establish a link between submitted report data and an existing institution record. (Note: local institution identifiers need to be assigned through the administrative interface or in bulk through the EQAR secretariat before they can be used in submission.)<br />
+<em>e.g. HCERES21</em><br />
+<em>e.g. AT0004</em>  </p>
+</li>
+</ul>
+<h4 id="new-institution-record">New Institution Record<a class="headerlink" href="#new-institution-record" title="Permanent link">&para;</a></h4>
+<p>Each report must be associated with at least one institution. If a record for an institution does not already exist in DEQAR, the institution must be described with the elements below. (Note, <strong>as a minimum the institution name, country and website must be provided</strong> for a new record to be created.) Before a new record is created, data will be checked against institution data already in DEQAR. If a DEQAR institution record is identified as a match, the existing record will take precedence over submitted data.  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Official Institution Name(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Graz University of Technology</em><br><em>Югозападен университет "Неофит Рилски"</em><br><em>Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Official Institution Name, transliterated</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Yugo-zapaden universitet "Neofit Rilski”</em><br><em>Plirophoríes yia tous allodapoús phitités:  Ísodos kai prográmmata</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">English Institution Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>South-West University "Neofit Rilski", Blagoevgrad</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution Acronym</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>SWU</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institution Country(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>BG</em><br><em>BGR</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution City</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Sofia</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution Latitude<br>Institution Longitude</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>48,208,356; 1,636,776</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Institution QF-EHEA Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>0 - short cycle</em><br><em>1 - first cycle</em><br><em>2 - second cycle</em><br><em>3 - third cycle</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institutional Website(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>http://www.swu.bg</em></td>
+</tr>
+</tbody>
+</table>
+<h5 id="institution-name">Institution Name<a class="headerlink" href="#institution-name" title="Permanent link">&para;</a></h5>
+<p>One and only one official institution name must be provided for each new institution record. Each official institution name that is in a non-Latin script should be accompanied by a transliterated version to support search and discovery. It is also recommended that agencies provide an English institution name for each new institution record. If provided, the English name will be used for display. An institution acronym may also be provided.  (Note: alternative or other language institution names can be provided through the administrative interface.)   </p>
+<ul>
+<li>
+<p><strong>Official Institution Name(*)</strong> (<code>institution[n].name_official</code>; conditionally required; string)<br />
+The official name of each institution in the original alphabet must be provided for every new institution record. The official name will be indexed for search and may be used as the primary institution name in the search interface if no English institution name is assigned.<br />
+<em>e.g. Graz University of Technology</em><br />
+<em>e.g. Югозападен университет "Неофит Рилски"</em><br />
+<em>e.g. Πληροφορίες για τους αλλοδαπούς φοιτητές: Είσοδος και προγράμματα</em>  </p>
+</li>
+<li>
+<p>Official Institution Name, transliterated (<code>institution[n].name_official_transliterated</code>; not required; string)<br />
+A romanised transliteration should be provided if the official institution name is in non-Latin script. If no romanised form is stored locally, then <a href="https://en.wikipedia.org/wiki/List_of_ISO_romanizations">ISO romanisation standards</a> can be used to created romanised forms.  If transliteration is not provided, access to the institution record through the search interface will be more limited.<br />
+<em>e.g. Yugo-zapaden universitet "Neofit Rilski”</em><br />
+<em>e.g. Plirophoríes yia tous allodapoús phitités: Ísodos kai prográmmata</em>  </p>
+</li>
+<li>
+<p>English Institution Name (<code>institution[n].name_english</code>; not required; string)<br />
+A single English institution name may be provided <em>for any institution without an English official name [added on 05.06.2018]</em>. If provided, the English institution name will be used as the primary institution name in the search interface.<br />
+<em>e.g. South-West University "Neofit Rilski", Blagoevgrad</em>  </p>
+</li>
+<li>
+<p>Institution Acronym (<code>institution[n].acronym</code>; not required; string)<br />
+The official acronym for each institution may be provided. This will be indexed for search.<br />
+<em>e.g. SWU</em>  </p>
+</li>
+</ul>
+<h5 id="institution-location">Institution Location<a class="headerlink" href="#institution-location" title="Permanent link">&para;</a></h5>
+<p>One or more countries must be provided for each new institution record. One city may be provided to correspond with each country along with an optional latitude and longitude. In the case that the institution is located in more than one city in the same country, then this would require a separate country/city entry for each city.  </p>
+<ul>
+<li>
+<p><strong>Institution Country(*)</strong> (<code>institution[n].country[n]</code>; conditionally required; string)<br />
+The country/ies where each institution is located must be provided for every new institution record. Each country must be provided using either an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166-1 standard</a>). Institution countries will be indexed for search. 
+<em>e.g. BG</em><br />
+<em>e.g. BGR</em>  </p>
+</li>
+<li>
+<p>Institution City (<code>institution[n].city[n]</code>; not required; string)<br />
+The city name, preferably in English, where the institution is located in each country may be provided for each institution record. If an institution is located in more than one city, then a separate country/city pairing should be entered for each city. Institution cities will be indexed for search.<br />
+<em>e.g. Sofia</em>  </p>
+</li>
+<li>
+<p>Institution Latitude (<code>institution[n].latitude[n]</code>; not required; float)  </p>
+</li>
+<li>Institution Longitude (<code>institution[n].longitude[n]</code>; not required; float)<br />
+The exact latitude and longitude of the institution site or the general latitude and longitude of the city of the institution may also be provided for each institution record.<br />
+<em>e.g. 48,208,356; 1,636,776</em>  </li>
+</ul>
+<h5 id="institution-qualification-level">Institution Qualification Level<a class="headerlink" href="#institution-qualification-level" title="Permanent link">&para;</a></h5>
+<p>The institution QF-EHEA levels may be provided for each institution. If QF-EHEA levels are provided, then <em>ALL</em> levels covered by the institution should be recorded. QF-EHEA levels may be provided as either string values or DEQAR IDs.  </p>
+<ul>
+<li>Institution QF-EHEA Level (<code>institution[n].qf_ehea_level[n]</code> or <code>institution.qf_ehea_level_id</code>; not required; string)<br />
+One or more institution QF-EHEA levels may be provided as either a DEQAR QF-EHEA level name or a DEQAR QF-EHEA level id for each institution record (see <a href="http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area">Framework for Qualifications of the European Higher Education Area</a>. These are the qualification framework levels at which each institution may award degrees. (Note: if QF-EHEA levels are provided, then all levels covered by the institution should be provided at the same time.)   </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">short cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">first cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">second cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">third cycle</td>
+</tr>
+</tbody>
+</table>
+<h5 id="institution-website">Institution Website<a class="headerlink" href="#institution-website" title="Permanent link">&para;</a></h5>
+<p>One and only one website link must be provided for each new institution record. When possible, the root domain name of the institution website should be provided without language or other qualifiers.  </p>
+<ul>
+<li><strong>Institutional Website(*)</strong> (<code>institution[n].website_link</code>; conditionally required; string)<br />
+The URL to the primary institution website or home page should be provided for every new institution record. The root domain name of the site should be used when possible.<br />
+<em>e.g. http://www.swu.bg</em>  </li>
+</ul>
+<h3 id="programme-data-elements">Programme Data Elements<a class="headerlink" href="#programme-data-elements" title="Permanent link">&para;</a></h3>
+<p>Information on one or more programmes is required for all reports with the assigned activity types: <strong>institutional/programme</strong>; <strong>programme</strong>; or <strong>joint programme</strong>. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme or to reuse programme information in later reports.<br />
+A local identifier may be submitted along with the report data in CSV or JSON; additional local identifiers can also be assigned through the administrative interface. (Note, if no existing identifier is used, then <strong>as a minimum the programme name must be provided</strong> for programme data to be valid.)  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Local Programme Identifier</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>61</em><br><em>60800</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Primary Programme Name(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Arts-specialist in opleiding</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Qualification</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Master in de specialistische geneeskunde</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Name Alternative</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Medical Natural Sciences</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Qualification Alternative</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>Master of Medicine</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme Country</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>BE</em><br><em>BEL</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme NQF Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>level 6</em><br><em>level 7</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Programme QF-EHEA Level</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>0 - short cycle</em><br><em>1 - first cycle</em><br><em>2 - second cycle</em><br><em>3 - third cycle</em></td>
+</tr>
+</tbody>
+</table>
+<h4 id="programme-identification">Programme Identification<a class="headerlink" href="#programme-identification" title="Permanent link">&para;</a></h4>
+<p>An identifier may be submitted with programme information to allow the agency to identify reports on the same programme or to reuse the same programme information in a later record (see <a href="../architecture_data_model/#report-and-programme-identifiers">Report and Programme Identifiers</a>). (Note: if an existing identifier is submitted with new programme information, the previous data will be used in place of the new.)  </p>
+<ul>
+<li>Local Programme Identifier (<code>programme[n].identifier[1]</code>; not required; string)<br />
+One local programme identifier may be provided for each programme associated with the submitted report. Once the identifier has been submitted, the agency can identify reports on the same programme in the system and may reference it in later reports to reuse the same programme data.<br />
+<em>e.g. 61</em><br />
+<em>e.g. 60800</em>  </li>
+</ul>
+<h4 id="programme-name-and-qualification">Programme Name and Qualification<a class="headerlink" href="#programme-name-and-qualification" title="Permanent link">&para;</a></h4>
+<p>One and only one primary programme name must be provided for each programme associated with the report. The programme name should be accompanied by a qualification title in the same language. Agencies may also provide alternative or other language versions of the programme name and/or qualification. The primary name will be used for display.  </p>
+<ul>
+<li>
+<p><strong>Primary Programme Name(*)</strong> (<code>programme[n].name_primary</code>; conditionally required; string)<br />
+One and only one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English or in the original language.<br />
+<em>e.g. Arts-specialist in opleiding</em>  </p>
+</li>
+<li>
+<p>Programme Qualification (<code>programme[n].qualification_primary</code>; not required; string)<br />
+The qualification offered by each programme should be recorded in the same language that is used for primary name.<br />
+<em>e.g. Master in de specialistische geneeskunde</em>  </p>
+</li>
+<li>
+<p>Programme Name Alternative (<code>programme[n].name_alternative[n]</code>; not required; string)<br />
+One or more alternative or other language names may be provided for each programme associated with the submitted report.<br />
+<em>e.g. Medical Natural Sciences</em>  </p>
+</li>
+<li>
+<p>Programme Qualification Alternative (<code>programme[n].qualification_alternative[n]</code>; not required; string)<br />
+The qualification offered by each programme may be recorded in the same language that is used for the alternative name version.<br />
+<em>e.g. Master of Medicine</em>  </p>
+</li>
+</ul>
+<h4 id="programme-location">Programme Location<a class="headerlink" href="#programme-location" title="Permanent link">&para;</a></h4>
+<p>Information on the country/ies where each programme is located should be provided if different from the host institution country. </p>
+<ul>
+<li>Programme Country (<code>programme[n].country[n]</code>; not required; string)<br />
+The one or more countries where the programme is located should be provided if different from the institution country. The country/ies should be provided in the form of an ISO 3166 alpha2 or ISO 3166 alpha3 country code (see <a href="https://en.wikipedia.org/wiki/ISO_3166-1">ISO 3166-1 standard</a>).<br />
+<em>e.g. BE</em><br />
+<em>e.g. BEL</em>  </li>
+</ul>
+<h4 id="programme-qualification-level">Programme Qualification Level<a class="headerlink" href="#programme-qualification-level" title="Permanent link">&para;</a></h4>
+<p>Information on the qualification framework level of each programme can be provided as a QF-EHEA level; agencies may also choose to provide the NQF level for each programme.</p>
+<ul>
+<li>
+<p>Programme NQF Level (<code>programme[n].nqf_level</code>; not required, string)<br />
+A single national qualification framework (NQF) level may be provided for each programme.<br />
+<em>e.g. level 6</em><br />
+<em>e.g. level 7</em>  </p>
+</li>
+<li>
+<p>Programme QF-EHEA Level (<code>programme[n].qf_ehea_level</code>; not required; string)<br />
+A single QF-EHEA level should be provided for each programme in the form of either a QF-EHEA level name or QF-EHEA level id (see <a href="http://ecahe.eu/w/index.php/Framework_for_Qualifications_of_the_European_Higher_Education_Area">Framework for Qualifications of the European Higher Education Area</a>.    </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ID</th>
+<th style="text-align: left;">name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">short cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">first cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">second cycle</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">third cycle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="qa-report-files">QA Report Files<a class="headerlink" href="#qa-report-files" title="Permanent link">&para;</a></h3>
+<p>DEQAR requires PDF versions of quality assurance reports for every submission object. Agencies can choose either to make files available for harvest or to upload files. In order to make files available for harvest, agencies must provide the URL for files already available on a public server. Alternatively, files may be submitted using the API or uploaded through the administrative interface. All reports must be submitted with data on the language(s) used in the report. A file display name can be provided as well.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>File Original Location(*)</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>http://estudis.aqu.cat/MAD2014_UPC_es.pdf</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">File Display Name</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>Report</em><br><em>Evaluation</em><br><em>MAD2014_UPC_es.pdf</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Report Language*</strong></td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">many (per)</td>
+<td style="text-align: left;"><em>es</em><br><em>spa</em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>File Original Location(*)</strong> (<code>file[n].original_location</code>; conditionally required; string)<br />
+At least one PDF file should be provided with each submitted report in the form of a URL. Optionally, PDF files can be uploaded through the API or user interface.<br />
+<em>e.g. http://estudis.aqu.cat/MAD2014_UPC_es.pdf</em>  </p>
+</li>
+<li>
+<p>File Display Name (<code>file[n].display_name</code>; not required; string)<br />
+A single file display name may be provided for each PDF report file. This will be used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.  <br />
+<em>e.g. Report</em><br />
+<em>e.g. Evaluation</em><br />
+<em>e.g. MAD2014_UPC_es.pdf</em>  </p>
+</li>
+<li>
+<p><strong>Report Language*</strong> (<code>file[n].report_language[n]</code>; required; string)<br />
+One or more languages must be provided for each file in the form of an ISO 639 1 (two-digit) or ISO 639 2 (three digit) language code (see <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 or ISO 639-2/B format</a>).<br />
+<em>e.g. es</em><br />
+<em>e.g. spa</em>  </p>
+</li>
+</ul>
+<h2 id="data-pipeline">Data Pipeline<a class="headerlink" href="#data-pipeline" title="Permanent link">&para;</a></h2>
+<p>In general, irrespective of the submission method, all data submitted to DEQAR is handled following these steps:</p>
+<ol>
+<li>The submission object goes through the first level of validation.</li>
+<li>If the data format is invalid or the submitted identifiers cannot be resolved, the record is rejected (see <a href="#validation-criteria">Validation Criteria</a> below).</li>
+<li>Valid report data is populated in the appropriate tables.</li>
+<li>Sanity checks are run against pre-defined flagging criteria; reports which contain conflicts are flagged (see <a href="#flagging-criteria">Flagging Criteria</a> below).</li>
+<li>A Response Object (or array of objects) is sent back to the agency, containing:<ul>
+<li>detailed error descriptions for objects that were rejected</li>
+<li>identifiers of records that were created or identified (in the case of Institutions)</li>
+<li>identifiers for newly created records (Reports, Report Files)</li>
+<li>information on records where sanity checks found errors. </li>
+</ul>
+</li>
+</ol>
+<h3 id="validation-criteria">Validation criteria<a class="headerlink" href="#validation-criteria" title="Permanent link">&para;</a></h3>
+<p>In order for submission objects to clear the first level of validation, they must meet the following criteria:</p>
+<ol>
+<li>
+<p>The <strong>agency</strong> that created the report (which may or may not be the agency submitting the records) must be clearly identified. The agency may be identified using an agreed upon acronym or a DEQAR agency ID which has been provided by the EQAR secretariat.  </p>
+</li>
+<li>
+<p>All <strong>required data</strong> must be present for each report. Required data for all records includes:</p>
+<ul>
+<li><a href="#report-activity">ESG activity performed</a>: provided as activity name, ID given by EQAR or as a local identifier.</li>
+<li><a href="#report-details">Status of report</a>, provided as text or as an ID</li>
+<li><a href="#report-details">Decision</a>, provided as text or as an ID.</li>
+<li>Report <a href="#report-validity">valid from date, including date format</a> used by the agency</li>
+<li>Language(s) of the report: At least one language for each report should be provided as a two- or three-digit <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1 or 2/B code</a>. Ideally language information is provided along with the link to the location of the PDF file. </li>
+<li>Institution: a report must relate to at least one institution, either an <a href="#linking-to-an-existing-record">existing DEQAR institution record</a> identified by DEQARINST ID, ETER ID or Agency Local Identifier, or a <a href="#new-institution-record">new institution record</a>. The identified/created Institution's DEQARINST and ETER IDs are returned as part of the Response Object for each submission.</li>
+<li>For reports on programmes, the <a href="#programme-name-and-qualification">programme name</a> (in whatever language it is stored by the Agency).  </li>
+</ul>
+</li>
+<li>
+<p>At this point, <strong>dependencies</strong> between elements will be checked as well as any <strong>limits on the number of values permitted</strong> for each element.  </p>
+</li>
+<li>
+<p>Submitted data must be of the <strong>correct type, form and value range/options</strong> as described above.  </p>
+</li>
+<li>
+<p>Submitted data must <strong>align with the Agency Profile</strong> information, specifically report validation date should fall after Agency EQAR registration dates and activities should match defined ESG activities for the Agency.  </p>
+</li>
+<li>
+<p>Submitted data must <strong>meet basic data integrity rules</strong> for the system, i.e. there should be one and only one creating agency and at least one institution covered by each report.  </p>
+</li>
+<li>
+<p>Submitted report data must meet the structural requirements determined by the <a href="#report-activity">ESG activity</a>.</p>
+</li>
+</ol>
+<p>Records not meeting all of the above criteria will be rejected. The system will return a response object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more submission objects does not imply the failure of the whole submission batch.</p>
+<h3 id="flagging-criteria">Flagging criteria<a class="headerlink" href="#flagging-criteria" title="Permanent link">&para;</a></h3>
+<p>Once the submission objects clear the first level of validation, they are officially ingested into the system. DEQAR records are populated with valid data and final sanity checks are run on the records. (Please note, if an institution record already exists in DEQAR, this data takes precedence over any newly submitted data on the institution. Updates to existing institution records may be made through the administrative interface or the EQAR secretariat. See <a href="#institution-data-elements">Institution Data Elements</a>.)</p>
+<p>DEQAR records failing sanity checks may receive either a “low-level flag” or a “high-level flag”. In the first case, records will appear online with submitted data while they await checks and confirmation by the EQAR secretariat. In the second case, records will not be published until they have been checked and confirmed by the EQAR secretariat.</p>
+<p>Sanity checks may result in <strong>high-level flags</strong> for the following reasons:</p>
+<ul>
+<li>Report Status is listed as <em>part of obligatory EQA system</em> in a country where the Agency does not have official status.</li>
+<li>Defined QF-EHEA levels of an institution and one or more of its programmes do not match.</li>
+</ul>
+<p>Sanity checks may result in <strong>low-level flags</strong> for the following reasons:</p>
+<ul>
+<li>Report is on an institution in a country in which the agency has not previously been active.</li>
+<li>Validity From date of a report is more than one year before the submission date. (NB: this check is suspended during the uploading of legacy data from each agency.)</li>
+<li>Country of the Institution does not match the country of one or more of its programmes. </li>
+<li>Report on an Institution in the EHEA is submitted without the QF-EHEA levels provided.</li>
+</ul>
+<p><em>Note: any record awaiting harvest or upload of the PDF version of the related report will automatically receive a low-level flag until the report is successfully harvested/uploaded.</em></p>
+<h2 id="submission-methods">Submission Methods<a class="headerlink" href="#submission-methods" title="Permanent link">&para;</a></h2>
+<p>As noted, agencies may submit objects and PDF files meeting defined criteria above using one of three methods: manually via webform; as a CSV file via webform; and as a JSON file via an API. All three submission methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.</p>
+<h3 id="webform">Webform<a class="headerlink" href="#webform" title="Permanent link">&para;</a></h3>
+<p>The DEQAR administrative interface includes an interactive webform, allowing you to submit single reports. The administrative interface is available at:</p>
+<p>location: <a href="https://admin.deqar.eu/">https://admin.deqar.eu/</a><br />
+username: [agency's acronym (in lower case)]<br />
+password: [your personal password]  </p>
+<p>If you do not remember your password or did not change the default password, please go to <a href="https://admin.deqar.eu/forgot-password">https://admin.deqar.eu/forgot-password</a> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.</p>
+<p>The email address linked to your login is the same email address to which submission report emails are sent. If you do not remember which email address is linked to your agency's login, please contact the EQAR Secretariat.</p>
+<p>The webform can be found in the menu under <em>Submit Report</em> &gt; <em><a href="https://admin.deqar.eu/report-form">Report Form</a></em>. Required fields are marked with a <span style="color: #f00;">*</span> in the form. Fields marked with a <span style="color: #f00;">(*)</span> are conditionally required. The <em>Save Record</em> button becomes active once all required information has been provided.</p>
+<p><strong>First Webform Tab: Core Data:</strong> We strongly recommend that you provide a <a href="#report-identification">Local Report Identifier</a> that identifies the specific report in your own information system or workflow. This will facilitate later updates should they be necessary. Note: the <a href="#report-activity">Activity</a> chosen might influence which information is required. (See <a href="#submission-object-data-elements">Submission Object Data Elements</a> above.) </p>
+<p><strong>Second Webform Tab: Institutions:</strong> A report needs to relate to one or more (e.g. in case of joint programmes) institution(s). You can add institutions using the search box or browse the full list by country. (See <a href="#institution-data-elements">Institution Data Elements</a> above.)</p>
+<p><strong>Third Webform Tab: Programmes:</strong> The programme tab will only be needed if your report results from a programme-related activity. Fill the form with the required information and then click the <em>Add Programme</em> button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned. (See <a href="#programme-data-elements">Programme Data Elements</a> above.)</p>
+<p><strong>Fourth Webform Tab: Report Files:</strong> Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files). The report file fields are conditionally required. At least one must be present but agencies can either provide a URL or selected as a file for upload. For each file, please specify the language(s) of the contents. The display name is optional; the text "Report" will be used as a default otherwise. (See <a href="#qa-report-files">QA Report Files</a> above.)</p>
+<h3 id="csv-upload">CSV Upload<a class="headerlink" href="#csv-upload" title="Permanent link">&para;</a></h3>
+<p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> is a common and interoperable data-exchange format. Files can be imported and exported from all usual <a href="#preparingexporting-csv-files">spreadsheet software</a> (e.g. Excel, LibreOffice, ...) and numerous other applications.</p>
+<p>The first row of your file is a header which should include column names as defined under <a href="#submission-object-data-elements">Submission Object Data Elements</a> above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:</p>
+<pre><code class="language-csv">agency, activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
+</code></pre>
+<p>(Spaces added for readability, these should not appear in an actual file.)</p>
+<p>One report may often include/relate to several items, such as one or more institution(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type <code>field_name[n]</code> (See <a href="#submission-object-data-elements">Submission Object Data Elements</a> above). You should create as many columns as you need and replace <code>n</code> by 1, 2, ...</p>
+<p>For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:</p>
+<pre><code class="language-csv">..., file[1].original_location,   file[1].display_name, file[1].report_language[1], file[2].original_location,   file[2].display_name, file[2].report_language[1], file[2].report_language[1], ...
+..., &quot;http://some.url/to/report&quot;, &quot;Expert report&quot;,      &quot;de&quot;,                       &quot;http://some.url/to/report&quot;, &quot;Summary&quot;,            &quot;en&quot;,                       &quot;de&quot;, ...
+</code></pre>
+<p>(Spaces added for readability, these should not appear in an actual file.)</p>
+<p>You can use one of the sample CSV files below as a starting point and adjust it to your needs. Please bear in mind the following:</p>
+<ul>
+<li>The template file is provided in Microsoft Excel and Open Document Formats, as well as viewable on-line. <strong>It needs to be saved in CSV format for upload to DEQAR</strong> (see notes below).</li>
+<li>The first worksheet includes <em>all</em> possible column names you could use in a CSV file, with the respective requirement/validation notes as comments. These comments will disappear as you save the file in CSV format.</li>
+<li>The subsequent worksheets include more condensed examples with sample data, including those columns that will typically be used in reports concerning institutions, programmes or joint programmes.</li>
+<li>You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.</li>
+<li>You may omit columns from the sample CSV file that are not used in any of the reports.</li>
+</ul>
+<h4 id="template-and-samples">Template and samples<a class="headerlink" href="#template-and-samples" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="../files/SubmissionTemplate_version2.xlsx">Microsoft Excel format</a></li>
+<li><a href="../files/SubmissionTemplate_version2.ods">Open Document Format (OpenOffice/LibreOffice/NeoOffice)</a></li>
+<li><a href="https://cloud.eqar.eu/s/sarDLSrJgQjkTie">View on-line</a></li>
+<li>CSV format (only examples, without comments):<ul>
+<li><a href="../files/SubmissionSample_institutional.csv">Institutional reports</a></li>
+<li><a href="../files/SubmissionSample_programme.csv">Programme reports</a></li>
+<li><a href="../files/SubmissionSample_joint-programme.csv">Joint programme reports</a></li>
+<li><a href="../files/SubmissionSample_institutional-programme.csv">Combined institution/programme reports</a></li>
+<li><a href="../files/SubmissionSample_mixed.csv">Mixed types of reports</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="preparingexporting-csv-files">Preparing/exporting CSV files<a class="headerlink" href="#preparingexporting-csv-files" title="Permanent link">&para;</a></h4>
+<p>Despite being software-independent, there are some known issues when creating/exporting CSV files from some major office applications. Given that it has the most clean and straight-forward CSV export, we recommend the <a href="https://www.libreoffice.org/">LibreOffice package</a>, a free and open-source desktop application supported on all major operating systems.</p>
+<p>For all software packages, please note that CSV format does not support multiple sheets, but it will always be only the current work sheet that is saved in CSV format.</p>
+<h5 id="microsoft-excel">Microsoft Excel<a class="headerlink" href="#microsoft-excel" title="Permanent link">&para;</a></h5>
+<p>Despite offering CSV as a target file type in its <em>Save as</em> dialogue, Microsoft Excel does not create correct CSV files when certain character sets are used (e.g. Greek or Cyrillic alphabets, or certain Roman characters with diacritics). You can use the following work-around:</p>
+<ul>
+<li>
+<p>Select <em>Save as</em> from the <em>File</em> menu, select your desired folder and choose <em>Unicode Text (*.txt)</em> as type.<br />
+   <img alt="Excel save as dialogue" src="../img/csv-excel-fix-0.png" /></p>
+</li>
+<li>
+<p>Simply press <em>OK</em> in response to the following error message:<br />
+   <img alt="The selected file type does not support workbooks that contain multiple sheets" src="../img/csv-excel-fix-1.png" /></p>
+</li>
+<li>
+<p>Furthermore, confirm with <em>Yes</em> also the following warning message:<br />
+   <img alt="Some features in your workbook might be lost if you save it as Unicode Text" src="../img/csv-excel-fix-2.png" /></p>
+</li>
+<li>
+<p>Close Microsoft Excel and navigate to the folder containing your file in the file manager. Right-click on your file and choose <em>Rename</em>.</p>
+</li>
+<li>
+<p>Now change the file extension from <code>.txt</code> into <code>.csv</code>. You will encounter the following message: <em>If you change file name extension, the file may become unusable. You still want to change them, you should press ‘Yes’...</em> Confirm the warning by clicking Yes.</p>
+</li>
+<li>
+<p>This CSV file is now suitable for upload.</p>
+</li>
+</ul>
+<h5 id="libreofficeopenofficeneooffice">LibreOffice/OpenOffice/NeoOffice<a class="headerlink" href="#libreofficeopenofficeneooffice" title="Permanent link">&para;</a></h5>
+<p>Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice:</p>
+<ul>
+<li>
+<p>Choose <em>Text CSV (*.csv)</em> as file type in the <em>Save As ...</em> or <em>Save a Copy ...</em> dialogue:<br />
+   <img alt="LibreOffice save file dialogue" src="../img/csv-libreoffice-0.png" /></p>
+</li>
+<li>
+<p>Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:<br />
+   <img alt="CSV export settings" src="../img/csv-libreoffice-0.png" /></p>
+</li>
+<li>
+<p>The CSV file is now suitable for upload.</p>
+</li>
+</ul>
+<h5 id="google-sheets">Google Sheets<a class="headerlink" href="#google-sheets" title="Permanent link">&para;</a></h5>
+<p>In Google Sheets, choose <em>Comma-separated values</em> from the <em>File</em> &gt; <em>Download as...</em> menu.</p>
+<h4 id="uploading-csv-files">Uploading CSV files<a class="headerlink" href="#uploading-csv-files" title="Permanent link">&para;</a></h4>
+<p>The CSV upload module is part of the DEQAR admin interface:</p>
+<p>location: <a href="https://admin.deqar.eu/upload-csv">https://admin.deqar.eu/upload-csv</a><br />
+username: [agency's acronym (in lower case)]<br />
+password: [your personal password] (see <a href="#webform">above</a> how to reset your password)</p>
+<ul>
+<li>
+<p>Select <em>Submit Report</em> &gt; <em>Upload CSV</em> from the menu.</p>
+</li>
+<li>
+<p>Choose your file under <em>Select CSV file</em> and click <em>Upload</em>.</p>
+</li>
+<li>
+<p>You can now review your data one more time under <em>Uploaded CSV Data</em>, and make changes if necessary.</p>
+</li>
+<li>
+<p>Afterwards, click on <em>Ingest</em> under the table. The uploaded CSV file now passes the same <a href="#validation-criteria">validation</a> pipeline as information submitted through any other method.</p>
+</li>
+<li>
+<p>After ingest, you will see all rows highlighted in green if they were succesfully injected, or in red if they could not be ingested due to validation errors. Click on one row to see details about errors or <a href="#flagging-criteria">flags</a> in the top-right corner.</p>
+</li>
+<li>
+<p>If you experienced errors, you can correct the respective lines and click on <em>Ingest</em> again.</p>
+</li>
+<li>
+<p>Please note that the green rows will be re-ingested, but overwrite the existing report based on the DEQAR Report ID. Any changes you make to green rows will therefore be recorded on further ingest.</p>
+</li>
+</ul>
+<h3 id="submission-api">Submission API<a class="headerlink" href="#submission-api" title="Permanent link">&para;</a></h3>
+<p>REST API is a convenient way for software developers to communicate with web
+services via HTTP, the protocol used by the internet. Together with JSON it
+provides an easy, straightforward and flexible means of exchanging data between
+systems. With the possibility of sending complex request and response objects,
+we can accept structured data and give immediate feedbacks (e.g. error checks,
+warnings) about the submitted data as well as metadata enhancements (e.g. ETER
+IDs on HEIs, when applicable; links to new records on the EQAR public interface,
+etc.).</p>
+<h4 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h4>
+<p>Requests for submission to DEQAR are only accepted from registered users and
+must therefore be identified. DEQAR API endpoints manage authentication using
+API Tokens (through the so-called Bearer Authentication method). Upon
+registration, an API Token (which is basically a hash) is created for each user.
+Sending this token in the Authorization header will authenticate the user in
+place of a regular username and password.</p>
+<p>To get your authentication token you can send a <code>POST</code> request to the following URL:</p>
+<p><code>https://backend.deqar.eu/accounts/get_token/</code></p>
+<p>An example of obtaining a token using curl in command line:</p>
+<pre><code>curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
+</code></pre>
+<p>The username is the agency’s acronym (in lower case). Please see <a href="#webform">above</a> how to reset your password.</p>
+<p>Or for those who prefer to use the more user friendly httpie3 client:</p>
+<pre><code>http POST https://eqar-backend.herokuapp.com/accounts/get_token/ 'username=testuser' 'password=testpassword'
+</code></pre>
+<h4 id="report-submission-endpoint">Report Submission Endpoint<a class="headerlink" href="#report-submission-endpoint" title="Permanent link">&para;</a></h4>
+<p>The address of the submission endpoint is:</p>
+<p><code>https://backend.deqar.eu/submissionapi/v1/submit/report</code></p>
+<p>This is the URL that you can use to make a <code>POST</code> request including the Submission
+Request Object as JSON object, or many objects as JSON array of objects in the
+request body.</p>
+<p>The <strong>Submission Request Object</strong> is the JSON object (or array of objects) which is
+the manifestation of a report or set of reports an agency wants to submit.</p>
+<p>Fields and accepted types are as described in <a href="#submission-object-data-elements">Submission Object Data Elements</a> above. The full definition of request and response objects can be find in OpenAPI format under:</p>
+<p><a href="https://backend.deqar.eu/submissionapi/v1/swagger/">https://backend.deqar.eu/submissionapi/v1/swagger/</a></p>
+<h4 id="report-file-submission-endpoint">Report File Submission Endpoint<a class="headerlink" href="#report-file-submission-endpoint" title="Permanent link">&para;</a></h4>
+<p>Files (PDF versions of reports) can be submitted in two separate ways:</p>
+<ul>
+<li>URLs submitted with a Submission Request Object will be harvested asynchronously upon successful submission.</li>
+<li>Files can be submitted directly to a dedicated endpoint as part of a <code>PUT</code> request:
+   <code>https://backend.deqar.eu/submissionapi/v1/submit/reportfile/&lt;report_file_id&gt;/&lt;filename&gt;</code></li>
+</ul>
+<p><code>report_file_id</code>: The id number of the Report File object available in the
+response after successful submission. The <code>report_file_id</code> is contained in the response object of the successful report submission.
+   <code>filename</code>: The name of the file that you will submit in this request.</p>
+<h4 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h4>
+<p>The examples below show how a JSON Submission Request Object might look for different types of reports:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/institutional.json">Institutional report</a></li>
+<li><a href="https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/programme.json">Programme report</a></li>
+<li><a href="https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/institutional_programme.json">Institutional/Programme report</a></li>
+<li><a href="https://raw.githubusercontent.com/EQAR/eqar_backend/master/submissionapi/examples/joint_programme.json">Joint Programme report</a></li>
+</ul>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../quick_start_guide/" class="btn btn-neutral float-left" title="Quick Start Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../web_api/" class="btn btn-neutral float-right" title="Search and Discovery">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../quick_start_guide/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../web_api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* CSS custom for DEQAR MkDocs */
+
+.wy-side-nav-search {
+    background-color: #98ACCA;
+}
+
+.wy-menu li.current ul.subnav ul {
+    padding-left: 1em;
+}
+
+.wy-menu li.current ul.subnav > li a {
+    font-weight: bold;
+}
+
+.wy-menu-vertical .subnav li.current > ul li a {
+    padding-left: 2.427em;
+}
+
+/* adjust colours to EQAR theme */
+
+code, .rst-content tt {
+    font-size: 90%;
+    padding: 2px 0px;
+    color: #18498F;
+    border: none;
+}
+
+/* quotes from documents */
+
+.rst-content blockquote {
+    background-color: #C6D2E3;
+    margin: 10px 0 20px 0;
+    border-left: 6px solid #98ACCA;
+    padding: 15px;
+    border-radius: 5px;
+}
+.rst-content blockquote p:last-child {
+   margin-bottom: 0;
+}
+
+pre {
+   border: none;
+   font-family: inherit;
+   background-color: #98ACCA;
+   padding: .5em;
+   margin: 1em 0;
+}
+
+.rst-content .section a, .rst-content .section a:visited {
+    color: #18498F;
+}
+.rst-content .section a[href$=".pdf"], .rst-content .section a[href$=".pdf"]:visited {
+    color: #FF8A00;
+    padding: 9px 12px 9px 40px;
+    display: block;
+    background: #FFF3D9 url(../img/pdf.svg) no-repeat 13px center;
+}
+.rst-content .section a:hover {
+    text-decoration: underline;
+}
+
+.rst-content .section ul li p:last-child {
+    margin-bottom: 12px;
+}
+
+/* we want you for DEQAR */
+.rst-content img[src="../img/DEQARWantsYou.png"] {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+.rst-content h1, .rst-content h2, .rst-content h3, .rst-content h4, .rst-content h5 {
+    clear: both;
+}
+
+/* ordered lists */
+.rst-content .section ol {
+   counter-reset: orderedlist;
+}
+.rst-content .section ol > li {
+    list-style-type: none;
+    counter-increment: orderedlist;
+    position: relative;
+}
+.rst-content .section ol > li:before {
+    content: counter(orderedlist) ".";
+    position:absolute;
+    left: -2.6em;
+    width: 2em;
+    text-align: right;
+}
+.rst-content .section ol > li > ol {
+    margin-bottom: 0;
+}
+.rst-content .section ol > li > ol > li:before {
+    content: "(" counter(orderedlist, lower-roman) ")";
+}
+
+
+/* CSS for print output */
+
+@media print {
+
+	h1, h2, h3, h4, h5 {
+	  page-break-after: avoid;
+	}
+
+}
+
+@page {
+  size: A4;
+  margin: 2cm;
+}
+
+@page { 
+  @top-center {
+    margin: 10pt 0 30pt 0;
+    border-bottom: .25pt solid #0e447d;
+    content: "DEQAR Documentation";
+    font-size: 9pt;
+    color: #0e447d;
+  }
+}
+
+@page:right{
+  @bottom-right {
+    content: counter(page);
+  }
+}
+
+@page:left{
+  @bottom-left {
+    content: counter(page);
+  }
+}
+
