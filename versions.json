@@ -1,5 +1,12 @@
 [
   {
+    "version": "2.0",
+    "title": "2.0",
+    "aliases": [
+      "draft"
+    ]
+  },
+  {
     "version": "1.2",
     "title": "1.2",
     "aliases": [

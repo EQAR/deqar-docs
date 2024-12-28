@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Report Submission - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Report Submission";
+        var mkdocs_page_input_path = "data_submission.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Submitting data</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../institution_data/">Provider Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Report Submission</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#choosing-a-submission-method">Choosing a Submission Method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-pipeline">Data Pipeline</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#validation-criteria">Validation criteria</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#flagging-criteria">Flagging criteria</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#webform">Webform</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#csv-upload">CSV Upload</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#template-and-samples">Template and samples</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#preparingexporting-csv-files">Preparing/exporting CSV files</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#microsoft-excel">Microsoft Excel</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#libreofficeopenofficeneooffice">LibreOffice/OpenOffice/NeoOffice</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#google-sheets">Google Sheets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#uploading-csv-files">Uploading CSV files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#submission-api">Submission API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#report-submission-endpoint">Report Submission Endpoint</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#report-file-submission-endpoint">Report File Submission Endpoint</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#institutional-report">Institutional report</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#programme-report">Programme report</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#joint-programme-report">Joint Programme report</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#micro-credential-provided-by-a-higher-education-institution">Micro-credential provided by a higher education institution</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#audit-of-an-other-provider">Audit of an other provider</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#accreditation-of-a-micro-credential-provided-by-an-other-provider">Accreditation of a micro-credential provided by an other provider</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#updating-reports">Updating Reports</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sandbox">Sandbox</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Integrations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../europass/">European Digital Credentials for Learning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ebsi/">European Blockchain Service Infrastructure (EBSI)</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Submitting data</li>
+      <li class="breadcrumb-item active">Report Submission</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="report-submission">Report Submission<a class="headerlink" href="#report-submission" title="Permanent link">&para;</a></h1>
+<p>Each agency should follow three steps to submit their report data:</p>
+<ol>
+<li>Choose a particular <a href="#choosing-a-submission-method">submission method</a>.</li>
+<li>Prepare your data with guidance on the <a href="../report_data/">Report Data Elements</a> above.</li>
+<li>Submit data using your chosen submission method and review the response after your data has passed through validation and flagging as described in <a href="#data-pipeline">Data Pipeline</a> below.</li>
+</ol>
+<h2 id="choosing-a-submission-method">Choosing a Submission Method<a class="headerlink" href="#choosing-a-submission-method" title="Permanent link">&para;</a></h2>
+<p>Considering the various needs of the agencies, DEQAR supports three different submission methods. Their use is highly dependent on the technical resources available to a particular agency. Important: all three methods are fully interoperable. That is, agencies may switch between different methods at any time, and data submitted via one method may be updated/altered via another method.</p>
+<p><a href="#webform"><strong>Webform</strong></a>: Those agencies needing a simple means of submitting report data to DEQAR can enter data directly in the webform present in the administrative interface. This method is fully manual; agencies can simply login and create new report records or modify existing ones. Flags and validation errors will be returned immediately upon submission. Data already submitted using CSV or JSON/API will also be accessible through the administrative interface.</p>
+<p>We recommend this method for agencies:</p>
+<ul>
+<li>without IT developers;</li>
+<li>with a closed system architecture from which data export is not straightforward;</li>
+<li>who would like to submit small amounts of data occasionally;</li>
+<li>who would like to interact with their DEQAR data directly.</li>
+</ul>
+<p><a href="#csv-upload"><strong>CSV Upload</strong></a>: In order to submit batches of documents, agencies may prefer to work with well-established formats like Excel. <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma Separated Values (CSV)</a> is a flat file format which can be produced and presented directly through Excel, LibreOffce and many other software packages. This termed a semi-automatic data submission method. DEQAR has provided a CSV template which can be complemented with the detailed explanation of the <a href="../report_data/">Report Data Elements</a> above.</p>
+<p>Using CSV, transformation of data can be done manually by administrative staff without the help of IT. Staff can then login to the administrative interface and upload the CSV file for import. When uploading, records (i.e. single lines of the file) are validated and information on the status of each record in the uploaded batch are shown on the import interface. Agency staff can then decide to fix failed records ad-hoc or re-upload them later.</p>
+<p>We recommend this method for agencies:</p>
+<ul>
+<li>without IT developers;</li>
+<li>with a local system from which they can export data in tables;</li>
+<li>who would like to submit bigger amounts of data in a batch;</li>
+<li>who would like to work manually on their data before submitting to DEQAR.</li>
+</ul>
+<p><a href="#submission-api"><strong>Submission API</strong></a>: <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a> is a convenient way for software developers to communicate via HTTP, the protocol used by the internet. When used together with the <a href="https://www.json.org/">JSON format</a> it provides flexible means of exchanging data between systems. With the possibility of sending complex request and response objects, DEQAR can accept structured data and give immediate feedbacks (error checks, warnings) about the submitted data as well as metadata enhancements.</p>
+<p>We recommend this method for agencies:</p>
+<ul>
+<li>with IT developers / IT vendors who can develop a method (script/web application) to post data to the API endpoint;</li>
+<li>who would like to submit large amounts of data at once with a single call;</li>
+<li>who would like to submit individual reports immediately upon their creation;</li>
+<li>who would like to keep DEQAR and their local system in sync;</li>
+<li>who plan to submit data periodically and at longer intervals (e.g. weekly or monthly).</li>
+</ul>
+<h2 id="data-pipeline">Data Pipeline<a class="headerlink" href="#data-pipeline" title="Permanent link">&para;</a></h2>
+<p>In general, irrespective of the submission method, all report data submitted to DEQAR is handled following these steps:</p>
+<ol>
+<li>The first level of validation concerns the data format, including that all required fields are present and all identifiers used are valid. If the record does not pass the requirements and constraints described in <a href="#validation-criteria">Validation Criteria</a> below, the record is rejected.</li>
+<li>Valid report data is saved in the database.</li>
+<li>Sanity checks are run against pre-defined <a href="#flagging-criteria">Flagging Criteria</a>; reports which meet any of these criteria are flagged. Flagged reports are nevertheless saved in the database and should not be re-submitted.</li>
+<li>A Response Object (or array of objects) is sent back to the agency, containing:<ul>
+<li>detailed error descriptions for report objects that were rejected;</li>
+<li>identifiers of report records that were created or identified;</li>
+<li>information on records where sanity checks found issues.</li>
+</ul>
+</li>
+</ol>
+<h3 id="validation-criteria">Validation criteria<a class="headerlink" href="#validation-criteria" title="Permanent link">&para;</a></h3>
+<p>In order for submission objects to clear the first level of validation, they must meet the following criteria:</p>
+<ol>
+<li>
+<p>The main <strong>agency</strong> that created the report (which may or may not be the agency submitting the records) must be clearly identified and, if your user is not linked to the agency itself, you must have a proxy to submit reports for the agency.</p>
+<p>Additional, contributing agencies <a href="../report_data/#agency">can be identified</a>, but all validation and flagging criteria relate to the main agency only.</p>
+</li>
+<li>
+<p>Submitted data must <strong>align with the Agency Profile</strong> information, specifically report validity date must be after the Agency's EQAR registration start date and before the registration end date, if applicable.</p>
+</li>
+<li>
+<p>All <strong>required data</strong> must be present for each report. Required data for all records includes:</p>
+<ul>
+<li><a href="../report_data/#activity">ESG activity performed</a></li>
+<li><a href="../report_data/#details">Status of report</a></li>
+<li><a href="../report_data/#details">Decision</a></li>
+<li>Report <a href="../report_data/#validity">valid from date, including date format</a> used by the agency</li>
+<li>At least one <a href="../report_data/#files">report file</a> including the language(s) in which it is drafted</li>
+<li>Organisation: a report must relate to at least one <a href="../report_data/#organisations">existing organisation record</a> identified by a DEQARINST ID, ETER ID or another known identifier.</li>
+</ul>
+</li>
+<li>
+<p>At this point, <strong>dependencies</strong> between elements will be checked as well as any <strong>limits on the number of values permitted</strong> for each element. In particular:</p>
+<ul>
+<li>Requirements based on the <strong>type of ESG activity</strong>:<ul>
+<li>institutional: no programme data must be provided</li>
+<li>programme or programme/institution: exactly one organisation must be identified, data on one or several programme(s) must be provided</li>
+<li>joint programme: at least two organisations must be identified, data on one or several programme(s) must be provided</li>
+</ul>
+</li>
+<li>Data required for <strong>each programme</strong> (i.e. except institutional reports):<ul>
+<li>the <a href="../report_data/#programme-name-and-qualification">programme name</a> (in whichever language it is stored by the Agency)</li>
+<li>the <a href="../report_data/#programme-qualification-level">degree outcome</a> indicating whether full degree or not – required as from 2024</li>
+<li>the <a href="../report_data/#programme-qualification-level">qualification level</a> – required for non-full degree programmes, as from 2024 required for all</li>
+</ul>
+</li>
+<li>Data required for <strong>programmes with degree outcome "no"</strong> (= not leading to a full degree):<ul>
+<li><a href="../report_data/#programme-details">Workload expressed in ECTS</a></li>
+<li>Whether programme includes <a href="../report_data/#programme-details">assessment or certification</a></li>
+</ul>
+</li>
+<li>Constraints for <strong>reports not covering any higher education institution from the EHEA</strong>, e.g. report on a non-European higher education institution or other provider:<ul>
+<li><a href="../report_data/##report-details">Status</a> must be "voluntary"</li>
+</ul>
+</li>
+<li>Constraints for <strong>reports on only other providers</strong>, i.e. when none of the organisations identified is a higher education institution:<ul>
+<li><a href="../report_data/#programme-qualification-level">Degree outcome</a> must be "no" (= not leading to a full recognised degree)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Submitted data must be of the <strong>correct type, form and value range/options</strong> as described above.</p>
+</li>
+</ol>
+<p>Records not meeting all of the above criteria will be rejected and no data on the report will be saved. The system will return a response object that clearly identifies rejected records, including information on the source of the problem. Importantly, the rejection of one or more submission objects does not imply the failure of the whole submission batch.</p>
+<h3 id="flagging-criteria">Flagging criteria<a class="headerlink" href="#flagging-criteria" title="Permanent link">&para;</a></h3>
+<p>Once the report data passed the first level of validation, DEQAR report records are created or updated with the submitted data. Now, some final sanity checks are run on the records: records may receive a “low-level flag” or a “high-level flag”.</p>
+<p>In the first case, records will appear online with submitted data, while the EQAR Secretariat is informed to take note. In the second case, records will not be published until they have been checked and confirmed by the EQAR Secretariat.</p>
+<blockquote>
+<p>The purpose of a flag is to bring a report to the EQAR Secretariat's attention. A flag normally does <strong>not</strong> indicate that data should be changed. Therefore, provided that the data you entered/uploaded is correct, please do <strong>not</strong> try to change the data of a report in order to prevent it from being flagged, but simply wait for EQAR Secretariat to have checked the report.</p>
+</blockquote>
+<p>Sanity checks may result in <strong>high-level flags</strong> for the following reason:</p>
+<ul>
+<li>
+<p>Report Status is listed as <em>part of obligatory EQA system</em> and the Agency does not have official status (according to EQAR's information) in any legal seat country of any higher education covered by the report.</p>
+<blockquote>
+<p>For reports on both higher education institutions and other providers, the agency must have official status in one of the higher education institutions' countries, the status in the other providers' countries is not relevant to this check.</p>
+</blockquote>
+</li>
+</ul>
+<p>Sanity checks may result in <strong>low-level flags</strong> for the following reasons:</p>
+<ul>
+<li>The report covers a provider with a legal seat in or a programme delivered in a country in which the agency has not previously been active.</li>
+<li>Country of the programme (if specified) does not match any location country of any provider covered.</li>
+<li>Programme-level report is "voluntary" and the programme's qualification level is not contained in the list of qualification levels of any of the higher education institutions specified</li>
+<li>One or more PDF files of the report could not be downloaded (in case a URL was specified) or was not yet uploaded (using the specific API endpoint)</li>
+</ul>
+<p>In addition, the following data on agencies or institutions will automatically be complemented at flagging stage:</p>
+<ul>
+<li>If the report covers a provider with a legal seat in or a programme delivered in a country in which the agency has not previously been active, this <strong>country is added to the agency's profile</strong>.</li>
+<li>The <strong>programme qualification level</strong> is added to a higher education institution's qualification levels if the report is "part of the obligatory EQA system".</li>
+<li>The programme qualification level is always added to an other provider's qualification levels.</li>
+</ul>
+<h2 id="webform">Webform<a class="headerlink" href="#webform" title="Permanent link">&para;</a></h2>
+<p>The DEQAR administrative interface includes an interactive webform, allowing you to submit single reports. The administrative interface is available at:</p>
+<p>location: <a href="https://admin.deqar.eu/">https://admin.deqar.eu/</a><br />
+username: [agency's acronym (in lower case)]<br />
+password: [your personal password]</p>
+<p>If you do not remember your password or did not change the default password, please go to <a href="https://admin.deqar.eu/forgot-password">https://admin.deqar.eu/forgot-password</a> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.</p>
+<p>The email address linked to your login is the same email address to which submission report emails are sent. If you do not remember which email address is linked to your agency's login, please contact the EQAR Secretariat.</p>
+<p>The webform can be found in the menu under <em>Submit Report</em> &gt; <em><a href="https://admin.deqar.eu/submit-report">Report Form</a></em>.</p>
+<p>Required fields are marked with a <span style="color: #f00;">*</span> in the form; fields marked with a <span style="color: #f00;">(*)</span> are conditionally required. Please note that the <a href="#report-activity">Activity</a> chosen might influence which information is required (see <a href="../report_data/">Report Data Elements</a> above). The <em>Save Record</em> button becomes active once all required information has been provided.</p>
+<p>We strongly recommend that you provide a <a href="#report-identification">Local Report Identifier</a> that identifies the specific report in your own information system or workflow, even when you use the webform. This will facilitate later updates should they be necessary, and can be useful if your agency changes to CSV upload or the Submission API later on.</p>
+<p>You can select institutions using the search box. If you are uploading a report on an institution that has no DEQAR record yet, see <a href="../institution_data/">Institution Data</a> on how to add it before uploading reports.</p>
+<p>Data on programmes will only be needed if your report results from a programme-level activity. Fill the form with the required information and then click the <em>Add Programme</em> button. If the report concerns several programmes (e.g. clustered evaluation) please repeat the step for all programmes concerned. (See <a href="#programme-data-elements">Programme Data Elements</a> above.)</p>
+<p>Each report may contain one or more report files (for example, the experts' report, a possible summary report and the decision taken might be contained all in one or in separate files). The report file fields are conditionally required. At least one must be present, but agencies can either provide a URL or upload a file directly (in either case, only PDF files are accepted). For each file, please specify the language(s) of its contents. The display name is optional; the text "Report" will be used as a default otherwise. (See <a href="#qa-report-files">QA Report Files</a> above.)</p>
+<h2 id="csv-upload">CSV Upload<a class="headerlink" href="#csv-upload" title="Permanent link">&para;</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> is a common and interoperable data-exchange format. Files can be imported and exported from all usual <a href="#preparingexporting-csv-files">spreadsheet software</a> (e.g. Excel, LibreOffice, ...) and numerous other applications.</p>
+<p>The first row of your file is a header which should include column names as defined under <a href="../report_data/">Report Data Elements</a> above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:</p>
+<pre><code>agency, activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
+</code></pre>
+<p>(Spaces added for readability, these should not appear in an actual file.)</p>
+<p>One report may often include/relate to several items, such as one or more provider(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type <code>field_name[n]</code> (See <a href="../report_data/">Report Data Elements</a> above). You should create as many columns as you need and replace <code>n</code> by 1, 2, ...</p>
+<p>For example, two files (e.g. full report in local language, and summary in both English and local language) can be provided as follows:</p>
+<pre><code>..., file[1].original_location,   file[1].display_name, file[1].report_language[1], file[2].original_location,   file[2].display_name, file[2].report_language[1], file[2].report_language[2], ...
+..., &quot;http://some.url/to/report&quot;, &quot;Expert report&quot;,      &quot;de&quot;,                       &quot;http://some.url/to/report&quot;, &quot;Summary&quot;,            &quot;en&quot;,                       &quot;de&quot;, ...
+</code></pre>
+<p>(Spaces added for readability, these should not appear in an actual file.)</p>
+<p>You can use one of the sample CSV files below as a starting point and adjust it to your needs. Please bear in mind the following:</p>
+<ul>
+<li>The template file is provided in Microsoft Excel and Open Document Formats, as well as viewable on-line. <strong>It needs to be saved in CSV format for upload to DEQAR</strong> (see notes below).</li>
+<li>The first worksheet includes <em>all</em> possible column names you could use in a CSV file, with the respective requirement/validation notes as comments. These comments will disappear as you save the file in CSV format.</li>
+<li>The subsequent worksheets include more condensed examples with sample data, including those columns that will typically be used in reports concerning institutions, programmes or joint programmes.</li>
+<li>You need to include all columns you might need in at least one of your reports, but they can stay empty in those lines where they are not applicable.</li>
+<li>You may omit columns from the sample CSV file that are not used in any of the reports.</li>
+<li>CSV files should be saved in UTF-8 encoding.</li>
+</ul>
+<h3 id="template-and-samples">Template and samples<a class="headerlink" href="#template-and-samples" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="../files/SubmissionTemplate.xlsx">Microsoft Excel format</a></li>
+<li><a href="../files/SubmissionTemplate.ods">Open Document Format (OpenOffice/LibreOffice/NeoOffice)</a></li>
+<li><a href="../files/SubmissionSample_mixed.csv">Sample in CSV format</a> (without comments)</li>
+</ul>
+<h3 id="preparingexporting-csv-files">Preparing/exporting CSV files<a class="headerlink" href="#preparingexporting-csv-files" title="Permanent link">&para;</a></h3>
+<p>Despite being software-independent, there are some known issues when creating/exporting CSV files from some major office applications. Given that it has the most clean and straight-forward CSV export, we recommend the <a href="https://www.libreoffice.org/">LibreOffice package</a>, a free and open-source desktop application supported on all major operating systems.</p>
+<p>For all software packages, please note that the CSV format does not support multiple sheets, but it will always be only the current work sheet that is saved in CSV format.</p>
+<h4 id="microsoft-excel">Microsoft Excel<a class="headerlink" href="#microsoft-excel" title="Permanent link">&para;</a></h4>
+<p>Despite offering CSV as a target file type in its <em>Save as</em> dialogue, Microsoft Excel does not create correct CSV files when certain character sets are used (e.g. Greek or Cyrillic alphabets, or certain Roman characters with diacritics). You can use the following work-around:</p>
+<ul>
+<li>Select <em>Save as</em> from the <em>File</em> menu, select your desired folder and choose <em>Unicode Text (*.txt)</em> as type.<br /> <img alt="Excel save as dialogue" src="../img/csv-excel-fix-0.png" /></li>
+<li>Simply press <em>OK</em> in response to the following error message:<br /> <img alt="The selected file type does not support workbooks that contain multiple sheets" src="../img/csv-excel-fix-1.png" /></li>
+<li>Furthermore, confirm with <em>Yes</em> also the following warning message:<br /> <img alt="Some features in your workbook might be lost if you save it as Unicode Text" src="../img/csv-excel-fix-2.png" /></li>
+<li>Close Microsoft Excel and navigate to the folder containing your file in the file manager. Right-click on your file and choose <em>Rename</em>.</li>
+<li>Now change the file extension from <code>.txt</code> into <code>.csv</code>. You will encounter the following message: <em>If you change file name extension, the file may become unusable. You still want to change them, you should press ‘Yes’...</em> Confirm the warning by clicking Yes.</li>
+<li>This CSV file is now suitable for upload.</li>
+</ul>
+<h4 id="libreofficeopenofficeneooffice">LibreOffice/OpenOffice/NeoOffice<a class="headerlink" href="#libreofficeopenofficeneooffice" title="Permanent link">&para;</a></h4>
+<p>Exporting CSV files is straight-forward in LibreOffice, OpenOffice and NeoOffice:</p>
+<ul>
+<li>Choose <em>Text CSV (*.csv)</em> as file type in the <em>Save As ...</em> or <em>Save a Copy ...</em> dialogue:<br /> <img alt="LibreOffice save file dialogue" src="../img/csv-libreoffice-0.png" /></li>
+<li>Ensure the export settings are set as follows in the next dialogue. Please pay particular attention character set and delimiters:<br /> <img alt="CSV export settings" src="../img/csv-libreoffice-1.png" /></li>
+<li>The CSV file is now suitable for upload.</li>
+</ul>
+<h4 id="google-sheets">Google Sheets<a class="headerlink" href="#google-sheets" title="Permanent link">&para;</a></h4>
+<p>In Google Sheets, choose <em>Comma-separated values</em> from the <em>File</em> &gt; <em>Download as...</em> menu.</p>
+<h3 id="uploading-csv-files">Uploading CSV files<a class="headerlink" href="#uploading-csv-files" title="Permanent link">&para;</a></h3>
+<p>The CSV upload module is part of the DEQAR admin interface:</p>
+<p>location: <a href="https://admin.deqar.eu/upload-csv">https://admin.deqar.eu/upload-csv</a><br />
+username: [agency's acronym (in lower case)]<br />
+password: [your personal password] (see <a href="#webform">above</a> how to reset your password)</p>
+<ul>
+<li>Select <em>Submit Report</em> &gt; <em>Upload CSV</em> from the menu.</li>
+<li>Choose your file under <em>Select CSV file</em> and click <em>Upload</em>.</li>
+<li>You can now review your data one more time under <em>Uploaded CSV Data</em>, and make changes if necessary.</li>
+<li>Afterwards, click on <em>Ingest</em> under the table. The uploaded CSV file now passes the same <a href="#validation-criteria">validation</a> pipeline as information submitted through any other method.</li>
+<li>After ingest, you will see all rows highlighted in green if they were successfully saved, or in red if they could not be ingested due to validation errors. Click on a row to see details about the errors.</li>
+<li>If you experienced errors, you can correct the respective lines and click on <em>Ingest</em> again.</li>
+<li>Please note that the green rows will be re-ingested, but overwrite the existing report based on the DEQAR Report ID. Any changes you make to green rows will therefore be recorded on a further ingest, too.</li>
+</ul>
+<h2 id="submission-api">Submission API<a class="headerlink" href="#submission-api" title="Permanent link">&para;</a></h2>
+<p>REST API is a convenient way for software developers to communicate with web services via HTTP, the protocol used by the internet. Together with JSON it provides an easy, straightforward and flexible means of exchanging data between systems. With the possibility of sending complex request and response objects, we can accept structured data and give immediate feedbacks (e.g. error checks, warnings) about the submitted data as well as metadata enhancements (e.g. ETER IDs on HEIs, when applicable; links to new records on the EQAR public interface, etc.).</p>
+<h3 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h3>
+<p>Requests for submission to DEQAR are only accepted from registered users and must therefore be identified. DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header (with type/scheme Bearer) will authenticate the user in place of a regular username and password.</p>
+<p>To get your authentication token you can send a <code>POST</code> request to the following URL:</p>
+<p><code>https://backend.deqar.eu/accounts/get_token/</code></p>
+<p>An example of obtaining a token using curl in command line:</p>
+<pre><code class="language-sh">curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
+</code></pre>
+<p>The username is the agency’s acronym (in lower case). Please see <a href="#webform">above</a> how to reset your password.</p>
+<p>Or for those who prefer to use the more user friendly <a href="https://httpie.io/">HTTPie</a> client:</p>
+<pre><code class="language-sh">http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
+</code></pre>
+<p>You should send this token, preceded by the word <code>Bearer</code>, in the Authorization header with every further request. An example of a submission using curl or HTTPie:</p>
+<pre><code class="language-sh">curl -s -H &quot;Content-type: application/json&quot; -H &quot;Authorization: Bearer $DEQAR_TOKEN&quot; -XPOST https://backend.deqar.eu/submissionapi/v1/submit/report --data-binary @$DEQAR_FILE
+
+http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report &quot;Authorization: Bearer $DEQAR_TOKEN&quot; &quot;Content-type: application/json&quot; &lt; $DEQAR_FILE
+</code></pre>
+<h3 id="report-submission-endpoint">Report Submission Endpoint<a class="headerlink" href="#report-submission-endpoint" title="Permanent link">&para;</a></h3>
+<p>The address of the submission endpoint is:</p>
+<p><code>https://backend.deqar.eu/submissionapi/v1/submit/report</code></p>
+<p>This is the URL that you can use to make a <code>POST</code> request including the Submission Request Object as JSON object, or many objects as JSON array of objects in the request body.</p>
+<p>The <strong>Submission Request Object</strong> is the JSON object (or array of objects) which is the manifestation of a report or set of reports an agency wants to submit.</p>
+<p>Fields and accepted types are as described in <a href="../report_data/">Report Data Elements</a> above. The full definition of request and response objects can be find in OpenAPI format under:</p>
+<p><a href="https://backend.deqar.eu/submissionapi/v1/swagger/">https://backend.deqar.eu/submissionapi/v1/swagger/</a></p>
+<p><strong>Important:</strong> Please do <strong>not</strong> include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single <a href="../architecture_data_model/#institution-identifiers">identifier</a> only (DEQARINST ID, ETER ID, local or other identifier). New institutions <a href="../institution_data/#institution-data-elements">must be added separately beforehand</a>.</p>
+<h3 id="report-file-submission-endpoint">Report File Submission Endpoint<a class="headerlink" href="#report-file-submission-endpoint" title="Permanent link">&para;</a></h3>
+<p>Files (PDF versions of reports) can be submitted in two separate ways:</p>
+<ul>
+<li>URLs submitted with a Submission Request Object will be harvested asynchronously upon successful submission.</li>
+<li>Files can be submitted directly to a dedicated endpoint as part of a <code>PUT</code> request: <code>https://backend.deqar.eu/submissionapi/v1/submit/reportfile/&lt;report_file_id&gt;/&lt;filename&gt;</code></li>
+</ul>
+<p><code>report_file_id</code>: The id number of the Report File object available in the response after successful submission. The <code>report_file_id</code> is contained in the response object of the successful report submission. <code>filename</code>: The name of the file that you will submit in this request.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>The examples below show how a JSON Submission Request Object might look for different types of reports:</p>
+<h4 id="institutional-report">Institutional report<a class="headerlink" href="#institutional-report" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">[
+    {
+        &quot;agency&quot;: &quot;MusiQuE&quot;,
+        &quot;local_identifier&quot;: &quot;CRDB-October14&quot;,
+        &quot;activity&quot;: &quot;183&quot;,
+        &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
+        &quot;decision&quot;: &quot;positive&quot;,
+        &quot;valid_from&quot;: &quot;2016-10-28&quot;,
+        &quot;valid_to&quot;: &quot;2018-01-15&quot;,
+        &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+        &quot;report_files&quot;: [
+            {
+                &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2014-10-bruxelles-website.pdf&quot;,
+                &quot;display_name&quot;: &quot;Evaluation report&quot;,
+                &quot;report_language&quot;: [
+                    &quot;fr&quot;
+                ]
+            }
+        ],
+        &quot;institutions&quot;: [
+            {
+                &quot;eter_id&quot;: &quot;BE0035&quot;
+            }
+        ]
+    },
+    {
+        &quot;agency&quot;: &quot;MusiQuE&quot;,
+        &quot;local_identifier&quot;: &quot;ENH-4711&quot;,
+        &quot;activity&quot;: &quot;97&quot;,
+        &quot;status&quot;: &quot;2&quot;,
+        &quot;decision&quot;: &quot;4&quot;,
+        &quot;valid_from&quot;: &quot;2021-01-15&quot;,
+        &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+        &quot;report_files&quot;: [
+            {
+                &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2015-06-25-hamu-review-reportfinal.pdf&quot;,
+                &quot;display_name&quot;: &quot;Institutional Review&quot;,
+                &quot;report_language&quot;: [
+                    &quot;eng&quot;
+                ]
+            },
+            {
+                &quot;original_location&quot;: &quot;https://zenodo.org/record/4516653/files/Database_of_External_QA_Results_Report%2BModel_2016.pdf?download=1&quot;,
+                &quot;display_name&quot;: &quot;Addendum to the report&quot;,
+                &quot;report_language&quot;: [
+                    &quot;ger&quot;
+                ]
+            }
+        ],
+        &quot;institutions&quot;: [
+            {
+                &quot;deqar_id&quot;: &quot;DEQARINST0390&quot;
+            },
+            {
+                &quot;eter_id&quot;: &quot;AT0006&quot;
+            }
+        ]
+    }
+]
+</code></pre>
+<h4 id="programme-report">Programme report<a class="headerlink" href="#programme-report" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">{
+    &quot;agency&quot;: &quot;MusiQuE&quot;,
+    &quot;local_identifier&quot;: &quot;SHM-April09&quot;,
+    &quot;activity&quot;: &quot;181&quot;,
+    &quot;status&quot;: &quot;2&quot;,
+    &quot;decision&quot;: &quot;1&quot;,
+    &quot;valid_from&quot;: &quot;2017-04-09&quot;,
+    &quot;valid_to&quot;: &quot;2022-02-15&quot;,
+    &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+    &quot;report_files&quot;: [
+        {
+            &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2009-06-report-trossingen-website.pdf&quot;,
+            &quot;display_name&quot;: &quot;Review report&quot;,
+            &quot;report_language&quot;: [
+                &quot;ger&quot;
+            ]
+        }
+    ],
+    &quot;institutions&quot;: [
+        {
+            &quot;eter_id&quot;: &quot;DE0140&quot;
+        }
+    ],
+    &quot;programmes&quot;: [
+        {
+            &quot;identifiers&quot;: [
+                {
+                    &quot;identifier&quot;: &quot;16&quot;
+                }
+            ],
+            &quot;name_primary&quot;: &quot;Organ Expert&quot;,
+            &quot;qualification_primary&quot;: &quot;Master of Arts&quot;,
+            &quot;nqf_level&quot;: &quot;level 7&quot;,
+            &quot;qf_ehea_level&quot;: &quot;second cycle&quot;
+        }
+    ]
+}
+</code></pre>
+<h4 id="joint-programme-report">Joint Programme report<a class="headerlink" href="#joint-programme-report" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">{
+    &quot;agency&quot;: &quot;MusiQuE&quot;,
+    &quot;local_identifier&quot;: &quot;EAMT-September13&quot;,
+    &quot;activity&quot;: &quot;182&quot;,
+    &quot;status&quot;: &quot;voluntary&quot;,
+    &quot;decision&quot;: &quot;positive&quot;,
+    &quot;valid_from&quot;: &quot;15.01.2020&quot;,
+    &quot;valid_to&quot;: &quot;15.01.2025&quot;,
+    &quot;date_format&quot;: &quot;%d.%m.%Y&quot;,
+    &quot;report_files&quot;: [
+        {
+            &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/final-reportaec-programme-reviewcopeco.pdf&quot;,
+            &quot;display_name&quot;: &quot;Review report&quot;,
+            &quot;report_language&quot;: [
+                &quot;eng&quot;
+            ]
+        }
+    ],
+    &quot;institutions&quot;: [
+        {
+            &quot;eter_id&quot;: &quot;EE0022&quot;
+        }, {
+            &quot;eter_id&quot;: &quot;SE0037&quot;
+        }, {
+            &quot;identifiers&quot;: [
+                {
+                    &quot;identifier&quot;: &quot;F  LYON24&quot;,
+                    &quot;resource&quot;: &quot;Erasmus&quot;
+                }
+            ]
+        }, {
+            &quot;deqar_id&quot;: &quot;DEQARINST0460&quot;
+        }
+    ],
+    &quot;programmes&quot;: [
+        {
+            &quot;identifiers&quot;: [
+                {
+                    &quot;identifier&quot;: &quot;18&quot;
+                }
+            ],
+            &quot;name_primary&quot;: &quot;CoPeCo – Contemporary Performance and Composition&quot;,
+            &quot;qualification_primary&quot;: &quot;Master (no joint degree)&quot;,
+            &quot;nqf_level&quot;: &quot;level 6&quot;,
+            &quot;qf_ehea_level&quot;: &quot;second cycle&quot;
+        }
+    ]
+}
+</code></pre>
+<h4 id="micro-credential-provided-by-a-higher-education-institution">Micro-credential provided by a higher education institution<a class="headerlink" href="#micro-credential-provided-by-a-higher-education-institution" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">{
+  &quot;agency&quot;: &quot;AAQ&quot;,
+  &quot;local_identifier&quot;: &quot;230830/4711/01&quot;,
+  &quot;activity&quot;: &quot;386&quot;,
+  &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
+  &quot;decision&quot;: &quot;positive&quot;,
+  &quot;valid_from&quot;: &quot;2022-11-11&quot;,
+  &quot;valid_to&quot;: &quot;2033-03-03&quot;,
+  &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+  &quot;institutions&quot;: [
+    {
+      &quot;deqar_id&quot;: &quot;DEQARINST0006&quot;
+    }
+  ],
+  &quot;report_files&quot;: [
+    {
+      &quot;display_name&quot;: &quot;report&quot;,
+      &quot;original_location&quot;: &quot;https://www.eqar.eu/assets/uploads/2021/06/RC_10_1_ComplaintsPolicy_v3_0.pdf&quot;,
+      &quot;report_language&quot;: [
+        &quot;EN&quot;
+      ]
+    }
+  ],
+  &quot;programmes&quot;: [
+    {
+      &quot;name_primary&quot;: &quot;Micro master in IT&quot;,
+      &quot;qf_ehea_level&quot;: &quot;2&quot;,
+      &quot;degree_outcome&quot;: &quot;no&quot;,
+      &quot;workload_ects&quot;: &quot;25&quot;,
+      &quot;assessment_certification&quot;: &quot;1&quot;,
+      &quot;field_study&quot;: &quot;0288&quot;,
+      &quot;learning_outcomes&quot;: [
+        &quot;http://data.europa.eu/esco/skill/7c4fc5e4-10cc-4457-9038-77907fee1290&quot;,
+        &quot;http://data.europa.eu/esco/skill/390bd026-943b-44a5-b871-def0248e26b8&quot;,
+        &quot;http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e&quot;
+      ]
+    }
+  ],
+  &quot;summary&quot;: &quot;We evaluated this micro-credential positively.&quot;
+}
+</code></pre>
+<h4 id="audit-of-an-other-provider">Audit of an other provider<a class="headerlink" href="#audit-of-an-other-provider" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">{
+  &quot;agency&quot;: &quot;AAQ&quot;,
+  &quot;local_identifier&quot;: &quot;240117/4711/009&quot;,
+  &quot;activity&quot;: &quot;231&quot;,
+  &quot;status&quot;: &quot;voluntary&quot;,
+  &quot;decision&quot;: &quot;2&quot;,
+  &quot;valid_from&quot;: &quot;2022-11-11&quot;,
+  &quot;valid_to&quot;: &quot;2033-03-03&quot;,
+  &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+  &quot;institutions&quot;: [
+    {
+      &quot;deqar_id&quot;: &quot;DEQARINST7773&quot;
+    }
+  ],
+  &quot;report_files&quot;: [
+    {
+      &quot;display_name&quot;: &quot;report&quot;,
+      &quot;original_location&quot;: &quot;https://www.eqar.eu/assets/uploads/2021/06/RC_10_1_ComplaintsPolicy_v3_0.pdf&quot;,
+      &quot;report_language&quot;: [
+        &quot;EN&quot;
+      ]
+    }
+  ],
+  &quot;summary&quot;: &quot;Experts were very satisfied with the academy's internal QA system.&quot;
+}
+</code></pre>
+<h4 id="accreditation-of-a-micro-credential-provided-by-an-other-provider">Accreditation of a micro-credential provided by an other provider<a class="headerlink" href="#accreditation-of-a-micro-credential-provided-by-an-other-provider" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">{
+  &quot;agency&quot;: &quot;AAQ&quot;,
+  &quot;local_identifier&quot;: &quot;230830/4711/02&quot;,
+  &quot;activity&quot;: &quot;386&quot;,
+  &quot;status&quot;: &quot;voluntary&quot;,
+  &quot;decision&quot;: &quot;positive&quot;,
+  &quot;valid_from&quot;: &quot;2022-11-11&quot;,
+  &quot;valid_to&quot;: &quot;2033-03-03&quot;,
+  &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+  &quot;institutions&quot;: [
+    {
+      &quot;deqar_id&quot;: &quot;DEQARINST7773&quot;
+    }
+  ],
+  &quot;report_files&quot;: [
+    {
+      &quot;display_name&quot;: &quot;report&quot;,
+      &quot;original_location&quot;: &quot;https://www.eqar.eu/assets/uploads/2021/06/RC_10_1_ComplaintsPolicy_v3_0.pdf&quot;,
+      &quot;report_language&quot;: [
+        &quot;EN&quot;
+      ]
+    }
+  ],
+  &quot;programmes&quot;: [
+    {
+      &quot;name_primary&quot;: &quot;Using Pandas and Python for survey analysis&quot;,
+      &quot;qf_ehea_level&quot;: &quot;2&quot;,
+      &quot;degree_outcome&quot;: &quot;2&quot;,
+      &quot;workload_ects&quot;: &quot;5&quot;,
+      &quot;assessment_certification&quot;: &quot;1&quot;,
+      &quot;field_study&quot;: &quot;0288&quot;,
+      &quot;learning_outcomes&quot;: [
+        &quot;http://data.europa.eu/esco/skill/7c4fc5e4-10cc-4457-9038-77907fee1290&quot;,
+        &quot;http://data.europa.eu/esco/skill/390bd026-943b-44a5-b871-def0248e26b8&quot;,
+        &quot;http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e&quot;
+      ]
+    }
+  ],
+  &quot;summary&quot;: &quot;This micro-credential offers valuable skills to students. It is offered by a company.&quot;
+}
+</code></pre>
+<h2 id="updating-reports">Updating Reports<a class="headerlink" href="#updating-reports" title="Permanent link">&para;</a></h2>
+<p>Normally, once a QA report has been published it will not change. Changing or updating reports in DEQAR should therefore be the exception, rather than regular practice.</p>
+<p>Reports can, however, be changed if needed as follows:</p>
+<ol>
+<li>
+<p><strong>Manually via admin interface</strong></p>
+<p>Please find the report that you want to change in the admin interface, under under Reference data &gt; Reports. To narrow down the search, use filters and search by report number, name, year, agency, country, activity type and flag. Once you find the report, open the record and click on Edit Report. When submitting, please leave a short note to explain the changes you made.</p>
+</li>
+<li>
+<p><strong>Submission API or CSV Upload</strong></p>
+<p>Please use the same method/template as for initially uploading reports.</p>
+<p>Use either the DEQAR Report ID (<code>report_id</code>) or the same <a href="../report_data/#report-identifier">Local Report Identifier</a> (<code>local_identifier</code>) that you provided to DEQAR with your earlier/initial upload of the report. Lacking an ID prevents the system from recognising the report that needs to be updated, and will lead to creation of new (duplicate) record in the database, not overwriting.</p>
+<p>As the system replaces the entire record, you must provide the full submission object once again, including all fields and not just the altered ones.</p>
+<p>Failing to provide information in required fields will lead to rejection of the change, and the old record will remain. Failing to provide information in optional fields will empty those fields, even if they were filled before, and will thus cause deletion of the information.</p>
+</li>
+</ol>
+<h2 id="sandbox">Sandbox<a class="headerlink" href="#sandbox" title="Permanent link">&para;</a></h2>
+<p>The DEQAR Sandbox, like any sandbox, is intended for you to “play”, enabling you to trial particular submission methods, data structures, formats and syntax. More specifically, it is a space where we encourage (even urge) you to test your submissions before putting them into the live system.</p>
+<p>The Sandbox is reached through separate links:</p>
+<ul>
+<li>To test the manual and CSV submission, go to the Sandbox Administrative Interface at: <a href="https://admin.sandbox.deqar.eu/">https://admin.sandbox.deqar.eu/</a></li>
+<li>To test API submission, go to the Sandbox Submission API at: <a href="https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report">https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report</a></li>
+<li>To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: <a href="https://sandbox.deqar.eu/">https://sandbox.deqar.eu/</a></li>
+</ul>
+<p>The Sandbox is an identical copy of the live system. The entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../report_data/" class="btn btn-neutral float-left" title="Report Data Elements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../web_api_intro/" class="btn btn-neutral float-right" title="Introduction">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../report_data/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../web_api_intro/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
