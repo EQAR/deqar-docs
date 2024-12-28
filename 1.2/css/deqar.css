@@ -194,7 +194,7 @@
     font-size: inherit;
 }
 
-#version-selector {
+select#version-selector {
     margin: 10px auto 15px;
     border: 1px solid #2472a4;
     border-radius: 50px;
