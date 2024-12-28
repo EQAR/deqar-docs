@@ -95,7 +95,7 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#report-submission-endpoint">Report Submission Endpoint</a>
+    <li class="toctree-l3"><a class="reference internal" href="#report-submission-endpoints">Report Submission Endpoints</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#report-file-submission-endpoint">Report File Submission Endpoint</a>
     </li>
@@ -300,12 +300,12 @@
 </ul>
 <h2 id="webform">Webform<a class="headerlink" href="#webform" title="Permanent link">&para;</a></h2>
 <p>The DEQAR administrative interface includes an interactive webform, allowing you to submit single reports. The administrative interface is available at:</p>
-<p>location: <a href="https://admin.deqar.eu/">https://admin.deqar.eu/</a><br />
+<p>location: <a href="https://admin.testzone.eqar.eu/">https://admin.testzone.eqar.eu/</a><br />
 username: [agency's acronym (in lower case)]<br />
 password: [your personal password]</p>
-<p>If you do not remember your password or did not change the default password, please go to <a href="https://admin.deqar.eu/forgot-password">https://admin.deqar.eu/forgot-password</a> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.</p>
+<p>If you do not remember your password or did not change the default password, please go to <a href="https://admin.testzone.eqar.eu/forgot-password">https://admin.testzone.eqar.eu/forgot-password</a> in order to reset your password. You need to enter your email address and will receive by email a special link that allows you to set a new password.</p>
 <p>The email address linked to your login is the same email address to which submission report emails are sent. If you do not remember which email address is linked to your agency's login, please contact the EQAR Secretariat.</p>
-<p>The webform can be found in the menu under <em>Submit Report</em> &gt; <em><a href="https://admin.deqar.eu/submit-report">Report Form</a></em>.</p>
+<p>The webform can be found in the menu under <em>Submit Report</em> &gt; <em><a href="https://admin.testzone.eqar.eu/submit-report">Report Form</a></em>.</p>
 <p>Required fields are marked with a <span style="color: #f00;">*</span> in the form; fields marked with a <span style="color: #f00;">(*)</span> are conditionally required. Please note that the <a href="#report-activity">Activity</a> chosen might influence which information is required (see <a href="../report_data/">Report Data Elements</a> above). The <em>Save Record</em> button becomes active once all required information has been provided.</p>
 <p>We strongly recommend that you provide a <a href="#report-identification">Local Report Identifier</a> that identifies the specific report in your own information system or workflow, even when you use the webform. This will facilitate later updates should they be necessary, and can be useful if your agency changes to CSV upload or the Submission API later on.</p>
 <p>You can select institutions using the search box. If you are uploading a report on an institution that has no DEQAR record yet, see <a href="../institution_data/">Institution Data</a> on how to add it before uploading reports.</p>
@@ -362,7 +362,7 @@ password: [your personal password]</p>
 <p>In Google Sheets, choose <em>Comma-separated values</em> from the <em>File</em> &gt; <em>Download as...</em> menu.</p>
 <h3 id="uploading-csv-files">Uploading CSV files<a class="headerlink" href="#uploading-csv-files" title="Permanent link">&para;</a></h3>
 <p>The CSV upload module is part of the DEQAR admin interface:</p>
-<p>location: <a href="https://admin.deqar.eu/upload-csv">https://admin.deqar.eu/upload-csv</a><br />
+<p>location: <a href="https://admin.testzone.eqar.eu/upload-csv">https://admin.testzone.eqar.eu/upload-csv</a><br />
 username: [agency's acronym (in lower case)]<br />
 password: [your personal password] (see <a href="#webform">above</a> how to reset your password)</p>
 <ul>
@@ -379,32 +379,31 @@ password: [your personal password] (see <a href="#webform">above</a> how to rese
 <h3 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h3>
 <p>Requests for submission to DEQAR are only accepted from registered users and must therefore be identified. DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header (with type/scheme Bearer) will authenticate the user in place of a regular username and password.</p>
 <p>To get your authentication token you can send a <code>POST</code> request to the following URL:</p>
-<p><code>https://backend.deqar.eu/accounts/get_token/</code></p>
+<p><code>https://backend.testzone.eqar.eu/accounts/get_token/</code></p>
 <p>An example of obtaining a token using curl in command line:</p>
-<pre><code class="language-sh">curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
+<pre><code class="language-sh">curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.testzone.eqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
 </code></pre>
 <p>The username is the agency’s acronym (in lower case). Please see <a href="#webform">above</a> how to reset your password.</p>
 <p>Or for those who prefer to use the more user friendly <a href="https://httpie.io/">HTTPie</a> client:</p>
-<pre><code class="language-sh">http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
+<pre><code class="language-sh">http POST https://backend.testzone.eqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
 </code></pre>
 <p>You should send this token, preceded by the word <code>Bearer</code>, in the Authorization header with every further request. An example of a submission using curl or HTTPie:</p>
-<pre><code class="language-sh">curl -s -H &quot;Content-type: application/json&quot; -H &quot;Authorization: Bearer $DEQAR_TOKEN&quot; -XPOST https://backend.deqar.eu/submissionapi/v1/submit/report --data-binary @$DEQAR_FILE
+<pre><code class="language-sh">curl -s -H &quot;Content-type: application/json&quot; -H &quot;Authorization: Bearer $DEQAR_TOKEN&quot; -XPOST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report --data-binary @$DEQAR_FILE
 
-http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report &quot;Authorization: Bearer $DEQAR_TOKEN&quot; &quot;Content-type: application/json&quot; &lt; $DEQAR_FILE
+http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &quot;Authorization: Bearer $DEQAR_TOKEN&quot; &quot;Content-type: application/json&quot; &lt; $DEQAR_FILE
 </code></pre>
-<h3 id="report-submission-endpoint">Report Submission Endpoint<a class="headerlink" href="#report-submission-endpoint" title="Permanent link">&para;</a></h3>
+<h3 id="report-submission-endpoints">Report Submission Endpoints<a class="headerlink" href="#report-submission-endpoints" title="Permanent link">&para;</a></h3>
 <p>The address of the submission endpoint is:</p>
-<p><code>https://backend.deqar.eu/submissionapi/v1/submit/report</code></p>
+<p><code>https://backend.testzone.eqar.eu/submissionapi/v2/submit/report</code></p>
 <p>This is the URL that you can use to make a <code>POST</code> request including the Submission Request Object as JSON object, or many objects as JSON array of objects in the request body.</p>
 <p>The <strong>Submission Request Object</strong> is the JSON object (or array of objects) which is the manifestation of a report or set of reports an agency wants to submit.</p>
 <p>Fields and accepted types are as described in <a href="../report_data/">Report Data Elements</a> above. The full definition of request and response objects can be find in OpenAPI format under:</p>
-<p><a href="https://backend.deqar.eu/submissionapi/v1/swagger/">https://backend.deqar.eu/submissionapi/v1/swagger/</a></p>
-<p><strong>Important:</strong> Please do <strong>not</strong> include institution data (such as name, location, etc.) in your Submission Request Object. The corresponding fields are deprecated and will be removed in version 2 of the Submission API. Identify institutions by one single <a href="../architecture_data_model/#institution-identifiers">identifier</a> only (DEQARINST ID, ETER ID, local or other identifier). New institutions <a href="../institution_data/#institution-data-elements">must be added separately beforehand</a>.</p>
+<p><a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">https://backend.testzone.eqar.eu/submissionapi/v2/swagger/</a></p>
 <h3 id="report-file-submission-endpoint">Report File Submission Endpoint<a class="headerlink" href="#report-file-submission-endpoint" title="Permanent link">&para;</a></h3>
 <p>Files (PDF versions of reports) can be submitted in two separate ways:</p>
 <ul>
 <li>URLs submitted with a Submission Request Object will be harvested asynchronously upon successful submission.</li>
-<li>Files can be submitted directly to a dedicated endpoint as part of a <code>PUT</code> request: <code>https://backend.deqar.eu/submissionapi/v1/submit/reportfile/&lt;report_file_id&gt;/&lt;filename&gt;</code></li>
+<li>Files can be submitted directly to a dedicated endpoint as part of a <code>PUT</code> request: <code>https://backend.testzone.eqar.eu/submissionapi/v2/submit/reportfile/&lt;report_file_id&gt;/&lt;filename&gt;</code></li>
 </ul>
 <p><code>report_file_id</code>: The id number of the Report File object available in the response after successful submission. The <code>report_file_id</code> is contained in the response object of the successful report submission. <code>filename</code>: The name of the file that you will submit in this request.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
@@ -691,7 +690,7 @@ http -v POST https://backend.deqar.eu/submissionapi/v1/submit/report &quot;Autho
 <p>The Sandbox is reached through separate links:</p>
 <ul>
 <li>To test the manual and CSV submission, go to the Sandbox Administrative Interface at: <a href="https://admin.sandbox.deqar.eu/">https://admin.sandbox.deqar.eu/</a></li>
-<li>To test API submission, go to the Sandbox Submission API at: <a href="https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report">https://backend.sandbox.deqar.eu/submissionapi/v1/submit/report</a></li>
+<li>To test API submission, go to the Sandbox Submission API at: <a href="https://backend.sandbox.deqar.eu/submissionapi/v2/submit/report">https://backend.sandbox.deqar.eu/submissionapi/v2/submit/report</a></li>
 <li>To see what your records will eventually look like on the public site, go to the Sandbox Public Interface at: <a href="https://sandbox.deqar.eu/">https://sandbox.deqar.eu/</a></li>
 </ul>
 <p>The Sandbox is an identical copy of the live system. The entire data of the live site is copied over to the Sandbox every night. Thus, your login and password are the same as in your DEQAR account—unless you have made changes within the last 24 hours. You can also reset or change your password in the Sandbox, but it will be overwritten by the next day.</p>

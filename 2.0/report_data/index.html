@@ -142,7 +142,7 @@
 <p>There are several possible one-to-many relations within a report record: e.g. one report might cover several providers (e.g. in case of a joint programme), or several programmes of one institution, or can have several associated files, etc.. In JSON for API submission, these cases can be naturally represented as arrays of objects; in a CSV file, these relations are difficult to represent due to the flat/one-dimensional structure.</p>
 <p>In the CSV template, such columns or groups of columns can thus be duplicated and indexed with an integer in square brackets, e.g. <code>institution[1].deqar_id</code>, <code>institution[2].deqar_id</code>, … The structure and field names of the elements below directly reflect the CSV template, with repeatable columns indicated by <code>[n]</code> part of the column name.</p>
 <p>To see how these elements are arrayed in JSON for API submission, see our JSON definition at:</p>
-<p><a href="https://backend.deqar.eu/submissionapi/v1/swagger/">https://backend.deqar.eu/submissionapi/v1/swagger/</a></p>
+<p><a href="https://backend.deqar.eu/submissionapi/v2/swagger/">https://backend.deqar.eu/submissionapi/v2/swagger/</a></p>
 <p>Please note that new records for providers not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated <a href="../institution_data/#how-to-provide-data">CSV templates described above</a>.</p>
 <table>
 <thead>
@@ -181,13 +181,13 @@
 <tr>
 <td style="text-align: left;"><strong>Activity</strong></td>
 <td style="text-align: left;">conditionally</td>
-<td style="text-align: left;">one</td>
+<td style="text-align: left;">many</td>
 <td style="text-align: left;"><em>institutional audit</em><br><em>programme evaluation</em><br><em>2</em><br><em>8</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Activity Local Identifier</strong></td>
 <td style="text-align: left;">conditionally</td>
-<td style="text-align: left;">one</td>
+<td style="text-align: left;">many</td>
 <td style="text-align: left;"><em>inst_aud</em></td>
 </tr>
 <tr>
@@ -277,14 +277,15 @@
 </li>
 </ul>
 <h2 id="activity">Activity<a class="headerlink" href="#activity" title="Permanent link">&para;</a></h2>
-<p>A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).</p>
+<p>At least one activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).</p>
+<p>You can link one report to several activities, for example where different quality labels where assessed/awarded in a single procedure.</p>
 <blockquote>
 <p>If you do not find the activity enlisted on DEQAR, please inform EQAR about the new activity through submitting a Substantive Change Report via <a href="https://www.eqar.eu/register/substantive-change-report/">this form</a>.</p>
 </blockquote>
 <p>Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see <a href="../architecture_data_model/#other-identifiers">Role of Standards and Identifiers: Other Identifiers</a>. If both elements are submitted for a single report, then the DEQAR value will be used by the system.</p>
 <ul>
 <li>
-<p><strong>Activity(*)</strong> (<code>activity</code>; conditionally required; string)<br />
+<p><strong>Activity(*)</strong> (<code>activity[n]</code>; conditionally required; string)<br />
 A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.</p>
 <p><em>e.g. institutional audit</em><br />
 <em>e.g. programme evaluation</em><br />
@@ -292,7 +293,7 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 <em>e.g. 8</em>  </p>
 </li>
 <li>
-<p><strong>Activity Local Identifier(*)</strong> (<code>activity_local_identifier</code>; conditionally required; string)<br />
+<p><strong>Activity Local Identifier(*)</strong> (<code>activity_local_identifier[n]</code>; conditionally required; string)<br />
   A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)</p>
 <p><em>e.g. inst_aud</em></p>
 </li>
@@ -549,6 +550,13 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 </blockquote>
 </li>
 <li>
+<p><strong>File Content(*)</strong> (<code>file[n].content</code>; conditionally required; string)<br />
+  You can provide the file content as a <a href="https://en.wikipedia.org/wiki/Base64">Base64</a>-encoded string alternatively.</p>
+<blockquote>
+<p>If you decide to use this option please be mindful that the maximum request size of the DEQAR API is 10MB. This applies to each API request or line in a CSV file. Given the overhead of the encoding, the size of all files for a single report should thus not exceed 7MB for this method.</p>
+</blockquote>
+</li>
+<li>
 <p>File Display Name (<code>file[n].display_name</code>; not required; string)<br />
   A single file display name may be provided for each PDF report file, used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.</p>
 <p><em>e.g. Report</em><br />
@@ -639,7 +647,7 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 <p><em>e.g. BG0001</em></p>
 </li>
 <li>
-<p><strong>Provider Identifier(*)</strong> (<code>institution[n].identifier[1]</code>; conditionally required; string)<br />
+<p><strong>Provider Identifier(*)</strong> (<code>institution[n].identifier</code>; conditionally required; string)<br />
   A local identifier is any identifier used by the Agency to identify a provider, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID (or ETER ID for higher education institutions) to establish a link between submitted report data and an existing provider record.</p>
 <blockquote>
 <p>Local identifiers need to be assigned in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat; see <a href="../architecture_data_model/#provider-identifiers">Provider Identifiers</a> for details.)</p>
@@ -648,7 +656,7 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 <em>e.g. AT0004</em></p>
 </li>
 <li>
-<p>Identifier Resource(*) (<code>institution[n].resource[1]</code>; conditionally required; string)<br />
+<p>Identifier Resource(*) (<code>institution[n].resource</code>; conditionally required; string)<br />
   If the identifier you use is not a local identifier of your agency, you need to provide its corresponding resource tag. The value for this field can be consulted through the administrative interface.</p>
 <p><em>e.g. DE-HRK</em><br />
 <em>e.g. SI-ETER.BAS.NATID</em><br />
@@ -713,14 +721,14 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Programme Degree Outcome</strong></td>
-<td style="text-align: left;">yes(*)</td>
-<td style="text-align: left;">yes(*)</td>
+<td style="text-align: left;">yes</td>
+<td style="text-align: left;">yes</td>
 <td style="text-align: left;">one (per)</td>
 <td style="text-align: left;"><em>yes</em><br><em>no</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Programme Qualification Level</strong></td>
-<td style="text-align: left;">yes(*)</td>
+<td style="text-align: left;">yes</td>
 <td style="text-align: left;">yes</td>
 <td style="text-align: left;">one (per)</td>
 <td style="text-align: left;"><em>0 - short cycle</em><br><em>1 - first cycle</em><br><em>2 - second cycle</em><br><em>3 - third cycle</em></td>
@@ -783,7 +791,7 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 <p>The Programme Name field should only contain information on the name (further details on the qualification, level etc. should be provided in the other fields as presented below). </p>
 <ul>
 <li>
-<p><strong>Primary Programme Name(*)</strong> (<code>programme[n].name_primary</code>; conditionally required; string)<br />
+<p><strong>Primary Programme Name*</strong> (<code>programme[n].name_primary</code>; required; string)<br />
   Exactly one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English.</p>
 <p><em>e.g. Medical Natural Sciences</em></p>
 </li>
@@ -819,7 +827,7 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 <p>Information on the qualification level of each programme must be provided as a standardised level (based on the QF-EHEA levels); agencies may also choose to indicate the NQF level for each programme.</p>
 <ul>
 <li>
-<p><strong>Degree outcome*</strong> (<code>programme[n].degree_outcome</code>; required *; string)<br />
+<p><strong>Degree outcome*</strong> (<code>programme[n].degree_outcome</code>; required; string)<br />
   The field specifies whether the programme leads to a full degree, recognised by the national authorities where the provider is based at.</p>
 <p>When a programme report is uploaded solely for an "other provider", the value of the field must be "No" (= no full degree). If the value is marked as "yes", the report upload will be automatically rejected.</p>
 <table>
@@ -870,12 +878,9 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>* This field was recently added to the current DEQAR data model. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs (expected in September 2024). The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by other providers, as micro credentials do not lead to a full degree.</p>
-</blockquote>
 </li>
 <li>
-<p><strong>Programme Qualification Level*</strong> (<code>programme[n].qf_ehea_level</code>; required *; string)<br />
+<p><strong>Programme Qualification Level*</strong> (<code>programme[n].qf_ehea_level</code>; required; string)<br />
   A single standardised qualification level must be provided for each programme in the form of either a level name or level ID. These levels are based on the <a href="https://www.ehea.info/page-qualification-frameworks">Framework for Qualifications of the European Higher Education Area (QF-EHEA)</a>, the <a href="https://europa.eu/europass/en/europass-tools/european-qualifications-framework">European Qualifications Framework (EQF)</a> and the <a href="https://uis.unesco.org/en/topic/international-standard-classification-education-isced">International Standard Classification of Education (ISCED)</a>.</p>
 <table>
 <thead>
@@ -908,9 +913,6 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>* This field was not required previously. In order to be backwards-compatible and not to break existing implementations, this field is currently not required for programmes leading to a full degree, but only for programmes not leading to a full degree (= micro-credentials). This field will become fully required in the next version of DEQAR APIs.</p>
-</blockquote>
 </li>
 <li>
 <p>Programme NQF Level (<code>programme[n].nqf_level</code>; required, string)<br />
@@ -922,13 +924,13 @@ A DEQAR activity value may be provided as an activity name or DEQAR activity ID 
 <h3 id="programme-details">Programme Details<a class="headerlink" href="#programme-details" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>Workload expressed in ECTS Credits*</strong> (<code>programme[n].workload_ects</code>; conditionally required; string)<br />
+<p><strong>Workload expressed in ECTS Credits(*)</strong> (<code>programme[n].workload_ects</code>; conditionally required; string)<br />
   The workload as number of ECTS credits for programmes that do not lead to a full degree (i.e. micro credentials) must be provided to indicate the volume of learning. For programmes that do not bear ECTS, the workload could be calculated using the following tool: <a href="https://www.germangradecalculator.com/ects-calculator/">ECTS calculator</a>.</p>
 <p>This field is <strong>required</strong> for programmes not leading to a full degree (e.g. micro-credentials) and optional otherwise.</p>
 <p><em>e.g. 15</em></p>
 </li>
 <li>
-<p><strong>Assessment and certification*</strong> (<code>programme[n].assessment_certification</code>; conditionally required; string)<br />
+<p><strong>Assessment and certification(*)</strong> (<code>programme[n].assessment_certification</code>; conditionally required; string)<br />
   A programme that does not lead to a full degree could still have a formal outcome (e.g. a micro-credential).</p>
 <p>The field is <strong>required</strong> for programmes not leading to a full degree (e.g. micro-credentials) and <strong>must be empty</strong> for programmes leading to a full degree.</p>
 <p>The following scenarios are possible:</p>
