@@ -18,7 +18,8 @@ Please note that new records for providers not currently represented in DEQAR sh
 |:--------------------------------------------|:------------|:---------|:-----------------------|
 |**Agency** |yes |one |*AAQ*<br>*33* |
 |Contributing Agencies | no | many | *MusiQuE*<br>*34* |
-|DEQAR Report ID |no |one |*000786* | |Local Report Identifier |no |one |*QAA1153-March15* |
+|DEQAR Report ID |no |one |*786* |
+|Local Report Identifier |no |one |*QAA1153-March15* |
 |**Activity** |conditionally|one |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|
 |**Activity Local Identifier** |conditionally|one |*inst_aud* |
 |**Status** |yes |one |*1 - part of obligatory EQA system*<br>*2 - voluntary*|
@@ -26,7 +27,7 @@ Please note that new records for providers not currently represented in DEQAR sh
 |Summary |no |one | |
 |**Valid from** |yes |one |*2015-01-15* |
 |Valid to |no |one |*2020-01-15* |
-|**Date Format** |yes |one |*%d/%m/%y* |
+|**Date Format** |yes |one |*%Y-%m-%d* |
 |Link |no |one |*http://srv.aneca.es/ListadoTitulos/node/1182321350*|
 |Comment |no |one |*Evaluation undertaken with Musique.*<br>*Programme group reports are created for programmes with a similar profile across the entire sector on a 7-year rotating basis.*|
 
