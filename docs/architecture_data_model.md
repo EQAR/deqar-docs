@@ -7,6 +7,7 @@ The DEQAR data model has been designed around four main entities: registered qua
 ```mermaid
 erDiagram
     REPORT }o--|| "AGENCY" : "belongs to"
+    REPORT }o--o{ "AGENCY" : "contributed"
     REPORT ||--|{ "REPORT FILE" : has
     REPORT }o--|{ PROVIDER : "focuses on"
     REPORT ||--o{ PROGRAMME : "may focus on"
@@ -85,9 +86,11 @@ erDiagram
         string local_identifier
     }
     REPORT }o--|| AGENCY : "belongs to"
-    REPORT }o--|| ACTIVITY : "is part of"
+    REPORT }o--o{ AGENCY : "contributed"
+    REPORT }o--|{ ACTIVITY : "is part of"
     REPORT }o--|{ PROVIDER : "focuses on"
     REPORT ||--o{ PROGRAMME : "may focus on"
+    AGENCY }|--|{ ACTIVITY : "carries out"
 ```
 As a rule, objects already in the system should be identified to facilitate linking up. In other words:
 
