@@ -1,4 +1,6 @@
 site_name: DEQAR Documentation
+site_description: v1.2 (current)
+site_author: EQAR
 ### document structure ###
 nav:
     - Home: index.md
