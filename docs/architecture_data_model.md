@@ -37,7 +37,7 @@ DEQAR supports three core activities:
     
 - **Administration of records:** data is ingested and records are created, stored and managed by EQAR staff and agencies over the longer term. Agencies may update report records already in the system and track their own activity.
 
-- **Search and discovery of information:** records are published on a [public web interface](https://www.deqar.eu/) for search, retrieval and export or download by end users. There is also a [public API](web_api_intro.md) available to all registered users; this allows users to embed DEQAR search interface in their local site.
+- **Search and discovery of information:** records are published on a [public web interface]({{ deqar.frontend }}/) for search, retrieval and export or download by end users. There is also a [public API](web_api_intro.md) available to all registered users; this allows users to embed DEQAR search interface in their local site.
 
 
 Role of Standards and Identifiers 
