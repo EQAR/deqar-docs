@@ -95,13 +95,17 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#report-submission-endpoints">Report Submission Endpoints</a>
+    <li class="toctree-l3"><a class="reference internal" href="#endpoints">Endpoints</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#report-file-submission-endpoint">Report File Submission Endpoint</a>
+    <li class="toctree-l3"><a class="reference internal" href="#report-lifecycle">Report Lifecycle</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#report-files">Report Files</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#institutional-report">Institutional report</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#another-institutional-report">Another institutional report</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#programme-report">Programme report</a>
     </li>
@@ -227,7 +231,7 @@
 <li>
 <p>All <strong>required data</strong> must be present for each report. Required data for all records includes:</p>
 <ul>
-<li><a href="../report_data/#activity">ESG activity performed</a></li>
+<li><a href="../report_data/#activity">ESG activity/-ies performed</a>, at least one for each agency involved</li>
 <li><a href="../report_data/#details">Status of report</a></li>
 <li><a href="../report_data/#details">Decision</a></li>
 <li>Report <a href="../report_data/#validity">valid from date, including date format</a> used by the agency</li>
@@ -238,16 +242,16 @@
 <li>
 <p>At this point, <strong>dependencies</strong> between elements will be checked as well as any <strong>limits on the number of values permitted</strong> for each element. In particular:</p>
 <ul>
-<li>Requirements based on the <strong>type of ESG activity</strong>:<ul>
-<li>institutional: no programme data must be provided</li>
-<li>programme or programme/institution: exactly one organisation must be identified, data on one or several programme(s) must be provided</li>
-<li>joint programme: at least two organisations must be identified, data on one or several programme(s) must be provided</li>
+<li>Requirements based on the <strong>type of <a href="../report_data/#activity">ESG activity</a></strong>:<ul>
+<li>only institutional activities: no programme data must be provided</li>
+<li>at least one programme or programme/institution activity: exactly one organisation must be identified, data on one or several programme(s) must be provided</li>
+<li>at least one joint programme activity: at least two organisations must be identified, data on one or several programme(s) must be provided</li>
 </ul>
 </li>
-<li>Data required for <strong>each programme</strong> (i.e. except institutional reports):<ul>
+<li>Data required for <strong>each programme</strong> (i.e. except purely institutional reports):<ul>
 <li>the <a href="../report_data/#programme-name-and-qualification">programme name</a> (in whichever language it is stored by the Agency)</li>
-<li>the <a href="../report_data/#programme-qualification-level">degree outcome</a> indicating whether full degree or not – required as from 2024</li>
-<li>the <a href="../report_data/#programme-qualification-level">qualification level</a> – required for non-full degree programmes, as from 2024 required for all</li>
+<li>the <a href="../report_data/#programme-qualification-level">degree outcome</a> indicating whether full degree or not</li>
+<li>the <a href="../report_data/#programme-qualification-level">qualification level</a></li>
 </ul>
 </li>
 <li>Data required for <strong>programmes with degree outcome "no"</strong> (= not leading to a full degree):<ul>
@@ -314,7 +318,7 @@ password: [your personal password]</p>
 <h2 id="csv-upload">CSV Upload<a class="headerlink" href="#csv-upload" title="Permanent link">&para;</a></h2>
 <p><a href="https://en.wikipedia.org/wiki/Comma-separated_values">Comma-separated values (CSV)</a> is a common and interoperable data-exchange format. Files can be imported and exported from all usual <a href="#preparingexporting-csv-files">spreadsheet software</a> (e.g. Excel, LibreOffice, ...) and numerous other applications.</p>
 <p>The first row of your file is a header which should include column names as defined under <a href="../report_data/">Report Data Elements</a> above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:</p>
-<pre><code>agency, activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
+<pre><code>agency, activities[1].activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
 </code></pre>
 <p>(Spaces added for readability, these should not appear in an actual file.)</p>
 <p>One report may often include/relate to several items, such as one or more provider(s), programmes or one or more files--some in several languages. In those cases you will find field names of the type <code>field_name[n]</code> (See <a href="../report_data/">Report Data Elements</a> above). You should create as many columns as you need and replace <code>n</code> by 1, 2, ...</p>
@@ -392,177 +396,258 @@ password: [your personal password] (see <a href="#webform">above</a> how to rese
 
 http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &quot;Authorization: Bearer $DEQAR_TOKEN&quot; &quot;Content-type: application/json&quot; &lt; $DEQAR_FILE
 </code></pre>
-<h3 id="report-submission-endpoints">Report Submission Endpoints<a class="headerlink" href="#report-submission-endpoints" title="Permanent link">&para;</a></h3>
-<p>The address of the submission endpoint is:</p>
-<p><code>https://backend.testzone.eqar.eu/submissionapi/v2/submit/report</code></p>
-<p>This is the URL that you can use to make a <code>POST</code> request including the Submission Request Object as JSON object, or many objects as JSON array of objects in the request body.</p>
-<p>The <strong>Submission Request Object</strong> is the JSON object (or array of objects) which is the manifestation of a report or set of reports an agency wants to submit.</p>
-<p>Fields and accepted types are as described in <a href="../report_data/">Report Data Elements</a> above. The full definition of request and response objects can be find in OpenAPI format under:</p>
+<h3 id="endpoints">Endpoints<a class="headerlink" href="#endpoints" title="Permanent link">&para;</a></h3>
+<p>The Submission API offers the following endpoints to manage the whole lifecycle of reports:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>POST</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/submit/report</code></td>
+<td>Submit a new report that is not yet recorded in DEQAR</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/submit/report</code></td>
+<td>Update data on an existing report in DEQAR</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/check/local-identifier</code></td>
+<td>Check for the existance of a local identifier</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/manage/report-file</code></td>
+<td>Upload an additional file to an existing report</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/manage/report-file</code></td>
+<td>Replace a file belonging to a report</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/manage/report-file</code></td>
+<td>Remove a file from a report</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>https://backend.testzone.eqar.eu/submissionapi/v2/delete/report/{id}/</code></td>
+<td>Request deletion of a report from DEQAR (exceptional cases only)</td>
+</tr>
+</tbody>
+</table>
+<p>The semantic of the various fields and accepted types are described in <a href="../report_data/">Report Data Elements</a> above. The technical description of request and response objects can be find in OpenAPI format under:</p>
 <p><a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">https://backend.testzone.eqar.eu/submissionapi/v2/swagger/</a></p>
-<h3 id="report-file-submission-endpoint">Report File Submission Endpoint<a class="headerlink" href="#report-file-submission-endpoint" title="Permanent link">&para;</a></h3>
-<p>Files (PDF versions of reports) can be submitted in two separate ways:</p>
+<h3 id="report-lifecycle">Report Lifecycle<a class="headerlink" href="#report-lifecycle" title="Permanent link">&para;</a></h3>
+<p>Please note that version 2 of the Submission API requires you distinguish clearly between the upload/creation of a new report (<code>POST</code>) or the update of an existing one (using <code>PUT</code> or <code>PATCH</code>). For example, a <code>POST</code> request with an existing local identifier will be rejected.</p>
+<p>We strongly recommend that you (a) submit a unique code or identifier of a report in your own system as <code>local_identifier</code> and (b) track in your system whether a report was already succssfully submitted to DEQAR. To that end, the response of the report creation endpoints includes the new DEQAR ID of the report; you can use that in subsequent <code>PUT</code> or <code>PATCH</code> requests.</p>
+<p>If you cannot track submission status in your system, you might need to make an additional request to the <code>/check/local-identifier</code> endpoint first in order to determine whether this report was already submitted to DEQAR earlier.</p>
+<p>In general, reports should never be deleted from DEQAR, as the system intends to keep a full historic record. The <code>DELETE</code> endpoint is therefore for exceptional circumstances only, e.g. to fix accidental duplications. It can only mark reports for deletion and deletion has to be then confirmed by EQAR staff case by case. You also need to provide a reason for every deletion request. This also means: deletion of reports should never be part of your regular, every-day workflow.</p>
+<h3 id="report-files">Report Files<a class="headerlink" href="#report-files" title="Permanent link">&para;</a></h3>
+<p>Each report needs to have at least one file (PDF versions of reports). These can be submitted in two separate ways:</p>
 <ul>
-<li>URLs submitted with a Submission Request Object will be harvested asynchronously upon successful submission.</li>
-<li>Files can be submitted directly to a dedicated endpoint as part of a <code>PUT</code> request: <code>https://backend.testzone.eqar.eu/submissionapi/v2/submit/reportfile/&lt;report_file_id&gt;/&lt;filename&gt;</code></li>
+<li>URL reference: these files will be harvested asynchronously upon successful submission.</li>
+<li>Directly: files can be Base64-encoded and submitted directly in requests</li>
 </ul>
-<p><code>report_file_id</code>: The id number of the Report File object available in the response after successful submission. The <code>report_file_id</code> is contained in the response object of the successful report submission. <code>filename</code>: The name of the file that you will submit in this request.</p>
+<p>Files can be managed as follows, each allowing either option:</p>
+<ul>
+<li>At least one file needs to be submitted whenever creating a report. You can specify a URL or include the Base64-encoded file in your request.</li>
+<li>When updating reports via <code>PUT</code>, all files need to be submitted again.</li>
+<li>When updating reports via <code>PATCH</code>, ... <strong>to be defined</strong></li>
+<li>You can use the dedicated report file endpoints to add, update or delete individual files without touching the report record otherwise. Please note that you cannot delete the last file of a report as each report needs to have at least one file attached.</li>
+</ul>
+<p>Files submitted by URL reference are downloaded asynchronously after submission. DEQAR makes a <code>HEAD</code> request first, followed by a <code>GET</code> request. At least the latter needs to return a content-type header of <code>application/pdf</code>. If another content type is reported the download will fill. The maximum file size for download is 100MB.</p>
+<p>When the download fails, the corresponding report record receives a low-level flag for information.</p>
+<p>Downloads are only retried if the report or the specific files are updated through the mentioned endpoints (or via CSV or admin interface). Existing report files are only uploaded/replaced if the new download succeeded and the downloaded file differs from the existing one. Otherwise the existing file is kept.</p>
+<p>DEQAR only accepts PDF files. Each file – whether downloaded from a URL or submitted directly – will be opened with the <a href="https://pypi.org/project/pypdf/">pypdf</a> library (version 4.2.0). Files not readable by the library are rejected.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <p>The examples below show how a JSON Submission Request Object might look for different types of reports:</p>
 <h4 id="institutional-report">Institutional report<a class="headerlink" href="#institutional-report" title="Permanent link">&para;</a></h4>
-<pre><code class="language-json">[
+<pre><code class="language-json">{
+  &quot;agency&quot;: &quot;MusiQuE&quot;,
+  &quot;local_identifier&quot;: &quot;CRDB-October14&quot;,
+  &quot;activities&quot;: [
     {
-        &quot;agency&quot;: &quot;MusiQuE&quot;,
-        &quot;local_identifier&quot;: &quot;CRDB-October14&quot;,
-        &quot;activity&quot;: &quot;183&quot;,
-        &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
-        &quot;decision&quot;: &quot;positive&quot;,
-        &quot;valid_from&quot;: &quot;2016-10-28&quot;,
-        &quot;valid_to&quot;: &quot;2018-01-15&quot;,
-        &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
-        &quot;report_files&quot;: [
-            {
-                &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2014-10-bruxelles-website.pdf&quot;,
-                &quot;display_name&quot;: &quot;Evaluation report&quot;,
-                &quot;report_language&quot;: [
-                    &quot;fr&quot;
-                ]
-            }
-        ],
-        &quot;institutions&quot;: [
-            {
-                &quot;eter_id&quot;: &quot;BE0035&quot;
-            }
-        ]
+      &quot;id&quot;: &quot;183&quot;
+    }
+  ],
+  &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
+  &quot;decision&quot;: &quot;positive&quot;,
+  &quot;valid_from&quot;: &quot;2016-10-28&quot;,
+  &quot;valid_to&quot;: &quot;2018-01-15&quot;,
+  &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+  &quot;report_files&quot;: [
+    {
+      &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2014-10-bruxelles-website.pdf&quot;,
+      &quot;display_name&quot;: &quot;Evaluation report&quot;,
+      &quot;report_language&quot;: [
+        &quot;fr&quot;
+      ]
+    }
+  ],
+  &quot;institutions&quot;: [
+    {
+      &quot;eter_id&quot;: &quot;BE0035&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="another-institutional-report">Another institutional report<a class="headerlink" href="#another-institutional-report" title="Permanent link">&para;</a></h4>
+<pre><code class="language-json">{
+  &quot;agency&quot;: &quot;MusiQuE&quot;,
+  &quot;local_identifier&quot;: &quot;ENH-4711&quot;,
+  &quot;activities&quot;: [
+    {
+      &quot;id&quot;: &quot;97&quot;
+    }
+  ],
+  &quot;status&quot;: &quot;2&quot;,
+  &quot;decision&quot;: &quot;4&quot;,
+  &quot;valid_from&quot;: &quot;2021-01-15&quot;,
+  &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+  &quot;report_files&quot;: [
+    {
+      &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2015-06-25-hamu-review-reportfinal.pdf&quot;,
+      &quot;display_name&quot;: &quot;Institutional Review&quot;,
+      &quot;report_language&quot;: [
+        &quot;eng&quot;
+      ]
     },
     {
-        &quot;agency&quot;: &quot;MusiQuE&quot;,
-        &quot;local_identifier&quot;: &quot;ENH-4711&quot;,
-        &quot;activity&quot;: &quot;97&quot;,
-        &quot;status&quot;: &quot;2&quot;,
-        &quot;decision&quot;: &quot;4&quot;,
-        &quot;valid_from&quot;: &quot;2021-01-15&quot;,
-        &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
-        &quot;report_files&quot;: [
-            {
-                &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2015-06-25-hamu-review-reportfinal.pdf&quot;,
-                &quot;display_name&quot;: &quot;Institutional Review&quot;,
-                &quot;report_language&quot;: [
-                    &quot;eng&quot;
-                ]
-            },
-            {
-                &quot;original_location&quot;: &quot;https://zenodo.org/record/4516653/files/Database_of_External_QA_Results_Report%2BModel_2016.pdf?download=1&quot;,
-                &quot;display_name&quot;: &quot;Addendum to the report&quot;,
-                &quot;report_language&quot;: [
-                    &quot;ger&quot;
-                ]
-            }
-        ],
-        &quot;institutions&quot;: [
-            {
-                &quot;deqar_id&quot;: &quot;DEQARINST0390&quot;
-            },
-            {
-                &quot;eter_id&quot;: &quot;AT0006&quot;
-            }
-        ]
+      &quot;original_location&quot;: &quot;https://zenodo.org/record/4516653/files/Database_of_External_QA_Results_Report%2BModel_2016.pdf?download=1&quot;,
+      &quot;display_name&quot;: &quot;Addendum to the report&quot;,
+      &quot;report_language&quot;: [
+        &quot;ger&quot;
+      ]
     }
-]
+  ],
+  &quot;institutions&quot;: [
+    {
+      &quot;deqar_id&quot;: &quot;DEQARINST0390&quot;
+    },
+    {
+      &quot;eter_id&quot;: &quot;AT0006&quot;
+    }
+  ]
+}
 </code></pre>
 <h4 id="programme-report">Programme report<a class="headerlink" href="#programme-report" title="Permanent link">&para;</a></h4>
 <pre><code class="language-json">{
-    &quot;agency&quot;: &quot;MusiQuE&quot;,
-    &quot;local_identifier&quot;: &quot;SHM-April09&quot;,
-    &quot;activity&quot;: &quot;181&quot;,
-    &quot;status&quot;: &quot;2&quot;,
-    &quot;decision&quot;: &quot;1&quot;,
-    &quot;valid_from&quot;: &quot;2017-04-09&quot;,
-    &quot;valid_to&quot;: &quot;2022-02-15&quot;,
-    &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
-    &quot;report_files&quot;: [
+  &quot;agency&quot;: &quot;MusiQuE&quot;,
+  &quot;local_identifier&quot;: &quot;SHM-April09&quot;,
+  &quot;activities&quot;: [
+    {
+      &quot;id&quot;: &quot;181&quot;
+    }
+  ],
+  &quot;status&quot;: &quot;2&quot;,
+  &quot;decision&quot;: &quot;1&quot;,
+  &quot;valid_from&quot;: &quot;2017-04-09&quot;,
+  &quot;valid_to&quot;: &quot;2022-02-15&quot;,
+  &quot;date_format&quot;: &quot;%Y-%m-%d&quot;,
+  &quot;report_files&quot;: [
+    {
+      &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2009-06-report-trossingen-website.pdf&quot;,
+      &quot;display_name&quot;: &quot;Review report&quot;,
+      &quot;report_language&quot;: [
+        &quot;ger&quot;
+      ]
+    }
+  ],
+  &quot;institutions&quot;: [
+    {
+      &quot;eter_id&quot;: &quot;DE0140&quot;
+    }
+  ],
+  &quot;programmes&quot;: [
+    {
+      &quot;identifiers&quot;: [
         {
-            &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/2009-06-report-trossingen-website.pdf&quot;,
-            &quot;display_name&quot;: &quot;Review report&quot;,
-            &quot;report_language&quot;: [
-                &quot;ger&quot;
-            ]
+          &quot;identifier&quot;: &quot;16&quot;
         }
-    ],
-    &quot;institutions&quot;: [
-        {
-            &quot;eter_id&quot;: &quot;DE0140&quot;
-        }
-    ],
-    &quot;programmes&quot;: [
-        {
-            &quot;identifiers&quot;: [
-                {
-                    &quot;identifier&quot;: &quot;16&quot;
-                }
-            ],
-            &quot;name_primary&quot;: &quot;Organ Expert&quot;,
-            &quot;qualification_primary&quot;: &quot;Master of Arts&quot;,
-            &quot;nqf_level&quot;: &quot;level 7&quot;,
-            &quot;qf_ehea_level&quot;: &quot;second cycle&quot;
-        }
-    ]
+      ],
+      &quot;name_primary&quot;: &quot;Organ Expert&quot;,
+      &quot;qualification_primary&quot;: &quot;Master of Arts&quot;,
+      &quot;nqf_level&quot;: &quot;level 7&quot;,
+      &quot;degree_outcome&quot;: &quot;1&quot;,
+      &quot;qf_ehea_level&quot;: &quot;second cycle&quot;
+    }
+  ]
 }
 </code></pre>
 <h4 id="joint-programme-report">Joint Programme report<a class="headerlink" href="#joint-programme-report" title="Permanent link">&para;</a></h4>
 <pre><code class="language-json">{
-    &quot;agency&quot;: &quot;MusiQuE&quot;,
-    &quot;local_identifier&quot;: &quot;EAMT-September13&quot;,
-    &quot;activity&quot;: &quot;182&quot;,
-    &quot;status&quot;: &quot;voluntary&quot;,
-    &quot;decision&quot;: &quot;positive&quot;,
-    &quot;valid_from&quot;: &quot;15.01.2020&quot;,
-    &quot;valid_to&quot;: &quot;15.01.2025&quot;,
-    &quot;date_format&quot;: &quot;%d.%m.%Y&quot;,
-    &quot;report_files&quot;: [
+  &quot;agency&quot;: &quot;MusiQuE&quot;,
+  &quot;local_identifier&quot;: &quot;EAMT-September13&quot;,
+  &quot;activities&quot;: [
+    {
+      &quot;id&quot;: &quot;182&quot;
+    }
+  ],
+  &quot;status&quot;: &quot;voluntary&quot;,
+  &quot;decision&quot;: &quot;positive&quot;,
+  &quot;valid_from&quot;: &quot;15.01.2020&quot;,
+  &quot;valid_to&quot;: &quot;15.01.2025&quot;,
+  &quot;date_format&quot;: &quot;%d.%m.%Y&quot;,
+  &quot;report_files&quot;: [
+    {
+      &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/final-reportaec-programme-reviewcopeco.pdf&quot;,
+      &quot;display_name&quot;: &quot;Review report&quot;,
+      &quot;report_language&quot;: [
+        &quot;eng&quot;
+      ]
+    }
+  ],
+  &quot;institutions&quot;: [
+    {
+      &quot;eter_id&quot;: &quot;EE0022&quot;
+    },
+    {
+      &quot;eter_id&quot;: &quot;SE0037&quot;
+    },
+    {
+      &quot;identifier&quot;: {
+        &quot;identifier&quot;: &quot;F  LYON24&quot;,
+        &quot;resource&quot;: &quot;Erasmus&quot;
+      }
+    },
+    {
+      &quot;deqar_id&quot;: &quot;DEQARINST0460&quot;
+    }
+  ],
+  &quot;programmes&quot;: [
+    {
+      &quot;identifiers&quot;: [
         {
-            &quot;original_location&quot;: &quot;http://www.musique-qe.eu/userfiles/File/final-reportaec-programme-reviewcopeco.pdf&quot;,
-            &quot;display_name&quot;: &quot;Review report&quot;,
-            &quot;report_language&quot;: [
-                &quot;eng&quot;
-            ]
+          &quot;identifier&quot;: &quot;18&quot;
         }
-    ],
-    &quot;institutions&quot;: [
-        {
-            &quot;eter_id&quot;: &quot;EE0022&quot;
-        }, {
-            &quot;eter_id&quot;: &quot;SE0037&quot;
-        }, {
-            &quot;identifiers&quot;: [
-                {
-                    &quot;identifier&quot;: &quot;F  LYON24&quot;,
-                    &quot;resource&quot;: &quot;Erasmus&quot;
-                }
-            ]
-        }, {
-            &quot;deqar_id&quot;: &quot;DEQARINST0460&quot;
-        }
-    ],
-    &quot;programmes&quot;: [
-        {
-            &quot;identifiers&quot;: [
-                {
-                    &quot;identifier&quot;: &quot;18&quot;
-                }
-            ],
-            &quot;name_primary&quot;: &quot;CoPeCo – Contemporary Performance and Composition&quot;,
-            &quot;qualification_primary&quot;: &quot;Master (no joint degree)&quot;,
-            &quot;nqf_level&quot;: &quot;level 6&quot;,
-            &quot;qf_ehea_level&quot;: &quot;second cycle&quot;
-        }
-    ]
+      ],
+      &quot;name_primary&quot;: &quot;CoPeCo – Contemporary Performance and Composition&quot;,
+      &quot;qualification_primary&quot;: &quot;Master (no joint degree)&quot;,
+      &quot;nqf_level&quot;: &quot;level 6&quot;,
+      &quot;degree_outcome&quot;: &quot;1&quot;,
+      &quot;qf_ehea_level&quot;: &quot;second cycle&quot;
+    }
+  ]
 }
 </code></pre>
 <h4 id="micro-credential-provided-by-a-higher-education-institution">Micro-credential provided by a higher education institution<a class="headerlink" href="#micro-credential-provided-by-a-higher-education-institution" title="Permanent link">&para;</a></h4>
 <pre><code class="language-json">{
   &quot;agency&quot;: &quot;AAQ&quot;,
   &quot;local_identifier&quot;: &quot;230830/4711/01&quot;,
-  &quot;activity&quot;: &quot;386&quot;,
+  &quot;activities&quot;: [
+    {
+      &quot;id&quot;: &quot;386&quot;
+    }
+  ],
   &quot;status&quot;: &quot;part of obligatory EQA system&quot;,
   &quot;decision&quot;: &quot;positive&quot;,
   &quot;valid_from&quot;: &quot;2022-11-11&quot;,
@@ -604,7 +689,11 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
 <pre><code class="language-json">{
   &quot;agency&quot;: &quot;AAQ&quot;,
   &quot;local_identifier&quot;: &quot;240117/4711/009&quot;,
-  &quot;activity&quot;: &quot;231&quot;,
+  &quot;activities&quot;: [
+    {
+      &quot;id&quot;: &quot;231&quot;
+    }
+  ],
   &quot;status&quot;: &quot;voluntary&quot;,
   &quot;decision&quot;: &quot;2&quot;,
   &quot;valid_from&quot;: &quot;2022-11-11&quot;,
@@ -631,7 +720,11 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
 <pre><code class="language-json">{
   &quot;agency&quot;: &quot;AAQ&quot;,
   &quot;local_identifier&quot;: &quot;230830/4711/02&quot;,
-  &quot;activity&quot;: &quot;386&quot;,
+  &quot;activities&quot;: [
+    {
+      &quot;id&quot;: &quot;386&quot;
+    }
+  ],
   &quot;status&quot;: &quot;voluntary&quot;,
   &quot;decision&quot;: &quot;positive&quot;,
   &quot;valid_from&quot;: &quot;2022-11-11&quot;,
