@@ -46,6 +46,8 @@ A single creating agency must be clearly identified for each report. The creatin
 - Contributing Agencies (<code>contributing_agencies[n]</code>; not required; string)  
   Additional EQAR-registered agencies that were involved in the external QA procedure and the production of the report. Contributing agencies can only be recorded if they were registered in EQAR at the time of issuing of the report (<code>valid_from</code> date). Otherwise, all validation and flagging rules follow the main agency. The report will also be shown under the contributing agencies’ profiles in DEQAR.
 
+    For each contributing agency you must also link the report to one of that agency's activities, [see below](#activity).
+
     *e.g. MusiQuE*  
     *e.g. 34*
 
@@ -72,28 +74,13 @@ Each report can be identified using an agency's local identifiers or through DEQ
 
 ## Activity
 
-At least one activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).
+A report must be assigned to at least one activity from each agency involved. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).
 
-You can link one report to several activities, for example where different quality labels where assessed/awarded in a single procedure.
+You can also link one report to several activities of an agency, for example where different quality labels where assessed/awarded in a single procedure.
 
 > If you do not find the activity enlisted on DEQAR, please inform EQAR about the new activity through submitting a Substantive Change Report via [this form](https://www.eqar.eu/register/substantive-change-report/).
 
-Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
-
-* **Activity(\*)** (<code>activity[n]</code>; conditionally required; string)  
-A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.
-
-    *e.g. institutional audit*  
-    *e.g. programme evaluation*  
-    *e.g. 2*  
-    *e.g. 8*  
-
-* **Activity Local Identifier(\*)** (<code>activity_local_identifier[n]</code>; conditionally required; string)  
-  A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)
-
-    *e.g. inst_aud*
-
-Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record:
+Each activity is classified as one of **four activity types**. These types determine the required structure of the report record:
 
 |Type                    |Provider(s)            |Programme(s)           |
 |:-----------------------|:----------------------|:----------------------|
@@ -101,6 +88,27 @@ Each activity is classified as one of four activity types (<code>activity_type</
 |institutional/programme |only one provider      |at least one programme |
 |programme               |only one provider      |at least one programme |
 |joint programme         |at least two providers |at least one programme |
+
+If a report belongs to activities of different types **the requirements add up**. For example: if at least one activity is a programme one, you must provide information on at least one programme. Or if at least one activity is a joint programme one, you need to specify at least two providers.
+
+Optionally an agency may choose to provide **local identifiers** for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
+
+* **Activity(\*)** (<code>activities[n].activity</code>; conditionally required; string)  
+  A DEQAR activity value may be provided as a DEQAR activity ID.
+
+    *e.g. 2*  
+    *e.g. 8*  
+
+* **Activity Local Identifier(\*)** (<code>activities[n].local_identifier</code>; conditionally required; string)  
+  A local activity identifier may be provided in place of a DEQAR activity ID. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)
+
+    *e.g. inst_aud*
+
+* **Activity Agency** (<code>activities[n].agency</code>; not required; string)  
+  If you use a local activity identifier to identify an activity of a contributing agency you need to specify the agency, as local identifiers are tied to an agency. If you do not specify the agency, the activity will be understood as one of the main agency of the submitted report.
+
+    *e.g. MusiQuE*  
+    *e.g. 34*
 
 ## Details
 

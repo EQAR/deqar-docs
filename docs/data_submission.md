@@ -63,7 +63,7 @@ In order for submission objects to clear the first level of validation, they mus
 2. Submitted data must **align with the Agency Profile** information, specifically report validity date must be after the Agency's EQAR registration start date and before the registration end date, if applicable.
 
 3. All **required data** must be present for each report. Required data for all records includes:
-    * [ESG activity performed](report_data.md#activity)
+    * [ESG activity/-ies performed](report_data.md#activity), at least one for each agency involved
     * [Status of report](report_data.md#details)
     * [Decision](report_data.md#details)
     * Report [valid from date, including date format](report_data.md#validity) used by the agency
@@ -71,14 +71,14 @@ In order for submission objects to clear the first level of validation, they mus
     * Organisation: a report must relate to at least one [existing organisation record](report_data.md#organisations) identified by a DEQARINST ID, ETER ID or another known identifier.
 
 3. At this point, **dependencies** between elements will be checked as well as any **limits on the number of values permitted** for each element. In particular:
-    * Requirements based on the **type of ESG activity**:
-        - institutional: no programme data must be provided
-        - programme or programme/institution: exactly one organisation must be identified, data on one or several programme(s) must be provided
-        - joint programme: at least two organisations must be identified, data on one or several programme(s) must be provided
-    * Data required for **each programme** (i.e. except institutional reports):
+    * Requirements based on the **type of [ESG activity](report_data.md#activity)**:
+        - only institutional activities: no programme data must be provided
+        - at least one programme or programme/institution activity: exactly one organisation must be identified, data on one or several programme(s) must be provided
+        - at least one joint programme activity: at least two organisations must be identified, data on one or several programme(s) must be provided
+    * Data required for **each programme** (i.e. except purely institutional reports):
         - the [programme name](report_data.md#programme-name-and-qualification) (in whichever language it is stored by the Agency)
-        - the [degree outcome](report_data.md#programme-qualification-level) indicating whether full degree or not – required as from 2024
-        - the [qualification level](report_data.md#programme-qualification-level) – required for non-full degree programmes, as from 2024 required for all
+        - the [degree outcome](report_data.md#programme-qualification-level) indicating whether full degree or not
+        - the [qualification level](report_data.md#programme-qualification-level)
     * Data required for **programmes with degree outcome "no"** (= not leading to a full degree):
         - [Workload expressed in ECTS](report_data.md#programme-details)
         - Whether programme includes [assessment or certification](report_data.md#programme-details)
@@ -149,7 +149,7 @@ Each report may contain one or more report files (for example, the experts' repo
 The first row of your file is a header which should include column names as defined under [Report Data Elements](report_data.md) above. The following lines contain one report per row. A simple example of a CSV first-fow header for institution-level reports could look as follows:
 
 ```
-agency, activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
+agency, activities[1].activity, status, decision, valid_from, valid_to, date_format, file[1].original_location, file[1].report_language[1], institution[1].eter_id
 ```
 
 (Spaces added for readability, these should not appear in an actual file.)
@@ -259,28 +259,55 @@ curl -s -H "Content-type: application/json" -H "Authorization: Bearer $DEQAR_TOK
 http -v POST {{ deqar.root }}/submissionapi/v2/submit/report "Authorization: Bearer $DEQAR_TOKEN" "Content-type: application/json" < $DEQAR_FILE
 ```
 
-### Report Submission Endpoints
+### Endpoints
 
-The address of the submission endpoint is:
+The Submission API offers the following endpoints to manage the whole lifecycle of reports:
 
-`{{ deqar.root }}/submissionapi/v2/submit/report`
+| Method | Path                                                       | Function                                                                      |
+| ------ | ---------------------------------------------------------- | ------------------------------------------------------------------------------|
+| POST   | `{{ deqar.root }}/submissionapi/v2/submit/report`          | Submit a new report that is not yet recorded in DEQAR                         |
+| PUT    | `{{ deqar.root }}/submissionapi/v2/submit/report`          | Update data on an existing report in DEQAR                                    |
+| GET    | `{{ deqar.root }}/submissionapi/v2/check/local-identifier` | Check for the existance of a local identifier                                 |
+| POST   | `{{ deqar.root }}/submissionapi/v2/manage/report-file`     | Upload an additional file to an existing report                               |
+| PUT    | `{{ deqar.root }}/submissionapi/v2/manage/report-file`     | Replace a file belonging to a report                                          |
+| DELETE | `{{ deqar.root }}/submissionapi/v2/manage/report-file`     | Remove a file from a report                                                   |
+| DELETE | `{{ deqar.root }}/submissionapi/v2/delete/report/{id}/`    | Request deletion of a report from DEQAR (exceptional cases only)              |
 
-This is the URL that you can use to make a `POST` request including the Submission Request Object as JSON object, or many objects as JSON array of objects in the request body.
-
-The **Submission Request Object** is the JSON object (or array of objects) which is the manifestation of a report or set of reports an agency wants to submit.
-
-Fields and accepted types are as described in [Report Data Elements](report_data.md) above. The full definition of request and response objects can be find in OpenAPI format under:
+The semantic of the various fields and accepted types are described in [Report Data Elements](report_data.md) above. The technical description of request and response objects can be find in OpenAPI format under:
 
 <{{ deqar.root }}/submissionapi/v2/swagger/>
 
-### Report File Submission Endpoint
+### Report Lifecycle
 
-Files (PDF versions of reports) can be submitted in two separate ways:
+Please note that version 2 of the Submission API requires you distinguish clearly between the upload/creation of a new report (`POST`) or the update of an existing one (using `PUT` or `PATCH`). For example, a `POST` request with an existing local identifier will be rejected.
 
-* URLs submitted with a Submission Request Object will be harvested asynchronously upon successful submission.
-* Files can be submitted directly to a dedicated endpoint as part of a `PUT` request: `{{ deqar.root }}/submissionapi/v2/submit/reportfile/<report_file_id>/<filename>`
+We strongly recommend that you (a) submit a unique code or identifier of a report in your own system as `local_identifier` and (b) track in your system whether a report was already succssfully submitted to DEQAR. To that end, the response of the report creation endpoints includes the new DEQAR ID of the report; you can use that in subsequent `PUT` or `PATCH` requests.
 
-  `report_file_id`: The id number of the Report File object available in the response after successful submission. The `report_file_id` is contained in the response object of the successful report submission. `filename`: The name of the file that you will submit in this request.
+If you cannot track submission status in your system, you might need to make an additional request to the `/check/local-identifier` endpoint first in order to determine whether this report was already submitted to DEQAR earlier.
+
+In general, reports should never be deleted from DEQAR, as the system intends to keep a full historic record. The `DELETE` endpoint is therefore for exceptional circumstances only, e.g. to fix accidental duplications. It can only mark reports for deletion and deletion has to be then confirmed by EQAR staff case by case. You also need to provide a reason for every deletion request. This also means: deletion of reports should never be part of your regular, every-day workflow.
+
+### Report Files
+
+Each report needs to have at least one file (PDF versions of reports). These can be submitted in two separate ways:
+
+* URL reference: these files will be harvested asynchronously upon successful submission.
+* Directly: files can be Base64-encoded and submitted directly in requests
+
+Files can be managed as follows, each allowing either option:
+
+* At least one file needs to be submitted whenever creating a report. You can specify a URL or include the Base64-encoded file in your request.
+* When updating reports via `PUT`, all files need to be submitted again.
+* When updating reports via `PATCH`, ... **to be defined**
+* You can use the dedicated report file endpoints to add, update or delete individual files without touching the report record otherwise. Please note that you cannot delete the last file of a report as each report needs to have at least one file attached.
+
+Files submitted by URL reference are downloaded asynchronously after submission. DEQAR makes a `HEAD` request first, followed by a `GET` request. At least the latter needs to return a content-type header of `application/pdf`. If another content type is reported the download will fill. The maximum file size for download is 100MB.
+
+When the download fails, the corresponding report record receives a low-level flag for information.
+
+Downloads are only retried if the report or the specific files are updated through the mentioned endpoints (or via CSV or admin interface). Existing report files are only uploaded/replaced if the new download succeeded and the downloaded file differs from the existing one. Otherwise the existing file is kept.
+
+DEQAR only accepts PDF files. Each file – whether downloaded from a URL or submitted directly – will be opened with the [pypdf](https://pypi.org/project/pypdf/) library (version 4.2.0). Files not readable by the library are rejected.
 
 ### Examples
 
@@ -289,106 +316,122 @@ The examples below show how a JSON Submission Request Object might look for diff
 #### Institutional report
 
 ```json
-[
+{
+  "agency": "MusiQuE",
+  "local_identifier": "CRDB-October14",
+  "activities": [
     {
-        "agency": "MusiQuE",
-        "local_identifier": "CRDB-October14",
-        "activity": "183",
-        "status": "part of obligatory EQA system",
-        "decision": "positive",
-        "valid_from": "2016-10-28",
-        "valid_to": "2018-01-15",
-        "date_format": "%Y-%m-%d",
-        "report_files": [
-            {
-                "original_location": "http://www.musique-qe.eu/userfiles/File/2014-10-bruxelles-website.pdf",
-                "display_name": "Evaluation report",
-                "report_language": [
-                    "fr"
-                ]
-            }
-        ],
-        "institutions": [
-            {
-                "eter_id": "BE0035"
-            }
-        ]
+      "id": "183"
+    }
+  ],
+  "status": "part of obligatory EQA system",
+  "decision": "positive",
+  "valid_from": "2016-10-28",
+  "valid_to": "2018-01-15",
+  "date_format": "%Y-%m-%d",
+  "report_files": [
+    {
+      "original_location": "http://www.musique-qe.eu/userfiles/File/2014-10-bruxelles-website.pdf",
+      "display_name": "Evaluation report",
+      "report_language": [
+        "fr"
+      ]
+    }
+  ],
+  "institutions": [
+    {
+      "eter_id": "BE0035"
+    }
+  ]
+}
+```
+
+#### Another institutional report
+
+```json
+{
+  "agency": "MusiQuE",
+  "local_identifier": "ENH-4711",
+  "activities": [
+    {
+      "id": "97"
+    }
+  ],
+  "status": "2",
+  "decision": "4",
+  "valid_from": "2021-01-15",
+  "date_format": "%Y-%m-%d",
+  "report_files": [
+    {
+      "original_location": "http://www.musique-qe.eu/userfiles/File/2015-06-25-hamu-review-reportfinal.pdf",
+      "display_name": "Institutional Review",
+      "report_language": [
+        "eng"
+      ]
     },
     {
-        "agency": "MusiQuE",
-        "local_identifier": "ENH-4711",
-        "activity": "97",
-        "status": "2",
-        "decision": "4",
-        "valid_from": "2021-01-15",
-        "date_format": "%Y-%m-%d",
-        "report_files": [
-            {
-                "original_location": "http://www.musique-qe.eu/userfiles/File/2015-06-25-hamu-review-reportfinal.pdf",
-                "display_name": "Institutional Review",
-                "report_language": [
-                    "eng"
-                ]
-            },
-            {
-                "original_location": "https://zenodo.org/record/4516653/files/Database_of_External_QA_Results_Report%2BModel_2016.pdf?download=1",
-                "display_name": "Addendum to the report",
-                "report_language": [
-                    "ger"
-                ]
-            }
-        ],
-        "institutions": [
-            {
-                "deqar_id": "DEQARINST0390"
-            },
-            {
-                "eter_id": "AT0006"
-            }
-        ]
+      "original_location": "https://zenodo.org/record/4516653/files/Database_of_External_QA_Results_Report%2BModel_2016.pdf?download=1",
+      "display_name": "Addendum to the report",
+      "report_language": [
+        "ger"
+      ]
     }
-]
+  ],
+  "institutions": [
+    {
+      "deqar_id": "DEQARINST0390"
+    },
+    {
+      "eter_id": "AT0006"
+    }
+  ]
+}
 ```
 
 #### Programme report
 
 ```json
 {
-    "agency": "MusiQuE",
-    "local_identifier": "SHM-April09",
-    "activity": "181",
-    "status": "2",
-    "decision": "1",
-    "valid_from": "2017-04-09",
-    "valid_to": "2022-02-15",
-    "date_format": "%Y-%m-%d",
-    "report_files": [
+  "agency": "MusiQuE",
+  "local_identifier": "SHM-April09",
+  "activities": [
+    {
+      "id": "181"
+    }
+  ],
+  "status": "2",
+  "decision": "1",
+  "valid_from": "2017-04-09",
+  "valid_to": "2022-02-15",
+  "date_format": "%Y-%m-%d",
+  "report_files": [
+    {
+      "original_location": "http://www.musique-qe.eu/userfiles/File/2009-06-report-trossingen-website.pdf",
+      "display_name": "Review report",
+      "report_language": [
+        "ger"
+      ]
+    }
+  ],
+  "institutions": [
+    {
+      "eter_id": "DE0140"
+    }
+  ],
+  "programmes": [
+    {
+      "identifiers": [
         {
-            "original_location": "http://www.musique-qe.eu/userfiles/File/2009-06-report-trossingen-website.pdf",
-            "display_name": "Review report",
-            "report_language": [
-                "ger"
-            ]
+          "identifier": "16"
         }
-    ],
-    "institutions": [
-        {
-            "eter_id": "DE0140"
-        }
-    ],
-    "programmes": [
-        {
-            "identifiers": [
-                {
-                    "identifier": "16"
-                }
-            ],
-            "name_primary": "Organ Expert",
-            "qualification_primary": "Master of Arts",
-            "nqf_level": "level 7",
-            "qf_ehea_level": "second cycle"
-        }
-    ]
+      ],
+      "name_primary": "Organ Expert",
+      "qualification_primary": "Master of Arts",
+      "nqf_level": "level 7",
+      "degree_outcome": "1",
+      "qf_ehea_level": "second cycle"
+    }
+  ]
 }
 ```
 
@@ -396,52 +439,58 @@ The examples below show how a JSON Submission Request Object might look for diff
 
 ```json
 {
-    "agency": "MusiQuE",
-    "local_identifier": "EAMT-September13",
-    "activity": "182",
-    "status": "voluntary",
-    "decision": "positive",
-    "valid_from": "15.01.2020",
-    "valid_to": "15.01.2025",
-    "date_format": "%d.%m.%Y",
-    "report_files": [
+  "agency": "MusiQuE",
+  "local_identifier": "EAMT-September13",
+  "activities": [
+    {
+      "id": "182"
+    }
+  ],
+  "status": "voluntary",
+  "decision": "positive",
+  "valid_from": "15.01.2020",
+  "valid_to": "15.01.2025",
+  "date_format": "%d.%m.%Y",
+  "report_files": [
+    {
+      "original_location": "http://www.musique-qe.eu/userfiles/File/final-reportaec-programme-reviewcopeco.pdf",
+      "display_name": "Review report",
+      "report_language": [
+        "eng"
+      ]
+    }
+  ],
+  "institutions": [
+    {
+      "eter_id": "EE0022"
+    },
+    {
+      "eter_id": "SE0037"
+    },
+    {
+      "identifier": {
+        "identifier": "F  LYON24",
+        "resource": "Erasmus"
+      }
+    },
+    {
+      "deqar_id": "DEQARINST0460"
+    }
+  ],
+  "programmes": [
+    {
+      "identifiers": [
         {
-            "original_location": "http://www.musique-qe.eu/userfiles/File/final-reportaec-programme-reviewcopeco.pdf",
-            "display_name": "Review report",
-            "report_language": [
-                "eng"
-            ]
+          "identifier": "18"
         }
-    ],
-    "institutions": [
-        {
-            "eter_id": "EE0022"
-        }, {
-            "eter_id": "SE0037"
-        }, {
-            "identifiers": [
-                {
-                    "identifier": "F  LYON24",
-                    "resource": "Erasmus"
-                }
-            ]
-        }, {
-            "deqar_id": "DEQARINST0460"
-        }
-    ],
-    "programmes": [
-        {
-            "identifiers": [
-                {
-                    "identifier": "18"
-                }
-            ],
-            "name_primary": "CoPeCo – Contemporary Performance and Composition",
-            "qualification_primary": "Master (no joint degree)",
-            "nqf_level": "level 6",
-            "qf_ehea_level": "second cycle"
-        }
-    ]
+      ],
+      "name_primary": "CoPeCo – Contemporary Performance and Composition",
+      "qualification_primary": "Master (no joint degree)",
+      "nqf_level": "level 6",
+      "degree_outcome": "1",
+      "qf_ehea_level": "second cycle"
+    }
+  ]
 }
 ```
 
@@ -451,7 +500,11 @@ The examples below show how a JSON Submission Request Object might look for diff
 {
   "agency": "AAQ",
   "local_identifier": "230830/4711/01",
-  "activity": "386",
+  "activities": [
+    {
+      "id": "386"
+    }
+  ],
   "status": "part of obligatory EQA system",
   "decision": "positive",
   "valid_from": "2022-11-11",
@@ -496,7 +549,11 @@ The examples below show how a JSON Submission Request Object might look for diff
 {
   "agency": "AAQ",
   "local_identifier": "240117/4711/009",
-  "activity": "231",
+  "activities": [
+    {
+      "id": "231"
+    }
+  ],
   "status": "voluntary",
   "decision": "2",
   "valid_from": "2022-11-11",
@@ -526,7 +583,11 @@ The examples below show how a JSON Submission Request Object might look for diff
 {
   "agency": "AAQ",
   "local_identifier": "230830/4711/02",
-  "activity": "386",
+  "activities": [
+    {
+      "id": "386"
+    }
+  ],
   "status": "voluntary",
   "decision": "positive",
   "valid_from": "2022-11-11",
