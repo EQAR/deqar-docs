@@ -105,13 +105,13 @@
         <ul>
     <li class="toctree-l4"><a class="reference internal" href="#institutional-report">Institutional report</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#another-institutional-report">Another institutional report</a>
+    <li class="toctree-l4"><a class="reference internal" href="#another-institutional-report-with-two-agencies">Another institutional report with two agencies</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#programme-report">Programme report</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#joint-programme-report">Joint Programme report</a>
+    <li class="toctree-l4"><a class="reference internal" href="#joint-programme-report-with-additional-label-awarded-by-contributing-agency">Joint Programme report with additional label awarded by contributing agency</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#micro-credential-provided-by-a-higher-education-institution">Micro-credential provided by a higher education institution</a>
+    <li class="toctree-l4"><a class="reference internal" href="#micro-credential-provided-by-a-higher-education-institution-on-a-platform">Micro-credential provided by a higher education institution on a platform</a>
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#audit-of-an-other-provider">Audit of an other provider</a>
     </li>
@@ -340,7 +340,6 @@ password: [your personal password]</p>
 <ul>
 <li><a href="../files/SubmissionTemplate.xlsx">Microsoft Excel format</a></li>
 <li><a href="../files/SubmissionTemplate.ods">Open Document Format (OpenOffice/LibreOffice/NeoOffice)</a></li>
-<li><a href="../files/SubmissionSample_mixed.csv">Sample in CSV format</a> (without comments)</li>
 </ul>
 <h3 id="preparingexporting-csv-files">Preparing/exporting CSV files<a class="headerlink" href="#preparingexporting-csv-files" title="Permanent link">&para;</a></h3>
 <p>Despite being software-independent, there are some known issues when creating/exporting CSV files from some major office applications. Given that it has the most clean and straight-forward CSV export, we recommend the <a href="https://www.libreoffice.org/">LibreOffice package</a>, a free and open-source desktop application supported on all major operating systems.</p>
@@ -500,13 +499,20 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
   ]
 }
 </code></pre>
-<h4 id="another-institutional-report">Another institutional report<a class="headerlink" href="#another-institutional-report" title="Permanent link">&para;</a></h4>
+<h4 id="another-institutional-report-with-two-agencies">Another institutional report with two agencies<a class="headerlink" href="#another-institutional-report-with-two-agencies" title="Permanent link">&para;</a></h4>
 <pre><code class="language-json">{
   &quot;agency&quot;: &quot;MusiQuE&quot;,
+  &quot;contributing_agencies&quot;: [
+    &quot;AAQ&quot;
+  ],
   &quot;local_identifier&quot;: &quot;ENH-4711&quot;,
   &quot;activities&quot;: [
     {
       &quot;id&quot;: &quot;97&quot;
+    },
+    {
+      &quot;local_identifier&quot;: &quot;DE-SYS-2018&quot;,
+      &quot;agency&quot;: &quot;AAQ&quot;
     }
   ],
   &quot;status&quot;: &quot;2&quot;,
@@ -583,13 +589,19 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
   ]
 }
 </code></pre>
-<h4 id="joint-programme-report">Joint Programme report<a class="headerlink" href="#joint-programme-report" title="Permanent link">&para;</a></h4>
+<h4 id="joint-programme-report-with-additional-label-awarded-by-contributing-agency">Joint Programme report with additional label awarded by contributing agency<a class="headerlink" href="#joint-programme-report-with-additional-label-awarded-by-contributing-agency" title="Permanent link">&para;</a></h4>
 <pre><code class="language-json">{
   &quot;agency&quot;: &quot;MusiQuE&quot;,
+  &quot;contributing_agencies&quot;: [
+    &quot;ASIIN&quot;
+  ],
   &quot;local_identifier&quot;: &quot;EAMT-September13&quot;,
   &quot;activities&quot;: [
     {
       &quot;id&quot;: &quot;182&quot;
+    },
+    {
+      &quot;group&quot;: 5
     }
   ],
   &quot;status&quot;: &quot;voluntary&quot;,
@@ -614,10 +626,8 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
       &quot;eter_id&quot;: &quot;SE0037&quot;
     },
     {
-      &quot;identifier&quot;: {
-        &quot;identifier&quot;: &quot;F  LYON24&quot;,
-        &quot;resource&quot;: &quot;Erasmus&quot;
-      }
+      &quot;identifier&quot;: &quot;F  LYON24&quot;,
+      &quot;resource&quot;: &quot;Erasmus&quot;
     },
     {
       &quot;deqar_id&quot;: &quot;DEQARINST0460&quot;
@@ -639,7 +649,7 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
   ]
 }
 </code></pre>
-<h4 id="micro-credential-provided-by-a-higher-education-institution">Micro-credential provided by a higher education institution<a class="headerlink" href="#micro-credential-provided-by-a-higher-education-institution" title="Permanent link">&para;</a></h4>
+<h4 id="micro-credential-provided-by-a-higher-education-institution-on-a-platform">Micro-credential provided by a higher education institution on a platform<a class="headerlink" href="#micro-credential-provided-by-a-higher-education-institution-on-a-platform" title="Permanent link">&para;</a></h4>
 <pre><code class="language-json">{
   &quot;agency&quot;: &quot;AAQ&quot;,
   &quot;local_identifier&quot;: &quot;230830/4711/01&quot;,
@@ -656,6 +666,11 @@ http -v POST https://backend.testzone.eqar.eu/submissionapi/v2/submit/report &qu
   &quot;institutions&quot;: [
     {
       &quot;deqar_id&quot;: &quot;DEQARINST0006&quot;
+    }
+  ],
+  &quot;platforms&quot;: [
+    {
+      &quot;deqar_id&quot;: &quot;DEQARINST8785&quot;
     }
   ],
   &quot;report_files&quot;: [

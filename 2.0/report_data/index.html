@@ -75,6 +75,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#providers">Provider(s)</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#platforms">Platform(s)</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#programme-data">Programme Data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#programme-identification">Programme Identification</a>
@@ -179,10 +181,16 @@
 <td style="text-align: left;"><em>QAA1153-March15</em></td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>Activity</strong></td>
+<td style="text-align: left;"><strong>Activity ID</strong></td>
 <td style="text-align: left;">conditionally</td>
 <td style="text-align: left;">many</td>
-<td style="text-align: left;"><em>institutional audit</em><br><em>programme evaluation</em><br><em>2</em><br><em>8</em></td>
+<td style="text-align: left;"><em>2</em><br><em>8</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Activity Group ID</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>497</em><br><em>508</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Activity Local Identifier</strong></td>
@@ -194,13 +202,13 @@
 <td style="text-align: left;"><strong>Status</strong></td>
 <td style="text-align: left;">yes</td>
 <td style="text-align: left;">one</td>
-<td style="text-align: left;"><em>1 - part of obligatory EQA system</em><br><em>2 - voluntary</em></td>
+<td style="text-align: left;"><em>part of obligatory EQA system</em><br><em>2</em> (= voluntary)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Decision</strong></td>
 <td style="text-align: left;">yes</td>
 <td style="text-align: left;">one</td>
-<td style="text-align: left;"><em>1 - positive</em><br><em>2 - positive with conditions or restrictions</em><br><em>3 - negative</em><br><em>4 - not applicable</em></td>
+<td style="text-align: left;"><em>positive</em><br><em>positive with conditions or restrictions</em><br><em>3</em> (= negative)<br><em>4</em> (= not applicable)</td>
 </tr>
 <tr>
 <td style="text-align: left;">Summary</td>
@@ -278,8 +286,9 @@
 </li>
 </ul>
 <h2 id="activity">Activity<a class="headerlink" href="#activity" title="Permanent link">&para;</a></h2>
-<p>A report must be assigned to at least one activity from each agency involved. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).</p>
-<p>You can also link one report to several activities of an agency, for example where different quality labels where assessed/awarded in a single procedure.</p>
+<p>A report must be assigned to at least one activity. You can also link one report to several activities of an agency, for example where different quality labels where assessed/awarded in a single procedure.</p>
+<p>If a report has one or more contributing agencies, you need to specify at least one activity for each agency involved.</p>
+<p>Activities are selected from the agency's pre-defined list of activities and can be identified by the DEQAR activity ID or activity group ID. Optionally an agency may use <strong>local identifiers</strong> for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see <a href="../architecture_data_model/#other-identifiers">Role of Standards and Identifiers: Other Identifiers</a>. If both elements are submitted for a single report, then the DEQAR value will be used by the system.</p>
 <blockquote>
 <p>If you do not find the activity enlisted on DEQAR, please inform EQAR about the new activity through submitting a Substantive Change Report via <a href="https://www.eqar.eu/register/substantive-change-report/">this form</a>.</p>
 </blockquote>
@@ -316,10 +325,9 @@
 </tbody>
 </table>
 <p>If a report belongs to activities of different types <strong>the requirements add up</strong>. For example: if at least one activity is a programme one, you must provide information on at least one programme. Or if at least one activity is a joint programme one, you need to specify at least two providers.</p>
-<p>Optionally an agency may choose to provide <strong>local identifiers</strong> for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see <a href="../architecture_data_model/#other-identifiers">Role of Standards and Identifiers: Other Identifiers</a>. If both elements are submitted for a single report, then the DEQAR value will be used by the system.</p>
 <ul>
 <li>
-<p><strong>Activity(*)</strong> (<code>activities[n].activity</code>; conditionally required; string)<br />
+<p><strong>Activity(*)</strong> (<code>activities[n].id</code>; conditionally required; string)<br />
   A DEQAR activity value may be provided as a DEQAR activity ID.</p>
 <p><em>e.g. 2</em><br />
 <em>e.g. 8</em>  </p>
@@ -328,6 +336,12 @@
 <p><strong>Activity Local Identifier(*)</strong> (<code>activities[n].local_identifier</code>; conditionally required; string)<br />
   A local activity identifier may be provided in place of a DEQAR activity ID. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)</p>
 <p><em>e.g. inst_aud</em></p>
+</li>
+<li>
+<p><strong>Activity Group(*)</strong> (<code>activities[n].group</code>; conditionally required; string)<br />
+  An activity may be specified by reference to the ID of the ESG Activity Group to which it belongs.</p>
+<p><em>e.g. 497</em><br />
+<em>e.g. 508</em>  </p>
 </li>
 <li>
 <p><strong>Activity Agency</strong> (<code>activities[n].agency</code>; not required; string)<br />
@@ -664,6 +678,68 @@
 <li>
 <p>Identifier Resource(*) (<code>institution[n].resource</code>; conditionally required; string)<br />
   If the identifier you use is not a local identifier of your agency, you need to provide its corresponding resource tag. The value for this field can be consulted through the administrative interface.</p>
+<p><em>e.g. DE-HRK</em><br />
+<em>e.g. SI-ETER.BAS.NATID</em><br />
+<em>e.g. Erasmus</em></p>
+</li>
+</ul>
+<h2 id="platforms">Platform(s)<a class="headerlink" href="#platforms" title="Permanent link">&para;</a></h2>
+<p>In addition to the education provider(s) a report can also be associated with one or more organisations acting as platform(s). While the education provider is responsible for the education content, a platform provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).</p>
+<p>Platform(s) should <strong>only</strong> be indicated <strong>if they differ from the education provider(s)</strong>. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.</p>
+<p>Platforms are recorded in DEQAR in the same way and data table as education provider(s) and need to already exist in DEQAR before being assigned to a report. That is, <a href="../institution_data/">the previous section on adding missing providers to DEQAR</a> applies accordingly.</p>
+<p>Preferably, the DEQARINST ID should be provided to identify the platform(s). In addition, the ETER ID or <a href="../architecture_data_model/#provider-identifiers">other identifiers</a> can be used in the same way as for education providers.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">ELEMENT NAME</th>
+<th style="text-align: left;">REQUIRED</th>
+<th style="text-align: left;">ONE/MANY</th>
+<th style="text-align: left;">EXAMPLE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>DEQARINST ID</strong></td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>DEQARINST0034</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>ETER ID</strong></td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>BG0001</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Institutional Identifier</strong></td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>HCERES21</em><br><em>AT0004</em></td>
+</tr>
+<tr>
+<td style="text-align: left;">Identifier Resource</td>
+<td style="text-align: left;">no</td>
+<td style="text-align: left;">one (per)</td>
+<td style="text-align: left;"><em>SI-ETER.BAS.NATID</em><br><em>Erasmus</em></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>DEQARINST ID(*)</strong> (<code>platform[n].deqar_id</code>; conditionally required; string)</p>
+<p><em>e.g. DEQARINST0034</em></p>
+</li>
+<li>
+<p><strong>ETER ID(*)</strong> (<code>platform[n].eter_id</code>; conditionally required; string)</p>
+<p><em>e.g. BG0001</em></p>
+</li>
+<li>
+<p><strong>Provider Identifier(*)</strong> (<code>platform[n].identifier</code>; conditionally required; string)</p>
+<p><em>e.g. HCERES21</em><br />
+<em>e.g. AT0004</em></p>
+</li>
+<li>
+<p>Identifier Resource(*) (<code>platform[n].resource</code>; conditionally required; string)</p>
 <p><em>e.g. DE-HRK</em><br />
 <em>e.g. SI-ETER.BAS.NATID</em><br />
 <em>e.g. Erasmus</em></p>

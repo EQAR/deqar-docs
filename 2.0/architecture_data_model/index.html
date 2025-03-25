@@ -56,7 +56,7 @@
 <ul>
 <li class="toctree-l3"><a class="reference internal" href="#agency-identifiers">Agency Identifiers</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#activity-identifiers">Activity Identifiers</a>
+<li class="toctree-l3"><a class="reference internal" href="#activity-identifiers-and-groups">Activity Identifiers and Groups</a>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#report-identifiers">Report Identifiers</a>
 </li>
@@ -138,6 +138,7 @@
     REPORT }o--o{ "AGENCY" : "contributed"
     REPORT ||--|{ "REPORT FILE" : has
     REPORT }o--|{ PROVIDER : "focuses on"
+    REPORT }o--o{ PROVIDER : "may name as platform"
     REPORT ||--o{ PROGRAMME : "may focus on"
 </div>
 <p>Registered agency users are invited to submit and manage information on external quality assurance reports, including information about the particular programme described in the report, if applicable.</p>
@@ -191,7 +192,7 @@
 <tr>
 <td>Activity</td>
 <td>DEQAR Activity ID</td>
-<td>activity local identifier, activity name</td>
+<td>DEQAR Activity Group ID, activity local identifier</td>
 </tr>
 <tr>
 <td>Reports</td>
@@ -222,7 +223,9 @@
     ACTIVITY {
         int DEQAR_activity_id
         string local_identifier
-        string activity_name
+    }
+    "ACTIVITY GROUP" {
+        int DEQAR_activity_group_id
     }
     PROVIDER {
         string DEQARINST_id
@@ -237,7 +240,9 @@
     REPORT }o--|| AGENCY : "belongs to"
     REPORT }o--o{ AGENCY : "contributed"
     REPORT }o--|{ ACTIVITY : "is part of"
+    ACTIVITY }|--|| "ACTIVITY GROUP" : "part of"
     REPORT }o--|{ PROVIDER : "focuses on"
+    REPORT }o--o{ PROVIDER : "may name as platform"
     REPORT ||--o{ PROGRAMME : "may focus on"
     AGENCY }|--|{ ACTIVITY : "carries out"
 </div>
@@ -257,9 +262,10 @@
 <h3 id="agency-identifiers">Agency Identifiers<a class="headerlink" href="#agency-identifiers" title="Permanent link">¶</a></h3>
 <p>Authentication is required before the submission and update of data and files. Thus, the agency responsible for each report can be identified automatically by the system. In some cases, an agency may serve as a <em>proxy agency</em> for a <em>creating agency</em>, submitting and managing data on its behalf (as in the case of umbrella organisations). In this case, the creating agency’s unique acronym or DEQAR Agency ID (which can be found in the administrative interface) must be provided as the source of identification. For this reason, identification of the creating agency is required for each object when using CSV and JSON.</p>
 <p>(See <a href="../report_data/#agency">Submission Object Data Elements: Agency</a>.)</p>
-<h3 id="activity-identifiers">Activity Identifiers<a class="headerlink" href="#activity-identifiers" title="Permanent link">¶</a></h3>
+<h3 id="activity-identifiers-and-groups">Activity Identifiers and Groups<a class="headerlink" href="#activity-identifiers-and-groups" title="Permanent link">¶</a></h3>
 <p>DEQAR also assigns IDs to each agency's activities (see list on the agency's <a href="https://www.eqar.eu/register/agencies/">public register entry</a> under <em>Activities within the scope of ESG</em>). These identifiers, which can be found through the administrative interface, should be used to indicate the type of report in each CSV or JSON object.</p>
 <p>Alternatively, an agency may wish to use its own local activity identifiers; in this case, the agency should supply through their local identifiers through the administrative interface before using them for submission.</p>
+<p>Identical activities implemented by several registered agencies (e.g. European Approach for QA of Joint Programmes, System Accreditation in Germany, ...) are grouped into an actvity group. DEQAR assigns IDs to each group, which can be used to identify the activity of a report.</p>
 <p><em>Note: Only one identifier should be provided for the assigned activity.</em></p>
 <p>Please note that any changes to the agency's activities, other than purely editorial or technical changes, must be made through <a href="https://www.eqar.eu/register/reporting-and-renewal/">Substantive Change Reports</a>.</p>
 <p>(See <a href="../report_data/#activity">Submission Object Data Elements: Activity</a>.)</p>
