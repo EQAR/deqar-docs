@@ -284,6 +284,42 @@ Only one identifier should be submitted for each provider in the submission obje
     *e.g. SI-ETER.BAS.NATID*  
     *e.g. Erasmus*
 
+## Platform(s)
+
+In addition to the education provider(s) a report can also be associated with one or more organisations acting as platform(s). While the education provider is responsible for the education content, a platform provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).
+
+Platform(s) should **only** be indicated **if they differ from the education provider(s)**. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.
+
+Platforms are recorded in DEQAR in the same way and data table as education provider(s) and need to already exist in DEQAR before being assigned to a report. That is, [the previous section on adding missing providers to DEQAR](institution_data.md) applies accordingly.
+
+Preferably, the DEQARINST ID should be provided to identify the platform(s). In addition, the ETER ID or [other identifiers](architecture_data_model.md#provider-identifiers) can be used in the same way as for education providers.
+
+|ELEMENT NAME                 |REQUIRED |ONE/MANY  |EXAMPLE                          |
+|:----------------------------|:--------|:---------|:--------------------------------|
+|**DEQARINST ID**             |no       |one (per) |*DEQARINST0034*                  |
+|**ETER ID**                  |no       |one (per) |*BG0001*                         |
+|**Institutional Identifier** |no       |one (per) |*HCERES21*<br>*AT0004*           |
+|Identifier Resource          |no       |one (per) |*SI-ETER.BAS.NATID*<br>*Erasmus* |
+
+* **DEQARINST ID(\*)** (<code>platform[n].deqar_id</code>; conditionally required; string)
+
+    *e.g. DEQARINST0034*
+
+* **ETER ID(\*)** (<code>platform[n].eter_id</code>; conditionally required; string)
+
+    *e.g. BG0001*
+
+* **Provider Identifier(\*)** (<code>platform[n].identifier</code>; conditionally required; string)
+
+    *e.g. HCERES21*  
+    *e.g. AT0004*
+
+* Identifier Resource(\*) (<code>platform[n].resource</code>; conditionally required; string)
+
+    *e.g. DE-HRK*  
+    *e.g. SI-ETER.BAS.NATID*  
+    *e.g. Erasmus*
+
 ## Programme Data
 
 Information on one or more programmes is required for all reports with the assigned activity types: **institutional/programme**; **programme**; or **joint programme**. As a rule, programme information must be entered anew for each report, though DEQAR allows agencies to assign local programme identifiers in order to track reports on the same programme.

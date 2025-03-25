@@ -97,6 +97,16 @@ Reports for programmes offered in collaboration by a higher education institutio
 
 Similarly, a provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered as "other provider", whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.
 
+## Defining Platforms
+
+While the education provider is responsible for the education content, a platform provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS). Platform(s) can and should be indicated for reports if they differ from the education provider(s) of the learning offer covered in a report.
+
+Platforms are recorded in DEQAR in the same way and data table as education provider(s).
+
+A higher education institution can also act/serve as a platform provider, e.g. if it hosts courses offered by other higher education institutions or providers on its LMS or portal.
+
+Any platform that does not fit the above [definition](#defining-higher-education-institutions) of a higher education institution is recorded as [other provider](#defining-other-providers) in DEQAR.
+
 ## Provider Data Elements
 
 If a record for a **provider does not already exist in DEQAR** it should be described with the elements below; required elements are marked in bold or by a **\***. Before a new record is created, data will be checked against provider data already in DEQAR. If a DEQAR provider record is identified as a match, the existing record will take precedence over submitted data.

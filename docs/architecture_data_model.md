@@ -10,6 +10,7 @@ erDiagram
     REPORT }o--o{ "AGENCY" : "contributed"
     REPORT ||--|{ "REPORT FILE" : has
     REPORT }o--|{ PROVIDER : "focuses on"
+    REPORT }o--o{ PROVIDER : "may name as platform"
     REPORT ||--o{ PROGRAMME : "may focus on"
 ```
 
@@ -89,6 +90,7 @@ erDiagram
     REPORT }o--o{ AGENCY : "contributed"
     REPORT }o--|{ ACTIVITY : "is part of"
     REPORT }o--|{ PROVIDER : "focuses on"
+    REPORT }o--o{ PROVIDER : "may name as platform"
     REPORT ||--o{ PROGRAMME : "may focus on"
     AGENCY }|--|{ ACTIVITY : "carries out"
 ```

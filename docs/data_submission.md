@@ -494,7 +494,7 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Micro-credential provided by a higher education institution
+#### Micro-credential provided by a higher education institution on a platform
 
 ```json
 {
@@ -513,6 +513,11 @@ The examples below show how a JSON Submission Request Object might look for diff
   "institutions": [
     {
       "deqar_id": "DEQARINST0006"
+    }
+  ],
+  "platforms": [
+    {
+      "deqar_id": "DEQARINST8785"
     }
   ],
   "report_files": [
