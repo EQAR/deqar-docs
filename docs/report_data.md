@@ -20,7 +20,8 @@ Please note that new records for providers not currently represented in DEQAR sh
 |Contributing Agencies | no | many | *MusiQuE*<br>*34* |
 |DEQAR Report ID |no |one |*786* |
 |Local Report Identifier |no |one |*QAA1153-March15* |
-|**Activity** |conditionally|many |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|
+|**Activity ID** |conditionally|many |*2*<br>*8*|
+|**Activity Group ID** |conditionally|many |*497*<br>*508*|
 |**Activity Local Identifier** |conditionally|many |*inst_aud* |
 |**Status** |yes |one |*part of obligatory EQA system*<br>*2* (= voluntary)|
 |**Decision** |yes |one |*positive*<br>*positive with conditions or restrictions*<br>*3* (= negative)<br>*4* (= not applicable)|
@@ -74,9 +75,11 @@ Each report can be identified using an agency's local identifiers or through DEQ
 
 ## Activity
 
-A report must be assigned to at least one activity from each agency involved. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).
+A report must be assigned to at least one activity. You can also link one report to several activities of an agency, for example where different quality labels where assessed/awarded in a single procedure.
 
-You can also link one report to several activities of an agency, for example where different quality labels where assessed/awarded in a single procedure.
+If a report has one or more contributing agencies, you need to specify at least one activity for each agency involved.
+
+Activities are selected from the agency's pre-defined list of activities and can be identified by the DEQAR activity ID or activity group ID. Optionally an agency may use **local identifiers** for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
 
 > If you do not find the activity enlisted on DEQAR, please inform EQAR about the new activity through submitting a Substantive Change Report via [this form](https://www.eqar.eu/register/substantive-change-report/).
 
@@ -91,9 +94,7 @@ Each activity is classified as one of **four activity types**. These types deter
 
 If a report belongs to activities of different types **the requirements add up**. For example: if at least one activity is a programme one, you must provide information on at least one programme. Or if at least one activity is a joint programme one, you need to specify at least two providers.
 
-Optionally an agency may choose to provide **local identifiers** for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
-
-* **Activity(\*)** (<code>activities[n].activity</code>; conditionally required; string)  
+* **Activity(\*)** (<code>activities[n].id</code>; conditionally required; string)  
   A DEQAR activity value may be provided as a DEQAR activity ID.
 
     *e.g. 2*  
@@ -103,6 +104,12 @@ Optionally an agency may choose to provide **local identifiers** for its own act
   A local activity identifier may be provided in place of a DEQAR activity ID. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)
 
     *e.g. inst_aud*
+
+* **Activity Group(\*)** (<code>activities[n].group</code>; conditionally required; string)  
+  An activity may be specified by reference to the ID of the ESG Activity Group to which it belongs.
+
+    *e.g. 497*  
+    *e.g. 508*  
 
 * **Activity Agency** (<code>activities[n].agency</code>; not required; string)  
   If you use a local activity identifier to identify an activity of a contributing agency you need to specify the agency, as local identifiers are tied to an agency. If you do not specify the agency, the activity will be understood as one of the main agency of the submitted report.

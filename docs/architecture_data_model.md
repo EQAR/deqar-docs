@@ -56,7 +56,7 @@ Hence, to ensure consistency and stability, DEQAR uses a set of standard identif
 | Object      | Recommended Identification | Alternative Identification |
 | ----------- | -------------------------- | -------------------------- |
 | Agency      | DEQAR Agency ID            | agency acronym             |
-| Activity    | DEQAR Activity ID          | activity local identifier, activity name |
+| Activity    | DEQAR Activity ID          | DEQAR Activity Group ID, activity local identifier |
 | Reports     | local report identifier    | DEQAR Report ID            |
 | Provider    | DEQARINST ID               | ETER ID, local identifier, other identifier |
 | Programme   | local programme identifier |                            |
@@ -74,7 +74,9 @@ erDiagram
     ACTIVITY {
         int DEQAR_activity_id
         string local_identifier
-        string activity_name
+    }
+    "ACTIVITY GROUP" {
+        int DEQAR_activity_group_id
     }
     PROVIDER {
         string DEQARINST_id
@@ -89,6 +91,7 @@ erDiagram
     REPORT }o--|| AGENCY : "belongs to"
     REPORT }o--o{ AGENCY : "contributed"
     REPORT }o--|{ ACTIVITY : "is part of"
+    ACTIVITY }|--|| "ACTIVITY GROUP" : "part of"
     REPORT }o--|{ PROVIDER : "focuses on"
     REPORT }o--o{ PROVIDER : "may name as platform"
     REPORT ||--o{ PROGRAMME : "may focus on"
@@ -111,11 +114,13 @@ Authentication is required before the submission and update of data and files. T
 
 (See [Submission Object Data Elements: Agency](report_data.md#agency).)
 
-### Activity Identifiers
+### Activity Identifiers and Groups
 
 DEQAR also assigns IDs to each agency's activities (see list on the agency's [public register entry](https://www.eqar.eu/register/agencies/) under *Activities within the scope of ESG*). These identifiers, which can be found through the administrative interface, should be used to indicate the type of report in each CSV or JSON object.
 
 Alternatively, an agency may wish to use its own local activity identifiers; in this case, the agency should supply through their local identifiers through the administrative interface before using them for submission.
+
+Identical activities implemented by several registered agencies (e.g. European Approach for QA of Joint Programmes, System Accreditation in Germany, ...) are grouped into an actvity group. DEQAR assigns IDs to each group, which can be used to identify the activity of a report.
 
 *Note: Only one identifier should be provided for the assigned activity.*
 

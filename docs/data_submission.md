@@ -346,15 +346,22 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Another institutional report
+#### Another institutional report with two agencies
 
 ```json
 {
   "agency": "MusiQuE",
+  "contributing_agencies": [
+    "AAQ"
+  ],
   "local_identifier": "ENH-4711",
   "activities": [
     {
       "id": "97"
+    },
+    {
+      "local_identifier": "DE-SYS-2018",
+      "agency": "AAQ"
     }
   ],
   "status": "2",
@@ -435,15 +442,21 @@ The examples below show how a JSON Submission Request Object might look for diff
 }
 ```
 
-#### Joint Programme report
+#### Joint Programme report with additional label awarded by contributing agency
 
 ```json
 {
   "agency": "MusiQuE",
+  "contributing_agencies": [
+    "ASIIN"
+  ],
   "local_identifier": "EAMT-September13",
   "activities": [
     {
       "id": "182"
+    },
+    {
+      "group": 5
     }
   ],
   "status": "voluntary",
