@@ -22,8 +22,8 @@ Please note that new records for providers not currently represented in DEQAR sh
 |Local Report Identifier |no |one |*QAA1153-March15* |
 |**Activity** |conditionally|many |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|
 |**Activity Local Identifier** |conditionally|many |*inst_aud* |
-|**Status** |yes |one |*1 - part of obligatory EQA system*<br>*2 - voluntary*|
-|**Decision** |yes |one |*1 - positive*<br>*2 - positive with conditions or restrictions*<br>*3 - negative*<br>*4 - not applicable*|
+|**Status** |yes |one |*part of obligatory EQA system*<br>*2* (= voluntary)|
+|**Decision** |yes |one |*positive*<br>*positive with conditions or restrictions*<br>*3* (= negative)<br>*4* (= not applicable)|
 |Summary |no |one | |
 |**Valid from** |yes |one |*2015-01-15* |
 |Valid to |no |one |*2020-01-15* |

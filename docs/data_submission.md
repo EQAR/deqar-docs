@@ -468,10 +468,8 @@ The examples below show how a JSON Submission Request Object might look for diff
       "eter_id": "SE0037"
     },
     {
-      "identifier": {
-        "identifier": "F  LYON24",
-        "resource": "Erasmus"
-      }
+      "identifier": "F  LYON24",
+      "resource": "Erasmus"
     },
     {
       "deqar_id": "DEQARINST0460"
