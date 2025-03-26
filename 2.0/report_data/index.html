@@ -546,10 +546,22 @@
 <td style="text-align: left;"><em>http://estudis.aqu.cat/MAD2014_UPC_es.pdf</em></td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>File Content</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTG...CiUlRU9GCg==</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>File Name</strong></td>
+<td style="text-align: left;">conditionally</td>
+<td style="text-align: left;">many</td>
+<td style="text-align: left;"><em>MAD2014_UPC_es.pdf</em></td>
+</tr>
+<tr>
 <td style="text-align: left;">File Display Name</td>
 <td style="text-align: left;">no</td>
 <td style="text-align: left;">one (per)</td>
-<td style="text-align: left;"><em>Report</em><br><em>Evaluation</em><br><em>MAD2014_UPC_es.pdf</em></td>
+<td style="text-align: left;"><em>Report</em><br><em>Evaluation</em></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>Report Language</strong></td>
@@ -570,11 +582,15 @@
 </blockquote>
 </li>
 <li>
-<p><strong>File Content(*)</strong> (<code>file[n].content</code>; conditionally required; string)<br />
-  You can provide the file content as a <a href="https://en.wikipedia.org/wiki/Base64">Base64</a>-encoded string alternatively.</p>
+<p><strong>File Content(*)</strong> (<code>file[n].file</code>; conditionally required; string)<br />
+  You can provide the file content as a <a href="https://en.wikipedia.org/wiki/Base64">Base64</a>-encoded string alternatively. DEQAR uses Base64FileField from the <a href="https://pypi.org/project/drf-extra-fields/">drf-extra-fields</a> project to decode and handle Base64-encoded files.</p>
 <blockquote>
 <p>If you decide to use this option please be mindful that the maximum request size of the DEQAR API is 10MB. This applies to each API request or line in a CSV file. Given the overhead of the encoding, the size of all files for a single report should thus not exceed 7MB for this method.</p>
 </blockquote>
+</li>
+<li>
+<p><strong>File Name(*)</strong> (<code>file[n].file_name</code>; conditionally required; string)<br />
+  If you provide the file content as a <a href="https://en.wikipedia.org/wiki/Base64">Base64</a>-encoded string, you must also provide a filename.</p>
 </li>
 <li>
 <p>File Display Name (<code>file[n].display_name</code>; not required; string)<br />
@@ -684,8 +700,8 @@
 </li>
 </ul>
 <h2 id="platforms">Platform(s)<a class="headerlink" href="#platforms" title="Permanent link">&para;</a></h2>
-<p>In addition to the education provider(s) a report can also be associated with one or more organisations acting as platform(s). While the education provider is responsible for the education content, a platform provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).</p>
-<p>Platform(s) should <strong>only</strong> be indicated <strong>if they differ from the education provider(s)</strong>. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.</p>
+<p>In addition to the education provider(s) a report can be associated with one or more organisations acting as platform(s). While the education provider is also responsible for the education content, a platform only provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).</p>
+<p>Platform(s) may <strong>only</strong> be indicated <strong>if they differ from the education provider(s)</strong>. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.</p>
 <p>Platforms are recorded in DEQAR in the same way and data table as education provider(s) and need to already exist in DEQAR before being assigned to a report. That is, <a href="../institution_data/">the previous section on adding missing providers to DEQAR</a> applies accordingly.</p>
 <p>Preferably, the DEQARINST ID should be provided to identify the platform(s). In addition, the ETER ID or <a href="../architecture_data_model/#provider-identifiers">other identifiers</a> can be used in the same way as for education providers.</p>
 <table>
