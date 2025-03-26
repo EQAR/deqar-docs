@@ -199,7 +199,9 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
 |ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
 |:--------------------------------------------|:------------|:---------|:-----------------------|
 |**File Original Location** |conditionally|many |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
-|File Display Name |no |one (per) |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
+|**File Content** |conditionally|many |*JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTG...CiUlRU9GCg==*|
+|**File Name** |conditionally|many |*MAD2014_UPC_es.pdf*|
+|File Display Name |no |one (per) |*Report*<br>*Evaluation*|
 |**Report Language** |yes |many (per)|*es*<br>*spa* |
 
 * **File Original Location(\*)** (<code>file[n].original_location</code>; conditionally required; string)  
@@ -211,10 +213,13 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
     >
     > The maximum file size is 10MB.
 
-* **File Content(\*)** (<code>file[n].content</code>; conditionally required; string)  
-  You can provide the file content as a [Base64](https://en.wikipedia.org/wiki/Base64)-encoded string alternatively.
+* **File Content(\*)** (<code>file[n].file</code>; conditionally required; string)  
+  You can provide the file content as a [Base64](https://en.wikipedia.org/wiki/Base64)-encoded string alternatively. DEQAR uses Base64FileField from the [drf-extra-fields](https://pypi.org/project/drf-extra-fields/) project to decode and handle Base64-encoded files.
 
     > If you decide to use this option please be mindful that the maximum request size of the DEQAR API is 10MB. This applies to each API request or line in a CSV file. Given the overhead of the encoding, the size of all files for a single report should thus not exceed 7MB for this method.
+
+* **File Name(\*)** (<code>file[n].file_name</code>; conditionally required; string)  
+  If you provide the file content as a [Base64](https://en.wikipedia.org/wiki/Base64)-encoded string, you must also provide a filename.
 
 * File Display Name (<code>file[n].display_name</code>; not required; string)  
   A single file display name may be provided for each PDF report file, used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.
@@ -293,9 +298,9 @@ Only one identifier should be submitted for each provider in the submission obje
 
 ## Platform(s)
 
-In addition to the education provider(s) a report can also be associated with one or more organisations acting as platform(s). While the education provider is responsible for the education content, a platform provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).
+In addition to the education provider(s) a report can be associated with one or more organisations acting as platform(s). While the education provider is also responsible for the education content, a platform only provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).
 
-Platform(s) should **only** be indicated **if they differ from the education provider(s)**. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.
+Platform(s) may **only** be indicated **if they differ from the education provider(s)**. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.
 
 Platforms are recorded in DEQAR in the same way and data table as education provider(s) and need to already exist in DEQAR before being assigned to a report. That is, [the previous section on adding missing providers to DEQAR](institution_data.md) applies accordingly.
 
