@@ -4,6 +4,7 @@ site_author: EQAR
 ### document structure ###
 nav:
     - Home: index.md
+    - release_notes.md
     - quick_start_guide.md
     - architecture_data_model.md
     - Submitting data:
