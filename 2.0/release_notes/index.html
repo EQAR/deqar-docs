@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="EQAR" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Release Notes - DEQAR Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../css/deqar.css" rel="stylesheet" />
+        <link href="../css/version-select.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Release Notes";
+        var mkdocs_page_input_path = "release_notes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DEQAR Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Release Notes</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#breaking-changes">Breaking changes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-fields">Required fields</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#separation-of-report-creation-and-update-post-put">Separation of report creation and update (POST / PUT)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#only-one-report-creationupdate-per-request">Only one report creation/update per request</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#institutions-managed-separately">Institutions managed separately</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-changes">Other changes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#activities-european-approach">Activities &amp; European Approach</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#file-upload">File upload</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#duplicates">Duplicates</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#platforms">Platforms</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#timing">Timing</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../quick_start_guide/">Quick Start Guide</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../architecture_data_model/">Architecture and Data Model</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Submitting data</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../institution_data/">Provider Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../report_data/">Report Data Elements</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data_submission/">Report Submission</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Web API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_intro/">Introduction</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_auth/">Authentication</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_endpoints/">Endpoints</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../web_api_examples/">Examples</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Integrations</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../europass/">European Digital Credentials for Learning</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ebsi/">European Blockchain Service Infrastructure (EBSI)</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DEQAR Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Release Notes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="release-notes">Release Notes<a class="headerlink" href="#release-notes" title="Permanent link">&para;</a></h1>
+<p>This page summarises the main changes introduced by the release of <strong>Submission API v2</strong>.</p>
+<h2 id="breaking-changes">Breaking changes<a class="headerlink" href="#breaking-changes" title="Permanent link">&para;</a></h2>
+<p>The following changes are are not fully backwards-compatible:</p>
+<h3 id="required-fields">Required fields<a class="headerlink" href="#required-fields" title="Permanent link">&para;</a></h3>
+<p>Two programmes-related fields were designated to become required in the future, which is the case with API v2:</p>
+<ul>
+<li>Degree outcome (<code>programme[n].degree_outcome</code>)</li>
+<li>Programme Qualification Level according to the QF-EHEA (<code>programme[n].qf_ehea_level</code>)</li>
+</ul>
+<p>This will ensure that all programmes/micro-credentials are formally classified systematically according to type and level. The level is already indicated for 95% of programmes in DEQAR.</p>
+<p><strong>Implementation:</strong> The two fields are required in the CSV file (with the field names mentioned above), the API, or the form.</p>
+<h3 id="separation-of-report-creation-and-update-post-put">Separation of report creation and update (POST / PUT)<a class="headerlink" href="#separation-of-report-creation-and-update-post-put" title="Permanent link">&para;</a></h3>
+<p>API v1 allows to either create or update a report by making a POST request to <code>/submissionapi/v1/submit/report</code>. Whether this will create or update a report depends on whether an existing DEQAR report ID or local_identifier are provided, and if they exist. The current design is not very clean, as the intention is only implicit and the request might lead to a different than the intended effect.</p>
+<p>API v2 will clearly distinguish between creation (a POST request) and update (a PUT request) of a report. For updates, reports can still be identified either by their DEQAR report ID or the agency's local identifier provided at creation.</p>
+<p>A creation request with a duplicate local identifier will lead to an error. Likewise, an update request will yield an error if the report does not yet exist. Hence, the intention of the request will be clear and it will either lead to the intended effect or an error. This is also in line with the HTTP protocol, where PUT is an idempotent method while POST is not.</p>
+<p>To facilitate synchronisation we will also provide an additional endpoint (a GET request) that can be used to query whether a specific local identifier is already known in DEQAR.</p>
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
+Besides the separation, a new endpoint helps you check your report's local identifier against the DEQAR system.</p>
+<h3 id="only-one-report-creationupdate-per-request">Only one report creation/update per request<a class="headerlink" href="#only-one-report-creationupdate-per-request" title="Permanent link">&para;</a></h3>
+<p>API v1 allowed the submission of several reports in one HTTP request. This feature was rarely used, but created some difficulties. Very large requests sometimes lead to timeouts. More importantly, internal server errors in the middle of a package sometimes left the calling implementation without a response for the entire package.</p>
+<p>The API v2 will only support the creation/update of a single report per request to make requests more stable and "atomic".</p>
+<p>Implementations that currently submit packages of several reports should do the iteration over the package client-side and make separate requests.</p>
+<p>When running bulk uploads/updates you might be requested to throttle request not to exceed a rate limit.</p>
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
+Currently for the test period we didn't introduce throttle. We will check how API requests influence performance.</p>
+<h3 id="institutions-managed-separately">Institutions managed separately<a class="headerlink" href="#institutions-managed-separately" title="Permanent link">&para;</a></h3>
+<p>While the API v1 allowed for it technically, the creation of institution records together with a submitted reports has been deprecated for several years already. This will be fully removed and reports can thus only be submitted for existing institutions.</p>
+<p>Institutions are synced from OrgReg, additions beyond OrgReg can be requested manually.</p>
+<p>Other providers can be requested for addition manually, too.</p>
+<p><strong>Implementation:</strong> Unnecessary fields were removed entirely form the v2 endpoints.</p>
+<h2 id="other-changes">Other changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h2>
+<p>The following additional non-breaking changes are noteworthy:</p>
+<h3 id="activities-european-approach">Activities &amp; European Approach<a class="headerlink" href="#activities-european-approach" title="Permanent link">&para;</a></h3>
+<p>Currently, one report belongs to one and only one ESG activity. This has sometimes led to intentional duplications, e.g. where two or more quality labels, represented by distinct ESG activities, where evaluated in a single procedure.</p>
+<p>Moreover, there have been some instances where European Approach-aligned joint programme accreditations have been uploaded under another joint programme ESG activity.</p>
+<p>Two options are under considerations:</p>
+<ul>
+<li>Introducing an additional (boolean) field indicating whether a report is a European Approach report. This would be required for all joint programme reports. That is, a European Approach could either be uploaded linked to the designated European Approach ESG activity, or under another activity but marked as European Approach.</li>
+<li>Enabling that one report is linked to several activities. That is, if necessary, a European Approach report could be linked to both the designated European Approach ESG activity as well as a "regular" joint programme activity. Moreover, this could be used for other cases, e.g. multiple labels.</li>
+</ul>
+<p>One additional consideration is whether the same ESG activity could be linked to several agencies at once. Currently, where several agencies implement identical activities these are internally duplicated, i.e. they are two (or more) separate records with different IDs. Examples of this are:</p>
+<ul>
+<li>European Approach for QA of Joint Programmes (duplicated for dozens of agencies)</li>
+<li>Programme and system accreditation in Germany</li>
+<li>Spanish country-wide harmonised external QA frameworks, e.g. DOCENTIA</li>
+</ul>
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation. Now you will have a chance to submit more activities per report. This will affect submission API v2, CSV upload and the form as well. The new field structure in the API is:</p>
+<pre><code class="language-json">activities: [
+    {
+        id: &quot;Identifier of the Agency ESG Activity&quot;,
+        local_identifier: &quot;Local identifier of the ESG Activity&quot;,
+        agency: &quot;Identifier or the acronym of the agency whose  
+                 local identifier is used. If not provided, the 
+                 agency of the report will be used.&quot;,
+        group: &quot;Identifier of the Agency ESG Activity Group&quot;
+    }
+]
+</code></pre>
+<p>This also changes how CSV handles activities. So in the new version instead of using a single value, multiple values can be submitted:</p>
+<pre><code>activities[n].id, activities[n].local_identifier, activities[n].agency, activities[n].group
+</code></pre>
+<p>A new validation rule was also set up. If you select multiple agencies (one main agency and one or more contributing agencies), at least one activity per agency must be selected. In submission API v1, you can still use the old method to submit one activity per report.</p>
+<p>If you select various types of activities (one institutional and one programme), the one with the most strict validation would be run. For example, if you assign an institutional activity and a joint programme one, your report should have more than one institution and at least one programme assigned.</p>
+<p>As you see, a new field called group is included, reflecting the additional consideration. Now, every agency activity belongs to an Activity Group. This is the "common" aggregator of the same kind of agency activities. When you submit data, you have the chance to submit this Activity Group ID instead of the activity id. The system then checks and selects all the activities belonging to the specified group, assigned to the submitting and contributing agencies. </p>
+<h3 id="file-upload">File upload<a class="headerlink" href="#file-upload" title="Permanent link">&para;</a></h3>
+<p>Currently, report files can be submitted as a URL or uploaded via a separate API endpoint.<br />
+In addition, API v2 will allow submitting a file "inline" as a Base64-encoded string.</p>
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
+In the new submission API v2, you either submit your file with a URL, or you can embed it as a base64 string in the submission package. One of the two methods should be used. To make file management easier, there are separate endpoints available to add a new file to an existing report (POST), update an already submitted file (PUT), or remove a file from a report (DELETE), if there were more than one file submitted.</p>
+<h3 id="duplicates">Duplicates<a class="headerlink" href="#duplicates" title="Permanent link">&para;</a></h3>
+<p>Currently, DEQAR does not include an automated check for possible duplicate reports. (The recent large-scale duplicate check was a semi-automated, one-time exercise.)</p>
+<p>In the future, a warning email might be sent to the agency concerned if a new report is created that appears to be a duplicate of an existing one.</p>
+<p><strong>Implementation:</strong> Once a report is submitted, the system runs an automated check on the newly submitted report. It checks if an existing report with the following matching values are present in the system:</p>
+<pre><code class="language-yaml">- valid_from
+- valid_to
+- decision
+- activities
+- institutions
+- programme:
+    - name
+    - qf_ehea_level
+    - workload_ects
+</code></pre>
+<p>If there are reports with the same values, a warning message will be sent for you, warning you about the possible duplication.</p>
+<h3 id="platforms">Platforms<a class="headerlink" href="#platforms" title="Permanent link">&para;</a></h3>
+<p>Following the expansion of DEQAR to include additional providers, the system will now support reports to be linked to one or more organisations acting as platforms in addition to the education provider(s). While the education provider is responsible for the educational content, the platform offers the technical or organizational framework necessary for delivering that education—such as an e-learning platform or a Learning Management System (LMS).</p>
+<p><strong>Implementation:</strong> A new field called platforms was added to the data model. You can use the same method to identify a platform with education providers. The system checks that in a report, an education provider can't act as a platform as well. </p>
+<h2 id="timing">Timing<a class="headerlink" href="#timing" title="Permanent link">&para;</a></h2>
+<p>The new API v2 was finalised and launched on 31 March 2025.</p>
+<p>Both APIs work by December 2025.</p>
+<p>API v1 will be closed from January 2026.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../quick_start_guide/" class="btn btn-neutral float-right" title="Quick Start Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../quick_start_guide/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+      <script src="../js/version-select.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
