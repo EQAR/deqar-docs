@@ -1,9 +1,10 @@
 site_name: DEQAR Documentation
-site_description: v1.2 (current)
+site_description: v2.0 (current)
 site_author: EQAR
 ### document structure ###
 nav:
     - Home: index.md
+    - release_notes.md
     - quick_start_guide.md
     - architecture_data_model.md
     - Submitting data:
@@ -38,6 +39,16 @@ plugins:
     - mike:
         canonical_version: stable
         version_selector: true
+    - macros
+extra:
+    deqar:
+        root: https://backend.deqar.eu
+        admin: https://admin.deqar.eu
+        frontend: https://www.eqar.eu/qa-results
+        sandbox:
+            backend: https://backend.sandbox.deqar.eu
+            admin: https://admin.sandbox.deqar.eu
+            frontend: https://sandbox.deqar.eu
 
 markdown_extensions:
     - footnotes

@@ -25,9 +25,9 @@ DEQAR has records on a large number of higher education institutions (over 4000 
 
 ### Admin Interface
 
-All [provider identifiers](architecture_data_model.md#provider-identifiers) can be found through the [administrative interface](https://admin.deqar.eu/reference/institutions).
+All [provider identifiers](architecture_data_model.md#provider-identifiers) can be found through the [administrative interface]({{ deqar.admin }}/reference/institutions).
 
-> **Important:** The public [DEQAR website](https://www.deqar.eu/) does *not* show all providers, but only those for which at least one report is available. It is therefore important that you **always search for providers in the [administrative interface](https://admin.deqar.eu/reference/institutions)**, as DEQAR contains records on several hundreds of higher education institutions and a few other providers for which no reports have been submitted yet.
+> **Important:** The public [DEQAR website]({{ deqar.frontend }}/) does *not* show all providers, but only those for which at least one report is available. It is therefore important that you **always search for providers in the [administrative interface]({{ deqar.admin }}/reference/institutions)**, as DEQAR contains records on several hundreds of higher education institutions and a few other providers for which no reports have been submitted yet.
 
 Reports on existing providers can be submitted directly, providing identifiers in CSV or JSON objects as described under [Submission Object Data Elements: Institution(s)](report_data.md#institutions) or by selecting the provider in the web form.
 
@@ -45,15 +45,15 @@ Please refer to the [explanations on authentication for the Submission API](data
 
 The base URL for the Connect API is:
 
-`https://backend.deqar.eu/connectapi/v1`
+`{{ deqar.root }}/connectapi/v1`
 
-The endpoint <https://backend.deqar.eu/connectapi/v1/institutions/> allows to query the full list of higher education institutions, with or without reports.
+The endpoint <{{ deqar.root }}/connectapi/v1/institutions/> allows to query the full list of higher education institutions, with or without reports.
 
-The endpoint <https://backend.deqar.eu/connectapi/v1/providers/> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education institutions and other providers.
+The endpoint <{{ deqar.root }}/connectapi/v1/providers/> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education institutions and other providers.
 
 The full definitions of the endpoints, the search parameters and the response object are available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
 
-<https://backend.deqar.eu/connectapi/v1/swagger/>
+<{{ deqar.root }}/connectapi/v1/swagger/>
 
 To retrieve the details on a single provider, please use the [Web API endpoint](web_api_endpoints.md#institutions).
 
@@ -96,6 +96,16 @@ The mode of delivery of the classes, whether the provision is done independently
 Reports for programmes offered in collaboration by a higher education institution and another provider will be showcased under both entities respectively.
 
 Similarly, a provider that offers education programmes under a franchise or validation agreement with a higher education institution would be considered as "other provider", whereas the franchise/validation partnership would be reflected as a linkage with the HEI concerned.
+
+## Defining Platforms
+
+While the education provider is responsible for the education content, a platform provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS). Platform(s) can and should be indicated for reports if they differ from the education provider(s) of the learning offer covered in a report.
+
+Platforms are recorded in DEQAR in the same way and data table as education provider(s).
+
+A higher education institution can also act/serve as a platform provider, e.g. if it hosts courses offered by other higher education institutions or providers on its LMS or portal.
+
+Any platform that does not fit the above [definition](#defining-higher-education-institutions) of a higher education institution is recorded as [other provider](#defining-other-providers) in DEQAR.
 
 ## Provider Data Elements
 
@@ -400,7 +410,7 @@ Founding and closing years or dates should be provided if known.
 
 If you identify that providers are missing, please send us a spreadsheet with the required data.
 
-Before sending data on a new providers, please check carefully that the providers is not yet listed in the [reference list of providers](https://admin.deqar.eu/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions and few providers  recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface; see also the section [Finding Existing Providers](#finding-existing-providers) above.
+Before sending data on a new providers, please check carefully that the providers is not yet listed in the [reference list of providers]({{ deqar.admin }}/reference/institutions). It is important to use the administrative interface to do so, as there are many institutions and few providers  recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface; see also the section [Finding Existing Providers](#finding-existing-providers) above.
 
 Please supply the providers data using the right template depending on the type of provider:
 

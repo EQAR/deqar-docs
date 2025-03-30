@@ -1,13 +1,13 @@
 # Examples
 
-In the following, we present two examples of how the DEQAR Web API might be used in practice. You will first retrieve your user's authentication token [as described above](#authentication) or [from the Admin UI](https://admin.deqar.eu/my-profile).
+In the following, we present two examples of how the DEQAR Web API might be used in practice. You will first retrieve your user's authentication token [as described above](#authentication) or [from the Admin UI]({{ deqar.admin }}/my-profile).
 
 ## Example #1: Find an institution's accredited programmes
 
 In this example, the user needs to know whether a Master degree in Automotive Engineering from RWTH Aachen University is accredited. Let's assume the user enters `aachen` into a search box. The client makes a `GET` request to:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/institutions/" --get --data query=aachen
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/institutions/" --get --data query=aachen
 ```
 
 We'll get 4 matching results:
@@ -97,7 +97,7 @@ Now we can fetch the quality assurance reports on the institution in question, u
 This is done separately for the institutional and programme level. For the institutional level, the client makes a request to:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/reports/institutional/by-institution/382/"
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/reports/institutional/by-institution/382/"
 ```
 
 Result:
@@ -113,7 +113,7 @@ Result:
       "agency_name": "Swiss Agency of Accreditation and Quality Assurance",
       "agency_acronym": "AAQ",
       "agency_id": 3,
-      "agency_url": "https://backend.deqar.eu/webapi/v1/browse/agencies/3/",
+      "agency_url": "{{ deqar.root }}/webapi/v1/browse/agencies/3/",
       "agency_esg_activity": "System accreditation in Germany",
       "agency_esg_activity_type": "institutional",
       "name": "System accreditation",
@@ -161,13 +161,13 @@ We see that RWTH Aachen has a system accreditation by AAQ. But let's assume the 
 To get information on programme level external QA we need to make a further GET request to:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/"
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/reports/programme/by-institution/382/"
 ```
 
 We see that there are 331 programme accreditation reports and can browse through the result pages with custom limit and offset parameters, e.g.:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/" --get --data limit=20 --data offset=100
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/reports/programme/by-institution/382/" --get --data limit=20 --data offset=100
 ```
 
 We can now identify the programme we were looking for. While the programme accreditation is no longer valid (it was superseded by the system accreditation we saw above), it was valid at the time relevant for us, i.e. in 2017 when the degree was issued:
@@ -175,15 +175,15 @@ We can now identify the programme we were looking for. While the programme accre
 ```json
 {
     "count": 331,
-    "next": "https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&offset=120",
-    "previous": "https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&offset=80",
+    "next": "{{ deqar.root }}/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&offset=120",
+    "previous": "{{ deqar.root }}/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&offset=80",
     "results": [
         {
             "id": 25106,
             "agency_name": "Accreditation Agency for Study Programmes of Engineering, Information Science, Natural Sciences and Mathematics",
             "agency_acronym": "ASIIN",
             "agency_id": 19,
-            "agency_url": "https://backend.deqar.eu/webapi/v1/browse/agencies/19/",
+            "agency_url": "{{ deqar.root }}/webapi/v1/browse/agencies/19/",
             "agency_esg_activity": "Programme accreditation",
             "agency_esg_activity_type": "programme",
             "name": "Programme accreditation",
@@ -228,7 +228,7 @@ We can now identify the programme we were looking for. While the programme accre
             "report_files": [
                 {
                     "file_display_name": "Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf",
-                    "file": "https://backend.deqar.eu/reports/ASIIN/20190826_1647_Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf",
+                    "file": "{{ deqar.root }}/reports/ASIIN/20190826_1647_Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf",
                     "languages": [
                         "German"
                     ]
@@ -258,7 +258,7 @@ The report browsing endpoint allows to search for reports directly (i.e. not via
 The client makes a GET request to:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/reports/" --get --data agency=IEP --data country=North+Macedonia --data ordering=-valid_to_calculated
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/reports/" --get --data agency=IEP --data country=North+Macedonia --data ordering=-valid_to_calculated
 ```
 
 The result shows that there are seven reports:
@@ -312,7 +312,7 @@ The result shows that there are seven reports:
 The list includes most information on the reports already. The full details of the report can be retrieved from:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/reports/3929/"
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/reports/3929/"
 ```
 
 In the example:
@@ -323,7 +323,7 @@ In the example:
     "agency_name": "Institutional Evaluation Programme",
     "agency_acronym": "IEP",
     "agency_id": 31,
-    "agency_url": "https://backend.deqar.eu/webapi/v1/browse/agencies/31/",
+    "agency_url": "{{ deqar.root }}/webapi/v1/browse/agencies/31/",
     "agency_esg_activity": "Institutional evaluation",
     "agency_esg_activity_type": "institutional",
     "name": "Institutional evaluation",
@@ -346,7 +346,7 @@ In the example:
     "report_files": [
         {
             "file_display_name": "Evaluation report",
-            "file": "https://backend.deqar.eu/reports/IEP/20180924_1056_iep%20mk_seeu%20report_final.pdf",
+            "file": "{{ deqar.root }}/reports/IEP/20180924_1056_iep%20mk_seeu%20report_final.pdf",
             "languages": [
                 "English"
             ]
@@ -366,7 +366,7 @@ In this example, a user looks up an institution based on the SCHAC identifier.
 The client makes a first GET request to receive the list of known identifier types:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/institutions/resources/"
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/institutions/resources/"
 ```
 
 The result shows that there are seven reports:
@@ -413,7 +413,7 @@ The result shows that there are seven reports:
 These resource tags can then be used in a request for a specific institution record:
 
 ```sh
-curl -s -H "Authorization: Bearer ******" "https://backend.deqar.eu/webapi/v2/browse/institutions/by-identifier/SCHAC/urv.cat"
+curl -s -H "Authorization: Bearer ******" "{{ deqar.root }}/webapi/v2/browse/institutions/by-identifier/SCHAC/urv.cat"
 ```
 
 In the example, this returns (data abridged):

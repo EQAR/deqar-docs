@@ -2,11 +2,11 @@
 
 The base URL for the following endpoints is:
 
-`https://backend.deqar.eu/webapi/v2`
+`{{ deqar.root }}/webapi/v2`
 
 The full definitions of the following endpoints and the response objects is available as [OpenAPI Specification 3.0](https://en.wikipedia.org/wiki/OpenAPI_Specification) at:
 
-<https://backend.deqar.eu/webapi/v2/swagger/>
+<{{ deqar.root }}/webapi/v2/swagger/>
 
 ## Countries
 

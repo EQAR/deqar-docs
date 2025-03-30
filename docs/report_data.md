@@ -10,7 +10,7 @@ In the CSV template, such columns or groups of columns can thus be duplicated an
 
 To see how these elements are arrayed in JSON for API submission, see our JSON definition at:
 
-<https://backend.deqar.eu/submissionapi/v1/swagger/>
+<{{ deqar.root }}/submissionapi/v2/swagger/>
 
 Please note that new records for providers not currently represented in DEQAR should be submitted separately beforehand. Please use the dedicated [CSV templates described above](institution_data.md#how-to-provide-data).
 
@@ -20,10 +20,11 @@ Please note that new records for providers not currently represented in DEQAR sh
 |Contributing Agencies | no | many | *MusiQuE*<br>*34* |
 |DEQAR Report ID |no |one |*786* |
 |Local Report Identifier |no |one |*QAA1153-March15* |
-|**Activity** |conditionally|one |*institutional audit*<br>*programme evaluation*<br>*2*<br>*8*|
-|**Activity Local Identifier** |conditionally|one |*inst_aud* |
-|**Status** |yes |one |*1 - part of obligatory EQA system*<br>*2 - voluntary*|
-|**Decision** |yes |one |*1 - positive*<br>*2 - positive with conditions or restrictions*<br>*3 - negative*<br>*4 - not applicable*|
+|**Activity ID** |conditionally|many |*2*<br>*8*|
+|**Activity Group ID** |conditionally|many |*497*<br>*508*|
+|**Activity Local Identifier** |conditionally|many |*inst_aud* |
+|**Status** |yes |one |*part of obligatory EQA system*<br>*2* (= voluntary)|
+|**Decision** |yes |one |*positive*<br>*positive with conditions or restrictions*<br>*3* (= negative)<br>*4* (= not applicable)|
 |Summary |no |one | |
 |**Valid from** |yes |one |*2015-01-15* |
 |Valid to |no |one |*2020-01-15* |
@@ -45,6 +46,8 @@ A single creating agency must be clearly identified for each report. The creatin
 
 - Contributing Agencies (<code>contributing_agencies[n]</code>; not required; string)  
   Additional EQAR-registered agencies that were involved in the external QA procedure and the production of the report. Contributing agencies can only be recorded if they were registered in EQAR at the time of issuing of the report (<code>valid_from</code> date). Otherwise, all validation and flagging rules follow the main agency. The report will also be shown under the contributing agencies’ profiles in DEQAR.
+
+    For each contributing agency you must also link the report to one of that agency's activities, [see below](#activity).
 
     *e.g. MusiQuE*  
     *e.g. 34*
@@ -72,26 +75,15 @@ Each report can be identified using an agency's local identifiers or through DEQ
 
 ## Activity
 
-A single activity must be assigned to each report. Activities are selected from the agency's pre-defined list of activities and should be provided as a DEQAR value (as either a string value or a DEQAR activity ID).
+A report must be assigned to at least one activity. You can also link one report to several activities of an agency, for example where different quality labels where assessed/awarded in a single procedure.
+
+If a report has one or more contributing agencies, you need to specify at least one activity for each agency involved.
+
+Activities are selected from the agency's pre-defined list of activities and can be identified by the DEQAR activity ID or activity group ID. Optionally an agency may use **local identifiers** for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
 
 > If you do not find the activity enlisted on DEQAR, please inform EQAR about the new activity through submitting a Substantive Change Report via [this form](https://www.eqar.eu/register/substantive-change-report/).
 
-Optionally an agency may choose to provide local identifiers for its own activities; before these can be used for submission, these identifiers should be assigned through the agency record in the administrative interface (see [Role of Standards and Identifiers: Other Identifiers](architecture_data_model.md#other-identifiers). If both elements are submitted for a single report, then the DEQAR value will be used by the system.
-
-* **Activity(\*)** (<code>activity</code>; conditionally required; string)  
-A DEQAR activity value may be provided as an activity name or DEQAR activity ID for each report. The activity is used to validate the structure of submitted report data.
-
-    *e.g. institutional audit*  
-    *e.g. programme evaluation*  
-    *e.g. 2*  
-    *e.g. 8*  
-
-* **Activity Local Identifier(\*)** (<code>activity_local_identifier</code>; conditionally required; string)  
-  A local activity identifier may optionally be provided in place of a DEQAR activity value for each report. The local activity identifier may be used to validate the structure of submitted report data. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)
-
-    *e.g. inst_aud*
-
-Each activity is classified as one of four activity types (<code>activity_type</code>). These classifications determine the structure of the report record:
+Each activity is classified as one of **four activity types**. These types determine the required structure of the report record:
 
 |Type                    |Provider(s)            |Programme(s)           |
 |:-----------------------|:----------------------|:----------------------|
@@ -99,6 +91,31 @@ Each activity is classified as one of four activity types (<code>activity_type</
 |institutional/programme |only one provider      |at least one programme |
 |programme               |only one provider      |at least one programme |
 |joint programme         |at least two providers |at least one programme |
+
+If a report belongs to activities of different types **the requirements add up**. For example: if at least one activity is a programme one, you must provide information on at least one programme. Or if at least one activity is a joint programme one, you need to specify at least two providers.
+
+* **Activity(\*)** (<code>activities[n].id</code>; conditionally required; string)  
+  A DEQAR activity value may be provided as a DEQAR activity ID.
+
+    *e.g. 2*  
+    *e.g. 8*  
+
+* **Activity Local Identifier(\*)** (<code>activities[n].local_identifier</code>; conditionally required; string)  
+  A local activity identifier may be provided in place of a DEQAR activity ID. (Note: local activity identifiers need to be assigned through the administrative interface before they can be used in submission.)
+
+    *e.g. inst_aud*
+
+* **Activity Group(\*)** (<code>activities[n].group</code>; conditionally required; string)  
+  An activity may be specified by reference to the ID of the ESG Activity Group to which it belongs.
+
+    *e.g. 497*  
+    *e.g. 508*  
+
+* **Activity Agency** (<code>activities[n].agency</code>; not required; string)  
+  If you use a local activity identifier to identify an activity of a contributing agency you need to specify the agency, as local identifiers are tied to an agency. If you do not specify the agency, the activity will be understood as one of the main agency of the submitted report.
+
+    *e.g. MusiQuE*  
+    *e.g. 34*
 
 ## Details
 
@@ -182,7 +199,9 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
 |ELEMENT NAME |REQUIRED |ONE/MANY |EXAMPLE |
 |:--------------------------------------------|:------------|:---------|:-----------------------|
 |**File Original Location** |conditionally|many |*http://estudis.aqu.cat/MAD2014_UPC_es.pdf*|
-|File Display Name |no |one (per) |*Report*<br>*Evaluation*<br>*MAD2014_UPC_es.pdf*|
+|**File Content** |conditionally|many |*JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTG...CiUlRU9GCg==*|
+|**File Name** |conditionally|many |*MAD2014_UPC_es.pdf*|
+|File Display Name |no |one (per) |*Report*<br>*Evaluation*|
 |**Report Language** |yes |many (per)|*es*<br>*spa* |
 
 * **File Original Location(\*)** (<code>file[n].original_location</code>; conditionally required; string)  
@@ -192,7 +211,15 @@ DEQAR requires PDF versions of quality assurance reports for every submission ob
 
     > The URL *should* return the [HTTP content-type header](https://developer.mozilla.org/de/docs/Web/HTTP/Headers/Content-Type) `application/pdf` upon a *HEAD* request. The URL *must* return `application/pdf` upon a *GET* request. If another content-type is reported, the file will not be downloaded and saved.
     >
-    >  The maximum file size is 10MB.
+    > The maximum file size is 10MB.
+
+* **File Content(\*)** (<code>file[n].file</code>; conditionally required; string)  
+  You can provide the file content as a [Base64](https://en.wikipedia.org/wiki/Base64)-encoded string alternatively. DEQAR uses Base64FileField from the [drf-extra-fields](https://pypi.org/project/drf-extra-fields/) project to decode and handle Base64-encoded files.
+
+    > If you decide to use this option please be mindful that the maximum request size of the DEQAR API is 10MB. This applies to each API request or line in a CSV file. Given the overhead of the encoding, the size of all files for a single report should thus not exceed 7MB for this method.
+
+* **File Name(\*)** (<code>file[n].file_name</code>; conditionally required; string)  
+  If you provide the file content as a [Base64](https://en.wikipedia.org/wiki/Base64)-encoded string, you must also provide a filename.
 
 * File Display Name (<code>file[n].display_name</code>; not required; string)  
   A single file display name may be provided for each PDF report file, used for the file link in DEQAR. If no display name is provided, then the file name will be used for display instead.
@@ -254,7 +281,7 @@ Only one identifier should be submitted for each provider in the submission obje
 
     *e.g. BG0001*
 
-* **Provider Identifier(\*)** (<code>institution[n].identifier[1]</code>; conditionally required; string)  
+* **Provider Identifier(\*)** (<code>institution[n].identifier</code>; conditionally required; string)  
   A local identifier is any identifier used by the Agency to identify a provider, while other identifiers can be recorded in DEQAR for use by all agencies. These may optionally be used in the place of a DEQARINST ID (or ETER ID for higher education institutions) to establish a link between submitted report data and an existing provider record.
 
     > Local identifiers need to be assigned in bulk through the EQAR secretariat before they can be used in submission; other identifiers can be consulted in the administrative interface and can be assigned in consultation with the EQAR secretariat; see [Provider Identifiers](architecture_data_model.md#provider-identifiers) for details.)
@@ -262,8 +289,44 @@ Only one identifier should be submitted for each provider in the submission obje
     *e.g. HCERES21*  
     *e.g. AT0004*
 
-* Identifier Resource(\*) (<code>institution[n].resource[1]</code>; conditionally required; string)  
+* Identifier Resource(\*) (<code>institution[n].resource</code>; conditionally required; string)  
   If the identifier you use is not a local identifier of your agency, you need to provide its corresponding resource tag. The value for this field can be consulted through the administrative interface.
+
+    *e.g. DE-HRK*  
+    *e.g. SI-ETER.BAS.NATID*  
+    *e.g. Erasmus*
+
+## Platform(s)
+
+In addition to the education provider(s) a report can be associated with one or more organisations acting as platform(s). While the education provider is also responsible for the education content, a platform only provides the technical or organisational framework to deliver the education - e.g. an e-learning platform or hosting a Learning Management System (LMS).
+
+Platform(s) may **only** be indicated **if they differ from the education provider(s)**. In other words: education provider(s) using their own technical and organisational framework should not be indicated as platform in addition.
+
+Platforms are recorded in DEQAR in the same way and data table as education provider(s) and need to already exist in DEQAR before being assigned to a report. That is, [the previous section on adding missing providers to DEQAR](institution_data.md) applies accordingly.
+
+Preferably, the DEQARINST ID should be provided to identify the platform(s). In addition, the ETER ID or [other identifiers](architecture_data_model.md#provider-identifiers) can be used in the same way as for education providers.
+
+|ELEMENT NAME                 |REQUIRED |ONE/MANY  |EXAMPLE                          |
+|:----------------------------|:--------|:---------|:--------------------------------|
+|**DEQARINST ID**             |no       |one (per) |*DEQARINST0034*                  |
+|**ETER ID**                  |no       |one (per) |*BG0001*                         |
+|**Institutional Identifier** |no       |one (per) |*HCERES21*<br>*AT0004*           |
+|Identifier Resource          |no       |one (per) |*SI-ETER.BAS.NATID*<br>*Erasmus* |
+
+* **DEQARINST ID(\*)** (<code>platform[n].deqar_id</code>; conditionally required; string)
+
+    *e.g. DEQARINST0034*
+
+* **ETER ID(\*)** (<code>platform[n].eter_id</code>; conditionally required; string)
+
+    *e.g. BG0001*
+
+* **Provider Identifier(\*)** (<code>platform[n].identifier</code>; conditionally required; string)
+
+    *e.g. HCERES21*  
+    *e.g. AT0004*
+
+* Identifier Resource(\*) (<code>platform[n].resource</code>; conditionally required; string)
 
     *e.g. DE-HRK*  
     *e.g. SI-ETER.BAS.NATID*  
@@ -283,8 +346,8 @@ See the [definitions on programmes and higher education providers](index.md#defi
 |Programme Name Alternative             |no      |no      |many (per) | *Medical Natural Sciences*|
 |Programme Qualification Alternative    |no      |no      |many (per) | *Master of Medicine* |
 |Programme Country                      |no      |no      |many (per) | *BE*<br>*BEL* |
-|**Programme Degree Outcome**           |yes(\*) |yes(\*) |one (per)  | *yes*<br>*no* |
-|**Programme Qualification Level**      |yes(\*) |yes     |one (per)  | *0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
+|**Programme Degree Outcome**           |yes     |yes     |one (per)  | *yes*<br>*no* |
+|**Programme Qualification Level**      |yes     |yes     |one (per)  | *0 - short cycle*<br>*1 - first cycle*<br>*2 - second cycle*<br>*3 - third cycle*|
 |Programme NQF Level                    |no      |no      |one (per)  | *level 6*<br>*level 7* |
 |**Workload expressed in ECTS Credits** |no      |yes     |one (per)  | *5*<br>*20* |
 |**Assessment and certification**       |no      |yes     |one (per)  | *Attendance certificate*<br>*2* |
@@ -306,7 +369,7 @@ Exactly one primary programme name must be provided for each programme associate
 
 The Programme Name field should only contain information on the name (further details on the qualification, level etc. should be provided in the other fields as presented below). 
 
-* **Primary Programme Name(\*)** (<code>programme[n].name_primary</code>; conditionally required; string)  
+* **Primary Programme Name\*** (<code>programme[n].name_primary</code>; required; string)  
   Exactly one primary name must be provided for each programme associated with the submitted report. It is recommended to provide the primary program name in English.
 
     *e.g. Medical Natural Sciences*
@@ -342,7 +405,7 @@ Information on the country/ies where each programme is located should be provide
 
 Information on the qualification level of each programme must be provided as a standardised level (based on the QF-EHEA levels); agencies may also choose to indicate the NQF level for each programme.
 
-* **Degree outcome\*** (<code>programme[n].degree_outcome</code>; required \*; string)  
+* **Degree outcome\*** (<code>programme[n].degree_outcome</code>; required; string)  
   The field specifies whether the programme leads to a full degree, recognised by the national authorities where the provider is based at.
 
     When a programme report is uploaded solely for an "other provider", the value of the field must be "No" (= no full degree). If the value is marked as "yes", the report upload will be automatically rejected.
@@ -360,9 +423,7 @@ Information on the qualification level of each programme must be provided as a s
     | No             | < 60 ECTS  | Micro-credential                 |
     | No             | ≥ 60 ECTS  | Other provision                  |
 
-    > \* This field was recently added to the current DEQAR data model. In order to be backwards-compatible and not to break existing implementations, this field is currently not required, but will become required in the next version of DEQAR APIs (expected in September 2024). The current default is "yes" for programmes offered by HEIs, as it is considered as leading to a full degree unless specified otherwise. The current default is "no" for programmes offered by other providers, as micro credentials do not lead to a full degree.
-
-* **Programme Qualification Level\*** (<code>programme[n].qf_ehea_level</code>; required \*; string)  
+* **Programme Qualification Level\*** (<code>programme[n].qf_ehea_level</code>; required; string)  
   A single standardised qualification level must be provided for each programme in the form of either a level name or level ID. These levels are based on the [Framework for Qualifications of the European Higher Education Area (QF-EHEA)](https://www.ehea.info/page-qualification-frameworks), the [European Qualifications Framework (EQF)](https://europa.eu/europass/en/europass-tools/european-qualifications-framework) and the [International Standard Classification of Education (ISCED)](https://uis.unesco.org/en/topic/international-standard-classification-education-isced).
 
     |ID |name (QF-EHEA) |equivalent to   |
@@ -372,8 +433,6 @@ Information on the qualification level of each programme must be provided as a s
     |2  |second cycle   | EQF 7, ISCED 7 |
     |3  |third cycle    | EQF 8, ISCED 8 |
 
-    > \* This field was not required previously. In order to be backwards-compatible and not to break existing implementations, this field is currently not required for programmes leading to a full degree, but only for programmes not leading to a full degree (= micro-credentials). This field will become fully required in the next version of DEQAR APIs.
-
 * Programme NQF Level (<code>programme[n].nqf_level</code>; required, string)  
   A single national qualification framework (NQF) level may be provided for each programme.
 
@@ -382,14 +441,14 @@ Information on the qualification level of each programme must be provided as a s
 
 ### Programme Details
 
-* **Workload expressed in ECTS Credits\*** (<code>programme[n].workload_ects</code>; conditionally required; string)  
+* **Workload expressed in ECTS Credits(\*)** (<code>programme[n].workload_ects</code>; conditionally required; string)  
   The workload as number of ECTS credits for programmes that do not lead to a full degree (i.e. micro credentials) must be provided to indicate the volume of learning. For programmes that do not bear ECTS, the workload could be calculated using the following tool: [ECTS calculator](https://www.germangradecalculator.com/ects-calculator/).
 
     This field is **required** for programmes not leading to a full degree (e.g. micro-credentials) and optional otherwise.
 
     *e.g. 15*
 
-* **Assessment and certification\*** (<code>programme[n].assessment_certification</code>; conditionally required; string)  
+* **Assessment and certification(\*)** (<code>programme[n].assessment_certification</code>; conditionally required; string)  
   A programme that does not lead to a full degree could still have a formal outcome (e.g. a micro-credential).
 
     The field is **required** for programmes not leading to a full degree (e.g. micro-credentials) and **must be empty** for programmes leading to a full degree.
