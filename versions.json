@@ -3,15 +3,14 @@
     "version": "2.0",
     "title": "Submission API v2.0 (testing)",
     "aliases": [
-      "draft"
+      "draft",
+      "stable"
     ]
   },
   {
     "version": "1.2",
     "title": "Submission API v1.2 (current)",
-    "aliases": [
-      "stable"
-    ]
+    "aliases": []
   },
   {
     "version": "1.1",
