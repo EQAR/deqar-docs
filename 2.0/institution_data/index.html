@@ -186,9 +186,9 @@
 <p>Existing providers need to be identified by their DEQARINST ID, ETER ID (for higher education institutions), another international identifier, or a local or national identifier (if available).</p>
 <p>DEQAR has records on a large number of higher education institutions (over 4000 institutions from 42 European countries) harvested from the ETER/OrgReg databases (available through <a href="http://datasets.risis.eu/">Research infrastructure for research and innovation policy studies - RISIS</a> or <a href="https://www.eter-project.com/">European Tertiary Education Register - ETER</a>). More than 2000 additional providers are already recorded in DEQAR based on other official sources (e.g. lists by national ministries) or have been added by other agencies.</p>
 <h3 id="admin-interface">Admin Interface<a class="headerlink" href="#admin-interface" title="Permanent link">¶</a></h3>
-<p>All <a href="../architecture_data_model/#provider-identifiers">provider identifiers</a> can be found through the <a href="https://admin.testzone.eqar.eu/reference/institutions">administrative interface</a>.</p>
+<p>All <a href="../architecture_data_model/#provider-identifiers">provider identifiers</a> can be found through the <a href="https://admin.deqar.eu/reference/institutions">administrative interface</a>.</p>
 <blockquote>
-<p><strong>Important:</strong> The public <a href="https://www.testzone.eqar.eu/qa-results/">DEQAR website</a> does <em>not</em> show all providers, but only those for which at least one report is available. It is therefore important that you <strong>always search for providers in the <a href="https://admin.testzone.eqar.eu/reference/institutions">administrative interface</a></strong>, as DEQAR contains records on several hundreds of higher education institutions and a few other providers for which no reports have been submitted yet.</p>
+<p><strong>Important:</strong> The public <a href="https://www.eqar.eu/qa-results/">DEQAR website</a> does <em>not</em> show all providers, but only those for which at least one report is available. It is therefore important that you <strong>always search for providers in the <a href="https://admin.deqar.eu/reference/institutions">administrative interface</a></strong>, as DEQAR contains records on several hundreds of higher education institutions and a few other providers for which no reports have been submitted yet.</p>
 </blockquote>
 <p>Reports on existing providers can be submitted directly, providing identifiers in CSV or JSON objects as described under <a href="../report_data/#institutions">Submission Object Data Elements: Institution(s)</a> or by selecting the provider in the web form.</p>
 <h3 id="download-csv-file">Download CSV File<a class="headerlink" href="#download-csv-file" title="Permanent link">¶</a></h3>
@@ -198,11 +198,11 @@
 <p>The full providers list can be searched and accessed using the Connect API. EQAR-registered agencies have access to the Connect API using the same credentials as for the DEQAR administrative interface, the Submission API and the Web API.</p>
 <p>Please refer to the <a href="../data_submission/#authentication">explanations on authentication for the Submission API</a> for information on how to obtain and use a token.</p>
 <p>The base URL for the Connect API is:</p>
-<p><code>https://backend.testzone.eqar.eu/connectapi/v1</code></p>
-<p>The endpoint <a href="https://backend.testzone.eqar.eu/connectapi/v1/institutions/">https://backend.testzone.eqar.eu/connectapi/v1/institutions/</a> allows to query the full list of higher education institutions, with or without reports.</p>
-<p>The endpoint <a href="https://backend.testzone.eqar.eu/connectapi/v1/providers/">https://backend.testzone.eqar.eu/connectapi/v1/providers/</a> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education institutions and other providers.</p>
+<p><code>https://backend.deqar.eu/connectapi/v1</code></p>
+<p>The endpoint <a href="https://backend.deqar.eu/connectapi/v1/institutions/">https://backend.deqar.eu/connectapi/v1/institutions/</a> allows to query the full list of higher education institutions, with or without reports.</p>
+<p>The endpoint <a href="https://backend.deqar.eu/connectapi/v1/providers/">https://backend.deqar.eu/connectapi/v1/providers/</a> allows to query the full list of all providers, with or without reports. The list can be filtered by type of provider, i.e. higher education institutions and other providers.</p>
 <p>The full definitions of the endpoints, the search parameters and the response object are available as <a href="https://en.wikipedia.org/wiki/OpenAPI_Specification">OpenAPI Specification 3.0</a> at:</p>
-<p><a href="https://backend.testzone.eqar.eu/connectapi/v1/swagger/">https://backend.testzone.eqar.eu/connectapi/v1/swagger/</a></p>
+<p><a href="https://backend.deqar.eu/connectapi/v1/swagger/">https://backend.deqar.eu/connectapi/v1/swagger/</a></p>
 <p>To retrieve the details on a single provider, please use the <a href="../web_api_endpoints/#institutions">Web API endpoint</a>.</p>
 <h2 id="defining-higher-education-institutions">Defining Higher Education Institutions<a class="headerlink" href="#defining-higher-education-institutions" title="Permanent link">¶</a></h2>
 <p>Before suggesting to add a new higher education institution, please consider the following notes:</p>
@@ -779,7 +779,7 @@
 </ul>
 <h2 id="how-to-provide-data">How to Provide Data<a class="headerlink" href="#how-to-provide-data" title="Permanent link">¶</a></h2>
 <p>If you identify that providers are missing, please send us a spreadsheet with the required data.</p>
-<p>Before sending data on a new providers, please check carefully that the providers is not yet listed in the <a href="https://admin.testzone.eqar.eu/reference/institutions">reference list of providers</a>. It is important to use the administrative interface to do so, as there are many institutions and few providers  recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface; see also the section <a href="#finding-existing-providers">Finding Existing Providers</a> above.</p>
+<p>Before sending data on a new providers, please check carefully that the providers is not yet listed in the <a href="https://admin.deqar.eu/reference/institutions">reference list of providers</a>. It is important to use the administrative interface to do so, as there are many institutions and few providers  recorded in DEQAR for which no reports have been uploaded yet. These are visible in the administrative interface, but not in the public interface; see also the section <a href="#finding-existing-providers">Finding Existing Providers</a> above.</p>
 <p>Please supply the providers data using the right template depending on the type of provider:</p>
 <ul>
 <li>For higher education institutions:<ul>

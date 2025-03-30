@@ -113,17 +113,17 @@
                 <h1 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h1>
 <p>DEQAR API endpoints manage authentication using API Tokens (through the so-called Bearer Authentication method). Upon registration, an API Token (which is basically a hash) is created for each user. Sending this token in the Authorization header (with type/scheme Bearer) will authenticate the user in place of a regular username and password.</p>
 <p>To get your authentication token you can send a <code>POST</code> request to the following URL:</p>
-<p><a href="https://backend.testzone.eqar.eu/accounts/get_token/">https://backend.testzone.eqar.eu/accounts/get_token/</a></p>
+<p><a href="https://backend.deqar.eu/accounts/get_token/">https://backend.deqar.eu/accounts/get_token/</a></p>
 <p>An example of obtaining a token using curl in command line:</p>
-<pre><code class="language-sh">curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.testzone.eqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
+<pre><code class="language-sh">curl -s -H &quot;Content-Type: application/json&quot; -XPOST https://backend.deqar.eu/accounts/get_token/ --data '{&quot;username&quot;:&quot;testuser&quot;,&quot;password&quot;:&quot;testpassword&quot;}'
 </code></pre>
 <p>Or for those who prefer to use the more user friendly <a href="https://httpie.io/">HTTPie</a> client:</p>
-<pre><code class="language-sh">http POST https://backend.testzone.eqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
+<pre><code class="language-sh">http POST https://backend.deqar.eu/accounts/get_token/ 'username=testuser' 'password=testpassword'
 </code></pre>
 <p>You should send this token, preceded by the word <code>Bearer</code>, in the Authorization header with every further request. An example of a submission using curl or HTTPie:</p>
-<pre><code>curl -s -H &quot;Content-type: application/json&quot; -H &quot;Authorization: Bearer $DEQAR_TOKEN&quot; https://backend.testzone.eqar.eu/webapi/v2/browse/reports/
+<pre><code>curl -s -H &quot;Content-type: application/json&quot; -H &quot;Authorization: Bearer $DEQAR_TOKEN&quot; https://backend.deqar.eu/webapi/v2/browse/reports/
 
-http https://backend.testzone.eqar.eu/webapi/v2/browse/reports/ &quot;Authorization: Bearer $DEQAR_TOKEN&quot;
+http https://backend.deqar.eu/webapi/v2/browse/reports/ &quot;Authorization: Bearer $DEQAR_TOKEN&quot;
 </code></pre>
               
             </div>

@@ -152,14 +152,14 @@
 <p>API v2 will clearly distinguish between creation (a POST request) and update (a PUT request) of a report. For updates, reports can still be identified either by their DEQAR report ID or the agency's local identifier provided at creation.</p>
 <p>A creation request with a duplicate local identifier will lead to an error. Likewise, an update request will yield an error if the report does not yet exist. Hence, the intention of the request will be clear and it will either lead to the intended effect or an error. This is also in line with the HTTP protocol, where PUT is an idempotent method while POST is not.</p>
 <p>To facilitate synchronisation we will also provide an additional endpoint (a GET request) that can be used to query whether a specific local identifier is already known in DEQAR.</p>
-<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.deqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.deqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
 Besides the separation, a new endpoint helps you check your report's local identifier against the DEQAR system.</p>
 <h3 id="only-one-report-creationupdate-per-request">Only one report creation/update per request<a class="headerlink" href="#only-one-report-creationupdate-per-request" title="Permanent link">&para;</a></h3>
 <p>API v1 allowed the submission of several reports in one HTTP request. This feature was rarely used, but created some difficulties. Very large requests sometimes lead to timeouts. More importantly, internal server errors in the middle of a package sometimes left the calling implementation without a response for the entire package.</p>
 <p>The API v2 will only support the creation/update of a single report per request to make requests more stable and "atomic".</p>
 <p>Implementations that currently submit packages of several reports should do the iteration over the package client-side and make separate requests.</p>
 <p>When running bulk uploads/updates you might be requested to throttle request not to exceed a rate limit.</p>
-<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.deqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.deqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
 Currently for the test period we didn't introduce throttle. We will check how API requests influence performance.</p>
 <h3 id="institutions-managed-separately">Institutions managed separately<a class="headerlink" href="#institutions-managed-separately" title="Permanent link">&para;</a></h3>
 <p>While the API v1 allowed for it technically, the creation of institution records together with a submitted reports has been deprecated for several years already. This will be fully removed and reports can thus only be submitted for existing institutions.</p>
@@ -182,7 +182,7 @@ Currently for the test period we didn't introduce throttle. We will check how AP
 <li>Programme and system accreditation in Germany</li>
 <li>Spanish country-wide harmonised external QA frameworks, e.g. DOCENTIA</li>
 </ul>
-<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation. Now you will have a chance to submit more activities per report. This will affect submission API v2, CSV upload and the form as well. The new field structure in the API is:</p>
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.deqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.deqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation. Now you will have a chance to submit more activities per report. This will affect submission API v2, CSV upload and the form as well. The new field structure in the API is:</p>
 <pre><code class="language-json">activities: [
     {
         id: &quot;Identifier of the Agency ESG Activity&quot;,
@@ -203,7 +203,7 @@ Currently for the test period we didn't introduce throttle. We will check how AP
 <h3 id="file-upload">File upload<a class="headerlink" href="#file-upload" title="Permanent link">&para;</a></h3>
 <p>Currently, report files can be submitted as a URL or uploaded via a separate API endpoint.<br />
 In addition, API v2 will allow submitting a file "inline" as a Base64-encoded string.</p>
-<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.testzone.eqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.testzone.eqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
+<p><strong>Implementation:</strong> The changes are reflected in the <a href="https://backend.deqar.eu/submissionapi/v2/swagger/">Swagger</a> / <a href="https://backend.deqar.eu/submissionapi/v2/redoc/">ReDoc</a> documentation.<br />
 In the new submission API v2, you either submit your file with a URL, or you can embed it as a base64 string in the submission package. One of the two methods should be used. To make file management easier, there are separate endpoints available to add a new file to an existing report (POST), update an already submitted file (PUT), or remove a file from a report (DELETE), if there were more than one file submitted.</p>
 <h3 id="duplicates">Duplicates<a class="headerlink" href="#duplicates" title="Permanent link">&para;</a></h3>
 <p>Currently, DEQAR does not include an automated check for possible duplicate reports. (The recent large-scale duplicate check was a semi-automated, one-time exercise.)</p>

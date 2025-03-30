@@ -117,10 +117,10 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h1>
-<p>In the following, we present two examples of how the DEQAR Web API might be used in practice. You will first retrieve your user's authentication token <a href="#authentication">as described above</a> or <a href="https://admin.testzone.eqar.eu/my-profile">from the Admin UI</a>.</p>
+<p>In the following, we present two examples of how the DEQAR Web API might be used in practice. You will first retrieve your user's authentication token <a href="#authentication">as described above</a> or <a href="https://admin.deqar.eu/my-profile">from the Admin UI</a>.</p>
 <h2 id="example-1-find-an-institutions-accredited-programmes">Example #1: Find an institution's accredited programmes<a class="headerlink" href="#example-1-find-an-institutions-accredited-programmes" title="Permanent link">&para;</a></h2>
 <p>In this example, the user needs to know whether a Master degree in Automotive Engineering from RWTH Aachen University is accredited. Let's assume the user enters <code>aachen</code> into a search box. The client makes a <code>GET</code> request to:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/institutions/&quot; --get --data query=aachen
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/institutions/&quot; --get --data query=aachen
 </code></pre>
 <p>We'll get 4 matching results:</p>
 <pre><code class="language-json">{
@@ -203,7 +203,7 @@
 </code></pre>
 <p>Now we can fetch the quality assurance reports on the institution in question, using its ID <code>382</code>.</p>
 <p>This is done separately for the institutional and programme level. For the institutional level, the client makes a request to:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/institutional/by-institution/382/&quot;
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/institutional/by-institution/382/&quot;
 </code></pre>
 <p>Result:</p>
 <pre><code class="language-json">{
@@ -216,7 +216,7 @@
       &quot;agency_name&quot;: &quot;Swiss Agency of Accreditation and Quality Assurance&quot;,
       &quot;agency_acronym&quot;: &quot;AAQ&quot;,
       &quot;agency_id&quot;: 3,
-      &quot;agency_url&quot;: &quot;https://backend.testzone.eqar.eu/webapi/v1/browse/agencies/3/&quot;,
+      &quot;agency_url&quot;: &quot;https://backend.deqar.eu/webapi/v1/browse/agencies/3/&quot;,
       &quot;agency_esg_activity&quot;: &quot;System accreditation in Germany&quot;,
       &quot;agency_esg_activity_type&quot;: &quot;institutional&quot;,
       &quot;name&quot;: &quot;System accreditation&quot;,
@@ -260,23 +260,23 @@
 </code></pre>
 <p>We see that RWTH Aachen has a system accreditation by AAQ. But let's assume the degree we are concerned about was awarded in 2017, whereas the system accreditation is valid from September 2018 only.</p>
 <p>To get information on programme level external QA we need to make a further GET request to:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/programme/by-institution/382/&quot;
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/&quot;
 </code></pre>
 <p>We see that there are 331 programme accreditation reports and can browse through the result pages with custom limit and offset parameters, e.g.:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/programme/by-institution/382/&quot; --get --data limit=20 --data offset=100
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/&quot; --get --data limit=20 --data offset=100
 </code></pre>
 <p>We can now identify the programme we were looking for. While the programme accreditation is no longer valid (it was superseded by the system accreditation we saw above), it was valid at the time relevant for us, i.e. in 2017 when the degree was issued:</p>
 <pre><code class="language-json">{
     &quot;count&quot;: 331,
-    &quot;next&quot;: &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&amp;offset=120&quot;,
-    &quot;previous&quot;: &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&amp;offset=80&quot;,
+    &quot;next&quot;: &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&amp;offset=120&quot;,
+    &quot;previous&quot;: &quot;https://backend.deqar.eu/webapi/v2/browse/reports/programme/by-institution/382/?limit=20&amp;offset=80&quot;,
     &quot;results&quot;: [
         {
             &quot;id&quot;: 25106,
             &quot;agency_name&quot;: &quot;Accreditation Agency for Study Programmes of Engineering, Information Science, Natural Sciences and Mathematics&quot;,
             &quot;agency_acronym&quot;: &quot;ASIIN&quot;,
             &quot;agency_id&quot;: 19,
-            &quot;agency_url&quot;: &quot;https://backend.testzone.eqar.eu/webapi/v1/browse/agencies/19/&quot;,
+            &quot;agency_url&quot;: &quot;https://backend.deqar.eu/webapi/v1/browse/agencies/19/&quot;,
             &quot;agency_esg_activity&quot;: &quot;Programme accreditation&quot;,
             &quot;agency_esg_activity_type&quot;: &quot;programme&quot;,
             &quot;name&quot;: &quot;Programme accreditation&quot;,
@@ -321,7 +321,7 @@
             &quot;report_files&quot;: [
                 {
                     &quot;file_display_name&quot;: &quot;Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf&quot;,
-                    &quot;file&quot;: &quot;https://backend.testzone.eqar.eu/reports/ASIIN/20190826_1647_Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf&quot;,
+                    &quot;file&quot;: &quot;https://backend.deqar.eu/reports/ASIIN/20190826_1647_Akkreditierungsbericht_RWTH_Aachen_Ma_Automotive_Engineering_2013-09-27.pdf&quot;,
                     &quot;languages&quot;: [
                         &quot;German&quot;
                     ]
@@ -345,7 +345,7 @@
 <p>In the second example, the end user needs to look for evaluations carried out by IEP in North Macedonia.</p>
 <p>The report browsing endpoint allows to search for reports directly (i.e. not via institutions) and provides a number of search/filter facets. In the example, we want the reports ordered by the calculated validity date (that is, the explicit validity date or 6 years from the report date).</p>
 <p>The client makes a GET request to:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/&quot; --get --data agency=IEP --data country=North+Macedonia --data ordering=-valid_to_calculated
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/&quot; --get --data agency=IEP --data country=North+Macedonia --data ordering=-valid_to_calculated
 </code></pre>
 <p>The result shows that there are seven reports:</p>
 <pre><code class="language-json">{
@@ -393,7 +393,7 @@
 }
 </code></pre>
 <p>The list includes most information on the reports already. The full details of the report can be retrieved from:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/reports/3929/&quot;
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/reports/3929/&quot;
 </code></pre>
 <p>In the example:</p>
 <pre><code class="language-json">{
@@ -401,7 +401,7 @@
     &quot;agency_name&quot;: &quot;Institutional Evaluation Programme&quot;,
     &quot;agency_acronym&quot;: &quot;IEP&quot;,
     &quot;agency_id&quot;: 31,
-    &quot;agency_url&quot;: &quot;https://backend.testzone.eqar.eu/webapi/v1/browse/agencies/31/&quot;,
+    &quot;agency_url&quot;: &quot;https://backend.deqar.eu/webapi/v1/browse/agencies/31/&quot;,
     &quot;agency_esg_activity&quot;: &quot;Institutional evaluation&quot;,
     &quot;agency_esg_activity_type&quot;: &quot;institutional&quot;,
     &quot;name&quot;: &quot;Institutional evaluation&quot;,
@@ -424,7 +424,7 @@
     &quot;report_files&quot;: [
         {
             &quot;file_display_name&quot;: &quot;Evaluation report&quot;,
-            &quot;file&quot;: &quot;https://backend.testzone.eqar.eu/reports/IEP/20180924_1056_iep%20mk_seeu%20report_final.pdf&quot;,
+            &quot;file&quot;: &quot;https://backend.deqar.eu/reports/IEP/20180924_1056_iep%20mk_seeu%20report_final.pdf&quot;,
             &quot;languages&quot;: [
                 &quot;English&quot;
             ]
@@ -439,7 +439,7 @@
 <h2 id="example-3-use-other-institutional-identifiers">Example #3: use other institutional identifiers<a class="headerlink" href="#example-3-use-other-institutional-identifiers" title="Permanent link">&para;</a></h2>
 <p>In this example, a user looks up an institution based on the SCHAC identifier.</p>
 <p>The client makes a first GET request to receive the list of known identifier types:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/institutions/resources/&quot;
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/institutions/resources/&quot;
 </code></pre>
 <p>The result shows that there are seven reports:</p>
 <pre><code class="language-json">[
@@ -480,7 +480,7 @@
 ]
 </code></pre>
 <p>These resource tags can then be used in a request for a specific institution record:</p>
-<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.testzone.eqar.eu/webapi/v2/browse/institutions/by-identifier/SCHAC/urv.cat&quot;
+<pre><code class="language-sh">curl -s -H &quot;Authorization: Bearer ******&quot; &quot;https://backend.deqar.eu/webapi/v2/browse/institutions/by-identifier/SCHAC/urv.cat&quot;
 </code></pre>
 <p>In the example, this returns (data abridged):</p>
 <pre><code class="language-json">{
