@@ -24,7 +24,7 @@ DEQAR exports are generated and refreshed by QDR on a nightly basis. It may thus
 
 ## Use in practice
 
-The European Commission provides a [step-by-step guide how to issue European Digital Credentials for Learning](https://europa.eu/europass/en/how-issue-european-digital-credentials). Please consult that step-by-step guide first, the following steps only cover the aspect of accreditation.
+The European Commission provides a [step-by-step guide how to issue European Digital Credentials for Learning](https://europass.europa.eu/en/how-issue-european-digital-credentials-learning). Please consult that step-by-step guide first, the following steps only cover the aspect of accreditation.
 
  1. **Look up the DEQAR Permalink**
 
@@ -42,7 +42,7 @@ The European Commission provides a [step-by-step guide how to issue European Dig
 
  3. **Issue digital credential**
 
-    You can now issue a (test) credential using your external quality assurance from DEQAR as accreditation in EDC; see the [step-by-step guide](https://europa.eu/europass/en/how-issue-european-digital-credentials) for details.
+    You can now issue a (test) credential using your external quality assurance from DEQAR as accreditation in EDC; see the [step-by-step guide](https://europass.europa.eu/en/how-issue-european-digital-credentials-learning) for details.
 
  4. **Verify credential**
 
